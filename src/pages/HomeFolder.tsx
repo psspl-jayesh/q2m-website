@@ -1,13 +1,13 @@
 import home from '@/data/home.json'
 import { Accordion, Button, Reveal, SectionHead, Seo, StaggerGroup, StaggerItem, TextLink } from '@/components/ui'
-import HeroSlider, { homeHeroSlides } from '@/components/HeroSlider'
+import DotField from '@/components/DotField'
 import DotPanel from '@/components/DotPanel'
 import BookingForm from '@/components/BookingForm'
 import { COMPANY } from '@/config/locale'
 import { getPage, findEntry, useContent } from '@/lib/content'
-import { hasClutch, ogImageFor, pageImages } from '@/lib/images'
+import { ogImageFor, pageImages } from '@/lib/images'
 import { PostCard } from '@/components/Cards'
-import { ClutchBadge, SiteImage } from '@/components/ui'
+import { SiteImage } from '@/components/ui'
 import stats from '@/content/shared/stats.json'
 import certifications from '@/content/shared/certifications.json'
 
@@ -40,7 +40,6 @@ export default function HomeFolder() {
   const h = home
   const c = useContent()
   const live = getPage(c, 'q2m-solutions')!
-  const slides = homeHeroSlides(c)
   const homeImgs = pageImages(c, '/')
   const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
   const msBadges = pageImages(c, '/about/').filter((i) => i.role === 'logo' && /\/microsoft-/.test(i.file))
@@ -66,12 +65,11 @@ export default function HomeFolder() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button to="/#book">{h.hero.ctas[0].label}</Button>
                 <Button to="/#services" variant="ghost" arrow={false}>{h.hero.ctas[1].label}</Button>
-                {hasClutch(c, '/') && <ClutchBadge className="h-6 items-center" />}
               </div>
               <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{h.hero.meta.map((m) => <span key={m}>{m}</span>)}</p>
             </Reveal>
           </div>
-          <Reveal delay={0.15} y={0} className="split-main"><HeroSlider slides={slides} className="mx-auto w-full max-w-[560px]" /></Reveal>
+          <Reveal delay={0.15} y={0} className="split-main"><DotField className="mx-auto w-full max-w-[520px]" /></Reveal>
         </div>
       </section>
 

@@ -2,7 +2,7 @@
 
 The Clutch logo (`public/images/shared/clutch-logo.svg`, white version `clutch-logo-white.svg`) is served locally (downloaded from the approved theme-demo URL). It is shown by one shared component (`ClutchBadge`) wherever the live page's hero shows it: in the **hero**, next to the primary button / meta line under the page title.
 
-**Total: 38 pages, one placement each in the hero (38 placements).** Live: 31 pages use the demo-domain logo; 7 more pages use only the internal white file (their dark-hero variant) and are included: 31 + 7 = 38. The earlier figure of 32 places is not reproduced by the current crawl (31 pages with the demo-domain logo); I could not find where 32 came from.
+**Total: 37 pages, one placement each in the hero (37 placements).** The home page is not counted: the designed home hero (kept as designed) has no Clutch badge; the live home hero does. Live: 31 pages use the demo-domain logo; 7 more pages use only the internal white file (their dark-hero variant) and are included: 30 service pages + 7 = 37 (plus the live home page, not shown). The earlier figure of 32 places is not reproduced by the current crawl (31 pages with the demo-domain logo); I could not find where 32 came from.
 
 Theme check on all 61 routes (light and dark): in light mode only the dark artwork is visible, in dark mode only the white artwork is visible, exactly one logo per hero, none on pages that do not have it.
 
@@ -33,7 +33,6 @@ Footer: the footer "Clutch" review badge (`clutch-logo-1.png`, links to the Clut
 | /digital-transformation-services/ | Hero (under the page title, beside the CTA) | black + white variant |
 | /generative-ai-development-services/ | Hero (under the page title, beside the CTA) | black + white variant |
 | /generative-ai-integration-services/ | Hero (under the page title, beside the CTA) | black + white variant |
-| / | Hero (under the page title, beside the CTA) | black + white variant |
 | /infrastructure-services/ | Hero (under the page title, beside the CTA) | black + white variant |
 | /llm-development-services/ | Hero (under the page title, beside the CTA) | black + white variant |
 | /machine-learning-development-services/ | Hero (under the page title, beside the CTA) | black + white variant |

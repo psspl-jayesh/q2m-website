@@ -5,7 +5,7 @@ SEO title and description on the home page are the live ones. Images come from t
 
 | # | Home section (as routed) | Content | Image | Status / reason |
 |---|---|---|---|---|
-| 1 | Hero | Designed copy (eyebrow, headline, lead, CTAs, Bengaluru Tech Summit meta) | Slider of the 3 live home banners (`q2m-banner-img-2/-3/-1.webp`, 835×648). Clutch logo beside the CTAs (local copy, white in dark mode) | Applied. The slider replaces the designed dot field, as you asked earlier ("slider images like the live site"). Say if you want the dot field back |
+| 1 | Hero | Designed copy (eyebrow, headline, lead, CTAs, Bengaluru Tech Summit meta) | **Unchanged: the designed dot field** | Decision for you: (A) keep the dot field (current) or (B) switch the right side to a slider of the 3 live home banners with the Clutch logo beside the CTAs, as on the live site. The slider component is built and used by the non-routed live-structure home (`Home.tsx`) |
 | 2 | **Trusted & Certified** (added, live content) | Live certification list (Microsoft Solution Partner, Azure Expert, Clutch Top AI Developer, ISO 27001) | 2 Microsoft Solutions Partner badges (live files from /about/, unmodified); 8 live client logos (ZIMM Group, GAI Consultants, Apps 365, NStCM, e-peas Semiconductors, Integration Partners, Groupe Restalliance, Linde) under "Our Global Clients" | Applied. The design had no section for this; it is the one place where logos and badges match in meaning |
 | 3 | BTS 2026 band | Designed copy | none | No matching live image |
 | 4 | See the work | Designed copy, brand dot panels | none | Live case-study banners are not the work shown in the tiles (no clear match) |
