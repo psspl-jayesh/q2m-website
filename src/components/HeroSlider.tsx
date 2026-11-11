@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useReducedMotion } from 'motion/react'
 import { SiteImage, type SiteImg } from '@/components/ui'
+import { pageImages } from '@/lib/images'
+import type { Content } from '@/lib/content'
+import heroSlides from '@/content/shared/hero-slides.json'
 
 const INTERVAL = 5000
 
@@ -62,4 +65,10 @@ export default function HeroSlider({ slides, className = '' }: { slides: SiteImg
       )}
     </div>
   )
+}
+
+/** The live home banners in the order and with the alt text from hero-slides.json. */
+export function homeHeroSlides(c: Content): SiteImg[] {
+  const live = pageImages(c, '/')
+  return heroSlides.slides.flatMap((s) => { const m = live.find((i) => i.file === s.file); return m ? [{ ...m, alt: s.alt }] : [] })
 }
