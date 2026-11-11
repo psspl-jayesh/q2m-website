@@ -1,14 +1,14 @@
 import { getPage, sectionize, useContent } from '@/lib/content'
 import { Button, ClutchBadge, Reveal, Seo } from '@/components/ui'
-import { ogImageFor, pageImages } from '@/lib/images'
-import HeroSlider from '@/components/HeroSlider'
+import { ogImageFor } from '@/lib/images'
+import HeroSlider, { homeHeroSlides } from '@/components/HeroSlider'
 import { FinalCta } from '@/components/Cards'
 import { PageBody, resolveHref, splitHero } from './ServicePage'
 import ctas from '@/content/shared/ctas.json'
-import heroSlides from '@/content/shared/hero-slides.json'
 
 /**
- * Home page. All copy comes from the live home page (src/content/pages/home.json) with the India overrides applied.
+ * BACKUP, NOT ROUTED since the designed home (HomeFolder.tsx) became the home page.
+ * Live-structure home. All copy comes from the live home page (src/content/pages/home.json) with the India overrides applied.
  * The hero keeps the existing design (dot field); every other section uses the shared section components.
  * The folder-based home is kept in HomeFolder.tsx (not routed).
  */
@@ -17,9 +17,7 @@ export default function Home() {
   const entry = getPage(c, 'q2m-solutions')!
   const { h1, lede, btn, meta, body } = splitHero(entry.blocks)
   const secs = sectionize(body)
-  // live home hero banners, in the order and with the alt text from hero-slides.json
-  const live = pageImages(c, '/')
-  const slides = heroSlides.slides.flatMap((s) => { const m = live.find((i) => i.file === s.file); return m ? [{ ...m, alt: s.alt }] : [] })
+  const slides = homeHeroSlides(c)
   return (
     <>
       <Seo title={entry.metaTitle} description={entry.description} path="/" image={ogImageFor(c, '/')} />

@@ -44,12 +44,14 @@ const rewriteText = (path, loc, t) => {
   const rules = [
     ["Singapore's Enterprise AI Development Company", 'Enterprise AI Development Company in India', 'required headline override'],
     ['As a specialist AI development company in Singapore,', 'As a specialist AI development company in India,', 'region'],
-    ['Enterprise projects delivered across APAC', 'Enterprise projects delivered across India', 'region'],
-    ['Average reduction in manual processing time across APAC clients', 'Average reduction in manual processing time across Indian clients', 'region'],
-    ['Singapore & APAC presence', 'India presence', 'region'],
-    ['We are governed by the regulations of Singapore, and have Asia Pacific delivery capability.', 'We are governed by the regulations of India, and have delivery capability across India.', 'region'],
+    // The live numbers count APAC/overall projects and clients, not Indian ones: labels are neutral so the number stays accurate
+    ['Enterprise projects delivered across APAC', 'Enterprise projects delivered', 'neutral label: live number is not India-only'],
+    ['Average reduction in manual processing time across APAC clients', 'Average reduction in manual processing time across clients', 'neutral label: live number is not India-only'],
+    ['Singapore & APAC presence', 'Serving enterprises in India', 'neutral, true statement'],
+    ['We are governed by the regulations of Singapore, and have Asia Pacific delivery capability.', 'Governance, security and compliance are built into how we deliver.', 'removed country-specific governance claim'],
+    ['compliance with MAS TRM, PDPA, GDPR, and ISO 27001 when applicable', 'compliance with GDPR and ISO 27001 when applicable', 'removed Singapore regulation names (no DPDP claim added)'],
     ['How does one ensure data security and compliance in Singapore?', 'How does one ensure data security and compliance in India?', 'FAQ override'],
-    ['Q2M Solutions is Singapore’s enterprise AI development company, delivering 150+ projects across the APAC region from', 'Q2M Solutions is an enterprise AI development company in India, delivering 150+ projects across India from', 'region (article)'],
+    ['Q2M Solutions is Singapore’s enterprise AI development company, delivering 150+ projects across the APAC region from', 'Q2M Solutions is an enterprise AI development company in India, delivering 150+ projects for enterprise clients from', 'region (article)'],
   ]
   for (const [a, b, why] of rules) if (out.includes(a)) { out = out.split(a).join(b); ov(path, loc, a, b, why) }
   return out
@@ -59,7 +61,6 @@ const KEEP = [
   { re: /^APAC region$/, why: 'Part of the award "Clutch Top AI Developer — APAC region" (kept as instructed)', path: '/' },
   { re: /Top AI Developer in the APAC region/, why: 'Award wording kept as instructed', path: '/q2m-solutions-is-heading-to-ai4-2026/' },
   { re: /Asia Pacific is the fastest-growing market/, why: 'Cited third-party market statistic: changing the region would falsify the source claim. Needs your decision.', path: '/ai-agent-development-cost/' },
-  { re: /PDPA|MAS TRM/, why: 'Singapore regulation names in a compliance claim: not a literal region mention; needs your decision (no DPDP claim added).', path: '/ai-chatbot-development-company/' },
 ]
 
 /* ───────── shared stats config ───────── */
@@ -153,7 +154,7 @@ for (const [k, v] of Object.entries(sharedOut)) writeFileSync(`src/content/share
 /* ───────── build the file the app loads (metadata from the CMS, all copy from src/content) ───────── */
 const toEntry = (pg) => {
   const m = meta.get(pg.path)
-  return { id: m?.id ?? 0, type: pg.type, path: pg.path, slug: m?.slug ?? pg.slug, title: pg.seo.h1 || m?.title || '', date: m?.date, modified: m?.modified, metaTitle: pg.seo.title, description: pg.seo.description, ogImage: m?.ogImage ?? '', robots: m?.robots ?? '', excerpt: m?.excerpt ?? '', featuredMedia: m?.featuredMedia ?? 0, categories: m?.categories ?? [], blocks: pg.blocks, faqs: pg.faqs, furniture: pg.furniture }
+  return { id: m?.id ?? 0, type: pg.type, path: pg.path, slug: m?.slug ?? pg.slug, title: pg.seo.h1 || m?.title || '', date: m?.date, modified: m?.modified, metaTitle: pg.seo.title, description: pg.seo.description, ogImage: m?.ogImage ?? '', robots: m?.robots ?? '', excerpt: pg.type === 'page' ? '' : (m?.excerpt ?? ''), featuredMedia: m?.featuredMedia ?? 0, categories: m?.categories ?? [], blocks: pg.blocks, faqs: pg.faqs, furniture: pg.furniture }
 }
 const content = {
   syncedAt: new Date().toISOString(), source: 'https://q2msolutions.com', pages: pages.filter((p) => p.type === 'page').map(toEntry), posts: pages.filter((p) => p.type === 'post').map(toEntry), caseStudies: pages.filter((p) => p.type === 'case-study').map(toEntry),

@@ -27,10 +27,15 @@ const norm = (p: string) => (p.endsWith('/') ? p : p + '/')
 
 export const pageImages = (c: Content, path: string): ManifestImage[] => c.manifest.pages[norm(path)] ?? []
 
-/** The first hero image of a page (the banner shown under the page title on the live site). */
-/** The page hero: when the live page lists several hero images, the widest one (never a low-resolution duplicate). */
-export const heroImage = (c: Content, path: string) =>
-  pageImages(c, path).filter((i) => i.role === 'hero').reduce<ManifestImage | undefined>((best, i) => (!best || (i.w ?? 0) > (best.w ?? 0) ? i : best), undefined)
+/**
+ * The page hero. When the live page lists several hero images, the widest is used, unless the page is in IMAGES.lowResHeroPages
+ * (the wider file is a different picture), in which case the narrowest, original one is kept.
+ */
+export function heroImage(c: Content, path: string): ManifestImage | undefined {
+  const heroes = pageImages(c, path).filter((i) => i.role === 'hero')
+  const pickLow = (IMAGES.lowResHeroPages as readonly string[]).includes(norm(path))
+  return heroes.reduce<ManifestImage | undefined>((best, i) => (!best || (pickLow ? (i.w ?? 0) < (best.w ?? 0) : (i.w ?? 0) > (best.w ?? 0)) ? i : best), undefined)
+}
 
 /** Page images that belong to rendered content sections. Decorative theme backgrounds and icons are never returned. */
 const shown = (i: ManifestImage) => i.role === 'content' || i.role === 'logo'
@@ -78,3 +83,6 @@ export function ogImageFor(c: Content, path: string): string {
   const h = heroImage(c, path)
   return h && (h.w ?? 0) >= IMAGES.ogMinWidth ? h.file : siteImages.ogDefault
 }
+
+/** True when the live page's hero shows the Clutch logo (that is where the local copy of the logo is shown). */
+export const hasClutch = (c: Content, path: string): boolean => pageImages(c, path).some((i) => i.section === 'hero' && /clutch-logo(-white)?\.svg$/.test(i.file))

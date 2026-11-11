@@ -27,7 +27,7 @@ export function CaseStudies({ entry }: { entry: Entry }) {
         <Breadcrumbs trail={[{ label: 'Home', to: '/' }, { label: crumbOf(entry) }]} />
         <Reveal y={28}><h1 className="display-xl mt-10 max-w-4xl">{h1Of(entry)}</h1></Reveal>
       </div></section>
-      <section className="pb-24"><div className="container-page grid gap-8 lg:grid-cols-12">{c.caseStudies.map((e, i) => <CaseCard key={e.id} e={e} large={i === 0} i={i} />)}</div></section>
+      <section className="pb-24"><div className="container-page grid gap-8 lg:grid-cols-12">{c.caseStudies.map((e, i) => <CaseCard key={e.id} e={e} large={i === 0} i={i} as="h2" />)}</div></section>
       <FinalCta />
     </>
   )

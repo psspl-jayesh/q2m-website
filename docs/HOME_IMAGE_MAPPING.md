@@ -1,25 +1,26 @@
-# Home page: image mapping (awaiting your approval)
+# Home page: section → content → image (review table)
 
-Nothing below is applied. The routed home page renders **no manifest images** (`<PageBody images={false}>`) until you approve.
-Sources: live home page image list (`src/data/image-manifest.json`, path `/`) and the shared industry images used elsewhere on the live site.
+The routed home page is now the **designed home** (`src/pages/HomeFolder.tsx`, data in `src/data/home.json`). Its design, section order and copy are unchanged. The live-structure home is kept as `src/pages/Home.tsx` (not routed). Nothing was deleted.
+SEO title and description on the home page are the live ones. Images come from the live site only, unmodified.
 
-| # | Home section (live heading) | Suggested live image | Reason |
-|---|---|---|---|
-| 1 | Hero: "Enterprise AI Development Company in India" | **APPROVED and applied:** slider of the 3 live banners (q2m-banner-img-2, -3, -1; 835×648) on the right, replacing the dot field | You asked for a slider like the live site. Cross-fade every 5s, pauses on hover/focus, no autoplay with reduced motion. Order and alt text in `src/content/shared/hero-slides.json` (alts written from the images; please review) |
-| 1a | Hero: Clutch rating | Clutch logo (`/images/shared/clutch-logo.svg`, white variant in dark mode) | Applied already via `ClutchBadge`; shown only next to the live "Review On … Reviews" line |
-| 1b | Hero: "ai4" promo | **none** (`ai4-logo.png`) | Promo for the Ai4 event article; excluded earlier. Say if you want it back |
-| 2 | Trusted & Certified | 8 client logos: ZIMM Group, GAI Consultants, Apps 365, NStCM, e-peas Semiconductors, integration-partners, Groupe Restalliance, Linde | Exact meaning match (client/partner logos). `integration-partners.png` is an icon-only mark with no readable name; its alt needs your wording |
-| 3 | The Results Our Clients Measure (both copies) | **none** | Counters only; live has no image |
-| 4 | An AI Development Company Built Differently | **none** (`solution-bg.png` is a theme background) | Decorative theme background, agreed not to render |
-| 5 | AI Development Services Built For Enterprise | **none** | Live has no image in this section |
-| 6 | A Microsoft Solution Partner You Can Hold Accountable | **none on home** (the two Microsoft Solutions Partner badges exist on /about/) | Meaning would match, but they are not on the live home page. Optional: reuse the About badges here. Your call |
-| 7 | AI Development Built For Your Industry | **none on live home**. Optional: finance-banking-img, transportation-img, healthcare-img, manufacturing-img, government-img (live industry-page images) | Meaning matches 5 of 6 industries (Financial Services, Logistics & Supply Chain, Healthcare, Manufacturing, Public Sector). SaaS & Technology has no image, so the set would be uneven. Recommend **none** |
-| 8 | The AI and Microsoft Stack We Build On | **none** | Live has no image |
-| 9 | How our AI Development Engagements Work | 4 step images: discovery-consultation, planning-strategy, design-development, quality-assurance (353×353 webp) | Step names match the images; shown at or below 353px, never enlarged. Alts need review (currently file-name based) |
-| 10 | Our Creative Showcase | **none** (only `right-arrow.png`) | Theme demo content, not migrated |
-| 11 | Trusted By Our Clients | **none** (no image in this section; the logos are in section 2) | No duplicate logo row |
-| 12 | From The Team | 3 blog thumbnails: ai-chabot.png (1672×941), machine-learning.png (1448×1086), top-12-ai-agent-development-companies…-blog-img.webp (1920×1080) | Each is the thumbnail of the post it links to |
-| 13 | Questions Enterprise Buyers Ask Us (FAQ) | **none** | Text only |
+| # | Home section (as routed) | Content | Image | Status / reason |
+|---|---|---|---|---|
+| 1 | Hero | Designed copy (eyebrow, headline, lead, CTAs, Bengaluru Tech Summit meta) | **Unchanged: the designed dot field** | Decision for you: (A) keep the dot field (current) or (B) switch the right side to a slider of the 3 live home banners with the Clutch logo beside the CTAs, as on the live site. The slider component is built and used by the non-routed live-structure home (`Home.tsx`) |
+| 2 | **Trusted & Certified** (added, live content) | Live certification list (Microsoft Solution Partner, Azure Expert, Clutch Top AI Developer, ISO 27001) | 2 Microsoft Solutions Partner badges (live files from /about/, unmodified); 8 live client logos (ZIMM Group, GAI Consultants, Apps 365, NStCM, e-peas Semiconductors, Integration Partners, Groupe Restalliance, Linde) under "Our Global Clients" | Applied. The design had no section for this; it is the one place where logos and badges match in meaning |
+| 3 | BTS 2026 band | Designed copy | none | No matching live image |
+| 4 | See the work | Designed copy, brand dot panels | none | Live case-study banners are not the work shown in the tiles (no clear match) |
+| 5 | Services | Designed copy | none | Live home has no images in its services section |
+| 6 | Industries | Designed copy (Automotive, Insurance, Life sciences, Real estate, Fintech, BPO) | none | **Skipped as decided:** the industry image set. It also would not match these six industries |
+| 7 | **The Results Our Clients Measure** (added, live content) | 4 live counters: 150+, 40%+, 6wk, 2 (neutral labels, values from the shared stats config) | none | Live has no image here |
+| 8 | About | Designed copy | none | — |
+| 9 | How we work (4 steps: Discovery, Pilot, Production, Run and improve) | Designed copy | Step 01 Discovery: `discovery-consultation.webp` (live, 353×353) | Applied to step 01 only. Re-checked against the routed copy: Pilot / Production / Run and improve do not clearly match `planning-strategy`, `design-development`, `quality-assurance`, so they have none. Tell me if you want them anyway |
+| 10 | Principles | Designed copy | none | — |
+| 11 | Technology | Designed copy | none | — |
+| 12 | The 30-minute session | Designed copy | none | — |
+| 13 | **From The Team** (added, live content) | 3 live posts: AI chatbot development in 2026, Machine learning development guide, Top 12 AI agent development companies | The 3 live blog thumbnails (`ai-chabot.png`, `machine-learning.png`, `top-12-…-blog-img.webp`) | Applied via the shared post card |
+| 14 | FAQ | Designed FAQ (11 questions) | none | Live FAQ not added: designed FAQ covers the same purpose |
+| 15 | Book a session | Designed copy and booking form | none | — |
 
-**Summary:** clear matches are rows 2, 9, 12 (15 images). Everything else: none. Rows 6 and 7 are optional.
-Reply "approve" (or list changes) and I will enable them through the same `imagesBySection` mechanism used on all other pages.
+**Live home sections not added** (the design already covers the meaning, or they are excluded): "An AI Development Company Built Differently" (+ `solution-bg.png`, a theme background), "AI Development Services Built For Enterprise", "A Microsoft Solution Partner You Can Hold Accountable", "AI Development Built For Your Industry", "The AI and Microsoft Stack", the live 4-step engagement process, the second results block, "Our Creative Showcase" (theme demo), "Trusted By Our Clients" (3 testimonials), the Ai4 promo (`ai4-logo.png`). Tell me if you want any of them added.
+
+Unchanged by this task: Microsoft badges only come from the live site (`/images/about/microsoft-*.png`).

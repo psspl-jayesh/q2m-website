@@ -14,7 +14,7 @@
    "value": 150,
    "prefix": "",
    "suffix": "+",
-   "label": "Enterprise projects delivered across India",
+   "label": "Enterprise projects delivered",
    "source": "live home counter data-to-value"
   },
   {
@@ -70,7 +70,7 @@
    "value": 40,
    "prefix": "",
    "suffix": "%+",
-   "label": "Average reduction in manual processing time across Indian clients",
+   "label": "Average reduction in manual processing time across clients",
    "source": "live home counter data-to-value"
   }
  ]

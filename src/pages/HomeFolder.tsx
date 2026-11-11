@@ -4,6 +4,12 @@ import DotField from '@/components/DotField'
 import DotPanel from '@/components/DotPanel'
 import BookingForm from '@/components/BookingForm'
 import { COMPANY } from '@/config/locale'
+import { getPage, findEntry, useContent } from '@/lib/content'
+import { ogImageFor, pageImages } from '@/lib/images'
+import { PostCard } from '@/components/Cards'
+import { SiteImage } from '@/components/ui'
+import stats from '@/content/shared/stats.json'
+import certifications from '@/content/shared/certifications.json'
 
 /** Existing Q2M pages that cover a practice. Practices with no page (agentic commerce, 3D Gaussian splatting) are not linked. */
 const SERVICE_PAGE: Record<string, string> = {
@@ -21,15 +27,28 @@ const Head = ({ eyebrow, title, intro }: { eyebrow: string; title: string; intro
   </div>
 )
 
+/** Live blog posts shown in "From The Team" on the live home page. */
+const TEAM_POSTS = ['/ai-chatbot-development-strategic-priority-2026/', '/machine-learning-development-scalable-ml-solutions/', '/top-ai-agent-development-companies/']
+
 /**
- * The home page built from the Q2M_Website_Home folder (not on the live site). Kept in the repo, NOT routed.
- * Sections that exist only here are listed in docs/CONTENT_FLAGS.md for your decision.
+ * THE HOME PAGE (routed). The designed home from the Q2M_Website_Home folder: its design, section order and copy are kept as they were.
+ * Three sections from the live home page are added where the meaning matches nothing in the design (Trusted & Certified with the
+ * live client logos and Microsoft badges, The Results Our Clients Measure, From The Team). The live-structure home is kept as Home.tsx (not routed).
+ * SEO title and description are the live ones.
  */
 export default function HomeFolder() {
   const h = home
+  const c = useContent()
+  const live = getPage(c, 'q2m-solutions')!
+  const homeImgs = pageImages(c, '/')
+  const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
+  const msBadges = pageImages(c, '/about/').filter((i) => i.role === 'logo' && /\/microsoft-/.test(i.file))
+  const discoveryImg = homeImgs.find((i) => /discovery-consultation/.test(i.file))
+  const counters = stats.counters.slice(0, 4)
+  const posts = TEAM_POSTS.map((p) => findEntry(c, p)).filter((e): e is NonNullable<typeof e> => !!e)
   return (
     <>
-      <Seo title={h.meta.title} description={h.meta.description} path="/" />
+      <Seo title={live.metaTitle} description={live.description} path="/" image={ogImageFor(c, '/')} />
 
       {/* Hero */}
       <section className="pb-12 pt-8 md:pb-24 md:pt-16">
@@ -51,6 +70,35 @@ export default function HomeFolder() {
             </Reveal>
           </div>
           <Reveal delay={0.15} y={0} className="split-main"><DotField className="mx-auto w-full max-w-[520px]" /></Reveal>
+        </div>
+      </section>
+
+      {/* Trusted & Certified: live home content, live client logos and Microsoft badges */}
+      <section id="trusted" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page">
+          <div className="split split--lead">
+            <div className="split-aside"><SectionHead title="Trusted & Certified" /></div>
+            <div className="split-main">
+              <ul className="divide-y divide-line border-y border-line">
+                {certifications.map((x) => (
+                  <li key={x.title} className="grid gap-1 py-5 sm:grid-cols-[1fr_1fr] sm:gap-6"><h3 className="font-display text-xl font-semibold">{x.title}</h3><p className="text-ink-muted">{x.detail}</p></li>
+                ))}
+              </ul>
+              {msBadges.length > 0 && (
+                <ul className="mt-8 flex flex-wrap items-center gap-6">
+                  {msBadges.map((b) => <li key={b.file}><SiteImage image={b} ratio="auto" sizes="200px" className="h-auto w-[200px] md:w-[260px]" /></li>)}
+                </ul>
+              )}
+            </div>
+          </div>
+          {clientLogos.length > 0 && (
+            <div className="mt-12">
+              <p className="mono text-ink-muted">Our Global Clients</p>
+              <ul className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-6">
+                {clientLogos.map((l) => <li key={l.file}><SiteImage image={l} ratio="auto" sizes="200px" className="h-9 w-auto max-w-[180px] object-contain" /></li>)}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
 
@@ -103,7 +151,7 @@ export default function HomeFolder() {
                   <h3 className="max-w-3xl font-display text-[1.75rem] font-bold leading-tight">{s.title}</h3>
                   <p className="mt-4 max-w-3xl text-ink-muted">{s.text}</p>
                   <ul className="mt-6 grid gap-x-8 gap-y-2 md:grid-cols-2">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
-                  {SERVICE_PAGE[s.title] && <p className="mt-6"><TextLink to={SERVICE_PAGE[s.title]}>Read more</TextLink></p>}
+                  {SERVICE_PAGE[s.title] && <p className="mt-6"><TextLink to={SERVICE_PAGE[s.title]} label={`Read more about ${s.title}`}>Read more</TextLink></p>}
                 </article>
               ))}
               <div className="grid gap-px border-t border-line bg-line md:grid-cols-2 lg:grid-cols-3">
@@ -112,7 +160,7 @@ export default function HomeFolder() {
                     <h3 className="font-display text-xl font-semibold leading-snug">{s.title}</h3>
                     <p className="mt-3 text-[0.9375rem] text-ink-muted">{s.text}</p>
                     <ul className="mt-5 space-y-2 text-[0.9375rem]">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
-                    {SERVICE_PAGE[s.title] && <p className="mt-auto pt-6"><TextLink to={SERVICE_PAGE[s.title]}>Read more</TextLink></p>}
+                    {SERVICE_PAGE[s.title] && <p className="mt-auto pt-6"><TextLink to={SERVICE_PAGE[s.title]} label={`Read more about ${s.title}`}>Read more</TextLink></p>}
                   </article>
                 ))}
               </div>
@@ -138,6 +186,18 @@ export default function HomeFolder() {
         </div>
       </section>
 
+      {/* The Results Our Clients Measure: live home counters (labels neutral, values from the shared stats config) */}
+      <section id="results" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page">
+          <SectionHead title="The Results Our Clients Measure" />
+          <StaggerGroup as="dl" className="mt-12 grid gap-8 border-t border-ink pt-8 sm:grid-cols-2 lg:grid-cols-4">
+            {counters.map((k) => (
+              <StaggerItem key={k.key}><dd className="font-display text-5xl font-bold leading-none">{k.prefix}{k.value}{k.suffix}</dd><dt className="mt-3 text-[0.9375rem] text-ink-muted">{k.label}</dt></StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
+      </section>
+
       {/* About */}
       <section id="about" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
         <div className="container-page split">
@@ -156,6 +216,7 @@ export default function HomeFolder() {
             {h.approach.steps.map((s) => (
               <StaggerItem as="li" key={s.num} className="relative border-t-2 border-ink pt-6 lg:border-t-0 lg:pt-0">
                 <div aria-hidden className="mb-5 hidden items-center lg:flex"><span className="size-3 rounded-full bg-q2m" /><span className="ml-2 h-0.5 flex-1 bg-ink" /></div>
+                {s.num === '01' && discoveryImg && <SiteImage image={discoveryImg} ratio="auto" sizes="180px" className="mb-5 h-auto w-[140px] rounded-md" />}
                 <span className="mono text-action">{s.num}</span>
                 <h3 className="mt-2 font-display text-2xl font-semibold">{s.title}</h3>
                 <p className="mt-3 text-[0.9375rem] text-ink-muted">{s.text}</p>
@@ -206,6 +267,17 @@ export default function HomeFolder() {
           </StaggerGroup>
         </div>
       </section>
+
+      {/* From The Team: the three live home blog posts with their live thumbnails */}
+      {posts.length > 0 && (
+        <section id="team-posts" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+          <div className="container-page">
+            <SectionHead title="From The Team" />
+            <div className="mt-12 grid gap-x-6 gap-y-12 md:grid-cols-3">{posts.map((e, i) => <PostCard key={e.path} e={e} i={i} />)}</div>
+            <p className="mt-10"><TextLink to="/blogs/">All insights</TextLink></p>
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       <section id="faq" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">

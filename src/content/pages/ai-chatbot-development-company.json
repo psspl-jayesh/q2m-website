@@ -340,7 +340,7 @@
   },
   {
    "t": "p",
-   "text": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, SSO through Azure Active Directory, and compliance with MAS TRM, PDPA, GDPR, and ISO 27001 when applicable. We explain each security control in writing so that your InfoSec team can evaluate it without having to take it at face value."
+   "text": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, SSO through Azure Active Directory, and compliance with GDPR and ISO 27001 when applicable. We explain each security control in writing so that your InfoSec team can evaluate it without having to take it at face value."
   },
   {
    "t": "h2",
