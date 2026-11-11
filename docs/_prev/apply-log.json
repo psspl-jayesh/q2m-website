@@ -877,5 +877,287 @@
    "text": "We’re a designated Microsoft Solution Partner for both Data & AI and Digital & App Innovation, hold ",
    "why": "Award wording kept as instructed"
   }
+ ],
+ "removals": [
+  {
+   "path": "/ai-agent-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/ai-app-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/ai-consulting-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/ai-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/ai-recommendation-systems/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/ai-solutions-development/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/azure-ai-and-machine-learning/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/azure-ai-and-machine-learning/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/azure-data-ai-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/azure-data-ai-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/azure-data-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/azure-data-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/azure-database-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/azure-database-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/cloud-applications/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/cloud-applications/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/cognitive-service-implementation/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/cognitive-service-implementation/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/cyber-security-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/cyber-security-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/data-lake-and-big-data-on-azure/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/data-lake-and-big-data-on-azure/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/deep-learning-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/digital-sustainability-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/digital-sustainability-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/digital-transformation-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/digital-transformation-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/enterprise-business-application/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/enterprise-business-application/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/generative-ai-development-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/generative-ai-integration-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/infrastructure-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/infrastructure-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/llm-development-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/machine-learning-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/machine-learning-models-on-azure/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/machine-learning-models-on-azure/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/microsoft-fabric-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/microsoft-fabric-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/mlops-consulting-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/modern-workplace/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/modern-workplace/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/predictive-analytics-services-2/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/predictive-analytics-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/rag-development-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/sharepoint-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  },
+  {
+   "path": "/smart-glasses-ar-wearable-app-development-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/technology-consulting-services/",
+   "what": "Clutch review line",
+   "before": "Review On"
+  },
+  {
+   "path": "/technology-consulting-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)"
+  },
+  {
+   "path": "/vibe-coding-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On"
+  }
  ]
 }

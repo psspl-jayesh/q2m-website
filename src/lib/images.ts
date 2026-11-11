@@ -83,6 +83,3 @@ export function ogImageFor(c: Content, path: string): string {
   const h = heroImage(c, path)
   return h && (h.w ?? 0) >= IMAGES.ogMinWidth ? h.file : siteImages.ogDefault
 }
-
-/** True when the live page's hero shows the Clutch logo (that is where the local copy of the logo is shown). */
-export const hasClutch = (c: Content, path: string): boolean => pageImages(c, path).some((i) => i.section === 'hero' && /clutch-logo(-white)?\.svg$/.test(i.file))
