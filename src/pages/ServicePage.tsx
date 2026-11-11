@@ -269,9 +269,9 @@ function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?:
         {rows ? (
           <>
             {gallery ?? (attach ? <Gallery media={media} /> : null)}
-            <ol className="mt-14 border-t hairline">
-              {groups.map((g, k) => (<Reveal key={g.title + k}><li className="grid gap-3 border-b hairline py-7 md:grid-cols-12 md:gap-8"><span className="mono text-action md:col-span-1">{g.label ?? String(k + 1).padStart(2, '0')}</span><h3 className="font-display text-2xl md:col-span-4 md:text-3xl">{g.title}</h3><div className="text-ink-muted md:col-span-7">{g.paras.map((p) => <p key={p} className="mb-2">{p}</p>)}{g.items.length > 0 && <Bullets items={g.items} className="mt-2 space-y-2 text-[0.9375rem]" />}{g.labels.length > 0 && <div className="mt-3"><Pills labels={g.labels} /></div>}</div></li></Reveal>))}
-            </ol>
+            <div role="list" className="mt-14 border-t hairline">
+              {groups.map((g, k) => (<Reveal key={g.title + k}><div role="listitem" className="grid gap-3 border-b hairline py-7 md:grid-cols-12 md:gap-8"><span className="mono text-action md:col-span-1">{g.label ?? String(k + 1).padStart(2, '0')}</span><h3 className="font-display text-2xl md:col-span-4 md:text-3xl">{g.title}</h3><div className="text-ink-muted md:col-span-7">{g.paras.map((p) => <p key={p} className="mb-2">{p}</p>)}{g.items.length > 0 && <Bullets items={g.items} className="mt-2 space-y-2 text-[0.9375rem]" />}{g.labels.length > 0 && <div className="mt-3"><Pills labels={g.labels} /></div>}</div></div></Reveal>))}
+            </div>
           </>
         ) : (
           <>

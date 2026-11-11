@@ -64,9 +64,9 @@ export function Button({ to, href, children, variant = 'primary', className = ''
   return <button className={cls} {...rest}>{children}{icon}</button>
 }
 
-export function TextLink({ to, children, className = '' }: { to: string; children: ReactNode; className?: string }) {
+export function TextLink({ to, children, className = '', label }: { to: string; children: ReactNode; className?: string; label?: string }) {
   return (
-    <Link to={to} className={`group inline-flex items-center gap-1.5 font-medium text-action hover:underline underline-offset-4 ${className}`}>
+    <Link to={to} aria-label={label} className={`group inline-flex items-center gap-1.5 font-medium text-action hover:underline underline-offset-4 ${className}`}>
       {children}<ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
     </Link>
   )

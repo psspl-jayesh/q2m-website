@@ -151,7 +151,7 @@ export default function HomeFolder() {
                   <h3 className="max-w-3xl font-display text-[1.75rem] font-bold leading-tight">{s.title}</h3>
                   <p className="mt-4 max-w-3xl text-ink-muted">{s.text}</p>
                   <ul className="mt-6 grid gap-x-8 gap-y-2 md:grid-cols-2">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
-                  {SERVICE_PAGE[s.title] && <p className="mt-6"><TextLink to={SERVICE_PAGE[s.title]}>Read more</TextLink></p>}
+                  {SERVICE_PAGE[s.title] && <p className="mt-6"><TextLink to={SERVICE_PAGE[s.title]} label={`Read more about ${s.title}`}>Read more</TextLink></p>}
                 </article>
               ))}
               <div className="grid gap-px border-t border-line bg-line md:grid-cols-2 lg:grid-cols-3">
@@ -160,7 +160,7 @@ export default function HomeFolder() {
                     <h3 className="font-display text-xl font-semibold leading-snug">{s.title}</h3>
                     <p className="mt-3 text-[0.9375rem] text-ink-muted">{s.text}</p>
                     <ul className="mt-5 space-y-2 text-[0.9375rem]">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
-                    {SERVICE_PAGE[s.title] && <p className="mt-auto pt-6"><TextLink to={SERVICE_PAGE[s.title]}>Read more</TextLink></p>}
+                    {SERVICE_PAGE[s.title] && <p className="mt-auto pt-6"><TextLink to={SERVICE_PAGE[s.title]} label={`Read more about ${s.title}`}>Read more</TextLink></p>}
                   </article>
                 ))}
               </div>
