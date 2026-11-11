@@ -1,10 +1,11 @@
 import { getPage, sectionize, useContent } from '@/lib/content'
 import { Button, ClutchBadge, Reveal, Seo } from '@/components/ui'
-import { ogImageFor } from '@/lib/images'
-import DotField from '@/components/DotField'
+import { ogImageFor, pageImages } from '@/lib/images'
+import HeroSlider from '@/components/HeroSlider'
 import { FinalCta } from '@/components/Cards'
 import { PageBody, resolveHref, splitHero } from './ServicePage'
 import ctas from '@/content/shared/ctas.json'
+import heroSlides from '@/content/shared/hero-slides.json'
 
 /**
  * Home page. All copy comes from the live home page (src/content/pages/home.json) with the India overrides applied.
@@ -16,6 +17,9 @@ export default function Home() {
   const entry = getPage(c, 'q2m-solutions')!
   const { h1, lede, btn, meta, body } = splitHero(entry.blocks)
   const secs = sectionize(body)
+  // live home hero banners, in the order and with the alt text from hero-slides.json
+  const live = pageImages(c, '/')
+  const slides = heroSlides.slides.flatMap((s) => { const m = live.find((i) => i.file === s.file); return m ? [{ ...m, alt: s.alt }] : [] })
   return (
     <>
       <Seo title={entry.metaTitle} description={entry.description} path="/" image={ogImageFor(c, '/')} />
@@ -33,7 +37,7 @@ export default function Home() {
               {meta.length > 0 && <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{meta.map((m, k) => <span key={k}>{m.text}</span>)}</p>}
             </Reveal>
           </div>
-          <Reveal delay={0.15} y={0} className="split-main"><DotField className="mx-auto w-full max-w-[520px]" /></Reveal>
+          <Reveal delay={0.15} y={0} className="split-main"><HeroSlider slides={slides} className="mx-auto w-full max-w-[560px]" /></Reveal>
         </div>
       </section>
       {/* Home images are placed only after you approve docs/HOME_IMAGE_MAPPING.md */}

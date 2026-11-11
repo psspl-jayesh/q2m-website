@@ -1,0 +1,8 @@
+{
+  "_note": "Home hero slider: order and descriptive alt text for the three live home banners (q2m-banner-img-*.webp). Alt text written from the images; please review.",
+  "slides": [
+    { "file": "/images/home/q2m-banner-img-2.webp", "alt": "A humanoid robot and an engineer in a white lab coat working together at a technical workstation" },
+    { "file": "/images/home/q2m-banner-img-3.webp", "alt": "Three colleagues smiling as they work together on a laptop in an office" },
+    { "file": "/images/home/q2m-banner-img-1.webp", "alt": "Team members working and talking at desks in a bright open-plan office" }
+  ]
+}

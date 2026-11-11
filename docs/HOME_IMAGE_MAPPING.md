@@ -5,7 +5,7 @@ Sources: live home page image list (`src/data/image-manifest.json`, path `/`) an
 
 | # | Home section (live heading) | Suggested live image | Reason |
 |---|---|---|---|
-| 1 | Hero: "Enterprise AI Development Company in India" | **none** (live has 3 generic banner illustrations: q2m-banner-img-1/2/3.webp, alt "illustration") | Generic artwork with no specific meaning; the brand dot-field hero already carries the section |
+| 1 | Hero: "Enterprise AI Development Company in India" | **APPROVED and applied:** slider of the 3 live banners (q2m-banner-img-2, -3, -1; 835×648) on the right, replacing the dot field | You asked for a slider like the live site. Cross-fade every 5s, pauses on hover/focus, no autoplay with reduced motion. Order and alt text in `src/content/shared/hero-slides.json` (alts written from the images; please review) |
 | 1a | Hero: Clutch rating | Clutch logo (`/images/shared/clutch-logo.svg`, white variant in dark mode) | Applied already via `ClutchBadge`; shown only next to the live "Review On … Reviews" line |
 | 1b | Hero: "ai4" promo | **none** (`ai4-logo.png`) | Promo for the Ai4 event article; excluded earlier. Say if you want it back |
 | 2 | Trusted & Certified | 8 client logos: ZIMM Group, GAI Consultants, Apps 365, NStCM, e-peas Semiconductors, integration-partners, Groupe Restalliance, Linde | Exact meaning match (client/partner logos). `integration-partners.png` is an icon-only mark with no readable name; its alt needs your wording |
