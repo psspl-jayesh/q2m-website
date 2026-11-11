@@ -30,11 +30,6 @@
    "href": "https://q2msolutions.com/contact/"
   },
   {
-   "t": "p",
-   "text": "Review On",
-   "via": "div"
-  },
-  {
    "t": "h6",
    "text": "Welcome to Q2M Solutions"
   },
@@ -455,14 +450,6 @@
   {
    "t": "p",
    "text": "Q2M experts have experience in delivering 120+ AI projects using custom LLM builds across diverse industries, such as finance, legal, healthcare, and technology. Our models handle several user queries monthly with 95% accuracy."
-  },
-  {
-   "t": "h4",
-   "text": "Microsoft and Azure Expertise"
-  },
-  {
-   "t": "p",
-   "text": "As a certified Microsoft Solution Partner, we build custom LLM models on Azure AI, OpenAI Service, and Azure ML platforms. That's why our models can seamlessly integrate with your Microsoft tech stack and enterprise infrastructure without any constraints."
   },
   {
    "t": "h4",

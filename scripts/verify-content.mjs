@@ -9,6 +9,7 @@ const live = Object.fromEntries(readdirSync('src/content/live').map((f) => JSON.
 const fin = Object.fromEntries(readdirSync('src/content/pages').map((f) => JSON.parse(readFileSync(`src/content/pages/${f}`, 'utf8'))).map((p) => [p.slug, p]))
 const overrideAfters = log.overrides.map((o) => o.after)
 const typoAfters = log.typos.map((t) => t.after)
+const removalAfters = (log.removals ?? []).filter((r) => r.afterFull).map((r) => r.afterFull)
 const tok = (t) => (t || '').split(/(\s+)/)
 const toLatin = (t) => t.replace(/[Ѐ-ӿ]/g, (c) => HOMO[c] ?? c)
 
@@ -19,6 +20,7 @@ function explained(liveText, finalText) {
   if (spell(l1) === finalText || l1 === finalText) return 'cyrillic/spelling'
   if (overrideAfters.some((a) => finalText.includes(a))) return 'india override'
   if (typoAfters.some((a) => finalText.includes(a))) return 'typo fix'
+  if (removalAfters.some((a) => a === finalText || spell(a) === finalText || spell(toLatin(a)) === finalText)) return 'claim removal'
   // tolerate combinations: compare after folding spelling on both sides
   if (spell(toLatin(liveText)).replace(/[’']/g, "'") === spell(finalText).replace(/[’']/g, "'")) return 'spelling+contraction'
   // token-level: every differing token is a spelling/cyrillic/typo/contraction variant

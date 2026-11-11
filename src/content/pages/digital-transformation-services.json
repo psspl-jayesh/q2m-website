@@ -30,16 +30,6 @@
    "href": "#"
   },
   {
-   "t": "p",
-   "text": "Review On",
-   "via": "div"
-  },
-  {
-   "t": "p",
-   "text": "(50 Reviews)",
-   "via": "span"
-  },
-  {
    "t": "h6",
    "text": "Welcome to Q2M Solutions"
   },
@@ -318,14 +308,6 @@
    "t": "h2",
    "text": "Why Choose Q2M Solutions for Digital Transformation Consulting?",
    "eyebrow": "Proven Experts at Your Service"
-  },
-  {
-   "t": "h4",
-   "text": "Unmatched Expertise in Microsoft Technologies"
-  },
-  {
-   "t": "p",
-   "text": "Throughout the whole Microsoft ecosystem, our team of certified Microsoft specialists contributes extensive technical expertise and implementation experience. We assist you in realising the full potential of contemporary cloud solutions, from Azure and Microsoft 365 to Power Platform and Dynamics 365, which promote flexibility, automation, and long-term value."
   },
   {
    "t": "h4",

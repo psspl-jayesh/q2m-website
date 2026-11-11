@@ -160,11 +160,6 @@
   }
   /* Flat header band (replaces the live site's decorative breadcrumb background): brand surface colour, same on every page */
   .page-band { background: var(--surface-raised); border-bottom: 1px solid var(--line); }
-  /* Theme-specific image variants (Clutch logo: dark artwork on light, white artwork on dark) */
-  .only-light { display: block; }
-  .only-dark { display: none; }
-  [data-theme='dark'] .only-light { display: none; }
-  [data-theme='dark'] .only-dark { display: block; }
   /* Logo variants: colour on light, reverse on dark */
   .logo-reverse { display: none; }
   [data-theme='dark'] .logo-color { display: none; }

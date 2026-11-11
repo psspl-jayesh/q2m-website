@@ -58,8 +58,6 @@ const rewriteText = (path, loc, t) => {
 }
 /* kept on purpose: award name and cited statistics */
 const KEEP = [
-  { re: /^APAC region$/, why: 'Part of the award "Clutch Top AI Developer — APAC region" (kept as instructed)', path: '/' },
-  { re: /Top AI Developer in the APAC region/, why: 'Award wording kept as instructed', path: '/q2m-solutions-is-heading-to-ai4-2026/' },
   { re: /Asia Pacific is the fastest-growing market/, why: 'Cited third-party market statistic: changing the region would falsify the source claim. Needs your decision.', path: '/ai-agent-development-cost/' },
 ]
 
@@ -80,6 +78,78 @@ const statFromBlock = (path, b, idx) => {
   return null
 }
 
+
+/* ───────── Step 8: certification, partnership, badge and review-profile claims are removed (never replaced) ─────────
+   Rules: a heading that is itself a claim removes its whole section; a paragraph or list item that states a claim is removed
+   (long paragraphs lose only the claim sentence); headings left with no body are removed; "Review On" / "(N Reviews)" hero lines
+   (the Clutch widget) are removed. Every removal is logged as before -> after. Technology mentions (Azure, Copilot Studio ...) stay. */
+log.removals = []
+const CLAIM = /solutions? partner|microsoft gold|gold partner|azure expert\b(?!s)|microsoft certif|certified (microsoft|ai|azure)|team of certified|certified (experts|specialists)|certified competency|clutch|iso ?27001|soc ?2\b|microsoft awards?|award-winning|co-sell|designated (data|digital|azure|microsoft)|solution partner designation|earned their microsoft|certified to design|top ai developer/i
+const CLAIM_HEADING = /^(trusted (&|and) certified|a microsoft solution partner you can hold accountable|microsoft partnership|microsoft solution partner|azure expert|clutch top ai developer|iso ?27001|microsoft-certified depth|a team of certified ai experts|microsoft gold partnership|award-winning excellence)$/i
+const REVIEW_LINE = /^(review on|\(\d+ reviews?\))$/i
+const REPLACE_CLAIM = [{ re: /GDPR and ISO 27001/, to: 'GDPR', why: 'ISO 27001 mention removed from a list of security controls' }, { re: /HIPAA, ISO 27001, and others/, to: 'HIPAA, and others', why: 'ISO 27001 mention removed from a list of regulations' }]
+const lvl = (b) => (/^h[1-6]$/.test(b.t) ? Number(b.t[1]) : 0)
+const clip = (t) => String(t).replace(/\s+/g, ' ').slice(0, 140)
+const rmLog = (path, what, before, after = '') => log.removals.push({ path, what, before: clip(before), after: after ? clip(after) : '(removed)', beforeFull: String(before), afterFull: String(after) })
+const sentences = (t) => t.match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g)?.map((s) => s.trim()).filter(Boolean) ?? [t]
+const DEPENDENT = /^(that|this|these|those|it|they|thus|therefore|which|and|so)\b|^that['’]s why|^this is why/i
+function stripSentences(text) {
+  const parts = sentences(text); const keep = []; let dropped = 0
+  for (const s of parts) { if (CLAIM.test(s) || (dropped && keep.length === 0 && DEPENDENT.test(s))) { dropped++; continue } keep.push(s) }
+  return { out: keep.join(' '), dropped }
+}
+function stripClaims(path, blocks) {
+  let b = blocks.map((x) => ({ ...x }))
+  // inline replacements
+  b.forEach((x) => { for (const r of REPLACE_CLAIM) if (x.text && r.re.test(x.text)) { const before = x.text; x.text = x.text.replace(r.re, r.to); rmLog(path, r.why, before, x.text) } })
+  const dropIdx = new Set()
+  b.forEach((x, i) => {
+    if (x.eyebrow && REVIEW_LINE.test(x.eyebrow.trim())) { rmLog(path, 'Clutch review eyebrow', x.eyebrow); delete x.eyebrow }
+    if (x.t === 'p' && REVIEW_LINE.test((x.text || '').trim())) { dropIdx.add(i); rmLog(path, 'Clutch review line', x.text) }
+  })
+  // section-level: claim headings remove the heading and everything under it up to the next heading of the same or higher level
+  b.forEach((x, i) => {
+    if (dropIdx.has(i) || !lvl(x) || lvl(x) === 1) return
+    if (CLAIM_HEADING.test(((x.text || '') + '').replace(/\s+/g, ' ').trim()) || (x.eyebrow && /^microsoft partnership$/i.test(x.eyebrow.trim()))) {
+      dropIdx.add(i); const L = lvl(x); const gone = [x.text]
+      for (let j = i + 1; j < b.length; j++) { if (lvl(b[j]) && lvl(b[j]) <= L) break; dropIdx.add(j); if (b[j].text) gone.push(b[j].text) }
+      rmLog(path, `section "${x.text}"`, gone.join(' | '))
+    }
+  })
+  // paragraph / list item / stat claims
+  b.forEach((x, i) => {
+    if (dropIdx.has(i) || x.t === 'btn' || lvl(x)) return
+    if (x.t === 'stat') { if (CLAIM.test(x.text || '')) { dropIdx.add(i); rmLog(path, 'stat', `${x.prefix || ''}${x.value}${x.suffix || ''} ${x.text}`) } return }
+    if (!x.text || !(CLAIM.test(x.text))) return
+    if (x.t === 'p') {
+      const n = sentences(x.text).length
+      if (n >= 3) { const { out, dropped } = stripSentences(x.text); if (out) { rmLog(path, `${dropped} claim sentence(s) in a paragraph`, x.text, out); x.text = out; return } }
+    }
+    dropIdx.add(i); rmLog(path, x.t === 'li' ? 'list item' : 'paragraph', x.text)
+  })
+  // headings that had content removed right after them and are now left with no body are removed too
+  const cand = new Set(); b.forEach((x, i) => { if (lvl(x) > 1 && lvl(x) < 6 && !dropIdx.has(i) && dropIdx.has(i + 1) && !lvl(b[i + 1])) cand.add(i) })
+  const kept = b.map((x, i) => ({ x, i })).filter(({ i }) => !dropIdx.has(i))
+  const out = []
+  kept.forEach(({ x, i }, k) => {
+    const next = kept[k + 1]?.x
+    if (cand.has(i) && (!next || (lvl(next) && lvl(next) <= lvl(x)))) { rmLog(path, 'heading left with no body', x.text); return }
+    out.push(x)
+  })
+  return out
+}
+function stripFaqs(path, faqs) {
+  return faqs.flatMap((f, i) => {
+    if (CLAIM.test(f.q)) { rmLog(path, `FAQ ${i + 1}`, f.q); return [] }
+    if (!f.a.some((a) => CLAIM.test(a))) return [f]
+    const a2 = f.a.map((para) => (CLAIM.test(para) ? stripSentences(para).out : para)).filter(Boolean)
+    if (!a2.length || a2.join(' ').length < 40) { rmLog(path, `FAQ ${i + 1} (answer was a certification claim)`, f.q + ' ' + f.a.join(' ')); return [] }
+    rmLog(path, `FAQ ${i + 1} answer`, f.a.join(' '), a2.join(' ')); return [{ q: f.q, a: a2 }]
+  })
+}
+
+stats.counters = stats.counters.filter((c) => { if (CLAIM.test(c.label)) { rmLog('shared/stats', 'counter', `${c.value}${c.suffix} ${c.label}`); return false } return true })
+
 /* ───────── per-page processing ───────── */
 const pages = []
 for (const pg of live) {
@@ -95,6 +165,7 @@ for (const pg of live) {
       const rewritten = rewriteText(path, `${b.t}#${i} ${k}`, b[k]); b[k] = rewritten
       for (const kp of KEEP) if (kp.path === path && kp.re.test(b[k])) log.clutchKept.push({ path, text: b[k].slice(0, 100), why: kp.why })
     }
+    if (b.t === 'stat' && CLAIM.test(b.text || '')) { rmLog(path, 'stat', `${b.prefix || ''}${b.value ?? ''}${b.suffix || ''} ${b.text}`); continue }
     if (b.t === 'stat') { const s = statFromBlock(path, b, i); if (!s) continue; processed.push(s); continue }
     processed.push(b)
   }
@@ -112,7 +183,7 @@ for (const pg of live) {
   const faqs = pg.faqs.map((f, i) => ({ q: rewriteText(path, `faq${i} q`, fixText(path, `faq${i} q`, f.q)), a: f.a.map((a, j) => rewriteText(path, `faq${i} a${j}`, fixText(path, `faq${i} a${j}`, a))) }))
   const seo = { title: rewriteText(path, 'seo title', fixText(path, 'seo title', pg.seo.title)), description: rewriteText(path, 'seo description', fixText(path, 'seo description', pg.seo.description)), h1: '' }
   // exactly one H1 per page
-  let blocks = noContact
+  let blocks = stripClaims(path, noContact)
   const h1s = blocks.filter((b) => b.t === 'h1')
   if (h1s.length === 0) {
     const firstH2 = blocks.findIndex((b) => b.t === 'h2')
@@ -123,7 +194,7 @@ for (const pg of live) {
   // locale spelling (en-IN) on top of everything
   const sp = (t) => { if (!t) return t; const n = spell(t); if (n !== t) log.spelling++; return n }
   blocks = blocks.map((b) => ({ ...b, ...(b.text ? { text: sp(b.text) } : {}), ...(b.eyebrow ? { eyebrow: sp(b.eyebrow) } : {}) }))
-  const faqsF = faqs.map((f) => ({ q: sp(f.q), a: f.a.map(sp) }))
+  const faqsF = stripFaqs(path, faqs).map((f) => ({ q: sp(f.q), a: f.a.map(sp) }))
   seo.title = sp(seo.title); seo.description = sp(seo.description)
   seo.h1 = sp(seo.h1)
   for (const k of Object.keys(furniture)) furniture[k] = furniture[k].map((t) => sp(rewriteText(path, `furniture ${k}`, fixText(path, `furniture ${k}`, t))))
@@ -145,10 +216,9 @@ const menuOut = L.menu.map((m) => ({
   children: m.children.map((c) => ({ label: fixText('shared/menu', c.label, c.label), href: c.href === '#' ? '' : c.href.replace(/^https:\/\/q2msolutions\.com/, ''), external: /^https?:\/\//.test(c.href) && !c.href.includes('q2msolutions.com'), placeholder: c.href === '#' })),
 }))
 const footerOut = { heading: L.footer.solutionsHeading, links: L.footer.links.map((l) => ({ label: fixText('shared/footer', l.label, l.label), href: l.href.replace('https://q2msolutions.com', '').replace('/agentic-ai-services/', '/ai-agent-development-services/'), liveHref: l.href })), copyright: L.footer.copyright, genericTextNotUsed: L.footer.genericText }
-const certOut = L.certifications.map((c) => ({ title: c.title, detail: c.detail }))
 const testimonialsOut = L.testimonials.map((t) => ({ quote: spell(fixText('shared/testimonials', 'quote', t.quote)), name: t.name, role: t.role }))
 const ctasOut = { header: { label: 'Book a Discovery Call', href: '/contact/', source: 'live home hero CTA "Book a Discovery Call" -> /contact' }, hero: { label: 'Free Consultation', href: '/contact/', liveHref: '#', note: 'live service-page hero button links to "#"; linked to /contact/ (needs your confirmation)' } }
-const sharedOut = { menu: menuOut, footer: footerOut, certifications: certOut, stats, testimonials: testimonialsOut, ctas: ctasOut }
+const sharedOut = { menu: menuOut, footer: footerOut, stats, testimonials: testimonialsOut, ctas: ctasOut }
 for (const [k, v] of Object.entries(sharedOut)) writeFileSync(`src/content/shared/${k}.json`, JSON.stringify(v, null, 1))
 
 /* ───────── build the file the app loads (metadata from the CMS, all copy from src/content) ───────── */
@@ -167,6 +237,7 @@ writeFileSync('docs/_prev/apply-log.json', JSON.stringify(log, null, 1))
 const uniq = (a, f) => [...new Map(a.map((x) => [f(x), x])).values()]
 const md = ['# Content changes applied on top of the live content', '', 'Everything else is copied exactly from https://q2msolutions.com/. Generated by `scripts/apply-content.mjs`.', '',
   `## India overrides (before -> after) (${log.overrides.length})`, ...log.overrides.map((o) => `- ${o.path} [${o.loc}] (${o.why}): "${o.before}" -> "${o.after}"`), '',
+  `## Certification, partnership, badge and review claims removed (before -> after) (${log.removals.length})`, 'Nothing was written in their place. Technology mentions (Azure, Copilot Studio, Power BI ...) were kept.', ...log.removals.map((r) => `- ${r.path} [${r.what}]: "${r.beforeFull.replace(/\s+/g, ' ').slice(0, 320)}" -> ${r.afterFull ? '"' + r.afterFull.replace(/\s+/g, ' ').slice(0, 320) + '"' : '(removed)'}`), '',
   '## Kept as-is on purpose', ...uniq(log.clutchKept, (x) => x.path + x.text).map((k) => `- ${k.path}: "${k.text}" (${k.why})`), '',
   `## Cyrillic look-alike letters replaced with Latin (${log.cyrillic.length} text fields)`, ...log.cyrillic.map((c) => `- ${c.path} [${c.loc}]: "${c.before.slice(0, 80)}" -> "${c.after.slice(0, 80)}"`), '',
   `## Typos and grammar fixed (${log.typos.length})`, ...log.typos.map((t) => `- ${t.path} [${t.loc}]: "${t.before}" -> "${t.after}" (${t.why}) …${t.context}…`), '',

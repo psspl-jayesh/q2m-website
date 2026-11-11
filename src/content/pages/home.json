@@ -30,65 +30,12 @@
    "href": "/contact"
   },
   {
-   "t": "p",
-   "text": "Review On",
-   "via": "div"
-  },
-  {
-   "t": "h6",
-   "text": "Microsoft Solution Partner"
-  },
-  {
-   "t": "h6",
-   "text": "Clutch Top AI Developer"
-  },
-  {
    "t": "h6",
    "text": "150+ Projects Delivered"
   },
   {
    "t": "h6",
    "text": "Welcome to Q2M Solutions"
-  },
-  {
-   "t": "h2",
-   "text": "Trusted & Certified"
-  },
-  {
-   "t": "h3",
-   "text": "Microsoft Solution Partner"
-  },
-  {
-   "t": "p",
-   "text": "Data & AI · Digital & App Innovation"
-  },
-  {
-   "t": "h3",
-   "text": "Azure Expert"
-  },
-  {
-   "t": "p",
-   "text": "Certified Competency"
-  },
-  {
-   "t": "h3",
-   "text": "Clutch Top AI Developer"
-  },
-  {
-   "t": "p",
-   "text": "APAC region"
-  },
-  {
-   "t": "h3",
-   "text": "ISO 27001"
-  },
-  {
-   "t": "p",
-   "text": "Information Security"
-  },
-  {
-   "t": "h6",
-   "text": "Our Global Clients"
   },
   {
    "t": "h2",
@@ -119,14 +66,6 @@
    "matched": "counter2"
   },
   {
-   "t": "stat",
-   "value": 2,
-   "prefix": "",
-   "suffix": "",
-   "text": "Microsoft Solution Partner designations",
-   "matched": "counter3"
-  },
-  {
    "t": "h2",
    "text": "An AI Development Company Built Differently",
    "eyebrow": "Why Q2M Solutions"
@@ -134,14 +73,6 @@
   {
    "t": "p",
    "text": "Four capabilities generalist agencies can't replicate and the proof to back them."
-  },
-  {
-   "t": "h3",
-   "text": "Microsoft-certified depth"
-  },
-  {
-   "t": "p",
-   "text": "We are Solution Partner in Data & AI and Digital & App Innovation. Not a reseller – our implementation is based on tested capabilities with escalation to Microsoft support channels."
   },
   {
    "t": "h3",
@@ -219,63 +150,6 @@
   {
    "t": "p",
    "text": "Strategic AI roadmaps grounded in your data and business goals — from readiness assessment to a prioritised, ROI-backed plan of action."
-  },
-  {
-   "t": "h2",
-   "text": "A Microsoft Solution Partner You Can Hold Accountable",
-   "eyebrow": "Microsoft partnership"
-  },
-  {
-   "t": "p",
-   "text": "Partnership is not something we wear; rather, it forms our core development approach. Competency vetting, ability to escalate directly to Microsoft support, and roadmap visibility that helps us develop solutions with a view toward the future, not just previous releases."
-  },
-  {
-   "t": "p",
-   "text": "Designated Data & AI Solution Partner"
-  },
-  {
-   "t": "p",
-   "text": "Designated Digital & App Innovation Solution Partner"
-  },
-  {
-   "t": "p",
-   "text": "Designated Azure partner with direct engineering access from Microsoft"
-  },
-  {
-   "t": "p",
-   "text": "Qualified for Microsoft co-sell opportunities"
-  },
-  {
-   "t": "h3",
-   "text": "Data & AI"
-  },
-  {
-   "t": "p",
-   "text": "Solution Partner designation for data engineering, machine learning and AI implementation."
-  },
-  {
-   "t": "h3",
-   "text": "Digital & App Innovation"
-  },
-  {
-   "t": "p",
-   "text": "Solution Partner for cloud-native app development and Azure modernisation."
-  },
-  {
-   "t": "h3",
-   "text": "Copilot Studio"
-  },
-  {
-   "t": "p",
-   "text": "Certified to design, build and deploy Copilot agents for enterprise operations."
-  },
-  {
-   "t": "h3",
-   "text": "Microsoft Fabric"
-  },
-  {
-   "t": "p",
-   "text": "Qualified implementer for Microsoft's unified analytics and data platform."
   },
   {
    "t": "h2",

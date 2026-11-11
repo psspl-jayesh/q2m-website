@@ -30,16 +30,6 @@
    "href": "#"
   },
   {
-   "t": "p",
-   "text": "Review On",
-   "via": "div"
-  },
-  {
-   "t": "p",
-   "text": "(50 Reviews)",
-   "via": "span"
-  },
-  {
    "t": "h6",
    "text": "Welcome to Q2M Solutions"
   },
@@ -226,7 +216,7 @@
   },
   {
    "t": "li",
-   "text": "Compliance Integration Your cybersecurity posture is immediately enhanced by our integration of regulatory compliance protocols. This enables you to comply with regulations such as GDPR, HIPAA, ISO 27001, and others without interfering with business operations."
+   "text": "Compliance Integration Your cybersecurity posture is immediately enhanced by our integration of regulatory compliance protocols. This enables you to comply with regulations such as GDPR, HIPAA, and others without interfering with business operations."
   },
   {
    "t": "li",

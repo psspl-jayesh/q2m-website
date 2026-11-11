@@ -238,7 +238,7 @@
    "why": "region (article)"
   }
  ],
- "spelling": 787,
+ "spelling": 785,
  "notRewritten": [],
  "dropped": [
   {
@@ -866,16 +866,624 @@
    "path": "/ai-agent-development-cost/",
    "text": "Asia Pacific is the fastest-growing market for AI agents, expected to register the highest CAGR by 2",
    "why": "Cited third-party market statistic: changing the region would falsify the source claim. Needs your decision."
+  }
+ ],
+ "removals": [
+  {
+   "path": "shared/stats",
+   "what": "counter",
+   "before": "2 Microsoft Solution Partner designations",
+   "after": "(removed)",
+   "beforeFull": "2 Microsoft Solution Partner designations",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-agent-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-agent-development-services/",
+   "what": "section \"A Team of Certified AI Experts\"",
+   "before": "A Team of Certified AI Experts | Our AI experts have the competence to build game-changing AI agents using cutting-edge technologies. This a",
+   "after": "(removed)",
+   "beforeFull": "A Team of Certified AI Experts | Our AI experts have the competence to build game-changing AI agents using cutting-edge technologies. This ability helps AI agents to complete complex tasks with human-like proficiency.",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-agent-development-services/",
+   "what": "1 claim sentence(s) in a paragraph",
+   "before": "We offer an extensive range of AI agent development services depending on your business needs and challenges. With certified AI experts and ",
+   "after": "We offer an extensive range of AI agent development services depending on your business needs and challenges. Our end-to-end AI agent develo",
+   "beforeFull": "We offer an extensive range of AI agent development services depending on your business needs and challenges. With certified AI experts and cutting-edge tools and technologies, Q2M ensures seamless integration of our AI solutions into your existing data infrastructure and systems. Our end-to-end AI agent development services include everything from strategizing to model deployment and optimization.",
+   "afterFull": "We offer an extensive range of AI agent development services depending on your business needs and challenges. Our end-to-end AI agent development services include everything from strategizing to model deployment and optimization."
+  },
+  {
+   "path": "/ai-app-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "what": "ISO 27001 mention removed from a list of security controls",
+   "before": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, SSO through Azure Active Directory, and c",
+   "after": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, SSO through Azure Active Directory, and c",
+   "beforeFull": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, SSO through Azure Active Directory, and compliance with GDPR and ISO 27001 when applicable. We explain each security control in writing so that your InfoSec team can evaluate it without having to take it at face value.",
+   "afterFull": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, SSO through Azure Active Directory, and compliance with GDPR when applicable. We explain each security control in writing so that your InfoSec team can evaluate it without having to take it at face value."
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "what": "paragraph",
+   "before": "The members of our team have earned their Microsoft Certifications in Azure AI, Azure Solution Architect, and Power Platform. It is not just",
+   "after": "(removed)",
+   "beforeFull": "The members of our team have earned their Microsoft Certifications in Azure AI, Azure Solution Architect, and Power Platform. It is not just a tagline, it means we can access Microsoft engineering support when something complex comes up, we get early access to new Azure AI features, and we know how to make the Microsoft stack work the way it's supposed to in enterprise environments.",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "what": "heading left with no body",
+   "before": "Unmatched Microsoft AI Expertise",
+   "after": "(removed)",
+   "beforeFull": "Unmatched Microsoft AI Expertise",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-consulting-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-recommendation-systems/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/ai-solutions-development/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-ai-and-machine-learning/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-ai-and-machine-learning/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-data-ai-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-data-ai-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-data-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-data-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-database-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-database-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/cloud-applications/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/cloud-applications/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/cognitive-service-implementation/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/cognitive-service-implementation/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/cyber-security-services/",
+   "what": "ISO 27001 mention removed from a list of regulations",
+   "before": "Compliance Integration Your cybersecurity posture is immediately enhanced by our integration of regulatory compliance protocols. This enable",
+   "after": "Compliance Integration Your cybersecurity posture is immediately enhanced by our integration of regulatory compliance protocols. This enable",
+   "beforeFull": "Compliance Integration Your cybersecurity posture is immediately enhanced by our integration of regulatory compliance protocols. This enables you to comply with regulations such as GDPR, HIPAA, ISO 27001, and others without interfering with business operations.",
+   "afterFull": "Compliance Integration Your cybersecurity posture is immediately enhanced by our integration of regulatory compliance protocols. This enables you to comply with regulations such as GDPR, HIPAA, and others without interfering with business operations."
+  },
+  {
+   "path": "/cyber-security-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/cyber-security-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "what": "section \"Microsoft Gold Partnership\"",
+   "before": "Microsoft Gold Partnership | As a reputable Microsoft Gold Partner, Q2M Solutions offers state-of-the-art AI and cloud solutions by fusing e",
+   "after": "(removed)",
+   "beforeFull": "Microsoft Gold Partnership | As a reputable Microsoft Gold Partner, Q2M Solutions offers state-of-the-art AI and cloud solutions by fusing extensive Microsoft knowledge with Azure data copilot.",
+   "afterFull": ""
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "what": "section \"Award-Winning Excellence\"",
+   "before": "Award-Winning Excellence | Our numerous Microsoft awards demonstrate our demonstrated capacity for innovation and data copilot implementatio",
+   "after": "(removed)",
+   "beforeFull": "Award-Winning Excellence | Our numerous Microsoft awards demonstrate our demonstrated capacity for innovation and data copilot implementation for Azure services that generate quantifiable business value.",
+   "afterFull": ""
+  },
+  {
+   "path": "/data-lake-and-big-data-on-azure/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/data-lake-and-big-data-on-azure/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/deep-learning-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/digital-sustainability-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/digital-sustainability-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/digital-transformation-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/digital-transformation-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/digital-transformation-services/",
+   "what": "paragraph",
+   "before": "Throughout the whole Microsoft ecosystem, our team of certified Microsoft specialists contributes extensive technical expertise and implemen",
+   "after": "(removed)",
+   "beforeFull": "Throughout the whole Microsoft ecosystem, our team of certified Microsoft specialists contributes extensive technical expertise and implementation experience. We assist you in realizing the full potential of contemporary cloud solutions, from Azure and Microsoft 365 to Power Platform and Dynamics 365, which promote flexibility, automation, and long-term value.",
+   "afterFull": ""
+  },
+  {
+   "path": "/digital-transformation-services/",
+   "what": "heading left with no body",
+   "before": "Unmatched Expertise in Microsoft Technologies",
+   "after": "(removed)",
+   "beforeFull": "Unmatched Expertise in Microsoft Technologies",
+   "afterFull": ""
+  },
+  {
+   "path": "/enterprise-business-application/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/enterprise-business-application/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/generative-ai-development-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/generative-ai-integration-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/hire-generative-ai-developers/",
+   "what": "1 claim sentence(s) in a paragraph",
+   "before": "We are backed by 2+ years of experience, SOC 2 Type II certification, bringing credibility to your GenAI investments. From simple chatbot in",
+   "after": "From simple chatbot integration to complex multi-model AI ecosystems, we build solutions that are customised to your business problems. Our ",
+   "beforeFull": "We are backed by 2+ years of experience, SOC 2 Type II certification, bringing credibility to your GenAI investments. From simple chatbot integration to complex multi-model AI ecosystems, we build solutions that are customised to your business problems. Our team of experts aligns with the unique requirements of your project.",
+   "afterFull": "From simple chatbot integration to complex multi-model AI ecosystems, we build solutions that are customised to your business problems. Our team of experts aligns with the unique requirements of your project."
   },
   {
    "path": "/",
-   "text": "APAC region",
-   "why": "Part of the award \"Clutch Top AI Developer — APAC region\" (kept as instructed)"
+   "what": "stat",
+   "before": "2 Microsoft Solution Partner designations",
+   "after": "(removed)",
+   "beforeFull": "2 Microsoft Solution Partner designations",
+   "afterFull": ""
+  },
+  {
+   "path": "/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/",
+   "what": "section \"Microsoft Solution Partner\"",
+   "before": "Microsoft Solution Partner",
+   "after": "(removed)",
+   "beforeFull": "Microsoft Solution Partner",
+   "afterFull": ""
+  },
+  {
+   "path": "/",
+   "what": "section \"Clutch Top AI Developer\"",
+   "before": "Clutch Top AI Developer",
+   "after": "(removed)",
+   "beforeFull": "Clutch Top AI Developer",
+   "afterFull": ""
+  },
+  {
+   "path": "/",
+   "what": "section \"Trusted & Certified\"",
+   "before": "Trusted & Certified | Microsoft Solution Partner | Data & AI · Digital & App Innovation | Azure Expert | Certified Competency | Clutch Top A",
+   "after": "(removed)",
+   "beforeFull": "Trusted & Certified | Microsoft Solution Partner | Data & AI · Digital & App Innovation | Azure Expert | Certified Competency | Clutch Top AI Developer | APAC region | ISO 27001 | Information Security | Our Global Clients",
+   "afterFull": ""
+  },
+  {
+   "path": "/",
+   "what": "section \"Microsoft-certified depth\"",
+   "before": "Microsoft-certified depth | We are Solution Partner in Data & AI and Digital & App Innovation. Not a reseller – our implementation is based ",
+   "after": "(removed)",
+   "beforeFull": "Microsoft-certified depth | We are Solution Partner in Data & AI and Digital & App Innovation. Not a reseller – our implementation is based on tested capabilities with escalation to Microsoft support channels.",
+   "afterFull": ""
+  },
+  {
+   "path": "/",
+   "what": "section \"A Microsoft Solution Partner You Can Hold Accountable\"",
+   "before": "A Microsoft Solution Partner You Can Hold Accountable | Partnership is not something we wear; rather, it forms our core development approach",
+   "after": "(removed)",
+   "beforeFull": "A Microsoft Solution Partner You Can Hold Accountable | Partnership is not something we wear; rather, it forms our core development approach. Competency vetting, ability to escalate directly to Microsoft support, and roadmap visibility that helps us develop solutions with a view toward the future, not just previous releases. | Designated Data & AI Solution Partner | Designated Digital & App Innovation Solution Partner | Designated Azure partner with direct engineering access from Microsoft | Qualified for Microsoft co-sell opportunities | Data & AI | Solution Partner designation for data engineering, machine learning and AI implementation. | Digital & App Innovation | Solution Partner for cloud-native app development and Azure modernisation. | Copilot Studio | Certified to design, build and deploy Copilot agents for enterprise operations. | Microsoft Fabric | Qualified implementer for Microsoft's unified analytics and data platform.",
+   "afterFull": ""
+  },
+  {
+   "path": "/infrastructure-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/infrastructure-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/llm-development-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/llm-development-services/",
+   "what": "paragraph",
+   "before": "As a certified Microsoft Solution Partner, we build custom LLM models on Azure AI, OpenAI Service, and Azure ML platforms. That's why our mo",
+   "after": "(removed)",
+   "beforeFull": "As a certified Microsoft Solution Partner, we build custom LLM models on Azure AI, OpenAI Service, and Azure ML platforms. That's why our models can seamlessly integrate with your Microsoft tech stack and enterprise infrastructure without any constraints.",
+   "afterFull": ""
+  },
+  {
+   "path": "/llm-development-services/",
+   "what": "heading left with no body",
+   "before": "Microsoft and Azure Expertise",
+   "after": "(removed)",
+   "beforeFull": "Microsoft and Azure Expertise",
+   "afterFull": ""
+  },
+  {
+   "path": "/machine-learning-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/machine-learning-models-on-azure/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/machine-learning-models-on-azure/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/microsoft-fabric-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/microsoft-fabric-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/mlops-consulting-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/modern-workplace/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/modern-workplace/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/predictive-analytics-services-2/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/predictive-analytics-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
   },
   {
    "path": "/q2m-solutions-is-heading-to-ai4-2026/",
-   "text": "We’re a designated Microsoft Solution Partner for both Data & AI and Digital & App Innovation, hold ",
-   "why": "Award wording kept as instructed"
+   "what": "1 claim sentence(s) in a paragraph",
+   "before": "We’re a designated Microsoft Solution Partner for both Data & AI and Digital & App Innovation, hold Azure Expert certified competency, and h",
+   "after": "Along the way we’ve learned a fairly unglamorous but important lesson: the hard part of AI was never the model. It’s getting a model to surv",
+   "beforeFull": "We’re a designated Microsoft Solution Partner for both Data & AI and Digital & App Innovation, hold Azure Expert certified competency, and have been recognized by Clutch as a Top AI Developer in the APAC region — all backed by ISO 27001 information security certification. Along the way we’ve learned a fairly unglamorous but important lesson: the hard part of AI was never the model. It’s getting a model to survive contact with your actual data, your actual infrastructure, and your actual users.",
+   "afterFull": "Along the way we’ve learned a fairly unglamorous but important lesson: the hard part of AI was never the model. It’s getting a model to survive contact with your actual data, your actual infrastructure, and your actual users."
+  },
+  {
+   "path": "/rag-development-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/sharepoint-development-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/smart-glasses-ar-wearable-app-development-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/technology-consulting-services/",
+   "what": "Clutch review line",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
+  },
+  {
+   "path": "/technology-consulting-services/",
+   "what": "Clutch review line",
+   "before": "(50 Reviews)",
+   "after": "(removed)",
+   "beforeFull": "(50 Reviews)",
+   "afterFull": ""
+  },
+  {
+   "path": "/vibe-coding-services/",
+   "what": "Clutch review eyebrow",
+   "before": "Review On",
+   "after": "(removed)",
+   "beforeFull": "Review On",
+   "afterFull": ""
   }
  ]
 }

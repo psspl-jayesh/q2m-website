@@ -181,17 +181,6 @@ export function SiteFrame({ image, ratio, parallax, sizes, position, priority, c
   )
 }
 
-/** Clutch logo (live hero): dark artwork in the light theme, white artwork in the dark theme. Files and sizes come from the image data. */
-export function ClutchBadge({ className = '' }: { className?: string }) {
-  const { light, dark } = siteImages.clutch
-  return (
-    <span className={`inline-flex ${className}`}>
-      <img className="only-light" src={light.file} alt={light.alt} width={light.w} height={light.h} loading="lazy" decoding="async" />
-      <img className="only-dark" src={dark.file} alt={dark.alt} width={dark.w} height={dark.h} loading="lazy" decoding="async" />
-    </span>
-  )
-}
-
 /**
  * THE hero image for every page. Large sources fill the hero frame (with parallax); sources narrower than IMAGES.lowResHeroBelow
  * are never enlarged: they sit in a contained card at no more than their intrinsic size. One component, identical on all pages.
