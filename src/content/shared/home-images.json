@@ -1,0 +1,33 @@
+{
+  "_note": "Images for the four home sections that had none (See the work, What we build, Where we work, From first workshop to a system people use), matched by topic to the section item titles. Every file is an image the live site already uses elsewhere, unmodified. Items with no matching live image keep the brand dot panel. Alt text was written from the images: please review. Review table: docs/HOME_IMAGES.md",
+  "work": {
+    "Guided vehicle inspection on smart glasses": { "file": "/images/case-studies/building-a-single-pane-of-glass-for-a-1500-truck-fleet-banner.webp", "alt": "Engineers inspecting a heavy truck with augmented-reality overlays on screens around it" },
+    "A claims agent reading and routing documents": { "file": "/images/ai-agent-development-services/ai-agent-development-service-banner.webp", "alt": "An AI agent at the centre of a diagram connecting customer requests, email, tasks and reports" },
+    "Gaussian splat of a property, viewed in the browser": { "file": "/images/case-studies/rele-one-case-study-banner.webp", "alt": "A property marketplace calculator on a laptop in front of a model house and keys" },
+    "Use-case mapping with client teams": { "file": "/images/shared/q2m-banner-2.jpg", "alt": "Colleagues working at laptops around a table" },
+    "Clinical and lab records, extracted": { "file": "/images/shared/healthcare-img.webp", "alt": "Clinicians in a meeting reviewing records together" }
+  },
+  "services": {
+    "AI smart glasses app development": { "file": "/images/case-studies/building-a-single-pane-of-glass-for-a-1500-truck-fleet-banner.webp", "alt": "Engineers inspecting a heavy truck with augmented-reality overlays on screens around it" },
+    "Agentic AI and intelligent automation": { "file": "/images/home/q2m-banner-img-2.webp", "alt": "A humanoid robot and an engineer in a white lab coat working together at a technical workstation" },
+    "AI agent development": { "file": "/images/shared/ai-chabot.png", "alt": "A chatbot assistant on a laptop screen beside a night city skyline" },
+    "Agentic commerce (ACP/UCP) readiness": { "file": "/images/shared/retail-img.webp", "alt": "A customer paying by card at a payment terminal" },
+    "3D Gaussian splatting": { "file": "/images/case-studies/rele-one-case-study-banner.webp", "alt": "A property marketplace calculator on a laptop in front of a model house and keys" },
+    "MLOps": { "file": "/images/mlops-consulting-services/why-do-businesses-need-mlops-consulting-img.webp", "alt": "An AI lifecycle loop above servers, robots and engineers" },
+    "Microsoft business apps": { "file": "/images/enterprise-business-application/enterprise-business-app.webp", "alt": "Business colleagues reviewing documents together at a meeting" }
+  },
+  "industries": {
+    "Automotive": { "file": "/images/shared/manufacturing-img.webp", "alt": "A technician with a tablet beside industrial robot arms on a production line" },
+    "Insurance": { "file": "/images/shared/government-img.webp", "alt": "A person signing a document beside brass legal scales" },
+    "Life sciences, health and biotech": { "file": "/images/shared/digital-transformation-in-pharma-industry.jpg", "alt": "Laboratory machinery processing pharmaceutical tablets" },
+    "Real estate": { "file": "/images/case-studies/rele-one-case-study-banner.webp", "alt": "A property marketplace calculator on a laptop in front of a model house and keys" },
+    "Fintech": { "file": "/images/shared/finance-banking-img.webp", "alt": "Hands reviewing financial documents and charts" },
+    "BPO": { "file": "/images/shared/consulting-img.webp", "alt": "Two colleagues talking at a laptop" }
+  },
+  "approach": {
+    "01": { "file": "/images/home/discovery-consultation.webp", "alt": "Colleagues gathered around a laptop in a discovery discussion" },
+    "02": { "file": "/images/home/planning-strategy.webp", "alt": "Colleagues planning together with sticky notes on a table" },
+    "03": { "file": "/images/home/design-development.webp", "alt": "Colleagues building together at a computer in an office" },
+    "04": { "file": "/images/home/quality-assurance.webp", "alt": "Two people checking a plan together on site" }
+  }
+}

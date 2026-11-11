@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { attachLabels, sectionize, groupify, useContent, type Entry, type Block, type Group, type Section } from '@/lib/content'
 import { topicImagesFor } from '@/lib/topicImages'
-import { hasClutch, heroImage, imagesBySection, keyOf, ogImageFor, pageImages, type ManifestImage } from '@/lib/images'
-import { Accordion, Breadcrumbs, Button, ClutchBadge, HeroImage, type SiteImg, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem } from '@/components/ui'
+import { heroImage, imagesBySection, keyOf, ogImageFor, pageImages, type ManifestImage } from '@/lib/images'
+import { Accordion, Breadcrumbs, Button, HeroImage, type SiteImg, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem } from '@/components/ui'
 import DotArrow from '@/components/DotArrow'
 import { FinalCta } from '@/components/Cards'
 import { NAV, SITE_URL } from '@/lib/site'
@@ -112,7 +112,7 @@ export default function ServicePage({ entry }: { entry: Entry }) {
               {lede && <Reveal delay={0.16}><p className="lede mt-6 max-w-xl">{lede.text}</p></Reveal>}
               <Reveal delay={0.24}>
                 <div className="mt-8 flex flex-wrap gap-3"><Button to={heroHref}>{btn?.text ?? ctas.hero.label}</Button></div>
-                {(meta.length > 0 || hasClutch(c, entry.path)) && <p className="mono mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-muted">{meta.map((m, k) => <span key={k}>{m.text}</span>)}{hasClutch(c, entry.path) && <ClutchBadge className="h-5 items-center" />}</p>}
+                {meta.length > 0 && <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{meta.map((m, k) => <span key={k}>{m.text}</span>)}</p>}
               </Reveal>
             </div>
             <div className="split-main">
@@ -238,7 +238,7 @@ function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?:
       <div className="grid gap-10 lg:grid-cols-12"><div className="lg:col-span-7"><SectionHead eyebrow={s.eyebrow} title={s.title} lede={lead.paras[0]} /><LeadExtra lead={lead} /></div></div>
       <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((g, k) => (
-          <Reveal key={g.title + k} delay={(k % 3) * 0.1}><div className={attach ? '' : 'border-t-2 border-ink pt-5'}>{cardImg(k)}<div className={attach ? 'border-t-2 border-ink pt-5' : ''}><Label g={g} /><h3 className="font-display text-2xl">{g.title}</h3>
+          <Reveal key={g.title + k} delay={(k % 3) * 0.1}><div className={attach ? '' : 'border-t border-line pt-5'}>{cardImg(k)}<div className={attach ? 'border-t border-line pt-5' : ''}><Label g={g} /><h3 className="font-display text-2xl">{g.title}</h3>
             {g.paras.map((p) => <p key={p} className="mt-3 text-[0.9375rem] text-ink-muted">{p}</p>)}
             {g.items.length > 0 && <Bullets items={g.items} />}{g.labels.length > 0 && <div className="mt-4"><Pills labels={g.labels} /></div>}</div></div></Reveal>
         ))}
@@ -320,7 +320,7 @@ function SectionExtras({ s }: { s: Section }) {
   return (
     <div className="container-page -mt-6 pb-12 md:-mt-12 md:pb-20">
       {stats.length > 0 && (
-        <StaggerGroup as="dl" className="mb-10 grid gap-8 border-t border-ink pt-8 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerGroup as="dl" className="mb-10 grid gap-8 border-t border-line pt-8 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((b, k) => (
             <StaggerItem key={k}><dd className="font-display text-5xl font-bold leading-none">{b.prefix}{b.value}{b.suffix}</dd><dt className="mt-3 text-[0.9375rem] text-ink-muted">{b.text}</dt></StaggerItem>
           ))}

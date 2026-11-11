@@ -1,5 +1,5 @@
 import { COMPANY, LOCALE } from '@/config/locale'
-import { formatPhone, nationalDigits } from '@/lib/format'
+import { nationalDigits } from '@/lib/format'
 import siteImages from '@/data/site-images.json'
 
 /** India-targeted metadata helpers. All wording and region data come from src/config/locale.ts. */
@@ -30,17 +30,21 @@ export function organizationJsonLd() {
     '@context': 'https://schema.org',
     '@type': ['Organization', 'LocalBusiness'],
     '@id': `${COMPANY.siteUrl}/#organization`,
-    name: COMPANY.legalName,
-    alternateName: COMPANY.name,
+    name: COMPANY.name,
+    legalName: COMPANY.legalName,
     url: COMPANY.siteUrl,
     logo: `${COMPANY.siteUrl}${siteImages.brand.logoColor.file}`,
     email: COMPANY.email,
-    ...(COMPANY.phone ? { telephone: formatPhone(nationalDigits(COMPANY.phone)) } : {}),
+    ...(COMPANY.phone ? { telephone: `${LOCALE.dialCode}${nationalDigits(COMPANY.phone)}` } : {}),
     address: {
       '@type': 'PostalAddress',
+      streetAddress: [a.addressLine1, a.addressLine2, a.locality].join(', '),
+      addressLocality: a.city,
+      addressRegion: a.state,
+      postalCode: a.pinCode,
       addressCountry: LOCALE.countryCode,
-      ...(a ? { streetAddress: [a.line1, a.line2].filter(Boolean).join(', '), addressLocality: a.city, addressRegion: a.state, postalCode: a.pin } : {}),
     },
+    hasMap: COMPANY.mapUrl,
     areaServed: { '@type': 'Country', name: LOCALE.country },
     sameAs: COMPANY.social.map((s) => s.href),
   }

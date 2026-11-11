@@ -240,7 +240,7 @@
   "eyebrow": "About Q2M",
   "title": "A young AI company built around delivery",
   "paras": [
-   "Q2M Solutions Pvt Ltd is an Indian startup that turns AI ideas into working software. Our team combines engineers who build agents and data pipelines, developers who ship apps for smart glasses and XR headsets, and consultants who understand how operations teams actually work.",
+   "Q2M Solutions is an Indian startup that turns AI ideas into working software. Our team combines engineers who build agents and data pipelines, developers who ship apps for smart glasses and XR headsets, and consultants who understand how operations teams actually work.",
    "We started Q2M because we saw the same pattern again and again: companies run AI experiments that impress in a meeting and then stall. The model is rarely the problem. The hard parts are the connection to real systems, the handling of messy data, the approval steps that keep people comfortable, and the monitoring that keeps the system honest after launch. That is the work we focus on.",
    "We work best with operations, IT and innovation leaders who have a specific process in mind and want to see it run with AI in weeks rather than plan it for a year. Whether you are a large enterprise, a global capability centre or a growing company, the approach is the same: pick one process, prove the value, then scale what works."
   ]
@@ -368,7 +368,7 @@
    {
     "q": "Who is Q2M Solutions?",
     "a": [
-     "Q2M Solutions Pvt Ltd is an AI engineering company based in India. We design and build AI agents, intelligent automation, smart-glasses apps and 3D capture solutions for businesses in automotive, insurance, life sciences, real estate, fintech and BPO."
+     "Q2M Solutions is an AI engineering company based in India. We design and build AI agents, intelligent automation, smart-glasses apps and 3D capture solutions for businesses in automotive, insurance, life sciences, real estate, fintech and BPO."
     ]
    },
    {
@@ -464,7 +464,6 @@
   ]
  },
  "footer": {
-  "blurb": "AI agents, automation and smart-glasses apps, built in India. We work with operations and technology teams in India and abroad to take one process at a time from idea to production.",
-  "legal": "© 2026 Q2M Solutions Pvt Ltd · CIN · Registered office:"
+  "blurb": "AI agents, automation and smart-glasses apps, built in India. We work with operations and technology teams in India and abroad to take one process at a time from idea to production."
  }
 }

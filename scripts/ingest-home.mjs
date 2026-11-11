@@ -91,7 +91,7 @@ const footer = { blurb: txt($('footer .foot > div p').first()), legal: txt($('fo
 
 const home = { source: SRC, ingestedAt: new Date().toISOString(), meta, hero, bts, work, services, industries, about, team, approach, principles, stack, session, faq, book, footer }
 writeFileSync('src/data/home.json', JSON.stringify(home, null, 1))
-writeFileSync('src/data/site-copy.json', JSON.stringify({ footerBlurb: footer.blurb, legalName: 'Q2M Solutions Pvt Ltd' }))
+writeFileSync('src/data/site-copy.json', JSON.stringify({ footerBlurb: footer.blurb }))
 
 // logos from the folder (originals are left untouched; copies go to public/brand)
 mkdirSync('public/brand', { recursive: true })

@@ -12,3 +12,16 @@
 - Never delete backup files or folders (docs/_prev/, HomeFolder.tsx) without my permission.
 - At the end of every task, report: the list of commits made (`git log --oneline` for this task), and a short summary of files changed (`git diff --stat` from the starting commit).
 - Before any risky or large change, create a tag, e.g. `git tag before-<task-name>`, and push it.
+
+## Branch workflow
+- Every task gets its own branch from the latest main, named feature/<short-task-name>.
+- All commits for a task go to its branch, never directly to main.
+- When the task is done and build + checks pass: merge into main with --no-ff, push main, tag `after-<task-name>`, keep the branch.
+- Then create the next branch from the updated main and wait for the next task.
+- On merge conflicts or a failing build: stop and ask me.
+- Only merge through this workflow (the owner may also merge a pull request on GitHub; pull main before starting).
+
+## One session per folder
+- Only one Claude session works in this folder at a time.
+- Before starting any work, run `git status` and `git log -3`, and tell me if there are commits you did not make.
+

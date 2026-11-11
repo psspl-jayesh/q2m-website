@@ -5,7 +5,7 @@ import { ChevronDown, Menu, X, ArrowUpRight, Mail, MapPin, Phone, Moon, Sun } fr
 import { NAV, TOP_LINKS, type MenuItem, type NavGroup } from '@/lib/site'
 import ctas from '@/content/shared/ctas.json'
 import footerContent from '@/content/shared/footer.json'
-import { COMPANY, LEGAL, LOCALE } from '@/config/locale'
+import { COMPANY, LEGAL, fullAddress } from '@/config/locale'
 import { formatPhone, phoneHref } from '@/lib/format'
 import { organizationJsonLd } from '@/lib/seo'
 import { ariaCurrent, useActiveNav } from '@/lib/nav'
@@ -195,12 +195,12 @@ function Footer() {
             <ul className="mono mt-8 space-y-3 text-block-muted">
               <li className="flex gap-3"><Mail aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></li>
               {COMPANY.phone && <li className="flex gap-3"><Phone aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</a></li>}
-              <li className="flex gap-3"><MapPin aria-hidden className="mt-0.5 size-4 shrink-0" />{COMPANY.address ? `${COMPANY.address.line1}, ${COMPANY.address.city}, ${COMPANY.address.state} ${COMPANY.address.pin}` : LOCALE.country}</li>
+              <li className="flex gap-3"><MapPin aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer">{fullAddress()}</a></li>
             </ul>
             <ul aria-label="Reviews and ratings" className="mt-8 flex flex-wrap items-center gap-3">
               {siteImages.badges.map((bd) => {
                 const img = <span className="flex h-12 items-center rounded-md bg-white px-3"><SiteImage image={bd} sizes="160px" className="h-8 w-auto object-contain" ratio="auto" /></span>
-                const href = bd.label === 'Google reviews' ? COMPANY.googleBusinessProfile : bd.href
+                const href = bd.href
                 return <li key={bd.file}>{href ? <a href={href} target="_blank" rel="noopener noreferrer" aria-label={bd.label}>{img}</a> : img}</li>
               })}
             </ul>
@@ -228,7 +228,7 @@ function Footer() {
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {COMPANY.social.map((s) => <li key={s.label}><a className="hover:text-ink-inverse" href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a></li>)}
           </ul>
-          <div className="flex items-center gap-6"><ThemeToggle /><p>{footerContent.copyright}</p></div>
+          <div className="flex items-center gap-6"><ThemeToggle /><p>Copyright {new Date().getFullYear()} {COMPANY.legalName}</p></div>
         </div>
       </div>
     </footer>
