@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { attachLabels, sectionize, groupify, useContent, type Entry, type Block, type Group, type Section } from '@/lib/content'
-import { hasClutch, heroImage, imagesBySection, keyOf, ogImageFor, type ManifestImage } from '@/lib/images'
-import { Accordion, Breadcrumbs, Button, ClutchBadge, HeroImage, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem } from '@/components/ui'
+import { topicImagesFor } from '@/lib/topicImages'
+import { hasClutch, heroImage, imagesBySection, keyOf, ogImageFor, pageImages, type ManifestImage } from '@/lib/images'
+import { Accordion, Breadcrumbs, Button, ClutchBadge, HeroImage, type SiteImg, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem } from '@/components/ui'
 import DotArrow from '@/components/DotArrow'
 import { FinalCta } from '@/components/Cards'
 import { NAV, SITE_URL } from '@/lib/site'
@@ -59,9 +60,14 @@ export function PageBody({ entry, secs, images = true }: { entry: Entry; secs: S
   const shown = secs.filter((x) => x !== faqSec)
   // images=false: a page whose image placement is awaiting approval (the home page) renders without manifest images
   const sectionImgs = images ? imagesBySection(c, entry.path, shown.map((x) => x.title)) : new Map<string, ManifestImage[]>()
+  // Prose sections whose live page has no image get a topic image (pages with images=false get none)
+  const onPage = images ? [...sectionImgs.values()].flat().concat(pageImages(c, entry.path)) : []
+  const pool = images ? topicImagesFor(entry.path, onPage) : []
+  let next = 0
+  const topics = shown.map((s) => (layoutOf(s, sectionImgs.get(keyOf(s.title)) ?? []) === 'prose-bare' ? pool[next++] : undefined))
   return (
     <>
-      {shown.map((s, i) => <div key={s.title + i} id={anchor(s.title)} className="scroll-anchor"><SectionBlock s={s} i={i} imgs={sectionImgs.get(keyOf(s.title)) ?? []} /></div>)}
+      {shown.map((s, i) => <div key={s.title + i} id={anchor(s.title)} className="scroll-anchor"><SectionBlock s={s} i={i} imgs={sectionImgs.get(keyOf(s.title)) ?? []} topic={topics[i]} /></div>)}
       {entry.faqs.length > 0 && (
         <section id="faq" className="section scroll-anchor border-t hairline">
           <div className="container-page split">
@@ -166,7 +172,27 @@ function LeadExtra({ lead, dark }: { lead: Group; dark?: boolean }) {
 }
 const Label = ({ g, dark }: { g: Group; dark?: boolean }) => (g.label ? <span className={`mono mb-2 block ${dark ? 'text-action-soft' : 'text-action'}`}>{g.label}</span> : null)
 
-function SectionBody({ s, i, imgs = [] }: { s: Section; i: number; imgs?: ManifestImage[] }) {
+/**
+ * Which layout SectionBody picks for a section (same conditions, same order). 'prose-bare' = editorial prose with no image of its own
+ * and enough text to leave the right-hand column visibly empty: those sections get a topic image.
+ */
+function layoutOf(s: Section, imgs: ManifestImage[]): 'logos' | 'gallery' | 'tags' | 'bullets' | 'process' | 'capability' | 'prose' | 'prose-bare' {
+  const { lead, groups } = groupify(attachLabels(s.blocks))
+  const logos = imgs.filter((m) => m.role === 'logo')
+  const media = imgs.filter((m) => m.role !== 'logo')
+  const textBlocks = s.blocks.filter((b) => b.t !== 'img')
+  const paras = s.blocks.filter((b) => b.t === 'p')
+  if (textBlocks.length === 0 && logos.length > 0) return 'logos'
+  if (textBlocks.length === 0 && media.length > 0) return 'gallery'
+  if (paras.length >= 6 && paras.every((p) => p.text!.length < 48) && groups.length === 0) return 'tags'
+  if (groups.some((g) => g.items.length >= 2)) return 'bullets'
+  if (/approach|process|how we|methodology|work/i.test(s.title) && groups.length >= 3 && groups.every((g) => g.paras.length)) return 'process'
+  if (groups.length >= 3) return 'capability'
+  const chars = lead.paras.join('').length + lead.items.join('').length + groups.reduce((n, g) => n + g.paras.join('').length + g.items.join('').length, 0)
+  return media.length === 0 && chars >= 250 && !/^(faq|frequently asked|questions)/i.test(s.title) ? 'prose-bare' : 'prose'
+}
+
+function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?: ManifestImage[]; topic?: SiteImg }) {
   const { lead, groups } = groupify(attachLabels(s.blocks))
   const logos = imgs.filter((m) => m.role === 'logo')
   const media = imgs.filter((m) => m.role !== 'logo')
@@ -279,6 +305,7 @@ function SectionBody({ s, i, imgs = [] }: { s: Section; i: number; imgs?: Manife
           {media.map((m) => <SiteFrame key={m.file + m.order} image={m} sizes="(min-width:1024px) 520px, 100vw" />)}
         </div>
       )}
+      {media.length === 0 && topic && <div className="split-main"><SiteFrame image={topic} sizes="(min-width:1024px) 520px, 100vw" /></div>}
       {logoStrip && <div className="lg:col-span-12">{logoStrip}</div>}
     </div></section>
   )
@@ -314,6 +341,6 @@ function SectionExtras({ s }: { s: Section }) {
   )
 }
 
-export function SectionBlock(props: { s: Section; i: number; imgs?: ManifestImage[] }) {
+export function SectionBlock(props: { s: Section; i: number; imgs?: ManifestImage[]; topic?: SiteImg }) {
   return <><SectionBody {...props} /><SectionExtras s={props.s} /></>
 }

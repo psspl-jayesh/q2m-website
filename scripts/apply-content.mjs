@@ -154,7 +154,7 @@ for (const [k, v] of Object.entries(sharedOut)) writeFileSync(`src/content/share
 /* ───────── build the file the app loads (metadata from the CMS, all copy from src/content) ───────── */
 const toEntry = (pg) => {
   const m = meta.get(pg.path)
-  return { id: m?.id ?? 0, type: pg.type, path: pg.path, slug: m?.slug ?? pg.slug, title: pg.seo.h1 || m?.title || '', date: m?.date, modified: m?.modified, metaTitle: pg.seo.title, description: pg.seo.description, ogImage: m?.ogImage ?? '', robots: m?.robots ?? '', excerpt: m?.excerpt ?? '', featuredMedia: m?.featuredMedia ?? 0, categories: m?.categories ?? [], blocks: pg.blocks, faqs: pg.faqs, furniture: pg.furniture }
+  return { id: m?.id ?? 0, type: pg.type, path: pg.path, slug: m?.slug ?? pg.slug, title: pg.seo.h1 || m?.title || '', date: m?.date, modified: m?.modified, metaTitle: pg.seo.title, description: pg.seo.description, ogImage: m?.ogImage ?? '', robots: m?.robots ?? '', excerpt: pg.type === 'page' ? '' : (m?.excerpt ?? ''), featuredMedia: m?.featuredMedia ?? 0, categories: m?.categories ?? [], blocks: pg.blocks, faqs: pg.faqs, furniture: pg.furniture }
 }
 const content = {
   syncedAt: new Date().toISOString(), source: 'https://q2msolutions.com', pages: pages.filter((p) => p.type === 'page').map(toEntry), posts: pages.filter((p) => p.type === 'post').map(toEntry), caseStudies: pages.filter((p) => p.type === 'case-study').map(toEntry),
