@@ -131,6 +131,7 @@ export default function HomeFolder() {
               <p className="eyebrow mb-4">{h.bts.eyebrow}</p>
               <h2 className="display-md max-w-2xl">{h.bts.title}</h2>
               {h.bts.paras.map((p) => <p key={p} className="mt-5 max-w-[36em] text-ink-muted">{p}</p>)}
+              <div className="mt-8"><Button to="/bengaluru-tech-summit-2026/">{h.bts.facts.find((f) => f.k === 'Event')?.v ?? h.bts.eyebrow}</Button></div>
             </Reveal>
           </div>
           <Reveal delay={0.1} className="split-main">
