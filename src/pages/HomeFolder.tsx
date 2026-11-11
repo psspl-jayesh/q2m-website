@@ -44,8 +44,8 @@ const TEAM_POSTS = ['/ai-chatbot-development-strategic-priority-2026/', '/machin
 
 /**
  * THE HOME PAGE (routed). The designed home from the Q2M_Website_Home folder: its design, section order and copy are kept as they were.
- * Three sections from the live home page are added where the meaning matches nothing in the design (Our Global Clients with the
- * live client logos, The Results Our Clients Measure, From The Team). The live-structure home is kept as Home.tsx (not routed).
+ * Three sections from the live home page are added where the meaning matches nothing in the design (Trusted & Certified with the
+ * live client logos and Microsoft badges, The Results Our Clients Measure, From The Team). The live-structure home is kept as Home.tsx (not routed).
  * SEO title and description are the live ones.
  */
 export default function HomeFolder() {
@@ -53,7 +53,7 @@ export default function HomeFolder() {
   const c = useContent()
   const live = getPage(c, 'q2m-solutions')!
   const homeImgs = pageImages(c, '/')
-  const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'our global clients')
+  const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
   const counters = stats.counters.slice(0, 3)
   const posts = TEAM_POSTS.map((p) => findEntry(c, p)).filter((e): e is NonNullable<typeof e> => !!e)
   return (
@@ -83,7 +83,7 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* Our Global Clients: the live client logos */}
+      {/* Our Global Clients: the live client logos (certification, partner and review badges are not shown) */}
       {clientLogos.length > 0 && (
         <section id="clients" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
           <div className="container-page">

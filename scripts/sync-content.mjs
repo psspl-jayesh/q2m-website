@@ -1,6 +1,6 @@
 // Step 1+2: crawl the live site and store EXACT page content, one file per page, plus the shared content.
 //   output:  src/content/live/<slug>.json    exact text from the live HTML (no edits)
-//            src/content/live-shared/*.json  menu, footer, stats, testimonials, ctas (exact)
+//            src/content/live-shared/*.json  menu, footer, certifications, stats, testimonials, ctas (exact)
 //            docs/CONTENT_PAGE_MAP.md        page mapping (live vs local)
 // Nothing here rewrites text. Fixes and India overrides happen in scripts/apply-content.mjs.
 import * as cheerio from 'cheerio'
@@ -54,14 +54,15 @@ const footer = {
   copyright: clean(f.text()).match(/Copyright[^$]*$/i)?.[0] ?? '',
   contactLabels: ['Call Any Time', 'Address', 'Say Hello'].filter((l) => clean(f.text()).includes(l)),
 }
-// stats, testimonials (home)
+// certifications, stats, testimonials (home)
 const home = results['/']
 const blocksOf = (title) => { const b = home.blocks; const i = b.findIndex((x) => x.t === 'h2' && x.text.toLowerCase().startsWith(title.toLowerCase())); if (i < 0) return []; const j = b.findIndex((x, k) => k > i && x.t === 'h2'); return b.slice(i + 1, j < 0 ? undefined : j) }
+const certs = []; blocksOf('Trusted & Certified').forEach((b, i, arr) => { if (b.t === 'h3') certs.push({ title: b.text, detail: arr[i + 1]?.t === 'p' ? arr[i + 1].text : '' }) })
 const stats = home.blocks.filter((b) => b.t === 'stat').map((b) => ({ value: b.value, prefix: b.prefix, suffix: b.suffix, label: b.text }))
 const heroStat = home.blocks.find((b) => b.t === 'h6' && /\d+\+?\s*Projects Delivered/i.test(b.text))?.text ?? null
 const testimonials = home.blocks.filter((b) => b.t === 'quote').map((b) => ({ quote: b.text, name: b.name, role: b.role }))
 const ctas = { home: home.blocks.filter((b) => b.t === 'btn').map((b) => ({ label: b.text, href: b.href })) }
-const shared = { menu, footer, stats: { counters: stats, heroStat }, testimonials, ctas }
+const shared = { menu, footer, certifications: certs, stats: { counters: stats, heroStat }, testimonials, ctas }
 for (const [k, v] of Object.entries(shared)) writeFileSync(`src/content/live-shared/${k}.json`, JSON.stringify(v, null, 1))
 
 /* page mapping doc */
@@ -75,4 +76,4 @@ const docs = ['# Content page mapping (live vs local)', '', `Live sitemap pages:
   `## Local routes with no live page`, ...[...localPaths].filter((p) => !sitemap.has(p)).map((p) => `- ${p}`), '- /privacy-policy/ (new, added for India/DPDP)', '',
   `## Menu items that link to "#" (placeholders on the live site; ${hashItems.length})`, ...hashItems.map((x) => `- ${x}`), '']
 writeFileSync('docs/CONTENT_PAGE_MAP.md', docs.join('\n'))
-console.log(JSON.stringify({ pages: entries.length, failed, menuTop: menu.length, hashItems: hashItems.length, counters: stats.length, testimonials: testimonials.length, footerLinks: footer.links.length }))
+console.log(JSON.stringify({ pages: entries.length, failed, menuTop: menu.length, hashItems: hashItems.length, certs: certs.length, counters: stats.length, testimonials: testimonials.length, footerLinks: footer.links.length }))
