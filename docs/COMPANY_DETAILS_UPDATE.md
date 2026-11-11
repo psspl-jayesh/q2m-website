@@ -49,3 +49,11 @@ Defined once in `src/config/locale.ts` `COMPANY.social`: LinkedIn, Facebook, Ins
 | Singapore, +65, Cecil Street | 0 | gone from the shipped site and data |
 | Clutch | 4 lines | only the kept text "Clutch Top AI Developer" (home, certifications data, Ai4 article) |
 | ISO 27001, Solution Partner, Azure Expert, Certified, certification | present | restored on purpose (you asked for everything but Clutch to stay) |
+
+## Check results (affected pages, final code)
+344 loads = 43 pages x 360, 768, 1024, 1440 px x light and dark (every page where a section or line was removed or restored, plus Home, About, Contact and Privacy; the footer is on every page). No horizontal overflow, no overlapping or clipped text, no hidden content, no broken images, no contrast failures, one H1 everywhere, no console errors, no layout shift above 0.1, no empty sections left behind. Findings fixed on the way: layout shift on the Privacy page (the longer company paragraph re-wrapped when the web font loaded; the company block is now split into short lines). Still open (known, on `docs/OPEN_ISSUES.md`): the 6 long-label buttons that wrap on phones.
+Screenshots: `docs/readme/contact_1440_light.jpg`, `contact_390_dark.jpg`, `footer_1440_light.jpg`, `footer_390_dark.jpg`; Trusted & Certified before and after: `trusted_before.jpg`, `trusted_after.jpg`.
+
+## Trusted & Certified (home)
+Redesigned at your request (same live content, no new text): follows the light or dark theme, same title and card styles as the other sections, a wide first card with both Microsoft badges, three cards, and a client-logo wall.
+
