@@ -164,15 +164,22 @@
    "path": "shared/stats",
    "loc": "counter0",
    "before": "Enterprise projects delivered across APAC",
-   "after": "Enterprise projects delivered across India",
-   "why": "region"
+   "after": "Enterprise projects delivered",
+   "why": "neutral label: live number is not India-only"
   },
   {
    "path": "shared/stats",
    "loc": "counter7",
    "before": "Average reduction in manual processing time across APAC clients",
-   "after": "Average reduction in manual processing time across Indian clients",
-   "why": "region"
+   "after": "Average reduction in manual processing time across clients",
+   "why": "neutral label: live number is not India-only"
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "loc": "p#79 text",
+   "before": "compliance with MAS TRM, PDPA, GDPR, and ISO 27001 when applicable",
+   "after": "compliance with GDPR and ISO 27001 when applicable",
+   "why": "removed Singapore regulation names (no DPDP claim added)"
   },
   {
    "path": "/",
@@ -192,29 +199,29 @@
    "path": "/",
    "loc": "stat#19 text",
    "before": "Enterprise projects delivered across APAC",
-   "after": "Enterprise projects delivered across India",
-   "why": "region"
+   "after": "Enterprise projects delivered",
+   "why": "neutral label: live number is not India-only"
   },
   {
    "path": "/",
    "loc": "h3#31 text",
    "before": "Singapore & APAC presence",
-   "after": "India presence",
-   "why": "region"
+   "after": "Serving enterprises in India",
+   "why": "neutral, true statement"
   },
   {
    "path": "/",
    "loc": "p#32 text",
    "before": "We are governed by the regulations of Singapore, and have Asia Pacific delivery capability.",
-   "after": "We are governed by the regulations of India, and have delivery capability across India.",
-   "why": "region"
+   "after": "Governance, security and compliance are built into how we deliver.",
+   "why": "removed country-specific governance claim"
   },
   {
    "path": "/",
    "loc": "stat#115 text",
    "before": "Average reduction in manual processing time across APAC clients",
-   "after": "Average reduction in manual processing time across Indian clients",
-   "why": "region"
+   "after": "Average reduction in manual processing time across clients",
+   "why": "neutral label: live number is not India-only"
   },
   {
    "path": "/",
@@ -227,7 +234,7 @@
    "path": "/q2m-solutions-is-heading-to-ai4-2026/",
    "loc": "p#21 text",
    "before": "Q2M Solutions is Singapore’s enterprise AI development company, delivering 150+ projects across the APAC region from",
-   "after": "Q2M Solutions is an enterprise AI development company in India, delivering 150+ projects across India from",
+   "after": "Q2M Solutions is an enterprise AI development company in India, delivering 150+ projects for enterprise clients from",
    "why": "region (article)"
   }
  ],
@@ -859,16 +866,6 @@
    "path": "/ai-agent-development-cost/",
    "text": "Asia Pacific is the fastest-growing market for AI agents, expected to register the highest CAGR by 2",
    "why": "Cited third-party market statistic: changing the region would falsify the source claim. Needs your decision."
-  },
-  {
-   "path": "/ai-chatbot-development-company/",
-   "text": "Secure-by-Design Architecture Use of Azure Private Endpoints, managed identities, RBAC for conversat",
-   "why": "Singapore regulation names in a compliance claim: not a literal region mention; needs your decision (no DPDP claim added)."
-  },
-  {
-   "path": "/ai-chatbot-development-company/",
-   "text": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, S",
-   "why": "Singapore regulation names in a compliance claim: not a literal region mention; needs your decision (no DPDP claim added)."
   },
   {
    "path": "/",

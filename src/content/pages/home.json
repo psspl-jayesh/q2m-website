@@ -99,7 +99,7 @@
    "value": 150,
    "prefix": "",
    "suffix": "+",
-   "text": "Enterprise projects delivered across India",
+   "text": "Enterprise projects delivered",
    "matched": "counter0"
   },
   {
@@ -161,11 +161,11 @@
   },
   {
    "t": "h3",
-   "text": "India presence"
+   "text": "Serving enterprises in India"
   },
   {
    "t": "p",
-   "text": "Local ownership, with governance, security, and compliance embedded. We are governed by the regulations of India, and have delivery capability across India."
+   "text": "Local ownership, with governance, security, and compliance embedded. Governance, security and compliance are built into how we deliver."
   },
   {
    "t": "h2",
@@ -523,7 +523,7 @@
    "value": 40,
    "prefix": "",
    "suffix": "%+",
-   "text": "Average reduction in manual processing time across Indian clients",
+   "text": "Average reduction in manual processing time across clients",
    "matched": "counter7"
   },
   {
