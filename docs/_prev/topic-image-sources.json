@@ -1,0 +1,142 @@
+[
+ {
+  "key": "azure-data",
+  "file": "/images/shared/azure-data-ai-img.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/azure-data-ai-img.webp",
+  "same": "identical",
+  "livePages": [
+   "/azure-data-ai-services/",
+   "/azure-iot-solution/",
+   "/cognitive-service-implementation/",
+   "/data-copilot-for-azure-ai/",
+   "/microsoft-fabric-services/",
+   "/machine-learning-models-on-azure/"
+  ]
+ },
+ {
+  "key": "azure-database",
+  "file": "/images/azure-database-services/modernize-your-data-with-azure-database-services-img.png",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/10/modernize-your-data-with-azure-database-services-img.png",
+  "same": "identical",
+  "livePages": [
+   "/azure-database-services/"
+  ]
+ },
+ {
+  "key": "cloud",
+  "file": "/images/shared/cloud-computing.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/cloud-computing.webp",
+  "same": "identical",
+  "livePages": [
+   "/azure-ai-and-machine-learning/",
+   "/cloud-applications/",
+   "/cyber-security-services/"
+  ]
+ },
+ {
+  "key": "infrastructure",
+  "file": "/images/infrastructure-services/it-infrastructure.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/it-infrastructure.webp",
+  "same": "identical",
+  "livePages": [
+   "/infrastructure-services/"
+  ]
+ },
+ {
+  "key": "digital",
+  "file": "/images/shared/digital-transofrmation.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/digital-transofrmation.webp",
+  "same": "identical",
+  "livePages": [
+   "/digital-transformation-services/",
+   "/generative-ai-development-services/",
+   "/generative-ai-integration-services/",
+   "/llm-development-services/",
+   "/rag-development-services/",
+   "/smart-glasses-ar-wearable-app-development-services/"
+  ]
+ },
+ {
+  "key": "consulting",
+  "file": "/images/shared/technology-consulting-service-img.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/technology-consulting-service-img.webp",
+  "same": "identical",
+  "livePages": [
+   "/ai-solutions-development/",
+   "/azure-data-services/",
+   "/data-lake-and-big-data-on-azure/",
+   "/technology-consulting-services/"
+  ]
+ },
+ {
+  "key": "enterprise",
+  "file": "/images/enterprise-business-application/enterprise-business-app.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/enterprise-business-app.webp",
+  "same": "identical",
+  "livePages": [
+   "/enterprise-business-application/"
+  ]
+ },
+ {
+  "key": "workplace",
+  "file": "/images/modern-workplace/modern-workplace.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/modern-workplace.webp",
+  "same": "identical",
+  "livePages": [
+   "/modern-workplace/"
+  ]
+ },
+ {
+  "key": "sustainability",
+  "file": "/images/digital-sustainability-services/digital-sustainability-services-img.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/digital-sustainability-services-img.webp",
+  "same": "identical",
+  "livePages": [
+   "/digital-sustainability-services/"
+  ]
+ },
+ {
+  "key": "mlops",
+  "file": "/images/mlops-consulting-services/why-do-businesses-need-mlops-consulting-img.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2026/08/why-do-businesses-need-mlops-consulting-img.webp",
+  "same": "identical",
+  "livePages": [
+   "/mlops-consulting-services/"
+  ]
+ },
+ {
+  "key": "ai-platform",
+  "file": "/images/shared/why-enterprises-choose-implementation-approach.webp",
+  "url": "https://q2msolutions.com/wp-content/uploads/2026/07/why-enterprises-choose-implementation-approach.webp",
+  "same": "identical",
+  "livePages": [
+   "/ai-recommendation-systems/",
+   "/ai-chatbot-development-company/",
+   "/predictive-analytics-services-2/",
+   "/rag-development-services/"
+  ]
+ },
+ {
+  "key": "team",
+  "file": "/images/shared/q2m-banner-2.jpg",
+  "url": "https://q2msolutions.com/wp-content/uploads/2025/08/q2m-banner-2.jpg",
+  "same": "identical",
+  "livePages": [
+   "/ai-consulting-services/",
+   "/azure-iot-solution/",
+   "/digital-transformation-services/",
+   "/microsoft-fabric-services/",
+   "/machine-learning-models-on-azure/"
+  ]
+ },
+ {
+  "key": "code",
+  "file": "/images/shared/untitled-design-5.png",
+  "url": "https://q2msolutions.com/wp-content/uploads/2026/09/Untitled-design-5.png",
+  "same": "identical",
+  "livePages": [
+   "/ai-recommendation-systems/",
+   "/predictive-analytics-services-2/"
+  ]
+ }
+]
