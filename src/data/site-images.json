@@ -15,19 +15,6 @@
  },
  "favicon": "/images/shared/q2m-icon.svg",
  "ogDefault": "/brand/og-default.png",
- "badges": [
-  {
-   "file": "/images/shared/google-review.png",
-   "w": 1024,
-   "h": 346,
-   "alt": "Google reviews",
-   "altSource": "needs-review",
-   "role": "badge",
-   "original": "https://q2msolutions.com/wp-content/uploads/2024/03/google-review.png",
-   "label": "Google reviews",
-   "href": null
-  }
- ],
  "liveLogosNotUsed": [
   "/images/shared/q2m-logo-light.svg",
   "/images/shared/q2m-logo-dark.svg"

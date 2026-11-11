@@ -15,7 +15,6 @@ import { useSplitFit } from '@/lib/splitFit'
 import { Button } from './ui'
 import siteCopy from '@/data/site-copy.json'
 import siteImages from '@/data/site-images.json'
-import { SiteImage } from './ui'
 
 
 /** Official Q2M logos from Q2M_Brand_Kit, unmodified (826x498). Colour on light, reverse on dark. Min width 96px. */
@@ -196,13 +195,6 @@ function Footer() {
               <li className="flex gap-3"><Mail aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></li>
               {COMPANY.phone && <li className="flex gap-3"><Phone aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</a></li>}
               <li className="flex gap-3"><MapPin aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer">{fullAddress()}</a></li>
-            </ul>
-            <ul aria-label="Reviews and ratings" className="mt-8 flex flex-wrap items-center gap-3">
-              {siteImages.badges.map((bd) => {
-                const img = <span className="flex h-12 items-center rounded-md bg-white px-3"><SiteImage image={bd} sizes="160px" className="h-8 w-auto object-contain" ratio="auto" /></span>
-                const href = bd.href
-                return <li key={bd.file}>{href ? <a href={href} target="_blank" rel="noopener noreferrer" aria-label={bd.label}>{img}</a> : img}</li>
-              })}
             </ul>
           </div>
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
