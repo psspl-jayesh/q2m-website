@@ -1,6 +1,6 @@
 // Writes docs/SEO_PROPOSALS.md: shortened title / description proposals for the live ones over the limits. NOT applied.
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
-const pages = Object.fromEntries(readdirSync('src/content/pages').map((f) => JSON.parse(readFileSync(`src/content/pages/${f}`, 'utf8'))).map((p) => [p.path, p]))
+const pages = Object.fromEntries(readdirSync('src/content/pages').filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`src/content/pages/${f}`, 'utf8'))).map((p) => [p.path, p]))
 const T = {
   '/ai-agent-development-cost/': 'A Complete Breakdown of AI Agent Development Cost in 2026',
   '/ai-development-cost/': 'AI Development Cost in 2026: A Complete Pricing Guide',

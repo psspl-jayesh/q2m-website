@@ -5,6 +5,7 @@ import '@/styles/index.css'
 import Layout from '@/components/Layout'
 import { ContentProvider, findEntry, useContent } from '@/lib/content'
 import Home from '@/pages/HomeFolder'
+import BtsLanding from '@/pages/BtsLanding'
 import ServicePage from '@/pages/ServicePage'
 import { About, Contact, NotFound } from '@/pages/Company'
 import PrivacyPolicy from '@/pages/PrivacyPolicy'
@@ -38,6 +39,7 @@ createRoot(document.getElementById('root')!).render(
           <Route element={<Layout />}>
             <Route path="/category/:slug/*" element={<CategoryRoute />} />
             <Route path={LEGAL.privacyPath} element={<PrivacyPolicy />} />
+            <Route path="/bengaluru-tech-summit-2026/" element={<BtsLanding />} />
             <Route path="*" element={<Resolver />} />
           </Route>
         </Routes>
