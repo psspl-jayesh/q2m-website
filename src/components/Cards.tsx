@@ -45,13 +45,14 @@ export function PostCard({ e, i = 0 }: { e: Entry; i?: number }) {
 }
 
 /** Closing call-to-action band (every page). Text is the live CTA ("Book a Discovery Call", src/content/shared/ctas.json). The live site has no supporting line for it, so none is shown. */
-export function FinalCta({ title = ctas.header.label }: { title?: string }) {
+/** `cta` (optional, used only by the BTS landing page) replaces the primary button; every other page keeps the default. */
+export function FinalCta({ title = ctas.header.label, cta }: { title?: string; cta?: { label: string; href: string } }) {
   return (
     <section className="on-dark bg-block text-ink-inverse">
       <div className="container-page split split--lead py-20 md:py-28">
         <div className="split-aside"><DotArrow pitch={12} className="mb-8 block h-auto w-[84px]" /><h2 className="display-lg">{title}</h2></div>
         <div className="split-main">
-          <div className="flex flex-wrap gap-3"><Button to={ctas.header.href}>{ctas.header.label}</Button><Button href={`mailto:${COMPANY.email}`} variant="ghost" arrow={false}>{ui.finalCtaEmail}</Button></div>
+          <div className="flex flex-wrap gap-3"><Button to={cta?.href ?? ctas.header.href}>{cta?.label ?? ctas.header.label}</Button><Button href={`mailto:${COMPANY.email}`} variant="ghost" arrow={false}>{ui.finalCtaEmail}</Button></div>
         </div>
       </div>
     </section>

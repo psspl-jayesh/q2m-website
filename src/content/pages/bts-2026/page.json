@@ -35,7 +35,8 @@
  ],
  "pitch": {
   "title": "Bring one process. Leave with an AI plan for it.",
-  "text": "To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one. If you are not sure where AI fits yet, come for the demos: try the smart glasses, watch an agent work through a stack of documents and ask the team anything."
+  "text": "To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one. If you are not sure where AI fits yet, come for the demos: try the smart glasses, watch an agent work through a stack of documents and ask the team anything.",
+  "textNoDemos": "To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one."
  },
  "demos": {
   "eyebrow": "Live demos",
@@ -53,7 +54,14 @@
     "image": "/images/ai-agent-development-services/ai-agent-development-service-banner.webp",
     "alt": "An AI agent at the centre of a diagram connecting customer requests, email, tasks and reports"
    }
-  ]
+  ],
+  "noDemos": {
+   "eyebrow": "What we can show you",
+   "tags": [
+    "Smart glasses",
+    "AI agents"
+   ]
+  }
  },
  "session": {
   "eyebrow": "The 30-minute session",
@@ -165,5 +173,55 @@
     ]
    }
   ]
+ },
+ "_noteAdded": "Labels added in feature/bts-landing-fixes: section names the owner asked for (Event at a glance, Why meet Q2M, Venue and directions, countdown, after-event hero). Trust/logos/testimonials titles are the live home ones. 'Why meet Q2M' card texts are the live titles and meta descriptions of the linked pages.",
+ "countdown": {
+  "label": "Starts in",
+  "units": [
+   "Days",
+   "Hours",
+   "Minutes"
+  ]
+ },
+ "after": {
+  "title": "Thanks for meeting us at BTS 2026",
+  "cta": {
+   "label": "Talk to us",
+   "href": "/contact/"
+  }
+ },
+ "glance": {
+  "title": "Event at a glance",
+  "session": {
+   "k": "Session",
+   "v": "30 minutes"
+  }
+ },
+ "why": {
+  "title": "Why meet Q2M",
+  "pages": [
+   "/ai-agent-development-services/",
+   "/smart-glasses-ar-wearable-app-development-services/",
+   "/ai-chatbot-development-company/",
+   "/ai-consulting-services/"
+  ]
+ },
+ "trust": {
+  "title": "Trusted & Certified",
+  "logos": "Our Global Clients",
+  "testimonials": {
+   "eyebrow": "Client Feedback",
+   "title": "Trusted By Our Clients"
+  }
+ },
+ "venueSection": {
+  "eyebrow": "Venue and directions",
+  "directions": "Get directions"
+ },
+ "closing": {
+  "cta": {
+   "label": "Book a Meeting",
+   "href": "#book"
+  }
  }
 }
