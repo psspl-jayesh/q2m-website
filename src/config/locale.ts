@@ -32,26 +32,42 @@ export const BOOKING = {
   daysAhead: 10,                   // how many business days are offered
 } as const
 
+/** Registered address, split into fields. Every place that shows the address reads these (footer, Contact, Privacy Policy, JSON-LD, map link). */
+export const ADDRESS = {
+  addressLine1: 'Indu Chacha Complex, near Chhani Jakat Naka Circle',
+  addressLine2: 'TP 13',
+  locality: 'Chhani Jakatnaka',
+  city: 'Vadodara',
+  state: 'Gujarat',
+  pinCode: '390024',
+  country: LOCALE.country,
+} as const
+/** The address as one line, built from ADDRESS. */
+export const fullAddress = (a: typeof ADDRESS = ADDRESS) => `${a.addressLine1}, ${a.addressLine2}, ${a.locality}, ${a.city}, ${a.state} ${a.pinCode}, ${a.country}`
+
 /** Company details. Only confirmed values are set. */
 export const COMPANY = {
+  /** Brand name: logo, header and marketing copy. */
   name: 'Q2M Solutions',
-  legalName: 'Q2M Solutions Pvt Ltd',
+  /** Legal name: footer copyright line, Privacy Policy, Contact page company block, Organization JSON-LD. TO CONFIRM: "Solution" or "Solutions". */
+  legalName: 'Q2M Solution Private Limited',
   siteUrl: 'https://q2msolutions.com',
   email: 'info@q2msolutions.com',
-  phone: null as string | null,            // NEEDS INPUT: Indian number, e.g. '9876543210' (10 digits). Not supplied yet.
-  address: null as null | { line1: string; line2?: string; city: string; state: string; pin: string }, // NEEDS INPUT
-  mapUrl: null as string | null,
+  /** 10-digit Indian mobile. Shown as "+91 87994 65558" and linked as tel:+918799465558 by formatPhone() / phoneHref(). */
+  phone: '8799465558' as string | null,
+  address: ADDRESS,
+  /** Google Maps search for the full address. */
+  mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`,
   linkedin: 'https://www.linkedin.com/company/q2m-solutions/',
-  /** NEEDS INPUT: Google Business Profile URL. Until set, the footer Google reviews badge stays unlinked. */
-  googleBusinessProfile: null as string | null,
   social: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/company/q2m-solutions/' },
     { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61562342012252' },
     { label: 'Instagram', href: 'https://www.instagram.com/qtomsolutions/' },
     { label: 'YouTube', href: 'https://www.youtube.com/@Q2MSolutions' },
-    { label: 'Clutch', href: 'https://clutch.co/profile/q2m-solutions' },
   ],
-  /** Data Protection / grievance contact required under the DPDP Act, 2023. NEEDS INPUT: name and designation. */
+  /** TODO: Corporate Identity Number (CIN). Not supplied yet. */
+  cin: null as string | null,
+  /** TODO: Data Protection / grievance contact required under the DPDP Act, 2023. NEEDS INPUT: name and designation. */
   grievanceOfficer: null as null | { name: string; designation: string; email: string },
 } as const
 

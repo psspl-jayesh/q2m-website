@@ -9,7 +9,7 @@ import { imagesBySection, keyOf } from '@/lib/images'
 import { SectionBlock } from './ServicePage'
 import { FinalCta } from '@/components/Cards'
 import { SITE_URL } from '@/lib/site'
-import { COMPANY, LOCALE } from '@/config/locale'
+import { COMPANY, fullAddress } from '@/config/locale'
 import { formatPhone, phoneHref } from '@/lib/format'
 import { BusinessDetails, ConsentField, MobileField, businessFields, consentRequired, describeBusiness, mobileRequired, requireWholeAddress } from '@/components/forms'
 import { areaServedIndia, indiaDescription, indiaTitle } from '@/lib/seo'
@@ -144,7 +144,7 @@ export function Contact({ entry }: { entry: Entry }) {
             {lede && <Reveal delay={0.16}><p className="lede mt-7">{lede}</p></Reveal>}
             {office && <h2 className="mt-12 font-display text-2xl font-semibold">{office.title}</h2>}
             <ul className="mt-6 space-y-6">
-              <li className="flex gap-4"><MapPin aria-hidden className="mt-1 size-5 shrink-0 text-action" /><div><p className="font-medium">{LOCALE.country}</p>{COMPANY.address && (COMPANY.mapUrl ? <a className="text-ink-muted hover:text-ink" href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer">{[COMPANY.address.line1, COMPANY.address.line2, COMPANY.address.city, `${COMPANY.address.state} ${COMPANY.address.pin}`].filter(Boolean).join(', ')}</a> : <p className="text-ink-muted">{[COMPANY.address.line1, COMPANY.address.line2, COMPANY.address.city, `${COMPANY.address.state} ${COMPANY.address.pin}`].filter(Boolean).join(', ')}</p>)}</div></li>
+              <li className="flex gap-4"><MapPin aria-hidden className="mt-1 size-5 shrink-0 text-action" /><div><p className="font-medium">{COMPANY.legalName}</p><a className="text-ink-muted hover:text-ink" href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer">{fullAddress()}</a></div></li>
               {COMPANY.phone && <li className="flex gap-4"><Phone aria-hidden className="mt-1 size-5 shrink-0 text-action" /><div><p className="font-medium">{phoneLabel ?? 'Phone'}</p><a className="text-ink-muted hover:text-ink" href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</a></div></li>}
               <li className="flex gap-4"><Mail aria-hidden className="mt-1 size-5 shrink-0 text-action" /><div><p className="font-medium">Email</p><a className="text-ink-muted hover:text-ink" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></div></li>
             </ul>

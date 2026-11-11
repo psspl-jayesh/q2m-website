@@ -1,4 +1,5 @@
-import { COMPANY, LEGAL } from '@/config/locale'
+import { COMPANY, LEGAL, fullAddress } from '@/config/locale'
+import { formatPhone, phoneHref } from '@/lib/format'
 import { Breadcrumbs, Seo } from '@/components/ui'
 
 /**
@@ -17,7 +18,7 @@ export default function PrivacyPolicy() {
         <h1 className="display-lg mt-10 max-w-3xl">Privacy Policy</h1>
         <div className="prose-q2m mt-8 text-ink-muted">
           <h2 className="text-ink">Who we are</h2>
-          <p>{COMPANY.legalName} ("Q2M", "we") is the Data Fiduciary for personal data collected through this website. You can write to us at <a className="text-action underline underline-offset-4" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>. Registered office and CIN: to be confirmed by Q2M.</p>
+          <p>{COMPANY.legalName} ("Q2M", "we") is the Data Fiduciary for personal data collected through this website. You can write to us at <a className="text-action underline underline-offset-4" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>. Registered office: {fullAddress()}. Phone: <a className="text-action underline underline-offset-4" href={phoneHref(COMPANY.phone ?? '')}>{formatPhone(COMPANY.phone ?? '')}</a>. CIN: to be confirmed by Q2M.</p>
           <h2 className="text-ink">What we collect and why</h2>
           <p>When you use the contact or booking form we collect the details you enter: name, company, role, work email, mobile number, industry, preferred date and time, the process you want to discuss and, if you choose, your GSTIN and company address. We use them only to respond to your request and to schedule a session. We do not use them to train public AI models.</p>
           <h2 className="text-ink">Consent</h2>
