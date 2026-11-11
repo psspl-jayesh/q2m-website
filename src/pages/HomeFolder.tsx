@@ -7,7 +7,8 @@ import { COMPANY } from '@/config/locale'
 import { getPage, findEntry, useContent } from '@/lib/content'
 import { ogImageFor, pageImages } from '@/lib/images'
 import { PostCard } from '@/components/Cards'
-import { SiteImage } from '@/components/ui'
+import { SiteFrame, SiteImage, imgMeta, type SiteImg } from '@/components/ui'
+import homeImages from '@/content/shared/home-images.json'
 import stats from '@/content/shared/stats.json'
 
 /** Existing Q2M pages that cover a practice. Practices with no page (agentic commerce, 3D Gaussian splatting) are not linked. */
@@ -18,6 +19,18 @@ const SERVICE_PAGE: Record<string, string> = {
   MLOps: '/mlops-consulting-services/',
   'Microsoft business apps': '/enterprise-business-application/',
 }
+
+/** Topic image for a home item (live-site image, see src/content/shared/home-images.json); undefined keeps the brand dot panel. */
+type HomeImgs = Record<string, { file: string; alt: string }>
+const topicImg = (set: HomeImgs, key: string): SiteImg | undefined => {
+  const e = set[key]; if (!e) return undefined
+  const m = imgMeta(e.file)
+  return { file: e.file, alt: e.alt, w: m?.w ?? null, h: m?.h ?? null }
+}
+const WORK = homeImages.work as HomeImgs
+const SERVICE_IMG = homeImages.services as HomeImgs
+const INDUSTRY_IMG = homeImages.industries as HomeImgs
+const APPROACH_IMG = homeImages.approach as HomeImgs
 
 const Head = ({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) => (
   <div className="split split--lead">
@@ -41,7 +54,6 @@ export default function HomeFolder() {
   const live = getPage(c, 'q2m-solutions')!
   const homeImgs = pageImages(c, '/')
   const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'our global clients')
-  const discoveryImg = homeImgs.find((i) => /discovery-consultation/.test(i.file))
   const counters = stats.counters.slice(0, 3)
   const posts = TEAM_POSTS.map((p) => findEntry(c, p)).filter((e): e is NonNullable<typeof e> => !!e)
   return (
@@ -101,14 +113,14 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* See the work: brand dot panels stand in for the images that have not been supplied */}
+      {/* See the work: live-site topic images; a tile with no matching image keeps the brand dot panel */}
       <section id="work" className="section scroll-anchor">
         <div className="container-page">
           <Head eyebrow={h.work.eyebrow} title={h.work.title} intro={h.work.intro} />
           <StaggerGroup className="mt-12 grid auto-rows-[minmax(150px,1fr)] grid-cols-2 gap-3 md:auto-rows-[minmax(180px,1fr)] md:grid-cols-4 md:gap-4">
             {h.work.tiles.map((t) => (
-              <StaggerItem key={t.title} className={`relative min-h-[150px] overflow-hidden rounded-lg border border-line ${t.w2 ? 'col-span-2' : ''} ${t.h2 ? 'row-span-2' : ''}`}>
-                <DotPanel dark={t.dark} className="absolute inset-0" />
+              <StaggerItem key={t.title} className={`relative min-h-[150px] overflow-hidden rounded-lg border border-line ${t.w2 ? 'col-span-2' : 'col-span-2 md:col-span-1'} ${t.h2 ? 'md:row-span-2' : ''}`}>
+                {topicImg(WORK, t.title) ? <SiteImage image={topicImg(WORK, t.title)!} ratio="auto" sizes="(min-width:768px) 50vw, 100vw" className="absolute inset-0 h-full w-full object-cover" /> : <DotPanel dark={t.dark} className="absolute inset-0" />}
                 <figcaption className="absolute inset-x-3 bottom-3 rounded-md bg-surface p-3 md:inset-x-4 md:bottom-4">
                   <span className="mb-1.5 inline-block rounded-sm bg-action px-2 py-0.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-on-action">{t.tag}</span>
                   <b className="block font-display text-[0.9375rem] font-semibold leading-snug md:text-base">{t.title}</b>
@@ -127,17 +139,21 @@ export default function HomeFolder() {
           <Reveal>
             <div className="mt-12 overflow-hidden rounded-lg border border-line">
               {h.services.items.filter((s) => s.feature).map((s) => (
-                <article key={s.title} className="bg-surface-raised p-6 md:p-10">
+                <article key={s.title} className="grid gap-8 bg-surface-raised p-6 md:p-10 lg:grid-cols-12 lg:gap-12">
+                  <div className="lg:col-span-7">
                   <span className="mb-4 inline-block rounded-sm bg-tint px-2 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-action">{s.tag}</span>
                   <h3 className="max-w-3xl font-display text-[1.75rem] font-bold leading-tight">{s.title}</h3>
                   <p className="mt-4 max-w-3xl text-ink-muted">{s.text}</p>
                   <ul className="mt-6 grid gap-x-8 gap-y-2 md:grid-cols-2">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
                   {SERVICE_PAGE[s.title] && <p className="mt-6"><TextLink to={SERVICE_PAGE[s.title]} label={`Read more about ${s.title}`}>Read more</TextLink></p>}
+                  </div>
+                  {topicImg(SERVICE_IMG, s.title) && <div className="lg:col-span-5"><SiteFrame image={topicImg(SERVICE_IMG, s.title)!} sizes="(min-width:1024px) 460px, 100vw" /></div>}
                 </article>
               ))}
               <div className="grid gap-px border-t border-line bg-line md:grid-cols-2 lg:grid-cols-3">
                 {h.services.items.filter((s) => !s.feature).map((s) => (
                   <article key={s.title} className="flex flex-col bg-surface p-6 md:p-8">
+                    {topicImg(SERVICE_IMG, s.title) && <div className="mb-6"><SiteFrame image={topicImg(SERVICE_IMG, s.title)!} ratio="16/10" sizes="(min-width:1024px) 360px, (min-width:768px) 50vw, 100vw" /></div>}
                     <h3 className="font-display text-xl font-semibold leading-snug">{s.title}</h3>
                     <p className="mt-3 text-[0.9375rem] text-ink-muted">{s.text}</p>
                     <ul className="mt-5 space-y-2 text-[0.9375rem]">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
@@ -157,7 +173,7 @@ export default function HomeFolder() {
           <StaggerGroup as="ul" className="mt-12 grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
             {h.industries.items.map((i) => (
               <StaggerItem as="li" key={i.name}>
-                <div className="aspect-[4/3] overflow-hidden rounded-lg border border-line"><DotPanel /></div>
+                {topicImg(INDUSTRY_IMG, i.name) ? <SiteFrame image={topicImg(INDUSTRY_IMG, i.name)!} ratio="4/3" sizes="(min-width:1024px) 360px, (min-width:768px) 50vw, 100vw" /> : <div className="aspect-[4/3] overflow-hidden rounded-lg border border-line"><DotPanel /></div>}
                 <h3 className="mt-5 font-display text-2xl font-semibold">{i.name}</h3>
                 <p className="mt-2 text-ink-muted">{i.text}</p>
                 <p className="mono mt-3 text-action">{i.refs}</p>
@@ -197,7 +213,7 @@ export default function HomeFolder() {
             {h.approach.steps.map((s) => (
               <StaggerItem as="li" key={s.num} className="relative border-t-2 border-ink pt-6 lg:border-t-0 lg:pt-0">
                 <div aria-hidden className="mb-5 hidden items-center lg:flex"><span className="size-3 rounded-full bg-q2m" /><span className="ml-2 h-0.5 flex-1 bg-ink" /></div>
-                {s.num === '01' && discoveryImg && <SiteImage image={discoveryImg} ratio="auto" sizes="180px" className="mb-5 h-auto w-[140px] rounded-md" />}
+                {topicImg(APPROACH_IMG, s.num) && <div className="mb-5"><SiteFrame image={topicImg(APPROACH_IMG, s.num)!} ratio="1/1" sizes="(min-width:1024px) 260px, (min-width:768px) 45vw, 100vw" /></div>}
                 <span className="mono text-action">{s.num}</span>
                 <h3 className="mt-2 font-display text-2xl font-semibold">{s.title}</h3>
                 <p className="mt-3 text-[0.9375rem] text-ink-muted">{s.text}</p>
