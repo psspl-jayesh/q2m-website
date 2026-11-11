@@ -11,6 +11,7 @@ import { SiteFrame, SiteImage, imgMeta, type SiteImg } from '@/components/ui'
 import homeImages from '@/content/shared/home-images.json'
 import stats from '@/content/shared/stats.json'
 import certifications from '@/content/shared/certifications.json'
+import { useBtsPhase } from '@/config/bts'
 
 /** Existing Q2M pages that cover a practice. Practices with no page (agentic commerce, 3D Gaussian splatting) are not linked. */
 const SERVICE_PAGE: Record<string, string> = {
@@ -41,6 +42,16 @@ const Head = ({ eyebrow, title, intro }: { eyebrow: string; title: string; intro
 )
 
 /** Live blog posts shown in "From The Team" on the live home page. */
+/**
+ * After Bengaluru Tech Summit 2026 closes (date in src/config/bts.ts) the BTS items hide: the hero event line, the "Find us at BIEC"
+ * tile, the BTS section and the booking form. The tile grid then re-flows: these two tiles grow so the 4-column grid has no holes.
+ */
+const BTS_TILE = 'BTS 2026'
+const AFTER_BTS_TILE_SIZE: Record<string, { w2?: boolean; h2?: boolean }> = {
+  'Use-case mapping with client teams': { h2: true },
+  'Clinical and lab records, extracted': { w2: true },
+}
+
 const TEAM_POSTS = ['/ai-chatbot-development-strategic-priority-2026/', '/machine-learning-development-scalable-ml-solutions/', '/top-ai-agent-development-companies/']
 
 /**
@@ -57,6 +68,8 @@ export default function HomeFolder() {
   const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
   const msBadges = pageImages(c, '/about/').filter((i) => i.role === 'logo' && /\/microsoft-/.test(i.file))
   const counters = stats.counters.slice(0, 4)
+  const btsOver = useBtsPhase() === 'after'
+  const tiles = btsOver ? h.work.tiles.filter((t) => t.tag !== BTS_TILE).map((t) => ({ ...t, ...AFTER_BTS_TILE_SIZE[t.title] })) : h.work.tiles
   const posts = TEAM_POSTS.map((p) => findEntry(c, p)).filter((e): e is NonNullable<typeof e> => !!e)
   return (
     <>
@@ -75,10 +88,10 @@ export default function HomeFolder() {
             <Reveal delay={0.18}><p className="lede mt-6 max-w-xl text-[1.1875rem] leading-[1.7rem]">{h.hero.lead}</p></Reveal>
             <Reveal delay={0.26}>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button to="/#book">{h.hero.ctas[0].label}</Button>
+                <Button to={btsOver ? '/contact/' : '/#book'}>{h.hero.ctas[0].label}</Button>
                 <Button to="/#services" variant="ghost" arrow={false}>{h.hero.ctas[1].label}</Button>
               </div>
-              <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{h.hero.meta.map((m) => <span key={m}>{m}</span>)}</p>
+              {!btsOver && <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{h.hero.meta.map((m) => <span key={m}>{m}</span>)}</p>}
             </Reveal>
           </div>
           <Reveal delay={0.15} y={0} className="split-main"><DotField className="mx-auto w-full max-w-[520px]" /></Reveal>
@@ -123,8 +136,8 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* BTS 2026 band */}
-      <section id="bts" className="scroll-anchor bg-surface-raised text-ink border-y border-line">
+      {/* BTS 2026 band (hidden after the event) */}
+      {!btsOver && <section id="bts" className="scroll-anchor bg-surface-raised text-ink border-y border-line">
         <div className="container-page split split--lead py-14 md:py-24">
           <div className="split-aside">
             <Reveal>
@@ -140,14 +153,14 @@ export default function HomeFolder() {
             </dl>
           </Reveal>
         </div>
-      </section>
+      </section>}
 
       {/* See the work: live-site topic images; a tile with no matching image keeps the brand dot panel */}
       <section id="work" className="section scroll-anchor">
         <div className="container-page">
           <Head eyebrow={h.work.eyebrow} title={h.work.title} intro={h.work.intro} />
           <StaggerGroup className="mt-12 grid auto-rows-[minmax(150px,1fr)] grid-cols-2 gap-3 md:auto-rows-[minmax(180px,1fr)] md:grid-cols-4 md:gap-4">
-            {h.work.tiles.map((t) => (
+            {tiles.map((t) => (
               <StaggerItem key={t.title} className={`relative min-h-[150px] overflow-hidden rounded-lg border border-line ${t.w2 ? 'col-span-2' : 'col-span-2 md:col-span-1'} ${t.h2 ? 'md:row-span-2' : ''}`}>
                 {topicImg(WORK, t.title) ? <SiteImage image={topicImg(WORK, t.title)!} ratio="auto" sizes="(min-width:768px) 50vw, 100vw" className="absolute inset-0 h-full w-full object-cover" /> : <DotPanel dark={t.dark} className="absolute inset-0" />}
                 <figcaption className="absolute inset-x-3 bottom-3 rounded-md bg-surface p-3 md:inset-x-4 md:bottom-4">
@@ -313,8 +326,8 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* Book a session */}
-      <section id="book" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+      {/* Book a session (hidden after the event) */}
+      {!btsOver && <section id="book" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
         <div className="container-page">
           <Reveal>
             <div className="split rounded-lg bg-tint p-6 md:p-12">
@@ -328,7 +341,7 @@ export default function HomeFolder() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </section>}
     </>
   )
 }

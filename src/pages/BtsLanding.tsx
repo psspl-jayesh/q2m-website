@@ -261,7 +261,7 @@ export default function BtsLanding() {
       {/* FAQ */}
       <section id="faq" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
         <div className="container-page split">
-          <div className="split-aside"><SectionHead eyebrow={page.faq.eyebrow} title={page.faq.title} lede={page.faq.intro} /></div>
+          <div className="split-aside"><SectionHead eyebrow={page.faq.eyebrow} title={page.faq.title} lede={after ? undefined : page.faq.intro} /></div>
           <div className="split-main"><Accordion items={page.faq.items} /></div>
         </div>
       </section>
