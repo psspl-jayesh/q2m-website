@@ -1,0 +1,236 @@
+import home from '@/data/home.json'
+import { Accordion, Button, Reveal, SectionHead, Seo, StaggerGroup, StaggerItem, TextLink } from '@/components/ui'
+import DotField from '@/components/DotField'
+import DotPanel from '@/components/DotPanel'
+import BookingForm from '@/components/BookingForm'
+import { COMPANY } from '@/config/locale'
+
+/** Existing Q2M pages that cover a practice. Practices with no page (agentic commerce, 3D Gaussian splatting) are not linked. */
+const SERVICE_PAGE: Record<string, string> = {
+  'AI smart glasses app development': '/smart-glasses-ar-wearable-app-development-services/',
+  'Agentic AI and intelligent automation': '/ai-agent-development-services/',
+  'AI agent development': '/ai-agent-development-services/',
+  MLOps: '/mlops-consulting-services/',
+  'Microsoft business apps': '/enterprise-business-application/',
+}
+
+const Head = ({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) => (
+  <div className="split split--lead">
+    <div className="split-aside"><SectionHead eyebrow={eyebrow} title={title} /></div>
+    {intro && <Reveal delay={0.1} className="split-main"><p className="text-ink-muted">{intro}</p></Reveal>}
+  </div>
+)
+
+/**
+ * The home page built from the Q2M_Website_Home folder (not on the live site). Kept in the repo, NOT routed.
+ * Sections that exist only here are listed in docs/CONTENT_FLAGS.md for your decision.
+ */
+export default function HomeFolder() {
+  const h = home
+  return (
+    <>
+      <Seo title={h.meta.title} description={h.meta.description} path="/" />
+
+      {/* Hero */}
+      <section className="pb-12 pt-8 md:pb-24 md:pt-16">
+        <div className="container-page split split--lead">
+          <div className="split-aside">
+            <Reveal><p className="eyebrow mb-5">{h.hero.eyebrow}</p></Reveal>
+            <Reveal delay={0.08} y={28}>
+              <h1 className="display-xl">
+                {h.hero.lines.map((l, i) => <span key={i} className={`block ${l.dim ? 'text-grey' : ''}`}>{l.text}</span>)}
+              </h1>
+            </Reveal>
+            <Reveal delay={0.18}><p className="lede mt-6 max-w-xl text-[1.1875rem] leading-[1.7rem]">{h.hero.lead}</p></Reveal>
+            <Reveal delay={0.26}>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button to="/#book">{h.hero.ctas[0].label}</Button>
+                <Button to="/#services" variant="ghost" arrow={false}>{h.hero.ctas[1].label}</Button>
+              </div>
+              <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{h.hero.meta.map((m) => <span key={m}>{m}</span>)}</p>
+            </Reveal>
+          </div>
+          <Reveal delay={0.15} y={0} className="split-main"><DotField className="mx-auto w-full max-w-[520px]" /></Reveal>
+        </div>
+      </section>
+
+      {/* BTS 2026 band */}
+      <section id="bts" className="on-dark scroll-anchor bg-block text-ink-inverse">
+        <div className="container-page split split--lead py-14 md:py-24">
+          <div className="split-aside">
+            <Reveal>
+              <p className="eyebrow mb-4">{h.bts.eyebrow}</p>
+              <h2 className="display-md max-w-2xl">{h.bts.title}</h2>
+              {h.bts.paras.map((p) => <p key={p} className="mt-5 max-w-[36em] text-block-muted">{p}</p>)}
+            </Reveal>
+          </div>
+          <Reveal delay={0.1} className="split-main">
+            <dl className="grid grid-cols-[7rem_1fr] gap-x-4 gap-y-5">
+              {h.bts.facts.map((f) => (<div key={f.k} className="contents"><dt className="mono text-block-muted">{f.k}</dt><dd className="mono !text-[0.9375rem]">{f.v}</dd></div>))}
+            </dl>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* See the work: brand dot panels stand in for the images that have not been supplied */}
+      <section id="work" className="section scroll-anchor">
+        <div className="container-page">
+          <Head eyebrow={h.work.eyebrow} title={h.work.title} intro={h.work.intro} />
+          <StaggerGroup className="mt-12 grid auto-rows-[minmax(150px,1fr)] grid-cols-2 gap-3 md:auto-rows-[minmax(180px,1fr)] md:grid-cols-4 md:gap-4">
+            {h.work.tiles.map((t) => (
+              <StaggerItem key={t.title} className={`relative min-h-[150px] overflow-hidden rounded-lg border border-line ${t.w2 ? 'col-span-2' : ''} ${t.h2 ? 'row-span-2' : ''}`}>
+                <DotPanel dark={t.dark} className="absolute inset-0" />
+                <figcaption className="absolute inset-x-3 bottom-3 rounded-md bg-surface p-3 md:inset-x-4 md:bottom-4">
+                  <span className="mb-1.5 inline-block rounded-sm bg-action px-2 py-0.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-on-action">{t.tag}</span>
+                  <b className="block font-display text-[0.9375rem] font-semibold leading-snug md:text-base">{t.title}</b>
+                </figcaption>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+          <p className="mt-8"><TextLink to="/case-studies/">Read our published case studies</TextLink></p>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page">
+          <Head eyebrow={h.services.eyebrow} title={h.services.title} intro={h.services.intro} />
+          <Reveal>
+            <div className="mt-12 overflow-hidden rounded-lg border border-line">
+              {h.services.items.filter((s) => s.feature).map((s) => (
+                <article key={s.title} className="bg-surface-raised p-6 md:p-10">
+                  <span className="mb-4 inline-block rounded-sm bg-tint px-2 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-action">{s.tag}</span>
+                  <h3 className="max-w-3xl font-display text-[1.75rem] font-bold leading-tight">{s.title}</h3>
+                  <p className="mt-4 max-w-3xl text-ink-muted">{s.text}</p>
+                  <ul className="mt-6 grid gap-x-8 gap-y-2 md:grid-cols-2">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
+                  {SERVICE_PAGE[s.title] && <p className="mt-6"><TextLink to={SERVICE_PAGE[s.title]}>Read more</TextLink></p>}
+                </article>
+              ))}
+              <div className="grid gap-px border-t border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+                {h.services.items.filter((s) => !s.feature).map((s) => (
+                  <article key={s.title} className="flex flex-col bg-surface p-6 md:p-8">
+                    <h3 className="font-display text-xl font-semibold leading-snug">{s.title}</h3>
+                    <p className="mt-3 text-[0.9375rem] text-ink-muted">{s.text}</p>
+                    <ul className="mt-5 space-y-2 text-[0.9375rem]">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
+                    {SERVICE_PAGE[s.title] && <p className="mt-auto pt-6"><TextLink to={SERVICE_PAGE[s.title]}>Read more</TextLink></p>}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section id="industries" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page">
+          <Head eyebrow={h.industries.eyebrow} title={h.industries.title} intro={h.industries.intro} />
+          <StaggerGroup as="ul" className="mt-12 grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+            {h.industries.items.map((i) => (
+              <StaggerItem as="li" key={i.name}>
+                <div className="aspect-[4/3] overflow-hidden rounded-lg border border-line"><DotPanel /></div>
+                <h3 className="mt-5 font-display text-2xl font-semibold">{i.name}</h3>
+                <p className="mt-2 text-ink-muted">{i.text}</p>
+                <p className="mono mt-3 text-action">{i.refs}</p>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page split">
+          <div className="split-aside"><SectionHead eyebrow={h.about.eyebrow} title={h.about.title} /></div>
+          <div className="split-main space-y-6">
+            {h.about.paras.map((p, i) => <Reveal key={i} delay={i * 0.05}><p className={i === 0 ? 'text-xl leading-8' : 'text-ink-muted'}>{p}</p></Reveal>)}
+          </div>
+        </div>
+      </section>
+
+      {/* How we work */}
+      <section id="approach" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page">
+          <Head eyebrow={h.approach.eyebrow} title={h.approach.title} intro={h.approach.intro} />
+          <StaggerGroup as="ol" className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {h.approach.steps.map((s) => (
+              <StaggerItem as="li" key={s.num} className="relative border-t-2 border-ink pt-6 lg:border-t-0 lg:pt-0">
+                <div aria-hidden className="mb-5 hidden items-center lg:flex"><span className="size-3 rounded-full bg-q2m" /><span className="ml-2 h-0.5 flex-1 bg-ink" /></div>
+                <span className="mono text-action">{s.num}</span>
+                <h3 className="mt-2 font-display text-2xl font-semibold">{s.title}</h3>
+                <p className="mt-3 text-[0.9375rem] text-ink-muted">{s.text}</p>
+                <p className="mono mt-4">{s.out}</p>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
+      </section>
+
+      {/* Principles */}
+      <section className="bg-surface-raised py-12 md:py-24 lg:py-32">
+        <div className="container-page">
+          <Head eyebrow={h.principles.eyebrow} title={h.principles.title} intro={h.principles.intro} />
+          <StaggerGroup className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+            {h.principles.items.map((p) => (
+              <StaggerItem key={p.title} className="border-t border-ink pt-5"><h3 className="font-display text-xl font-semibold">{p.title}</h3><p className="mt-3 text-[0.9375rem] text-ink-muted">{p.text}</p></StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
+      </section>
+
+      {/* Technology */}
+      <section className="section">
+        <div className="container-page">
+          <Head eyebrow={h.stack.eyebrow} title={h.stack.title} intro={h.stack.intro} />
+          <StaggerGroup className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {h.stack.groups.map((g) => (
+              <StaggerItem key={g.title} className="rounded-md border border-line bg-surface-raised p-6"><h3 className="font-display text-lg font-semibold">{g.title}</h3><p className="mt-3 text-[0.9375rem] text-ink-muted">{g.text}</p></StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
+        <div aria-hidden className="marquee mt-12 border-y border-line py-5">
+          <div className="marquee-track">{[...h.stack.words, ...h.stack.words].map((w, i) => <span key={i}>{w}</span>)}</div>
+        </div>
+      </section>
+
+      {/* The 30-minute session */}
+      <section className="pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page">
+          <Head eyebrow={h.session.eyebrow} title={h.session.title} intro={h.session.intro} />
+          <StaggerGroup className="mt-12 grid gap-4 md:grid-cols-3">
+            {h.session.steps.map((s) => (
+              <StaggerItem key={s.title} className="rounded-lg border border-line bg-surface-raised p-6 md:p-8">
+                <span className="mono text-action">{s.min}</span><h3 className="mt-4 font-display text-xl font-semibold">{s.title}</h3><p className="mt-3 text-ink-muted">{s.text}</p>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page split">
+          <div className="split-aside"><SectionHead eyebrow={h.faq.eyebrow} title={h.faq.title} lede={h.faq.intro} /></div>
+          <div className="split-main"><Accordion items={h.faq.items} /></div>
+        </div>
+      </section>
+
+      {/* Book a session */}
+      <section id="book" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page">
+          <Reveal>
+            <div className="split rounded-lg bg-tint p-6 md:p-12">
+              <div className="split-aside">
+                <p className="eyebrow mb-4">{h.book.eyebrow}</p>
+                <h2 className="display-md">{h.book.title}</h2>
+                <p className="mt-5 text-ink-muted">{h.book.intro}</p>
+                <p className="mono mt-8">Email: <a className="text-action underline underline-offset-4" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></p>
+              </div>
+              <div className="split-main"><BookingForm industries={h.book.industries} placeholder={h.book.placeholder} note={h.book.note} /></div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  )
+}

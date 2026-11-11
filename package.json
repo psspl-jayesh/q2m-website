@@ -1,0 +1,43 @@
+{
+  "name": "q2m-website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "content": "node scripts/fetch-content.mjs",
+    "seo": "node scripts/generate-seo.mjs",
+    "images": "node scripts/sync-images.mjs && node scripts/optimize-images.mjs",
+    "sync": "node scripts/sync-content.mjs && node scripts/apply-content.mjs && node scripts/verify-content.mjs && node scripts/flags-content.mjs && node scripts/sync-images.mjs && node scripts/optimize-images.mjs && node scripts/generate-seo.mjs",
+    "content:compare": "node scripts/compare-content.mjs",
+    "brand:assets": "node scripts/make-og-image.mjs && node scripts/make-icons.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/sora": "^5.3.0",
+    "@hookform/resolvers": "^7.0.5",
+    "lucide-react": "^1.71.0",
+    "motion": "^14.12.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-hook-form": "^7.91.0",
+    "react-router-dom": "^7.18.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@fontsource/sora": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "cheerio": "^1.2.0",
+    "opentype.js": "^2.0.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  }
+}

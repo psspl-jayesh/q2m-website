@@ -1,0 +1,59 @@
+{
+ "path": "/case-studies/",
+ "slug": "case-studies",
+ "type": "page",
+ "source": "https://q2msolutions.com/case-studies/",
+ "syncedAt": "2026-11-11T08:57:51.263Z",
+ "seo": {
+  "title": "Case Studies - Q2M Solutions",
+  "description": "",
+  "h1": "Case Studies"
+ },
+ "furniture": {
+  "breadcrumb": [
+   "Home",
+   "Case Studies"
+  ],
+  "meta": [],
+  "nav": []
+ },
+ "blocks": [
+  {
+   "t": "h1",
+   "text": "Case Studies"
+  },
+  {
+   "t": "h4",
+   "text": "Rele.one: Building a National Real-Estate Platform with Vibe Coding"
+  },
+  {
+   "t": "btn",
+   "text": "Read The Success Stories",
+   "href": "https://q2msolutions.com/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/"
+  },
+  {
+   "t": "h4",
+   "text": "MindShift: An AI-Powered Personal Growth & Wellbeing App"
+  },
+  {
+   "t": "btn",
+   "text": "Read The Success Stories",
+   "href": "https://q2msolutions.com/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/"
+  },
+  {
+   "t": "h4",
+   "text": "Building a Single Pane of Glass for a 1,500-Truck Fleet"
+  },
+  {
+   "t": "btn",
+   "text": "Read The Success Stories",
+   "href": "https://q2msolutions.com/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/"
+  },
+  {
+   "t": "p",
+   "text": "Load More",
+   "via": "div"
+  }
+ ],
+ "faqs": []
+}

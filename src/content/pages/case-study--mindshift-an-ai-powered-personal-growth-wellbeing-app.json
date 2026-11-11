@@ -1,0 +1,271 @@
+{
+ "path": "/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/",
+ "slug": "case-study--mindshift-an-ai-powered-personal-growth-wellbeing-app",
+ "type": "case-study",
+ "source": "https://q2msolutions.com/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/",
+ "syncedAt": "2026-11-11T08:57:52.185Z",
+ "seo": {
+  "title": "MindShift: An AI-Powered Personal Growth & Wellbeing App - Q2M Solutions",
+  "description": "",
+  "h1": "MindShift: An AI-Powered Personal Growth & Wellbeing App"
+ },
+ "furniture": {
+  "breadcrumb": [],
+  "meta": [],
+  "nav": []
+ },
+ "blocks": [
+  {
+   "t": "h1",
+   "text": "MindShift: An AI-Powered Personal Growth & Wellbeing App",
+   "eyebrow": "CASE STUDY"
+  },
+  {
+   "t": "p",
+   "text": "Designing and building a 24/7 AI coaching, journaling, and mindfulness platform for Avenue Group Australia — from concept to the App Store and Google Play."
+  },
+  {
+   "t": "btn",
+   "text": "Book a Discovery Call",
+   "href": "/contact/"
+  },
+  {
+   "t": "h2",
+   "text": "Executive Summary"
+  },
+  {
+   "t": "p",
+   "text": "Avenue Group Australia set out to build MindShift — a mental-wellbeing and personal-growth app positioned as “a mini therapist in your pocket,” available 24/7. The vision was ambitious: bring real-time AI coaching, guided meditations, journaling, affirmations, focus tools, and a supportive community together in a single, calming, multipurpose app that works for auditory, visual, and text-based learners alike."
+  },
+  {
+   "t": "p",
+   "text": "We partnered with Avenue Group to take MindShift from concept to launch — owning product design, user experience, cross-platform mobile development, and AI integration. The result is a polished app now live on the App Store and Google Play, spanning more than eight growth tools, a 24/7 AI personal coach, wearable integration, and a gamified MindCoins system that lets users unlock premium features without a subscription."
+  },
+  {
+   "t": "p",
+   "text": "This case study covers what we built, the product and engineering approach behind it, and the design decisions that make MindShift both accessible and genuinely engaging."
+  },
+  {
+   "t": "h2",
+   "text": "The Client"
+  },
+  {
+   "t": "p",
+   "text": "Avenue Group Australia, based in Perth, WA, wanted to help people navigate the stress, anxiety, and overthinking of modern life. MindShift was born partly from lived experience with ADHD, which shaped a core commitment: design an app that helps neurodiverse minds find focus and stillness, not one that overwhelms them with noise. The brief called for far more than a meditation library. Avenue Group envisioned an all-in-one companion that could coach, track, motivate, and connect — while remaining free to start, with a fair path to premium value."
+  },
+  {
+   "t": "h2",
+   "text": "The Challenge"
+  },
+  {
+   "t": "p",
+   "text": "Building a multipurpose wellbeing app that stays simple is hard. The project had to reconcile several competing demands:"
+  },
+  {
+   "t": "h3",
+   "text": "Breadth without clutter"
+  },
+  {
+   "t": "p",
+   "text": "Combine 8+ distinct tools — journaling, affirmations, meditation, focus mode, AI coaching, faith content, community — in one app that still feels calm and uncluttered."
+  },
+  {
+   "t": "h3",
+   "text": "A genuinely useful AI coach"
+  },
+  {
+   "t": "p",
+   "text": "Deliver conversational coaching that understands context and adapts to each user's real behaviour, mood, and streaks — not generic scripted replies."
+  },
+  {
+   "t": "h3",
+   "text": "Accessibility for different minds"
+  },
+  {
+   "t": "p",
+   "text": "Serve auditory, visual, and text-based learners, with a purpose-built experience for the ADHD community."
+  },
+  {
+   "t": "h3",
+   "text": "Engagement that lasts"
+  },
+  {
+   "t": "p",
+   "text": "Most people abandon new habits within three months; the app needed mechanics that keep users returning without feeling pushy."
+  },
+  {
+   "t": "h3",
+   "text": "A fair monetisation model"
+  },
+  {
+   "t": "p",
+   "text": "Offer real free value while giving users a no-credit-card way to sample premium — the MindCoins concept."
+  },
+  {
+   "t": "h3",
+   "text": "Cross-platform parity"
+  },
+  {
+   "t": "p",
+   "text": "Ship a consistent, high-quality experience on iOS, Android, and wearables."
+  },
+  {
+   "t": "h2",
+   "text": "Our Solution: What We Built",
+   "eyebrow": "Our Solution"
+  },
+  {
+   "t": "p",
+   "text": "We designed and developed MindShift as a single, cohesive app with a deep feature set. Highlights include:"
+  },
+  {
+   "t": "li",
+   "text": "AI Personal Coach 24/7 conversational coach that supports goal-setting, habit-building, and recovery — adapting to the user's actual behaviour, streaks, and skipped actions."
+  },
+  {
+   "t": "li",
+   "text": "Journaling Guided journaling to organise thoughts, build problem-solving habits, and improve emotional clarity."
+  },
+  {
+   "t": "li",
+   "text": "Affirmation Studio Personalised affirmations that retrain focus toward the positive."
+  },
+  {
+   "t": "li",
+   "text": "Focus Mode & MindShift 30 Distraction-free focus sessions, including a 30-minute deep-focus mode that ends with guided prompts (Insight & Inspiration, Money & Motivation)."
+  },
+  {
+   "t": "li",
+   "text": "Weekly Challenges Habit challenges designed to counter the high early drop-off rate of new routines."
+  },
+  {
+   "t": "li",
+   "text": "Progress Tracker Weekly/monthly tracking of journals, moods, streaks, challenges, and MindCoin history."
+  },
+  {
+   "t": "li",
+   "text": "Coaching Corner Audio sessions on resilience, EQ, leadership, sales confidence, and goal-setting — with offline bookmarking."
+  },
+  {
+   "t": "li",
+   "text": "Faith Module Daily devotionals and a supportive faith community for spiritual reflection."
+  },
+  {
+   "t": "li",
+   "text": "ADHD Community An opt-in social feed with posts, likes, comments, following, and private chat for neurodiverse users."
+  },
+  {
+   "t": "li",
+   "text": "Wearable Integration Mood logs, focus-timer updates, and gentle check-ins delivered to the user's watch."
+  },
+  {
+   "t": "li",
+   "text": "MindCoins Earn coins through app usage and redeem them for premium access — no subscription required."
+  },
+  {
+   "t": "h2",
+   "text": "Product & Engineering Approach"
+  },
+  {
+   "t": "p",
+   "text": "Rather than committing to a single technology at every layer, we selected an architecture built for a smooth cross-platform experience, responsive AI interactions, and reliable offline use. At a high level:"
+  },
+  {
+   "t": "h3",
+   "text": "Cross-platform mobile foundation."
+  },
+  {
+   "t": "p",
+   "text": "A shared codebase approach delivered consistent iOS and Android experiences while allowing platform-native polish where it mattered."
+  },
+  {
+   "t": "h3",
+   "text": "Conversational AI coaching layer."
+  },
+  {
+   "t": "p",
+   "text": "The AI coach interprets chat and journaling context to respond meaningfully and reflect the user's mood and momentum, with guardrails appropriate to a wellbeing product."
+  },
+  {
+   "t": "h3",
+   "text": "Behaviour-aware personalisation."
+  },
+  {
+   "t": "p",
+   "text": "Streaks, skipped actions, and recovery patterns feed back into coaching and challenges so guidance aligns with real behaviour rather than idealized plans."
+  },
+  {
+   "t": "h3",
+   "text": "Offline-first content."
+  },
+  {
+   "t": "p",
+   "text": "Coaching audio and key tools work offline via bookmarking, so support is available regardless of connectivity."
+  },
+  {
+   "t": "h3",
+   "text": "Wearable sync."
+  },
+  {
+   "t": "p",
+   "text": "Lightweight, glanceable interactions extend mood logging and focus timers to the wrist."
+  },
+  {
+   "t": "h3",
+   "text": "Secure, scalable backend."
+  },
+  {
+   "t": "p",
+   "text": "Cloud services handle accounts, content delivery, the community feed, and coin balances, designed to scale as the user base grows."
+  },
+  {
+   "t": "h2",
+   "text": "Design Principles"
+  },
+  {
+   "t": "p",
+   "text": "Every design decision served one goal: give a busy, overloaded mind permission to breathe."
+  },
+  {
+   "t": "h3",
+   "text": "Calm by default"
+  },
+  {
+   "t": "p",
+   "text": "A quiet visual language and uncluttered flows that reduce cognitive load rather than add to it."
+  },
+  {
+   "t": "h3",
+   "text": "Built for every learner"
+  },
+  {
+   "t": "p",
+   "text": "Audio, visual, and text formats for the same content so users engage in the way that suits them."
+  },
+  {
+   "t": "h3",
+   "text": "ADHD-first thinking"
+  },
+  {
+   "t": "p",
+   "text": "Focus tools, gentle nudges, and an opt-in community shaped around neurodiverse needs."
+  },
+  {
+   "t": "h3",
+   "text": "Low-friction onboarding"
+  },
+  {
+   "t": "p",
+   "text": "Start free, no credit card — value first, commitment later"
+  },
+  {
+   "t": "h2",
+   "text": "Conclusion"
+  },
+  {
+   "t": "p",
+   "text": "For Avenue Group Australia, we turned an ambitious vision — a 24/7 AI wellbeing companion built with genuine empathy for neurodiverse users — into a shipped, cross-platform product spanning coaching, journaling, focus, faith, community, and wearables, unified by a fair MindCoins model. MindShift shows how we take a consumer AI concept from first sketch to live app stores: thoughtful UX, dependable engineering, and AI that meets people where they actually are."
+  }
+ ],
+ "faqs": []
+}

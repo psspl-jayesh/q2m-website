@@ -1,0 +1,77 @@
+{
+ "projectsDelivered": {
+  "key": "projectsDelivered",
+  "value": 150,
+  "prefix": "",
+  "suffix": "+",
+  "label": "Projects Delivered",
+  "text": "150+ Projects Delivered",
+  "source": "live home hero: \"150+ Projects Delivered\""
+ },
+ "counters": [
+  {
+   "key": "counter0",
+   "value": 150,
+   "prefix": "",
+   "suffix": "+",
+   "label": "Enterprise projects delivered across India",
+   "source": "live home counter data-to-value"
+  },
+  {
+   "key": "counter1",
+   "value": 40,
+   "prefix": "",
+   "suffix": "%+",
+   "label": "Average reduction in manual processing time",
+   "source": "live home counter data-to-value"
+  },
+  {
+   "key": "counter2",
+   "value": 6,
+   "prefix": "",
+   "suffix": "wk",
+   "label": "Time-to-first-AI-value in production",
+   "source": "live home counter data-to-value"
+  },
+  {
+   "key": "counter3",
+   "value": 2,
+   "prefix": "",
+   "suffix": "",
+   "label": "Microsoft Solution Partner designations",
+   "source": "live home counter data-to-value"
+  },
+  {
+   "key": "counter4",
+   "value": 70,
+   "prefix": "",
+   "suffix": "%",
+   "label": "Faster document and data processing across client deployments",
+   "source": "live home counter data-to-value"
+  },
+  {
+   "key": "counter5",
+   "value": 45,
+   "prefix": "",
+   "suffix": "%",
+   "label": "Average ticket deflection rate for Copilot Studio deployments",
+   "source": "live home counter data-to-value"
+  },
+  {
+   "key": "counter6",
+   "value": 6,
+   "prefix": "",
+   "suffix": "wk",
+   "label": "Median time to first AI value in a production environment",
+   "source": "live home counter data-to-value"
+  },
+  {
+   "key": "counter7",
+   "value": 40,
+   "prefix": "",
+   "suffix": "%+",
+   "label": "Average reduction in manual processing time across Indian clients",
+   "source": "live home counter data-to-value"
+  }
+ ]
+}

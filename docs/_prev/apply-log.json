@@ -1,0 +1,884 @@
+{
+ "cyrillic": [
+  {
+   "path": "/ai-solutions-development/",
+   "loc": "h3#22 text",
+   "before": "Dееp Learning Solutions",
+   "after": "Deep Learning Solutions"
+  },
+  {
+   "path": "/ai-solutions-development/",
+   "loc": "h3#28 text",
+   "before": "AI Modеl Training",
+   "after": "AI Model Training"
+  },
+  {
+   "path": "/azure-database-services/",
+   "loc": "seo title",
+   "before": "Azurе Databasе Sеrvicеs & Solutions",
+   "after": "Azure Database Services & Solutions"
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "loc": "h1#0 text",
+   "before": "Azurе IoT Solution",
+   "after": "Azure IoT Solution"
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "loc": "seo title",
+   "before": "Azurе IoT Solution",
+   "after": "Azure IoT Solution"
+  },
+  {
+   "path": "/data-lake-and-big-data-on-azure/",
+   "loc": "h1#0 text",
+   "before": "Data Lakе and Big Data on Azurе",
+   "after": "Data Lake and Big Data on Azure"
+  },
+  {
+   "path": "/data-lake-and-big-data-on-azure/",
+   "loc": "seo title",
+   "before": "Data Lakе and Big Data on Azurе",
+   "after": "Data Lake and Big Data on Azure"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "AI Solutions Dеvеlopmеnt",
+   "before": "AI Solutions Dеvеlopmеnt",
+   "after": "AI Solutions Development"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Data Lakе And Big Data On Azurе",
+   "before": "Data Lakе And Big Data On Azurе",
+   "after": "Data Lake And Big Data On Azure"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Azurе Databasе Sеrvicеs",
+   "before": "Azurе Databasе Sеrvicеs",
+   "after": "Azure Database Services"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Azurе IoT Solution",
+   "before": "Azurе IoT Solution",
+   "after": "Azure IoT Solution"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Machinе Lеarning Modеls On Azurе",
+   "before": "Machinе Lеarning Modеls On Azurе",
+   "after": "Machine Learning Models On Azure"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Cognitivе Sеrvicе Implеmеntation",
+   "before": "Cognitivе Sеrvicе Implеmеntation",
+   "after": "Cognitive Service Implementation"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Data Stratеgy And Consulting",
+   "before": "Data Stratеgy And Consulting",
+   "after": "Data Strategy And Consulting"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "AI-Powеrеd Analytics",
+   "before": "AI-Powеrеd Analytics",
+   "after": "AI-Powered Analytics"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Businеss Intеlligеncе Solutions",
+   "before": "Businеss Intеlligеncе Solutions",
+   "after": "Business Intelligence Solutions"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Data Govеrnancе And Compliancе",
+   "before": "Data Govеrnancе And Compliancе",
+   "after": "Data Governance And Compliance"
+  },
+  {
+   "path": "shared/menu",
+   "loc": "Advanced Analytics And Data Sciеncе",
+   "before": "Advanced Analytics And Data Sciеncе",
+   "after": "Advanced Analytics And Data Science"
+  }
+ ],
+ "typos": [
+  {
+   "path": "/ai-chatbot-development-company/",
+   "loc": "p#1 text",
+   "before": "results.Whether",
+   "after": "results. Whether",
+   "why": "missing space after full stop (meta description)",
+   "context": "I, and we never sugarcoat our results.Whether you are looking to extend the"
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "loc": "li#48 text",
+   "before": "reversable",
+   "after": "reversible",
+   "why": "misspelling",
+   "context": "lly traceable, trackable, and reversable when required."
+  },
+  {
+   "path": "/ai-consulting-services/",
+   "loc": "p#44 text",
+   "before": "dont just",
+   "after": "don’t just",
+   "why": "missing apostrophe",
+   "context": "agents built by Q2M solutions dont just answer the questions but also"
+  },
+  {
+   "path": "/hire-generative-ai-developers/",
+   "loc": "h3#52 text",
+   "before": "Continous",
+   "after": "Continuous",
+   "why": "misspelling",
+   "context": "Continous Learning Mindset"
+  },
+  {
+   "path": "/hire-generative-ai-developers/",
+   "loc": "li#59 text",
+   "before": "securty",
+   "after": "security",
+   "why": "misspelling",
+   "context": " developers who take privacy, securty, compliance or responsible AI"
+  },
+  {
+   "path": "/machine-learning-development-services/",
+   "loc": "p#59 text",
+   "before": "TesnorFlow",
+   "after": "TensorFlow",
+   "why": "misspelling of a product name",
+   "context": "TesnorFlow PyTorch Scikit-learn Keras Az"
+  }
+ ],
+ "overrides": [
+  {
+   "path": "shared/stats",
+   "loc": "counter0",
+   "before": "Enterprise projects delivered across APAC",
+   "after": "Enterprise projects delivered across India",
+   "why": "region"
+  },
+  {
+   "path": "shared/stats",
+   "loc": "counter7",
+   "before": "Average reduction in manual processing time across APAC clients",
+   "after": "Average reduction in manual processing time across Indian clients",
+   "why": "region"
+  },
+  {
+   "path": "/",
+   "loc": "h1#0 text",
+   "before": "Singapore's Enterprise AI Development Company",
+   "after": "Enterprise AI Development Company in India",
+   "why": "required headline override"
+  },
+  {
+   "path": "/",
+   "loc": "p#1 text",
+   "before": "As a specialist AI development company in Singapore,",
+   "after": "As a specialist AI development company in India,",
+   "why": "region"
+  },
+  {
+   "path": "/",
+   "loc": "stat#19 text",
+   "before": "Enterprise projects delivered across APAC",
+   "after": "Enterprise projects delivered across India",
+   "why": "region"
+  },
+  {
+   "path": "/",
+   "loc": "h3#31 text",
+   "before": "Singapore & APAC presence",
+   "after": "India presence",
+   "why": "region"
+  },
+  {
+   "path": "/",
+   "loc": "p#32 text",
+   "before": "We are governed by the regulations of Singapore, and have Asia Pacific delivery capability.",
+   "after": "We are governed by the regulations of India, and have delivery capability across India.",
+   "why": "region"
+  },
+  {
+   "path": "/",
+   "loc": "stat#115 text",
+   "before": "Average reduction in manual processing time across APAC clients",
+   "after": "Average reduction in manual processing time across Indian clients",
+   "why": "region"
+  },
+  {
+   "path": "/",
+   "loc": "faq2 q",
+   "before": "How does one ensure data security and compliance in Singapore?",
+   "after": "How does one ensure data security and compliance in India?",
+   "why": "FAQ override"
+  },
+  {
+   "path": "/q2m-solutions-is-heading-to-ai4-2026/",
+   "loc": "p#21 text",
+   "before": "Q2M Solutions is Singapore’s enterprise AI development company, delivering 150+ projects across the APAC region from",
+   "after": "Q2M Solutions is an enterprise AI development company in India, delivering 150+ projects across India from",
+   "why": "region (article)"
+  }
+ ],
+ "spelling": 787,
+ "notRewritten": [],
+ "dropped": [
+  {
+   "path": "/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/",
+   "what": "section \"Connect with us!\" (contains Singapore phone / social boilerplate)",
+   "why": "contact data comes from the locale config"
+  },
+  {
+   "path": "/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/",
+   "what": "section \"Social You Just Connected Us\" (contains Singapore phone / social boilerplate)",
+   "why": "contact data comes from the locale config"
+  },
+  {
+   "path": "/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/",
+   "what": "section \"Connect with us!\" (contains Singapore phone / social boilerplate)",
+   "why": "contact data comes from the locale config"
+  },
+  {
+   "path": "/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/",
+   "what": "section \"Social You Just Connected Us\" (contains Singapore phone / social boilerplate)",
+   "why": "contact data comes from the locale config"
+  },
+  {
+   "path": "/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/",
+   "what": "section \"Connect with us!\" (contains Singapore phone / social boilerplate)",
+   "why": "contact data comes from the locale config"
+  },
+  {
+   "path": "/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/",
+   "what": "section \"Social You Just Connected Us\" (contains Singapore phone / social boilerplate)",
+   "why": "contact data comes from the locale config"
+  },
+  {
+   "path": "/contact/",
+   "what": "\"Singapore\" office heading",
+   "why": "office location comes from the locale config (India)"
+  },
+  {
+   "path": "/contact/",
+   "what": "\"Cecil St\"",
+   "why": "Singapore contact detail (not used)"
+  },
+  {
+   "path": "/contact/",
+   "what": "\"143 Cecil Street, 25-03, GB Building, Singapore\"",
+   "why": "Singapore contact detail (not used)"
+  },
+  {
+   "path": "/contact/",
+   "what": "\"+6587430992\"",
+   "why": "Singapore contact detail (not used)"
+  }
+ ],
+ "h1": [
+  {
+   "path": "/ai-agent-development-services/",
+   "action": "live HTML has 2 H1 elements; kept one H1 \"AI Agent Development Services\""
+  },
+  {
+   "path": "/ai-app-development-services/",
+   "action": "live HTML has 2 H1 elements; kept one H1 \"Transform Your Business with AI App Development Services\""
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "action": "live HTML has 2 H1 elements; kept one H1 \"Build AI Chatbots That Actually Resolve What Your Customers Ask\" (the other, \"AI Chatbot Development Company\", is not shown as an H1)"
+  },
+  {
+   "path": "/ai-consulting-services/",
+   "action": "live HTML has 2 H1 elements; kept one H1 \"Plan, Develop, and Scale AI Systems with Expert-Led AI Consulting Serv\""
+  },
+  {
+   "path": "/ai-development-services/",
+   "action": "live HTML has 2 H1 elements; kept one H1 \"Transform Your Business with Our AI Development Services\""
+  },
+  {
+   "path": "/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/",
+   "action": "no H1 on the live page; promoted first heading \"Building a Single Pane of Glass for a 1,500-Truck Fleet\" to H1"
+  },
+  {
+   "path": "/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/",
+   "action": "no H1 on the live page; promoted first heading \"MindShift: An AI-Powered Personal Growth & Wellbeing App\" to H1"
+  },
+  {
+   "path": "/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/",
+   "action": "no H1 on the live page; promoted first heading \"Rele.one: Building a National Real-Estate Platform with Vibe Coding\" to H1"
+  },
+  {
+   "path": "/machine-learning-development-services/",
+   "action": "live HTML has 2 H1 elements; kept one H1 \"Trusted Machine Learning Development Company for Scalable AI Solutions\""
+  }
+ ],
+ "statsDropped": [
+  {
+   "path": "/about/",
+   "original": "95 % Client Satisfaction We Stand Behind",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/about/",
+   "original": "24 Hrs. Average Response Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/about/",
+   "original": "40+ Clients Served",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/about/",
+   "original": "2 Years of Experience",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/about/",
+   "original": "10+ Industry Recognitions",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-agent-development-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-agent-development-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-app-development-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-app-development-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-consulting-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-consulting-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-development-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-development-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-recommendation-systems/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-recommendation-systems/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-solutions-development/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/ai-solutions-development/",
+   "original": "5 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-ai-and-machine-learning/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-ai-and-machine-learning/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-data-ai-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-data-ai-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-data-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-data-services/",
+   "original": "5 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-database-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-database-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/cloud-applications/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/cloud-applications/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/cognitive-service-implementation/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/cognitive-service-implementation/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/cyber-security-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/cyber-security-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/data-lake-and-big-data-on-azure/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/data-lake-and-big-data-on-azure/",
+   "original": "5 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/deep-learning-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/deep-learning-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/digital-sustainability-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/digital-sustainability-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/digital-transformation-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/digital-transformation-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/enterprise-business-application/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/enterprise-business-application/",
+   "original": "5 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/generative-ai-development-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/generative-ai-development-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/generative-ai-integration-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/generative-ai-integration-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/infrastructure-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/infrastructure-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/llm-development-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/llm-development-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/machine-learning-development-services/",
+   "original": "97 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/machine-learning-development-services/",
+   "original": "15 + Industries Served",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/machine-learning-models-on-azure/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/machine-learning-models-on-azure/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/microsoft-fabric-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/microsoft-fabric-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/mlops-consulting-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/mlops-consulting-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/modern-workplace/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/modern-workplace/",
+   "original": "5 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/predictive-analytics-services-2/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/predictive-analytics-services-2/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/predictive-analytics-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/predictive-analytics-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/rag-development-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/rag-development-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/sharepoint-development-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/sharepoint-development-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/smart-glasses-ar-wearable-app-development-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/smart-glasses-ar-wearable-app-development-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/technology-consulting-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/technology-consulting-services/",
+   "original": "5 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/vibe-coding-services/",
+   "original": "98 % Customer Satisfaction",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  },
+  {
+   "path": "/vibe-coding-services/",
+   "original": "3 Mins Average Answer Time",
+   "reason": "No matching value in the shared stats config (live values conflict across pages: 3/5 mins, 98/97/95%, 24 hrs, 120+/50/150 projects). Not shown until you approve a number."
+  }
+ ],
+ "titleLong": [
+  {
+   "path": "/ai-agent-development-cost/",
+   "length": 61,
+   "title": "A Complete Breakdown of the AI Agent Development Cost in 2026"
+  },
+  {
+   "path": "/ai-development-cost/",
+   "length": 101,
+   "title": "A Complete Pricing Guide on AI Development Cost in 2026: Budget, Factors, and Optimisation Strategies"
+  },
+  {
+   "path": "/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/",
+   "length": 71,
+   "title": "Building a Single Pane of Glass for a 1,500-Truck Fleet - Q2M Solutions"
+  },
+  {
+   "path": "/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/",
+   "length": 72,
+   "title": "MindShift: An AI-Powered Personal Growth & Wellbeing App - Q2M Solutions"
+  },
+  {
+   "path": "/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/",
+   "length": 83,
+   "title": "Rele.one: Building a National Real-Estate Platform with Vibe Coding - Q2M Solutions"
+  },
+  {
+   "path": "/cyber-security-services/",
+   "length": 63,
+   "title": "Cyber Security Services & Consulting | Cyber Security Solutions"
+  },
+  {
+   "path": "/generative-ai-app-development-cost/",
+   "length": 61,
+   "title": "Complete Guide for Generative AI App Development Cost in 2026"
+  },
+  {
+   "path": "/generative-ai-development-services/",
+   "length": 62,
+   "title": "Generative AI Development Services | GenAI Development Company"
+  },
+  {
+   "path": "/guide-microsoft-fabric-enables-real-time-analytics/",
+   "length": 67,
+   "title": "Guide: Microsoft Fabric Enables Real-time Analytics - Q2M Solutions"
+  },
+  {
+   "path": "/hire-generative-ai-developers/",
+   "length": 78,
+   "title": "Hire Generative AI Developers to Enhance Your Enterprise AI: An In-Depth Guide"
+  },
+  {
+   "path": "/how-software-consulting-services-help-you-choose-the-right-project-model/",
+   "length": 73,
+   "title": "How Software Consulting Services Help You Choose the Right Project Model?"
+  },
+  {
+   "path": "/impact-of-digital-transformation-in-pharma/",
+   "length": 67,
+   "title": "Discovering The Impact of Digital Transformation in Pharma Industry"
+  },
+  {
+   "path": "/machine-learning-models-on-azure/",
+   "length": 61,
+   "title": "Machine Learning Models on Azure | Machine Learning Solutions"
+  },
+  {
+   "path": "/microsoft-dynamics-365-and-dynamics-365-business-central/",
+   "length": 81,
+   "title": "A Detailed Comparison of Microsoft Dynamics 365 and Dynamics 365 Business Central"
+  },
+  {
+   "path": "/predictive-analytics-services-2/",
+   "length": 72,
+   "title": "Predictive Analytics Services for Startups & Enterprises | Q2M Solutions"
+  },
+  {
+   "path": "/q2m-solutions-is-heading-to-ai4-2026/",
+   "length": 81,
+   "title": "Q2M Solutions is Heading to Ai4 2026: Let's Talk AI Development Services in Vegas"
+  },
+  {
+   "path": "/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/",
+   "length": 74,
+   "title": "SharePoint Framework v1.22.1: A Stability Update Developers Shouldn’t Skip"
+  },
+  {
+   "path": "/the-transformative-power-of-ai-in-software-development/",
+   "length": 72,
+   "title": "Agile Reimagined: The Transformative Power of AI in Software Development"
+  }
+ ],
+ "descLong": [
+  {
+   "path": "/ai-consulting-services/",
+   "length": 168
+  },
+  {
+   "path": "/ai-development-lifecycle/",
+   "length": 162
+  },
+  {
+   "path": "/ai-solutions-development/",
+   "length": 177
+  },
+  {
+   "path": "/azure-database-services/",
+   "length": 165
+  },
+  {
+   "path": "/azure-iot-solution/",
+   "length": 161
+  },
+  {
+   "path": "/data-copilot-for-azure-ai/",
+   "length": 160
+  },
+  {
+   "path": "/digital-sustainability-services/",
+   "length": 164
+  },
+  {
+   "path": "/hire-generative-ai-developers/",
+   "length": 162
+  },
+  {
+   "path": "/how-software-consulting-services-help-you-choose-the-right-project-model/",
+   "length": 160
+  },
+  {
+   "path": "/modern-workplace/",
+   "length": 175
+  }
+ ],
+ "clutchKept": [
+  {
+   "path": "/ai-agent-development-cost/",
+   "text": "Asia Pacific is the fastest-growing market for AI agents, expected to register the highest CAGR by 2",
+   "why": "Cited third-party market statistic: changing the region would falsify the source claim. Needs your decision."
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "text": "Secure-by-Design Architecture Use of Azure Private Endpoints, managed identities, RBAC for conversat",
+   "why": "Singapore regulation names in a compliance claim: not a literal region mention; needs your decision (no DPDP claim added)."
+  },
+  {
+   "path": "/ai-chatbot-development-company/",
+   "text": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, S",
+   "why": "Singapore regulation names in a compliance claim: not a literal region mention; needs your decision (no DPDP claim added)."
+  },
+  {
+   "path": "/",
+   "text": "APAC region",
+   "why": "Part of the award \"Clutch Top AI Developer — APAC region\" (kept as instructed)"
+  },
+  {
+   "path": "/q2m-solutions-is-heading-to-ai4-2026/",
+   "text": "We’re a designated Microsoft Solution Partner for both Data & AI and Digital & App Innovation, hold ",
+   "why": "Award wording kept as instructed"
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://q2msolutions.com/sitemap.xml

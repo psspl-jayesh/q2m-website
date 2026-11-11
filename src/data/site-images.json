@@ -1,0 +1,60 @@
+{
+ "brand": {
+  "logoColor": {
+   "file": "/brand/Q2M_Logo_Color_Transparent.png",
+   "w": 826,
+   "h": 498,
+   "alt": "Q2M Solutions"
+  },
+  "logoReverse": {
+   "file": "/brand/Q2M_Logo_Reverse_Transparent.png",
+   "w": 826,
+   "h": 498,
+   "alt": "Q2M Solutions"
+  }
+ },
+ "favicon": "/images/shared/q2m-icon.svg",
+ "ogDefault": "/brand/og-default.png",
+ "clutch": {
+  "light": {
+   "file": "/images/shared/clutch-logo.svg",
+   "w": 78,
+   "h": 22,
+   "alt": "Clutch"
+  },
+  "dark": {
+   "file": "/images/shared/clutch-logo-white.svg",
+   "w": 78,
+   "h": 22,
+   "alt": "Clutch"
+  }
+ },
+ "badges": [
+  {
+   "file": "/images/shared/clutch-logo-1.png",
+   "w": 300,
+   "h": 85,
+   "alt": "Clutch",
+   "altSource": "needs-review",
+   "role": "badge",
+   "original": "https://q2msolutions.com/wp-content/uploads/2024/03/clutch-logo-1.png",
+   "label": "Clutch",
+   "href": "https://clutch.co/profile/q2m-solutions"
+  },
+  {
+   "file": "/images/shared/google-review.png",
+   "w": 1024,
+   "h": 346,
+   "alt": "Google reviews",
+   "altSource": "needs-review",
+   "role": "badge",
+   "original": "https://q2msolutions.com/wp-content/uploads/2024/03/google-review.png",
+   "label": "Google reviews",
+   "href": null
+  }
+ ],
+ "liveLogosNotUsed": [
+  "/images/shared/q2m-logo-light.svg",
+  "/images/shared/q2m-logo-dark.svg"
+ ]
+}

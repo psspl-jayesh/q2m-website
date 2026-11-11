@@ -1,0 +1,16 @@
+/* Q2M Solutions brand colors and fonts */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+  --q2m-black: #000000;   /* headlines, body text, dark slabs */
+  --q2m-blue: #0075EA;    /* logo dots, icons, fills, large headlines 24px+ */
+  --q2m-action: #0062C4;  /* buttons, links, small blue text */
+  --q2m-grey: #898989;    /* decorative only, never body text */
+  --q2m-muted: #5C6168;   /* secondary text */
+  --q2m-tint: #E6F1FD;    /* callouts, tags */
+  --q2m-surface: #F4F5F7; /* cards, panels */
+  --q2m-line: #E2E4E8;    /* borders */
+  --q2m-white: #FFFFFF;
+  --font-display: "Sora", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}

@@ -1,0 +1,355 @@
+{
+ "path": "/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/",
+ "slug": "case-study--building-a-single-pane-of-glass-for-a-1500-truck-fleet",
+ "type": "case-study",
+ "url": "https://q2msolutions.com/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/",
+ "fetchedAt": "2026-11-11T08:57:52.213Z",
+ "seo": {
+  "title": "Building a Single Pane of Glass for a 1,500-Truck Fleet - Q2M Solutions",
+  "description": "",
+  "h1": "",
+  "h1Count": 0,
+  "canonical": "https://q2msolutions.com/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/"
+ },
+ "blocks": [
+  {
+   "t": "h2",
+   "text": "Building a Single Pane of Glass for a 1,500-Truck Fleet",
+   "eyebrow": "CASE STUDY"
+  },
+  {
+   "t": "p",
+   "text": "A RAG-powered, computer-vision fleet intelligence platform that cut cost leakage by 15% — built on AWS with Snap Spectacles smart glasses for hands-free inspection."
+  },
+  {
+   "t": "btn",
+   "text": "Book a Discovery Call",
+   "href": "/contact/"
+  },
+  {
+   "t": "h2",
+   "text": "Executive Summary"
+  },
+  {
+   "t": "p",
+   "text": "A Denver-based logistics operator running a fleet of 1,500 heavy-duty trucks was losing an estimated 15% of its operating budget to preventable “cost leakage” – undetected mechanical faults, missed maintenance windows, misfiled compliance documents, and insurance claims that could not be substantiated with evidence."
+  },
+  {
+   "t": "p",
+   "text": "The root problem was fragmentation. Fault detection, document management, scheduling, and Engine Control Module (ECM) telematics each lived in a separate, disconnected tool. No single channel gave dispatchers, mechanics, and compliance staff a shared view of a truck’s real condition and history."
+  },
+  {
+   "t": "p",
+   "text": "We designed and delivered a single fleet-intelligence platform on AWS that unifies all four functions. It pairs a Retrieval-Augmented Generation (RAG) knowledge assistant with computer-vision fault detection, a hands-free Snap Spectacles smart-glasses inspection workflow, an intelligent maintenance scheduler, and continuous ECM data ingestion. The same evidence pipeline also powers insurance fraud detection, giving the operator time-stamped, tamper-evident proof for every claim."
+  },
+  {
+   "t": "p",
+   "text": "Within [X] months of rollout, the platform reduced measurable cost leakage by approximately 15% across the fleet."
+  },
+  {
+   "t": "h2",
+   "text": "The Client Challenge"
+  },
+  {
+   "t": "p",
+   "text": "The operator managed a large, aging, high-utilization fleet. Interviews with dispatch, maintenance, and compliance teams surfaced a consistent theme: there was no single channel connecting the data they each depended on. Separately, the operator was losing disputes on insurance claims because it could not produce credible, time-stamped evidence of a vehicle’s condition before and after an incident. Fraudulent and inflated claims went unchallenged."
+  },
+  {
+   "t": "h3",
+   "text": "Fault detection was reactive"
+  },
+  {
+   "t": "p",
+   "text": "Mechanical issues were typically caught only after a breakdown or a roadside inspection failure, driving up towing, downtime, and emergency-repair costs."
+  },
+  {
+   "t": "h3",
+   "text": "Document management was manual"
+  },
+  {
+   "t": "p",
+   "text": "Registrations, inspection reports, driver logs, and maintenance records were scattered across email, shared drives, and paper. Retrieving the right document during an audit could take hours."
+  },
+  {
+   "t": "h3",
+   "text": "Scheduling was guesswork"
+  },
+  {
+   "t": "p",
+   "text": "Preventive maintenance and driver assignments were planned on spreadsheets, with no link to a truck’s actual mechanical condition or ECM telemetry."
+  },
+  {
+   "t": "h3",
+   "text": "ECM data was siloed"
+  },
+  {
+   "t": "p",
+   "text": "Rich engine telemetry — fault codes, fuel burn, idle time, engine load — was locked inside the trucks and rarely correlated with maintenance or cost decisions."
+  },
+  {
+   "t": "h2",
+   "text": "One Platform, Four Capabilities",
+   "eyebrow": "Our Solution"
+  },
+  {
+   "t": "p",
+   "text": "We built a unified fleet-intelligence platform - a genuine single pane of glass - that ingests every relevant data source and exposes it through one web console and one mobile/wearable workflow."
+  },
+  {
+   "t": "li",
+   "text": "Computer-vision fault detection Mechanics and drivers capture vehicle imagery during walkarounds. A custom-trained YOLOv8 object-detection model, complemented by Amazon Rekognition Custom Labels, identifies visible faults — tire wear and damage, brake and rotor issues, fluid leaks, corrosion, and lamp/reflector defects — and grades severity automatically. Detected issues are logged against the specific vehicle and pushed straight into the scheduler."
+  },
+  {
+   "t": "li",
+   "text": "Hands-free inspection with Snap Spectacles Inspections run through Snap Spectacles smart glasses using a custom Lens built with Snap’s Camera Kit / Lens Studio SDK. Technicians keep both hands on the vehicle while the glasses stream first-person imagery to the vision pipeline and surface AR prompts and checklists in their field of view. Every capture is time-stamped and geotagged, creating a defensible inspection record without a single form being filled in by hand."
+  },
+  {
+   "t": "li",
+   "text": "RAG knowledge assistant for documents & ECM At the core is a Retrieval-Augmented Generation assistant that lets any authorized user ask natural-language questions — “When is truck 412 due for service?”, “Show the last three inspection reports for this VIN”, “Which trucks have an open DEF-system fault code?” The assistant is grounded in the client’s own documents and live ECM data, so answers are specific, cited, and auditable rather than generic."
+  },
+  {
+   "t": "li",
+   "text": "Condition-aware scheduler An intelligent scheduler fuses vision findings, ECM fault codes, mileage, and compliance deadlines to generate predictive maintenance and driver-assignment plans. Instead of fixed-interval servicing, trucks are serviced when the data says they need it — cutting both premature maintenance spend and breakdown risk."
+  },
+  {
+   "t": "li",
+   "text": "ECM data pipeline Engine Control Module data streams continuously from the fleet into the platform, where it is normalized, correlated with each vehicle’s record, and made queryable by both the scheduler and the RAG assistant — finally connecting engine reality to business decisions."
+  },
+  {
+   "t": "h2",
+   "text": "Technical Architecture"
+  },
+  {
+   "t": "p",
+   "text": "The platform is a cloud-native, event-driven system built entirely on AWS, combining managed AI services with custom-trained models. The named models and services are summarized below."
+  },
+  {
+   "t": "h2",
+   "text": "AI & machine-learning models"
+  },
+  {
+   "t": "p",
+   "text": "Layer Technology / Model RAG generation (LLM) Anthropic Claude 3.5 Sonnet, served via Amazon Bedrock Text embeddings Amazon Titan Text Embeddings V2 (for semantic retrieval) Knowledge orchestration Amazon Bedrock Knowledge Bases Vector store Amazon OpenSearch Serverless (vector engine) Visual fault detection Custom-trained YOLOv8 + Amazon Rekognition Custom Labels Document / OCR extraction Amazon Textract Fraud & anomaly detection Amazon Fraud Detector + custom XGBoost model on Amazon SageMaker",
+   "via": "div"
+  },
+  {
+   "t": "h2",
+   "text": "Platform & data services"
+  },
+  {
+   "t": "p",
+   "text": "Layer Technology / Model Smart-glasses capture) Snap Spectacles + Snap Camera Kit / Lens Studio SDK Telemetry ingestion AWS IoT Core → Amazon Kinesis Data Streams (ECM data) Scheduling / orchestration AWS Lambda, Amazon EventBridge, AWS Step Functions Storage & data lake Amazon S3, Amazon DynamoDB, Amazon RDS (PostgreSQL) APIs & compute Amazon API Gateway, Amazon ECS Fargate Identity & access Amazon Cognito, AWS IAM Monitoring Amazon CloudWatch, AWS X-Ray",
+   "via": "div"
+  },
+  {
+   "t": "h2",
+   "text": "How The Data Flows"
+  },
+  {
+   "t": "h6",
+   "text": "Step"
+  },
+  {
+   "t": "p",
+   "text": "01",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Capture"
+  },
+  {
+   "t": "p",
+   "text": "Snap Spectacles and mobile devices send inspection imagery to Amazon S3; ECM telemetry streams through AWS IoT Core and Kinesis."
+  },
+  {
+   "t": "p",
+   "text": "02",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Understand"
+  },
+  {
+   "t": "p",
+   "text": "YOLOv8 and Rekognition analyze imagery for faults; Textract extracts structured data from documents; embeddings are written to OpenSearch."
+  },
+  {
+   "t": "p",
+   "text": "03",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Reason"
+  },
+  {
+   "t": "p",
+   "text": "The Bedrock-hosted Claude assistant retrieves the right documents and ECM records to answer questions and summarize vehicle condition."
+  },
+  {
+   "t": "p",
+   "text": "04",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Act"
+  },
+  {
+   "t": "p",
+   "text": "The scheduler converts findings into work orders and assignments; anomalies are routed to the fraud-detection model for review."
+  },
+  {
+   "t": "h2",
+   "text": "Insurance Fraud Detection"
+  },
+  {
+   "t": "p",
+   "text": "Because every inspection is captured through smart glasses with a time stamp, geotag, and vehicle ID, the platform produces a tamper-evident evidence trail for each truck. This same data pipeline directly strengthens insurance operations:"
+  },
+  {
+   "t": "h3",
+   "text": "Pre/post-incident evidence"
+  },
+  {
+   "t": "p",
+   "text": "Adjusters can retrieve the vehicle’s documented condition immediately before and after an incident, making inflated or fabricated damage claims easy to challenge."
+  },
+  {
+   "t": "h3",
+   "text": "Anomaly scoring"
+  },
+  {
+   "t": "p",
+   "text": "Amazon Fraud Detector and a custom SageMaker model score each claim against historical patterns, ECM data, and inspection history, flagging inconsistencies for human review."
+  },
+  {
+   "t": "h3",
+   "text": "Faster, defensible payouts"
+  },
+  {
+   "t": "p",
+   "text": "Legitimate claims are substantiated instantly with cited evidence, while suspicious ones are surfaced before payment."
+  },
+  {
+   "t": "h2",
+   "text": "Project Highlights"
+  },
+  {
+   "t": "h2",
+   "text": "Results"
+  },
+  {
+   "t": "p",
+   "text": "The unifying effect of a single channel - detection, documents, scheduling, and ECM data in one place - translated directly into recovered spend."
+  },
+  {
+   "t": "h3",
+   "text": "15% Reduction"
+  },
+  {
+   "t": "p",
+   "text": "Fleet cost leakage"
+  },
+  {
+   "t": "h3",
+   "text": "85% Reduction"
+  },
+  {
+   "t": "p",
+   "text": "Preventable breakdowns / unplanned downtime"
+  },
+  {
+   "t": "h3",
+   "text": "42% Faster"
+  },
+  {
+   "t": "p",
+   "text": "Inspection time per vehicle"
+  },
+  {
+   "t": "h3",
+   "text": "15% Of Claims"
+  },
+  {
+   "t": "p",
+   "text": "Insurance claims substantiated with evidence"
+  },
+  {
+   "t": "h2",
+   "text": "Why It Worked"
+  },
+  {
+   "t": "h3",
+   "text": "One channel eliminated the leaks"
+  },
+  {
+   "t": "p",
+   "text": "Cost leakage thrived in the gaps between disconnected tools; unifying them closed those gaps."
+  },
+  {
+   "t": "h3",
+   "text": "Condition-based, not calendar-based"
+  },
+  {
+   "t": "p",
+   "text": "Servicing trucks on real ECM and vision data removed both wasted maintenance and surprise breakdowns."
+  },
+  {
+   "t": "h3",
+   "text": "Evidence by default"
+  },
+  {
+   "t": "p",
+   "text": "Hands-free, time-stamped capture made audits and insurance disputes fast and winnable."
+  },
+  {
+   "t": "h2",
+   "text": "Conclusion"
+  },
+  {
+   "t": "p",
+   "text": "By replacing four disconnected tools with a single AWS-based intelligence platform – RAG, computer vision, smart-glasses capture, an intelligent scheduler, and live ECM data – the operator turned scattered data into recovered budget and defensible evidence. The result: roughly 15% less cost leakage across 1,500 trucks, faster maintenance decisions, and a fraud-resistant insurance process."
+  },
+  {
+   "t": "h2",
+   "text": "Connect with us!"
+  },
+  {
+   "t": "p",
+   "text": "Ready to take the first step towards unlocking opportunities, realizing goals, and embracing innovation? We are here and eager to connect."
+  },
+  {
+   "t": "h4",
+   "text": "To More Inquiry"
+  },
+  {
+   "t": "p",
+   "text": "+6587430992"
+  },
+  {
+   "t": "h4",
+   "text": "To Send Email"
+  },
+  {
+   "t": "p",
+   "text": "info@q2msolutions.com"
+  },
+  {
+   "t": "h2",
+   "text": "Social You Just Connected Us"
+  },
+  {
+   "t": "p",
+   "text": "Linkedin Instagram Facebook",
+   "via": "div"
+  }
+ ],
+ "faqs": [],
+ "skipped": {
+  "deco": [],
+  "noise": []
+ }
+}

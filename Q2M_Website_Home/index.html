@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Q2M Solutions | AI Agents, Automation and Smart Glasses Apps, India</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Q2M Solutions builds AI agents, intelligent automation and smart-glasses apps for automotive, insurance, health, real estate, fintech and BPO teams. Meet us at Bengaluru Tech Summit 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: left-aligned 12-col page; hero = headline left, live dot-arrow field right; one black band for BTS; black footer. */
+:root {
+  --surface: #ffffff;
+  --surface-raised: #f4f5f7;
+  --ink: #000000;
+  --ink-muted: #5c6168;
+  --line: #e2e4e8;
+  --q2m-blue: #0075ea;
+  --action: #0062c4;
+  --on-action: #ffffff;
+  --q2m-grey: #898989;
+  --block-dark: #000000;
+  --ink-inverse: #ffffff;
+  --ink-inverse-muted: #b5b9bf;
+  --tint-blue: #e6f1fd;
+  --focus: #0062c4;
+  --dot-idle: #d5d8dd;
+  --font-display: "Sora", "DM Sans", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 16px;
+  --max: 1200px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: #0b0d10; --surface-raised: #15181d; --ink: #f4f6f8; --ink-muted: #a3a9b0; --line: #2a2e35;
+    --q2m-blue: #3d96f5; --action: #3d96f5; --on-action: #04121f; --block-dark: #1e232a; --ink-inverse: #f4f6f8;
+    --ink-inverse-muted: #a3a9b0; --tint-blue: #10233a; --focus: #7cb8ff; --dot-idle: #2a2e35; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --surface: #0b0d10; --surface-raised: #15181d; --ink: #f4f6f8; --ink-muted: #a3a9b0; --line: #2a2e35;
+  --q2m-blue: #3d96f5; --action: #3d96f5; --on-action: #04121f; --block-dark: #1e232a; --ink-inverse: #f4f6f8;
+  --ink-inverse-muted: #a3a9b0; --tint-blue: #10233a; --focus: #7cb8ff; --dot-idle: #2a2e35; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--surface); color: var(--ink); font: 400 16px/1.5 var(--font-body); margin: 0; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: var(--action); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+.eyebrow { font: 700 12px/16px var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--action); margin: 0 0 12px; }
+h1, h2, h3 { font-family: var(--font-display); color: var(--ink); text-wrap: balance; margin: 0; }
+h2 { font-weight: 700; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; letter-spacing: -.015em; }
+h3 { font-weight: 600; font-size: 20px; line-height: 28px; }
+.mono { font-family: var(--font-mono); font-weight: 500; font-size: 13px; }
+.tbc { background: var(--tint-blue); color: var(--ink); padding: 0 6px; border-radius: var(--radius-sm); }
+
+/* Logo theme swap */
+.logo-dark { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo-light { display: none; } :root:not([data-theme="light"]) .logo-dark { display: block; } }
+:root[data-theme="dark"] .logo-light { display: none; }
+:root[data-theme="dark"] .logo-dark { display: block; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 16px/1 var(--font-body); padding: 14px 20px; border-radius: var(--radius-md); text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .15s ease, background-color .15s ease; }
+.btn-primary { background: var(--action); color: var(--on-action); }
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-ghost { color: var(--ink); border-color: var(--line); background: transparent; }
+.btn-ghost:hover { border-color: var(--ink-muted); }
+.btn svg { width: 16px; height: 16px; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--surface); }
+.nav-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.nav-logo img { height: 40px; width: auto; }
+.nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; }
+.nav-links a:hover { color: var(--action); }
+.nav .btn { padding: 10px 16px; font-size: 14px; }
+@media (max-width: 860px) { .nav-links { display: none; } }
+
+/* Hero */
+.hero { padding-block: 56px 72px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; }
+.hero h1 { font-weight: 700; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -.03em; }
+.hero h1 .dim { color: var(--q2m-grey); }
+.hero .lead { font-size: 19px; line-height: 30px; color: var(--ink-muted); max-width: 34em; margin: 24px 0 32px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 36px; color: var(--ink-muted); }
+.field { position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 520px; justify-self: end; }
+.field canvas { width: 100%; height: 100%; display: block; }
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .field { max-width: 240px; justify-self: start; order: -1; }
+  .hero { padding-block: 32px 56px; }
+}
+
+/* BTS band */
+.bts { background: var(--block-dark); color: var(--ink-inverse); }
+.bts-in { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; padding-block: 56px; align-items: center; }
+.bts h2 { color: var(--ink-inverse); }
+.bts p { color: var(--ink-inverse-muted); margin: 16px 0 0; max-width: 36em; }
+.bts .eyebrow { color: var(--q2m-blue); }
+.bts dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px 24px; margin: 0; }
+.bts dt { font: 700 12px/20px var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-inverse-muted); }
+.bts dd { margin: 0; font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--ink-inverse); }
+.bts .tbc { background: #2a2e35; color: #ffffff; }
+@media (max-width: 860px) { .bts-in { grid-template-columns: minmax(0, 1fr); } }
+
+/* Sections */
+.section { padding-block: 88px; }
+.section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 48px; align-items: end; margin-bottom: 40px; }
+.section-head p { color: var(--ink-muted); margin: 0; max-width: 34em; }
+@media (max-width: 860px) { .section { padding-block: 56px; } .section-head { grid-template-columns: minmax(0, 1fr); } }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+.svc { background: var(--surface); padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+.svc p { margin: 0; color: var(--ink-muted); }
+.svc .tag { align-self: flex-start; font: 700 11px/16px var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); background: var(--tint-blue); padding: 4px 8px; border-radius: var(--radius-sm); }
+.svc.feature { grid-column: 1 / -1; background: var(--surface-raised); padding: 36px 28px; }
+.svc.feature h3 { font-size: 28px; line-height: 34px; }
+.svc.feature p { max-width: 52em; font-size: 17px; line-height: 27px; }
+@media (max-width: 980px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .services { grid-template-columns: minmax(0, 1fr); } .svc, .svc.feature { padding: 24px 20px; } }
+
+/* Image slots: dot-pattern placeholders until real photos arrive. Swap .ph for <img> inside .media. */
+.media { position: relative; overflow: hidden; background: var(--surface-raised); border-radius: var(--radius-md); }
+.media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 16px;
+  background-color: var(--surface-raised);
+  background-image: radial-gradient(circle, var(--dot-idle) 1.6px, transparent 1.7px);
+  background-size: 16px 16px; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.ph svg { width: 28px; height: 28px; color: var(--q2m-blue); }
+.ph .ph-label { font: 500 12px/16px var(--font-mono); color: var(--ink-muted); background: var(--surface); padding: 4px 8px; border-radius: var(--radius-sm); max-width: 90%; }
+@media (prefers-reduced-motion: no-preference) {
+  .ph { animation: drift 14s linear infinite; }
+  @keyframes drift { to { background-position: 16px 16px; } }
+}
+
+/* Bento showcase */
+.bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 220px; gap: 16px; grid-auto-flow: dense; }
+.tile { position: relative; margin: 0; border-radius: var(--radius-lg); overflow: hidden; isolation: isolate; }
+.tile .media { position: absolute; inset: 0; border-radius: 0; }
+.tile.w2 { grid-column: span 2; } .tile.h2 { grid-row: span 2; }
+.tile figcaption { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; transition: transform .35s ease; }
+.tile figcaption .tag { font: 700 11px/16px var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--on-action); background: var(--action); padding: 4px 8px; border-radius: var(--radius-sm); }
+.tile figcaption b { font: 600 17px/22px var(--font-display); color: var(--ink); background: var(--surface); padding: 8px 12px; border-radius: var(--radius-md); }
+.tile .ph { justify-content: flex-start; align-items: flex-end; padding-top: 16px; }
+.tile:hover .media img, .tile:hover .ph, .card:hover .media img, .card:hover .ph { transform: scale(1.04); }
+.tile:hover figcaption { transform: translateY(-4px); }
+.tile.dark .ph { background-color: var(--block-dark); background-image: radial-gradient(circle, var(--q2m-blue) 1.6px, transparent 1.7px); }
+.tile.dark .ph .ph-label { background: var(--surface-raised); }
+@media (max-width: 980px) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 200px; } }
+@media (max-width: 600px) { .bento { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 240px; } .tile.w2 { grid-column: auto; } .tile.h2 { grid-row: span 1; } }
+
+/* Industries: image cards */
+.ind { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; }
+.card { display: flex; flex-direction: column; gap: 12px; }
+.card .media { aspect-ratio: 4 / 3; max-width: 100%; }
+.card .name { font: 600 21px/28px var(--font-display); transition: color .2s ease; }
+.card .what { color: var(--ink-muted); margin: 0; }
+.card .svc-ref { color: var(--action); }
+.card:hover .name { color: var(--action); }
+@media (max-width: 980px) { .ind { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .ind { grid-template-columns: minmax(0, 1fr); } }
+
+
+/* Service bullets */
+.ticks { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; font-size: 15px; }
+.ticks li { position: relative; padding-left: 18px; }
+.ticks li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--q2m-blue); }
+.svc.feature .ticks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; max-width: 52em; }
+@media (max-width: 600px) { .svc.feature .ticks { grid-template-columns: minmax(0, 1fr); } }
+
+/* Phases */
+.phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.phases li { padding: 24px 24px 0 0; display: flex; flex-direction: column; gap: 10px; position: relative; }
+.phases li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--q2m-blue); box-shadow: 0 0 0 4px var(--surface); }
+.phases .num { color: var(--action); }
+.phases p { margin: 0; color: var(--ink-muted); }
+.phases .out { color: var(--ink); font-size: 12px; line-height: 18px; margin-top: 4px; }
+@media (max-width: 980px) { .phases { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 0; } }
+@media (max-width: 600px) { .phases { grid-template-columns: minmax(0, 1fr); border-top: 0; border-left: 2px solid var(--ink); gap: 28px; } .phases li { padding: 0 0 0 24px; } .phases li::before { top: 4px; left: -7px; } }
+
+/* Principles */
+.principles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.principles > div { border-top: 1px solid var(--line); padding-top: 20px; }
+.principles p { margin: 8px 0 0; color: var(--ink-muted); }
+@media (max-width: 980px) { .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .principles { grid-template-columns: minmax(0, 1fr); } }
+
+/* Stack + marquee */
+.stack { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.stack > div { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 20px; }
+.stack h3 { font-size: 17px; line-height: 24px; }
+.stack p { margin: 8px 0 0; color: var(--ink-muted); font-size: 15px; }
+@media (max-width: 980px) { .stack { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .stack { grid-template-columns: minmax(0, 1fr); } }
+.marquee { margin-top: 40px; overflow: hidden; border-block: 1px solid var(--line); padding-block: 18px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.marquee-track { display: flex; gap: 48px; width: max-content; font: 600 clamp(22px, 3vw, 34px)/1.1 var(--font-display); color: var(--q2m-grey); white-space: nowrap; }
+.marquee-track span::after { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--q2m-blue); margin-left: 48px; vertical-align: middle; }
+@media (prefers-reduced-motion: no-preference) { .marquee-track { animation: scrollx 40s linear infinite; } @keyframes scrollx { to { transform: translateX(-50%); } } }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; }
+.faq-intro { color: var(--ink-muted); margin-top: 16px; }
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 20px 0; font: 600 18px/26px var(--font-display); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary svg { width: 18px; height: 18px; flex: none; color: var(--action); transition: transform .25s ease; }
+.faq details[open] summary svg { transform: rotate(180deg); }
+.faq .ans p { margin: 0 0 20px; color: var(--ink-muted); max-width: 40em; }
+.faq summary:hover { color: var(--action); }
+@media (max-width: 860px) { .faq-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+
+
+/* About */
+.about-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; }
+.about-copy p { margin: 0 0 16px; font-size: 17px; line-height: 28px; color: var(--ink-muted); max-width: 40em; }
+.about-copy p:first-child { color: var(--ink); font-size: 19px; line-height: 30px; }
+.bts p + p { margin-top: 12px; }
+@media (max-width: 860px) { .about-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+
+
+/* Team */
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; }
+.person { display: flex; flex-direction: column; gap: 8px; }
+.person .media { aspect-ratio: 1 / 1; max-width: 100%; margin-bottom: 8px; }
+.person .role { color: var(--action); margin: 0; }
+.person .bio { color: var(--ink-muted); margin: 0; }
+.person p { margin: 0; }
+@media (max-width: 860px) { .team { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .team { grid-template-columns: minmax(0, 1fr); } }
+
+/* Scroll reveal: only applied to content below the first screen, so the page is complete at rest. */
+.pre { opacity: 0; transform: translateY(24px); }
+.rv { transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+
+/* Session steps */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; counter-reset: s; }
+.step { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 28px; }
+.step .min { color: var(--action); }
+.step h3 { margin: 12px 0 8px; }
+.step p { margin: 0; color: var(--ink-muted); }
+@media (max-width: 860px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+
+/* Booking */
+.book { background: var(--tint-blue); border-radius: var(--radius-lg); padding: 48px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; }
+.book p { color: var(--ink-muted); }
+.book .contact { margin-top: 24px; display: grid; gap: 6px; }
+form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fld { display: grid; gap: 6px; }
+.fld.full { grid-column: 1 / -1; }
+label { font-weight: 500; font-size: 14px; }
+input, select, textarea { font: 400 16px/1.4 var(--font-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px; width: 100%; }
+input:focus, select:focus, textarea:focus { border-color: var(--action); outline: 2px solid var(--focus); outline-offset: 0; }
+textarea { min-height: 96px; resize: vertical; }
+.form-note { grid-column: 1 / -1; font-size: 14px; color: var(--ink-muted); margin: 0; }
+.form-msg { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--action); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 15px; margin: 0; }
+@media (max-width: 860px) { .book { grid-template-columns: minmax(0, 1fr); padding: 28px 20px; gap: 32px; } form { grid-template-columns: minmax(0, 1fr); } }
+
+/* Footer */
+footer { background: var(--block-dark); color: var(--ink-inverse-muted); margin-top: 88px; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; padding-block: 48px; align-items: flex-start; }
+.foot img { height: 56px; width: auto; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.foot a { color: var(--ink-inverse); text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+.foot .legal { flex-basis: 100%; border-top: 1px solid #2a2e35; padding-top: 20px; font-size: 14px; }
+.foot .tbc { background: #2a2e35; color: #ffffff; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .rv, .ph, .media img, .tile figcaption, .marquee-track { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="nav-logo" href="#top" aria-label="Q2M Solutions home">
+      <img class="logo-light" src="images/q2m-logo.png" alt="Q2M Solutions">
+      <img class="logo-dark" src="images/q2m-logo-reverse.png" alt="Q2M Solutions">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#bts">BTS 2026</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#book">Book a session</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">AI engineering studio · India</p>
+        <h1>Put AI to work <span class="dim">inside your</span> operations.</h1>
+        <p class="lead">Q2M builds AI agents, intelligent automation and smart-glasses apps for automotive, insurance, health, real estate, fintech and BPO teams. We take a use case from first workshop to a system your people use every day.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#book">Book a 30-minute AI session
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#services">See what we build</a>
+        </div>
+        <div class="hero-meta mono">
+          <span>Bengaluru Tech Summit 2026</span>
+          <span>BIEC, Bengaluru</span>
+          <span>Stand <span class="tbc">[TBC]</span></span>
+        </div>
+      </div>
+      <div class="field" aria-hidden="true"><canvas id="dots"></canvas></div>
+    </div>
+  </section>
+
+  <section class="bts" id="bts">
+    <div class="wrap bts-in">
+      <div>
+        <p class="eyebrow">Meet us at BTS 2026</p>
+        <h2>Bring one process. Leave with an AI plan for it.</h2>
+        <p>Book a 30-minute session at our stand. Tell us where work piles up, and we will map an AI agent or automation that fits your systems, with a rough scope and timeline.</p>
+        <p>To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one. If you are not sure where AI fits yet, come for the demos: try the smart glasses, watch an agent work through a stack of documents and ask the team anything.</p>
+      </div>
+      <dl>
+        <dt>Event</dt><dd>Bengaluru Tech Summit 2026</dd>
+        <dt>Venue</dt><dd>BIEC, Tumkur Road, Bengaluru</dd>
+        <dt>Dates</dt><dd><span class="tbc">[TBC]</span> November 2026</dd>
+        <dt>Stand</dt><dd><span class="tbc">[TBC]</span></dd>
+        <dt>Live demos</dt><dd>Smart glasses · AI agents</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">In action</p>
+          <h2>See the work</h2>
+        </div>
+        <p>Demos, captures and screens from what we build. Come see the smart-glasses and agent demos live at our stand.</p>
+      </div>
+      <div class="bento">
+        <figure class="tile w2 h2" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1600 × 1200 · technician wearing glasses beside a car</span></div></div><figcaption><span class="tag">Live demo</span><b>Guided vehicle inspection on smart glasses</b></figcaption></figure>
+        <figure class="tile w2" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1600 × 800 · agent console screenshot</span></div></div><figcaption><span class="tag">AI agents</span><b>A claims agent reading and routing documents</b></figcaption></figure>
+        <figure class="tile h2 dark" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 800 × 1200 · 3D splat render</span></div></div><figcaption><span class="tag">3D capture</span><b>Gaussian splat of a property, viewed in the browser</b></figcaption></figure>
+        <figure class="tile " data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 800 × 800 · team at a whiteboard</span></div></div><figcaption><span class="tag">Workshops</span><b>Use-case mapping with client teams</b></figcaption></figure>
+        <figure class="tile w2 dark" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1600 × 800 · booth photo or render</span></div></div><figcaption><span class="tag">BTS 2026</span><b>Find us at BIEC, Bengaluru</b></figcaption></figure>
+        <figure class="tile " data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 800 × 800 · extracted document UI</span></div></div><figcaption><span class="tag">Document AI</span><b>Clinical and lab records, extracted</b></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Services</p>
+          <h2>What we build</h2>
+        </div>
+        <p>Seven practices, one team. Most projects combine two or three: an agent that reads documents, a dashboard that tracks it, and the cloud setup that keeps it running. Because one team covers all of them, you have one partner to call when something needs to change.</p>
+      </div>
+      <div class="services">
+        <article data-reveal class="svc feature"><span class="tag">Live demo at BTS</span><h3>AI smart glasses app development</h3><p>Smart glasses put instructions, cameras and an AI assistant in front of the people who work with their hands. We build apps that let a technician see the next step of an inspection, call a remote expert who sees what they see, and capture photos and video without stopping work. We build for Meta, XREAL, Snap Spectacles and MentraOS glasses, and we pick the device that suits the job, the budget and the environment.</p><ul class="ticks"><li>Guided inspections and checklists, hands-free</li><li>Remote expert calls with live video from the wearer</li><li>Photo, video and voice notes tagged to the job</li><li>AI that reads labels, parts and damage in view</li></ul></article>
+        <article data-reveal class="svc "><h3>Agentic AI and intelligent automation</h3><p>Many back-office tasks follow the same pattern: read something, check it against a rule or a system, decide, then update a record. We build agents that run these tasks end to end across email, documents, CRM and ERP. People stay in charge of the steps that carry risk, approving or correcting what the agent proposes.</p><ul class="ticks"><li>Process mapping before any build</li><li>Human approval on high-risk steps</li><li>Audit trail for every action an agent takes</li></ul></article>
+        <article data-reveal class="svc "><h3>AI agent development</h3><p>Custom agents for support, sales operations, claims, onboarding and internal knowledge. Each agent is connected to your own data and tools, scoped to a clear job, and tested against real examples from your business before it goes live.</p><ul class="ticks"><li>Grounded answers from your documents</li><li>Connections to your CRM, ticketing and databases</li><li>Evaluation sets built from your real cases</li></ul></article>
+        <article data-reveal class="svc "><h3>Agentic commerce (ACP/UCP) readiness</h3><p>Shoppers are starting to ask AI assistants to find and buy products for them. New protocols such as ACP and UCP define how those agents read a catalogue and complete a checkout. We review your product data, policies and checkout flow and make the changes needed so agents can find, compare and buy from you.</p><ul class="ticks"><li>Catalogue and product data review</li><li>Checkout and policy changes for agent buyers</li><li>Testing with agent shopping flows</li></ul></article>
+        <article data-reveal class="svc "><h3>3D Gaussian splatting</h3><p>Gaussian splatting turns ordinary phone or camera video into a photoreal 3D scene that runs in a web browser or headset. It suits property tours, site records, vehicle condition reports and training material, where a flat photo leaves too much out.</p><ul class="ticks"><li>Capture guidance for your team</li><li>Browser and headset viewers</li><li>Measurements and annotations in the scene</li></ul></article>
+        <article data-reveal class="svc "><h3>MLOps</h3><p>A model that works in a demo can drift once real data arrives. We set up the deployment, monitoring and retraining pipelines that keep models accurate and costs predictable after launch, on the cloud you already use.</p><ul class="ticks"><li>Model deployment and versioning</li><li>Monitoring for accuracy, drift and cost</li><li>Retraining and rollback pipelines</li></ul></article>
+        <article data-reveal class="svc "><h3>Microsoft business apps</h3><p>If your company runs on Microsoft 365, the fastest route to AI is often through the tools your staff already open every day. We build Power Platform apps, Dynamics 365 extensions and Copilot solutions that fit your existing licences and security setup.</p><ul class="ticks"><li>Power Apps and Power Automate flows</li><li>Dynamics 365 customisation</li><li>Copilot agents for Microsoft 365</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="industries" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Industries</p>
+          <h2>Where we work</h2>
+        </div>
+        <p>We start from the workflow, not the model. These are the problems we are asked about most in each sector.</p>
+      </div>
+      <ul class="ind">
+        <li class="card" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1200 × 900 · vehicle inspection</span></div></div><span class="name">Automotive</span><p class="what">Dealers, workshops and plants run inspections that depend on a trained eye and a paper checklist. We build smart-glasses apps and vision models that guide each check, spot damage and log results with photos, so reports are consistent from one technician to the next.</p><span class="svc-ref mono">Glasses · Vision · 3D</span></li>
+        <li class="card" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1200 × 900 · claims desk or damage photo</span></div></div><span class="name">Insurance</span><p class="what">Claims arrive as emails, scanned forms, photos and phone notes. Our agents read each one, pull out the key fields, check them against the policy and route the claim to the right handler, with a summary ready before anyone opens the file.</p><span class="svc-ref mono">Agents · Automation</span></li>
+        <li class="card" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1200 × 900 · lab or clinical setting</span></div></div><span class="name">Life sciences, health and biotech</span><p class="what">Clinical, lab and quality teams spend hours moving data between records. We build document AI that extracts and checks that data, flags gaps for review and keeps a clear record of what was changed and by whom.</p><span class="svc-ref mono">Agents · MLOps</span></li>
+        <li class="card" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1200 × 900 · property interior or 3D tour</span></div></div><span class="name">Real estate</span><p class="what">A 3D capture lets a buyer walk through a property before they visit. We turn phone video into browser tours and pair them with assistants that answer enquiries, book viewings and keep listings up to date.</p><span class="svc-ref mono">3D · Agents</span></li>
+        <li class="card" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1200 × 900 · onboarding app screen</span></div></div><span class="name">Fintech</span><p class="what">Onboarding and reconciliation involve many small checks across documents and systems. We automate the routine checks, send the exceptions to a person with the evidence attached, and keep the full trail for audit.</p><span class="svc-ref mono">Automation · Microsoft</span></li>
+        <li class="card" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.75" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Image slot · 1200 × 900 · contact centre floor</span></div></div><span class="name">BPO</span><p class="what">Contact centres handle thousands of conversations a day. We build analytics that show why customers get in touch, and agents that draft replies, route tickets and hand complex cases to the right team.</p><span class="svc-ref mono">Agents · MLOps</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section about" id="about" style="padding-top:0">
+    <div class="wrap about-grid">
+      <div data-reveal>
+        <p class="eyebrow">About Q2M</p>
+        <h2>A young AI company built around delivery</h2>
+      </div>
+      <div class="about-copy" data-reveal>
+        <p>Q2M Solutions Pvt Ltd is an Indian startup that turns AI ideas into working software. Our team combines engineers who build agents and data pipelines, developers who ship apps for smart glasses and XR headsets, and consultants who understand how operations teams actually work.</p>
+        <p>We started Q2M because we saw the same pattern again and again: companies run AI experiments that impress in a meeting and then stall. The model is rarely the problem. The hard parts are the connection to real systems, the handling of messy data, the approval steps that keep people comfortable, and the monitoring that keeps the system honest after launch. That is the work we focus on.</p>
+        <p>We work best with operations, IT and innovation leaders who have a specific process in mind and want to see it run with AI in weeks rather than plan it for a year. Whether you are a large enterprise, a global capability centre or a growing company, the approach is the same: pick one process, prove the value, then scale what works.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Team</p>
+          <h2>The people you will work with</h2>
+        </div>
+        <p>You meet the people who will design and build your system, at the stand and in every workshop after it.</p>
+      </div>
+      <div class="team">
+        <article class="person" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Photo slot · 800 × 800 · real headshot</span></div></div><h3><span class="tbc">[Founder 1 name]</span></h3><p class="mono role"><span class="tbc">[Title]</span></p><p class="bio"><span class="tbc">[Two lines: years of experience, the AI or XR systems this person has built, and the industries they know.]</span></p><p class="mono"><span class="tbc">[LinkedIn URL]</span></p></article>
+        <article class="person" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Photo slot · 800 × 800 · real headshot</span></div></div><h3><span class="tbc">[Founder 2 name]</span></h3><p class="mono role"><span class="tbc">[Title]</span></p><p class="bio"><span class="tbc">[Two lines: years of experience, the AI or XR systems this person has built, and the industries they know.]</span></p><p class="mono"><span class="tbc">[LinkedIn URL]</span></p></article>
+        <article class="person" data-reveal><div class="media"><div class="ph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="1.5"/></svg><span class="ph-label">Photo slot · 800 × 800 · real headshot</span></div></div><h3><span class="tbc">[Founder 3 name]</span></h3><p class="mono role"><span class="tbc">[Title]</span></p><p class="bio"><span class="tbc">[Two lines: years of experience, the AI or XR systems this person has built, and the industries they know.]</span></p><p class="mono"><span class="tbc">[LinkedIn URL]</span></p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="approach" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">How we work</p>
+          <h2>From first workshop to a system people use</h2>
+        </div>
+        <p>Every project moves through the same four stages. You can stop after any stage and keep what we have produced.</p>
+      </div>
+      <ol class="phases">
+        <li data-reveal><span class="mono num">01</span><h3>Discovery</h3><p>We sit with the people who do the work today and map one process from start to finish: the inputs, the systems, the decisions and where time is lost. You get a written use-case brief with the expected benefit, the data needed and the risks.</p><p class="mono out">You get: use-case brief, process map, data review</p></li>
+        <li data-reveal><span class="mono num">02</span><h3>Pilot</h3><p>We build a working version on a small slice of real data and put it in front of a few users. The pilot is measured against the goals set in discovery, so the decision to go further is based on results.</p><p class="mono out">You get: working pilot, results report, production plan</p></li>
+        <li data-reveal><span class="mono num">03</span><h3>Production</h3><p>We harden the pilot: security review, connections to your live systems, monitoring, access control and training for the team. It goes live in stages, with a person approving critical steps until the numbers show it can run on its own.</p><p class="mono out">You get: live system, monitoring, user training</p></li>
+        <li data-reveal><span class="mono num">04</span><h3>Run and improve</h3><p>After launch we watch accuracy, cost and usage, retrain models when data changes and add the next use case. You can run it yourselves with our documentation, or keep us on a support plan.</p><p class="mono out">You get: support, retraining, a roadmap of next use cases</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section principles-band" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Why Q2M</p>
+          <h2>What you can expect from us</h2>
+        </div>
+        <p>We are a young company, so we keep our promises small and specific.</p>
+      </div>
+      <div class="principles">
+        <div data-reveal><h3>One process at a time</h3><p>We start with a single workflow that matters to you, prove it works and then expand. Large AI programmes often stall when they try to change everything at once. A small win builds the trust and the data you need for the next one.</p></div>
+        <div data-reveal><h3>Your data stays yours</h3><p>We build on your cloud or ours under clear terms, use your access rules and sign an NDA before we see anything sensitive. Nothing you share is used to train public models, and you can ask us to delete working copies at the end of a project.</p></div>
+        <div data-reveal><h3>People in the loop</h3><p>Agents propose and people approve wherever a mistake would be costly. As confidence grows, you decide which steps can run on their own. The controls stay in your hands, not ours.</p></div>
+        <div data-reveal><h3>Plain reporting</h3><p>Each stage ends with a short written report: what we built, what it measured, what it cost and what we recommend next. We avoid jargon and report the measures your finance and operations teams already use.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Technology</p>
+          <h2>What we build with</h2>
+        </div>
+        <p>We choose tools for the job and the systems you already run. These are the platforms our team works with most.</p>
+      </div>
+      <div class="stack" data-reveal>
+        <div><h3>Smart glasses and XR</h3><p>Meta, XREAL, Snap Spectacles, MentraOS, Android XR, Unity</p></div>
+        <div><h3>AI models</h3><p>OpenAI, Anthropic Claude, Google Gemini, Llama and other open models, computer vision models</p></div>
+        <div><h3>Cloud and data</h3><p>Microsoft Azure, AWS, Google Cloud, vector databases, data pipelines</p></div>
+        <div><h3>Business systems</h3><p>Microsoft 365, Dynamics 365, Power Platform, Salesforce, ERP and ticketing tools</p></div>
+      </div>
+      <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Agentic AI</span><span>Smart glasses</span><span>Computer vision</span><span>Document AI</span><span>3D Gaussian splatting</span><span>MLOps</span><span>Copilot</span><span>Agentic commerce</span><span>Agentic AI</span><span>Smart glasses</span><span>Computer vision</span><span>Document AI</span><span>3D Gaussian splatting</span><span>MLOps</span><span>Copilot</span><span>Agentic commerce</span></div></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The 30-minute session</p>
+          <h2>How a session at our stand works</h2>
+        </div>
+        <p>No slides about AI in general. We talk about one process in your business.</p>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal><span class="mono min">First 10 minutes</span><h3>You walk us through one process</h3><p>Who does it today, which systems it touches, how many cases you handle and where time or errors pile up.</p></div>
+        <div class="step" data-reveal><span class="mono min">Next 15 minutes</span><h3>We map the AI use case</h3><p>An agent, an automation or a glasses workflow, with a live demo of something similar where we have one. We note the data and approvals it would need.</p></div>
+        <div class="step" data-reveal><span class="mono min">Last 5 minutes</span><h3>You leave with next steps</h3><p>A rough scope, the data we would need and a suggested pilot. We follow up within a week.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="wrap faq-grid">
+      <div data-reveal>
+        <p class="eyebrow">Questions</p>
+        <h2>Frequently asked questions</h2>
+        <p class="faq-intro">Something else on your mind? Ask us at the stand or in the booking form below.</p>
+      </div>
+      <div class="faq">
+        <details data-reveal><summary><span>Who is Q2M Solutions?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>Q2M Solutions Pvt Ltd is an AI engineering company based in India. We design and build AI agents, intelligent automation, smart-glasses apps and 3D capture solutions for businesses in automotive, insurance, life sciences, real estate, fintech and BPO.</p></div></details>
+        <details data-reveal><summary><span>What happens in the 30-minute session at BTS?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>You describe one process in your business. We ask questions, sketch how an AI agent, an automation or a smart-glasses app could handle it, and show a live demo of something similar where we have one. You leave with a rough scope and a suggested pilot. There is no charge and no obligation.</p></div></details>
+        <details data-reveal><summary><span>Do we need clean data before we start?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>No. Most companies have data spread across email, PDFs, spreadsheets and several systems. Part of discovery is finding out what data exists, what state it is in and what the first version can work with. We tell you plainly if a use case needs more preparation first.</p></div></details>
+        <details data-reveal><summary><span>How long does a pilot take?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>It depends on the process and the systems involved. A focused pilot on one workflow is usually measured in weeks, not months. We agree the timeline and the success measures in writing at the end of discovery.</p></div></details>
+        <details data-reveal><summary><span>Can you work with our existing systems?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>Yes. We connect to the tools you already use, including Microsoft 365, Dynamics 365, Salesforce, ticketing systems, databases and custom APIs. We prefer to add AI to your current stack rather than replace it.</p></div></details>
+        <details data-reveal><summary><span>Which smart glasses do you support?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>We build apps for Meta, XREAL, Snap Spectacles and MentraOS glasses. The right device depends on whether you need a display, a camera, all-day battery or a rugged frame. We help you choose before any hardware is bought.</p></div></details>
+        <details data-reveal><summary><span>How do you handle security and confidentiality?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>We sign a mutual NDA before we see sensitive material, follow your access rules and keep data in the environment we agree with you. Every agent action is logged so you can review what happened and why.</p></div></details>
+        <details data-reveal><summary><span>Do you work with companies outside India?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>Yes. We work with clients in India and abroad. Discovery workshops can run on site or remotely, and our team works across time zones to fit your schedule.</p></div></details>
+              <details data-reveal><summary><span>What does a project cost?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>Cost depends on the scope, the number of systems involved and whether hardware such as smart glasses is needed. Discovery is a short fixed-price engagement. After discovery we give you a fixed quote for the pilot, so you know the cost before you commit to building.</p></div></details>
+        <details data-reveal><summary><span>Who owns what you build?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>You do. Code, models trained on your data, prompts and documentation built for your project belong to you once the work is paid for. We can also hand over the full setup to your internal team with training.</p></div></details>
+        <details data-reveal><summary><span>What if AI is not the right answer for our process?</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></summary><div class="ans"><p>Then we will tell you. Some processes are better fixed with a simple rule, a form or a change in how work is assigned. A clear no in discovery saves you far more than a pilot that was never going to work.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="wrap">
+      <div class="book" data-reveal>
+        <div>
+          <p class="eyebrow">Book a session</p>
+          <h2>Reserve 30 minutes at BTS 2026</h2>
+          <p>Pick a day and tell us a little about the process you want to discuss. We will confirm your time slot by email.</p>
+          <div class="contact">
+            <span class="mono">Email: <span class="tbc">[hello@your-domain]</span></span>
+            <span class="mono">Phone: <span class="tbc">[+91 ...]</span></span>
+          </div>
+        </div>
+        <form id="book-form" novalidate>
+          <div class="fld"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="fld"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization" required></div>
+          <div class="fld"><label for="f-role">Role</label><input id="f-role" name="role" autocomplete="organization-title"></div>
+          <div class="fld"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="fld"><label for="f-industry">Industry</label>
+            <select id="f-industry" name="industry">
+              <option>Automotive</option><option>Insurance</option><option>Life sciences, health and biotech</option><option>Real estate</option><option>Fintech</option><option>BPO</option><option>Other</option>
+            </select></div>
+          <div class="fld"><label for="f-day">Preferred day</label>
+            <select id="f-day" name="day"><option>Day 1</option><option>Day 2</option><option>Day 3</option></select></div>
+          <div class="fld full"><label for="f-topic">What process do you want to discuss?</label><textarea id="f-topic" name="topic" placeholder="For example: we read 400 claim forms a day by hand"></textarea></div>
+          <p class="form-note">We use these details only to schedule your session.</p>
+          <div class="fld full"><button class="btn btn-primary" type="submit">Request a session</button></div>
+          <p class="form-msg" id="form-msg" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <img src="images/q2m-logo-reverse.png" alt="Q2M Solutions">
+      <p style="margin:16px 0 0;max-width:28em">AI agents, automation and smart-glasses apps, built in India. We work with operations and technology teams in India and abroad to take one process at a time from idea to production.</p>
+    </div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#book">Book a session</a></li>
+    </ul>
+    <ul>
+      <li class="mono">Email <span class="tbc">[TBC]</span></li>
+      <li class="mono">LinkedIn <span class="tbc">[TBC]</span></li>
+      <li class="mono">India</li>
+    </ul>
+    <p class="legal">© 2026 Q2M Solutions Pvt Ltd · CIN <span class="tbc">[TBC]</span> · Registered office: <span class="tbc">[full address]</span></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Booking form: preview only until connected to a booking tool.
+  var form = document.getElementById('book-form');
+  var msg = document.getElementById('form-msg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var missing = [];
+    ['f-name', 'f-company', 'f-email'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el.value.trim()) missing.push(el.labels[0].textContent);
+    });
+    var email = document.getElementById('f-email').value.trim();
+    if (missing.length) { msg.textContent = 'Please fill in: ' + missing.join(', ') + '.'; }
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Enter a work email like name@company.com.'; }
+    else { msg.textContent = 'Preview only: this form is not connected yet. Before launch, link it to your booking tool or email.'; }
+    msg.hidden = false;
+  });
+
+  // Scroll reveal: elements already on screen at load stay put; the rest fade up with a short stagger.
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
+    var vh = window.innerHeight;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.remove('pre'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) {
+      if (el.getBoundingClientRect().top < vh) return;
+      var sib = el.parentElement ? [].indexOf.call(el.parentElement.children, el) : 0;
+      el.style.setProperty('--d', (sib % 4) * 80 + 'ms');
+      el.classList.add('pre', 'rv');
+      io.observe(el);
+    });
+  })();
+
+  // Dot field: the logo's dot arrow, drawn large. Dots near the pointer grow.
+  var canvas = document.getElementById('dots');
+  var ctx = canvas.getContext('2d');
+  var N = 13, pointer = null, start = performance.now();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function inArrow(r, c) { return c >= r + 3 && r <= 8 && c >= 4; }
+  function col(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function size() {
+    var rect = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(rect.width * dpr); canvas.height = Math.round(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function draw(t) {
+    var w = canvas.clientWidth, pitch = w / N, base = pitch * 0.2;
+    var blue = col('--q2m-blue'), idle = col('--dot-idle');
+    ctx.clearRect(0, 0, w, w);
+    for (var r = 0; r < N; r++) {
+      for (var c = 0; c < N; c++) {
+        var x = pitch * (c + .5), y = pitch * (r + .5), arrow = inArrow(r, c);
+        var rad = arrow ? base * 1.25 : base * 0.7;
+        if (arrow && !reduce) {
+          var delay = ((N - c) + r) * 45, p = Math.min(1, Math.max(0, (t - start - delay) / 380));
+          rad *= 1 - Math.pow(1 - p, 3);
+        }
+        if (pointer) {
+          var d = Math.hypot(pointer.x - x, pointer.y - y), k = Math.max(0, 1 - d / (pitch * 3));
+          rad += k * base * (arrow ? 0.9 : 1.1);
+        }
+        ctx.beginPath(); ctx.arc(x, y, Math.max(0, rad), 0, Math.PI * 2);
+        ctx.fillStyle = arrow ? blue : idle; ctx.fill();
+      }
+    }
+  }
+  var raf = null;
+  function loop(t) { draw(t); raf = (!reduce && (t - start < 2200 || pointer)) ? requestAnimationFrame(loop) : null; }
+  function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+  size(); kick();
+  if (reduce) draw(start + 99999);
+  window.addEventListener('resize', function () { size(); draw(performance.now() + 99999); });
+  canvas.parentElement.addEventListener('pointermove', function (e) {
+    var b = canvas.getBoundingClientRect(); pointer = { x: e.clientX - b.left, y: e.clientY - b.top }; if (reduce) draw(start + 99999); else kick();
+  });
+  canvas.parentElement.addEventListener('pointerleave', function () { pointer = null; draw(performance.now() + 99999); });
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  if (mq.addEventListener) mq.addEventListener('change', function () { draw(performance.now() + 99999); });
+  new MutationObserver(function () { draw(performance.now() + 99999); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+
+</body>
+</html>

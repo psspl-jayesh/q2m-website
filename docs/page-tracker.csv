@@ -1,0 +1,100 @@
+path,title,type,status
+/about/,"About",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-agent-development-services/,"AI Agent Development Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-app-development-services/,"Transform Your Business with AI App Development Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-chatbot-development-company/,"Build AI Chatbots That Actually Resolve What Your Customers Ask",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-consulting-services/,"Plan, Develop, and Scale AI Systems with Expert-Led AI Consulting Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-development-services/,"Transform Your Business with Our AI Development Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-recommendation-systems/,"Build Personalised AI Recommendation Engines with Q2M Solutions",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-solutions-development/,"AI Solutions Development",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/azure-ai-and-machine-learning/,"Microsoft Azure AI and Machine Learning",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/azure-data-ai-services/,"We Raise Your Business Standards with Our Azure Data & AI Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/azure-data-services/,"Azure Data Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/azure-database-services/,"Empower Your Data with Scalable, Secure, and Intelligent Microsoft Azure Database Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/azure-iot-solution/,"Azure IoT Solution",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/blogs/,"Blog",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/case-studies/,"Case Studies",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/cloud-applications/,"Discover Boundless Opportunities with Q2M Solutions' Cloud Applications",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/cognitive-service-implementation/,"Cognitive Service Implementation",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/contact/,"Contact",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/cyber-security-services/,"Secure Your Digital Future with Comprehensive Cyber Security Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/data-copilot-for-azure-ai/,"Data Copilot for Azure AI",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/data-lake-and-big-data-on-azure/,"Data Lake and Big Data on Azure",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/deep-learning-services/,"Deep Learning Development Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/digital-sustainability-services/,"Digital Sustainability Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/digital-transformation-services/,"Embrace the Next Wave of Digital Transformation Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/enterprise-business-application/,"Modernise, Integrate, and Scale with Intelligent Business Applications",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/generative-ai-development-services/,"Generative AI Development Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/generative-ai-integration-services/,"Generative AI Integration Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/,"Enterprise AI Development Company in India",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/infrastructure-services/,"Future-Ready IT Infrastructure for a Smarter Enterprise",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/llm-development-services/,"Custom LLM Development Services to Build AI That Understands Your Business",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/machine-learning-development-services/,"Trusted Machine Learning Development Company for Scalable AI Solutions",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/machine-learning-models-on-azure/,"Machine Learning Models on Azure",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/microsoft-fabric-services/,"Microsoft Fabric Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/mlops-consulting-services/,"Manage and Scale AI with MLOps Consulting Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/modern-workplace/,"Modern Workplace Solutions",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/predictive-analytics-services-2/,"Predictive Analytics Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/predictive-analytics-services/,"Predictive Analytics Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/rag-development-services/,"RAG Development Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/sharepoint-development-services/,"SharePoint Development Services for a Smarter Workplace",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/smart-glasses-ar-wearable-app-development-services/,"Smart Glasses and AR Wearable App Development Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/technology-consulting-services/,"Technology Consulting Services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/vibe-coding-services/,"Vibe coding services",page,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-agent-development-cost/,"A Complete Breakdown of the AI Agent Development Cost in 2026",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-chatbot-development-strategic-priority-2026/,"Why Is AI Chatbot Development a Strategic Priority in 2026",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-development-cost/,"A Complete Pricing Guide on AI Development Cost in 2026: Budget, Factors, and Optimisation Strategies",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/ai-development-lifecycle/,"The AI Development Lifecycle: From Discovery to Deployment",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/generative-ai-app-development-cost/,"Complete Guide for Generative AI App Development Cost in 2026",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/guide-microsoft-fabric-enables-real-time-analytics/,"Guide: Microsoft Fabric Enables Real-time Analytics",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/hire-generative-ai-developers/,"Hire Generative AI Developers to Enhance Your Enterprise AI: An In-Depth Guide",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/how-software-consulting-services-help-you-choose-the-right-project-model/,"How Software Consulting Services Help You Choose the Right Project Model?",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/impact-of-digital-transformation-in-pharma/,"Discovering The Impact of Digital Transformation in Pharma Industry",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/machine-learning-development-scalable-ml-solutions/,"Machine Learning Development: A Complete Guide to Building Scalable ML Solutions in 2026",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/microsoft-dynamics-365-and-dynamics-365-business-central/,"A Detailed Comparison of Microsoft Dynamics 365 and Dynamics 365 Business Central",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/q2m-solutions-is-heading-to-ai4-2026/,"Q2M Solutions is Heading to Ai4 2026: Let’s Talk AI Development Services in Vegas",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/,"SharePoint Framework v1.22.1: A Stability Update Developers Shouldn’t Skip",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/the-transformative-power-of-ai-in-software-development/,"Agile Reimagined: The Transformative Power of AI in Software Development",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/top-ai-agent-development-companies/,"Top 12 AI Agent Development Companies Delivering Enterprise AI Solutions (2026)",post,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/,"Building a Single Pane of Glass for a 1,500-Truck Fleet",case-study,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/,"MindShift: An AI-Powered Personal Growth & Wellbeing App",case-study,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/,"Rele.one: Building a National Real-Estate Platform with Vibe Coding",case-study,Implemented (route renders, no overflow 360/390/768/1920; visual review pending)
+/recommendation-engines/,"Recommendation engines",page,Not migrated: noindex theme-demo/system page, needs approval
+/ai4-2026-americas-largest-ai-conference/,"Ai4 2026 – America’s Largest AI Conference",page,Not migrated: noindex theme-demo/system page, needs approval
+/test-form/,"test form",page,Not migrated: noindex theme-demo/system page, needs approval
+/sample-page/,"Sample Page",page,Not migrated: noindex theme-demo/system page, needs approval
+/saas-product-dark/,"Saas Product Dark",page,Not migrated: noindex theme-demo/system page, needs approval
+/it-solution-dark/,"It Solution Dark",page,Not migrated: noindex theme-demo/system page, needs approval
+/creative-agency-dark/,"Creative Agency Dark",page,Not migrated: noindex theme-demo/system page, needs approval
+/digital-marketing-agency-dark/,"Digital Marketing Agency Dark",page,Not migrated: noindex theme-demo/system page, needs approval
+/startup-agency-dark/,"Startup Agency Dark",page,Not migrated: noindex theme-demo/system page, needs approval
+/blog-grid-sidebar/,"Blog Grid Sidebar",page,Not migrated: noindex theme-demo/system page, needs approval
+/portfolio-list/,"Portfolio List",page,Not migrated: noindex theme-demo/system page, needs approval
+/portfolio-info-flow/,"Portfolio Info Flow",page,Not migrated: noindex theme-demo/system page, needs approval
+/portfolio-masonary/,"Portfolio Masonary",page,Not migrated: noindex theme-demo/system page, needs approval
+/blog-list/,"Blog List",page,Not migrated: noindex theme-demo/system page, needs approval
+/blog-grid/,"Blog Grid",page,Not migrated: noindex theme-demo/system page, needs approval
+/service/graphic-design/,"Graphic Design",page,Not migrated: noindex theme-demo/system page, needs approval
+/service/software-development/,"Software Development",page,Not migrated: noindex theme-demo/system page, needs approval
+/service/cloud-services/,"Cloud Services",page,Not migrated: noindex theme-demo/system page, needs approval
+/service/e-commerce-solutions/,"E-commerce Solutions",page,Not migrated: noindex theme-demo/system page, needs approval
+/service/consulting-services/,"Consulting Services",page,Not migrated: noindex theme-demo/system page, needs approval
+/service/web-app-development/,"Web & App Development",page,Not migrated: noindex theme-demo/system page, needs approval
+/service-04/,"Service 04",page,Not migrated: noindex theme-demo/system page, needs approval
+/service-03/,"Service 03",page,Not migrated: noindex theme-demo/system page, needs approval
+/service-02/,"Service 02",page,Not migrated: noindex theme-demo/system page, needs approval
+/service/,"Service",page,Not migrated: noindex theme-demo/system page, needs approval
+/creative-agency/,"Creative Agency",page,Not migrated: noindex theme-demo/system page, needs approval
+/saas-product/,"Saas Product",page,Not migrated: noindex theme-demo/system page, needs approval
+/digital-marketing-agency/,"Digital Marketing Agency",page,Not migrated: noindex theme-demo/system page, needs approval
+/team-style-02/,"Team Style 02",page,Not migrated: noindex theme-demo/system page, needs approval
+/industry/,"Industry",page,Not migrated: noindex theme-demo/system page, needs approval
+/my-account/,"My account",page,Not migrated: noindex theme-demo/system page, needs approval
+/checkout/,"Checkout",page,Not migrated: noindex theme-demo/system page, needs approval
+/cart/,"Cart",page,Not migrated: noindex theme-demo/system page, needs approval
+/shop/,"Shop",page,Not migrated: noindex theme-demo/system page, needs approval
+/team-style-01/,"Team Style 01",page,Not migrated: noindex theme-demo/system page, needs approval
+/features/,"Features",page,Not migrated: noindex theme-demo/system page, needs approval
+/pricing-plan/,"Pricing Plan",page,Not migrated: noindex theme-demo/system page, needs approval
+/faq/,"Faq",page,Not migrated: noindex theme-demo/system page, needs approval
+/sample-page-2/,"Sample Page",page,Not migrated: noindex theme-demo/system page, needs approval

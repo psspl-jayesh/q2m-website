@@ -1,0 +1,356 @@
+{
+ "path": "/about/",
+ "slug": "about",
+ "type": "page",
+ "url": "https://q2msolutions.com/about/",
+ "fetchedAt": "2026-11-11T08:57:51.293Z",
+ "seo": {
+  "title": "About Q2M Solutions – Trusted AI-powered enterprise",
+  "description": "Resolve your technical challenges with Q2M Solutions, AI-powered enterprise-grade solutions, and bring tangible results.",
+  "h1": "About",
+  "h1Count": 1,
+  "canonical": "https://q2msolutions.com/about/"
+ },
+ "blocks": [
+  {
+   "t": "breadcrumb",
+   "text": "Home"
+  },
+  {
+   "t": "breadcrumb",
+   "text": "About"
+  },
+  {
+   "t": "h1",
+   "text": "About"
+  },
+  {
+   "t": "h2",
+   "text": "We are an AI and IT solutions provider that helps companies build, develop, and grow with confidence.",
+   "eyebrow": "EXPERTISE YOU CAN TRUST"
+  },
+  {
+   "t": "p",
+   "text": "Since its foundation, Q2M Solutions has been supporting businesses in different industries by solving difficult technological problems and delivering tangible results. This has applied to various types of projects – from AI and machine learning solutions to complete digital transformation."
+  },
+  {
+   "t": "stat",
+   "value": "120",
+   "prefix": "",
+   "suffix": "",
+   "text": "+ Project Delivered Across Industries",
+   "raw": "120 + Project Delivered Across Industries"
+  },
+  {
+   "t": "stat",
+   "value": "95",
+   "prefix": "",
+   "suffix": "",
+   "text": "% Client Satisfaction We Stand Behind",
+   "raw": "95 % Client Satisfaction We Stand Behind"
+  },
+  {
+   "t": "stat",
+   "value": "24",
+   "prefix": "",
+   "suffix": "",
+   "text": "Hrs. Average Response Time",
+   "raw": "24 Hrs. Average Response Time"
+  },
+  {
+   "t": "h4",
+   "text": "Expertise and Innovation"
+  },
+  {
+   "t": "p",
+   "text": "We keep up with developments in artificial intelligence, cloud computing, and data engineering — but not because we want to be on trend, but in order to improve our capabilities of solving your problems."
+  },
+  {
+   "t": "h4",
+   "text": "Transparent Process"
+  },
+  {
+   "t": "p",
+   "text": "We have your software development life cycle fully planned from the very beginning. No black boxes."
+  },
+  {
+   "t": "h4",
+   "text": "Client-Centric Approach"
+  },
+  {
+   "t": "p",
+   "text": "It all starts with listening. Your project manager works together with you and your team to create a solution tailored to your business."
+  },
+  {
+   "t": "h4",
+   "text": "Cost-Effective Delivery"
+  },
+  {
+   "t": "p",
+   "text": "With the right architecture and technologies, we can provide you with enterprise IT solutions at a cost-effective price."
+  },
+  {
+   "t": "h2",
+   "text": "Backed by the platforms enterprises already trust.",
+   "eyebrow": "Our Technology Partners"
+  },
+  {
+   "t": "p",
+   "text": "We build on proven, industry-standard technology - not just because it's reliable, but because it means faster deployment and easier long-term support for your team."
+  },
+  {
+   "t": "h2",
+   "text": "Turning Ideas into Reliable Technology.",
+   "eyebrow": "WORKING PROCESS"
+  },
+  {
+   "t": "h6",
+   "text": "Step"
+  },
+  {
+   "t": "p",
+   "text": "01",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Discovery & Consultation"
+  },
+  {
+   "t": "p",
+   "text": "We dig into your business, your goals, and your current tech stack before proposing anything — the right IT strategy starts with actually understanding the problem."
+  },
+  {
+   "t": "p",
+   "text": "02",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Strategy & Architecture"
+  },
+  {
+   "t": "p",
+   "text": "Then we craft a solution architecture designed for scalability, whether in the form of cloud services, custom applications or even an AI-based system."
+  },
+  {
+   "t": "p",
+   "text": "03",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Development & Integration"
+  },
+  {
+   "t": "p",
+   "text": "We develop and integrate the solution through continuous feedback iterations to ensure early identification of any problems and shifting of priorities along the way."
+  },
+  {
+   "t": "p",
+   "text": "04",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Deployment & Support"
+  },
+  {
+   "t": "p",
+   "text": "Finally, we deploy the solution, and then stay around to monitor its performance, fix any bugs and optimize it as it gets put to use."
+  },
+  {
+   "t": "h2",
+   "text": "We are an IT services and AI consulting company helping businesses turn ideas into scalable solutions.",
+   "eyebrow": "Discover the Advantage"
+  },
+  {
+   "t": "p",
+   "text": "Q2M Solutions started with a simple belief: technology should remove friction, not add to it. Since our inception, what began as a small, focused engineering team has grown into a full-service AI and IT solutions partner, trusted by clients across Asia and beyond."
+  },
+  {
+   "t": "p",
+   "text": "From AI development and machine learning to cloud infrastructure, data analytics, and enterprise application development, our expert technical skills and consulting attitude can be found in all of our projects, enabling us to help our clients work better and faster."
+  },
+  {
+   "t": "stat",
+   "value": "150",
+   "prefix": "",
+   "suffix": "+",
+   "text": "Projects Completed"
+  },
+  {
+   "t": "stat",
+   "value": "40",
+   "prefix": "",
+   "suffix": "+",
+   "text": "Clients Served"
+  },
+  {
+   "t": "stat",
+   "value": "2",
+   "prefix": "",
+   "suffix": "",
+   "text": "Years of Experience"
+  },
+  {
+   "t": "stat",
+   "value": "10",
+   "prefix": "",
+   "suffix": "+",
+   "text": "Industry Recognitions"
+  },
+  {
+   "t": "h2",
+   "text": "Technology should remove friction - not add to it.",
+   "eyebrow": "Mission & Values"
+  },
+  {
+   "t": "p",
+   "text": "We started Q2M Solutions to close the gap between what businesses need from technology and what most vendors actually deliver. That means being upfront about timelines, honest about tradeoffs, and focused on solutions that hold up long after launch — not just at the demo."
+  },
+  {
+   "t": "h3",
+   "text": "Reliability"
+  },
+  {
+   "t": "p",
+   "text": "Systems built to run, not just to launch."
+  },
+  {
+   "t": "h3",
+   "text": "Transparency"
+  },
+  {
+   "t": "p",
+   "text": "Clear communication at every stage, no surprises."
+  },
+  {
+   "t": "h3",
+   "text": "Partnership"
+  },
+  {
+   "t": "p",
+   "text": "We stay involved after go-live, not just until invoice."
+  },
+  {
+   "t": "h2",
+   "text": "The team that ships your project.",
+   "eyebrow": "The People Behind the Work"
+  },
+  {
+   "t": "p",
+   "text": "Behind every solution is a team that actually understands the technology - not just the sales pitch."
+  },
+  {
+   "t": "h4",
+   "text": "Hardik Shah"
+  },
+  {
+   "t": "p",
+   "text": "CEO & MD",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Hetal Kachhadiya"
+  },
+  {
+   "t": "p",
+   "text": "Operations Head",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Hema Upadhyay"
+  },
+  {
+   "t": "p",
+   "text": "CPO",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Jinal Mehta"
+  },
+  {
+   "t": "p",
+   "text": "Finance Head",
+   "via": "span"
+  },
+  {
+   "t": "h4",
+   "text": "Manish Langa"
+  },
+  {
+   "t": "p",
+   "text": "Practice Head",
+   "via": "span"
+  },
+  {
+   "t": "h2",
+   "text": "Built for teams across industries.",
+   "eyebrow": "Industries Served"
+  },
+  {
+   "t": "p",
+   "text": "From fast-moving startups to established enterprises, we've built AI, cloud, and custom software solutions across:"
+  },
+  {
+   "t": "h3",
+   "text": "Financial Services"
+  },
+  {
+   "t": "h3",
+   "text": "Logistics & Supply Chain"
+  },
+  {
+   "t": "h3",
+   "text": "Healthcare"
+  },
+  {
+   "t": "h3",
+   "text": "Manufacturing"
+  },
+  {
+   "t": "h3",
+   "text": "Public Sector"
+  },
+  {
+   "t": "h3",
+   "text": "SaaS & Technology"
+  },
+  {
+   "t": "h2",
+   "text": "Trusted By Our Clients",
+   "eyebrow": "What sets us apart"
+  },
+  {
+   "t": "p",
+   "text": "We don't just deliver code — we deliver systems that hold up under real-world use, backed by a team that sticks around after launch."
+  },
+  {
+   "t": "quote",
+   "text": "\"Our assessment of several AI development companies led us to choose Q2M and we couldn't be happier with the decision. The team at Q2M didn't only write code but developed an AI solution that addressed the unique needs of our organization and increased our productivity.\"",
+   "name": "Sarah Chen",
+   "role": "Operations Director"
+  },
+  {
+   "t": "quote",
+   "text": "\"The AI development services offered by Q2M transformed our rough concept into an innovative product in less than three months with effective communication throughout the process and an excellent final product delivery beyond what we had expected.\"",
+   "name": "Marcus Webb",
+   "role": "Founder"
+  },
+  {
+   "t": "quote",
+   "text": "\"The best thing about Q2M as our AI development company is that it took us very little time to explain the complexities of our industry to the engineers and they did not use a one-size-fits-all model but customized everything according to our specific needs.\"",
+   "name": "Priya Roberts",
+   "role": "CTO"
+  }
+ ],
+ "faqs": [],
+ "skipped": {
+  "deco": [],
+  "noise": []
+ }
+}

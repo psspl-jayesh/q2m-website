@@ -1,0 +1,13 @@
+{
+ "header": {
+  "label": "Book a Discovery Call",
+  "href": "/contact/",
+  "source": "live home hero CTA \"Book a Discovery Call\" -> /contact"
+ },
+ "hero": {
+  "label": "Free Consultation",
+  "href": "/contact/",
+  "liveHref": "#",
+  "note": "live service-page hero button links to \"#\"; linked to /contact/ (needs your confirmation)"
+ }
+}

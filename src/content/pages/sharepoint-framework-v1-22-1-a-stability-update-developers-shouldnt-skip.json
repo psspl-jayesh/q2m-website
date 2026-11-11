@@ -1,0 +1,115 @@
+{
+ "path": "/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/",
+ "slug": "sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip",
+ "type": "post",
+ "source": "https://q2msolutions.com/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/",
+ "syncedAt": "2026-11-11T08:57:51.922Z",
+ "seo": {
+  "title": "SharePoint Framework v1.22.1: A Stability Update Developers Shouldn’t Skip",
+  "description": "Learn why SharePoint Framework v1.22.1 matters, how it improves stability, and what the latest tooling updates mean for SPFx development teams.",
+  "h1": "SharePoint Framework v1.22.1: A Stability Update Developers Shouldn’t Skip"
+ },
+ "furniture": {
+  "breadcrumb": [
+   "Home",
+   "SharePoint Framework v1.22.1: A Stability Update Developers Shouldn’t Skip"
+  ],
+  "meta": [
+   "Development",
+   "By, Q2M Solutions",
+   "23 Dec, 2025",
+   "1.1k Views",
+   "0 Comment"
+  ],
+  "nav": []
+ },
+ "blocks": [
+  {
+   "t": "h1",
+   "text": "SharePoint Framework v1.22.1: A Stability Update Developers Shouldn’t Skip"
+  },
+  {
+   "t": "p",
+   "text": "The release of the SharePoint Framework (SPFx) v1.22 is now available, and it’s a huge one. This release doesn’t include any new features or fixes, in contrast to earlier releases that did. Rather, three significant modifications to the “behind the scenes” component of SPFx projects are included in this release:"
+  },
+  {
+   "t": "li",
+   "text": "Finally, clean npm audit reports"
+  },
+  {
+   "t": "li",
+   "text": "Upgrade to TypeScript v5.8"
+  },
+  {
+   "t": "li",
+   "text": "A new build toolchain based on Heft"
+  },
+  {
+   "t": "p",
+   "text": "Let’s examine the latest developments and their implications for your development process."
+  },
+  {
+   "t": "h2",
+   "text": "What’s New?"
+  },
+  {
+   "t": "h3",
+   "text": "Clean npm audits"
+  },
+  {
+   "t": "p",
+   "text": "If you have worked as an SPFx developer for any amount of time, you are probably aware of the several npm package vulnerabilities that have been reported. Many of these vulnerabilities are classified as high or critical, and they are all connected to dependencies that are located deep within the Microsoft toolchain packages."
+  },
+  {
+   "t": "p",
+   "text": "Microsoft spent a lot of time updating dependencies for SPFx v1.22 in an effort to remove the need to run npm audits on your project after installing dependencies."
+  },
+  {
+   "t": "p",
+   "text": "This is significant because, even in cases where the susceptible packages only run during development and never reach production, security teams at corporate firms frequently identify these vulnerabilities during code reviews. You may now present a flawless audit report with assurance."
+  },
+  {
+   "t": "h3",
+   "text": "TypeScript v5.8 by default"
+  },
+  {
+   "t": "p",
+   "text": "TypeScript v5.8 is used by default in new projects scaffolded with SPFx v1.22. This is a big improvement over earlier iterations and includes all the contemporary TypeScript features you’ve been lacking."
+  },
+  {
+   "t": "h3",
+   "text": "Significant toolchain redesign: switching from Gulp to Heft"
+  },
+  {
+   "t": "p",
+   "text": "Even while it might not seem like much, this release will have the greatest impact. Project development has undergone a dramatic change with the release of SPFx v1.22. A Heft-based toolchain will take the place of the outdated gulp-based toolchain that SPFx has used since version 1.0 in 2017."
+  },
+  {
+   "t": "p",
+   "text": "The main topic of this blog is to highlight the new features of SPFx v1.22 version."
+  },
+  {
+   "t": "p",
+   "text": "What’s your take on these changes? Are you planning to move to the new toolchain now, or will you wait? Share your migration approach in the comments and join the conversation."
+  },
+  {
+   "t": "btn",
+   "text": "PRV PROJECT",
+   "href": "https://q2msolutions.com/guide-microsoft-fabric-enables-real-time-analytics/"
+  },
+  {
+   "t": "p",
+   "text": "Guide: Microsoft Fabric Enables Real-time Analytics"
+  },
+  {
+   "t": "p",
+   "text": "How Software Consulting Services Help You Choose the Right Project Model?"
+  },
+  {
+   "t": "btn",
+   "text": "NXT PROJECT",
+   "href": "https://q2msolutions.com/how-software-consulting-services-help-you-choose-the-right-project-model/"
+  }
+ ],
+ "faqs": []
+}

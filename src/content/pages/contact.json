@@ -1,0 +1,69 @@
+{
+ "path": "/contact/",
+ "slug": "contact",
+ "type": "page",
+ "source": "https://q2msolutions.com/contact/",
+ "syncedAt": "2026-11-11T08:57:51.351Z",
+ "seo": {
+  "title": "Contact - Q2M Solutions",
+  "description": "Connect with the experts at Q2M Solutions and witness the power of AI and software development with their end-to-end assistance.",
+  "h1": "Contact"
+ },
+ "furniture": {
+  "breadcrumb": [
+   "Home",
+   "Contact"
+  ],
+  "meta": [],
+  "nav": []
+ },
+ "blocks": [
+  {
+   "t": "h1",
+   "text": "Contact"
+  },
+  {
+   "t": "h2",
+   "text": "Our Office Location.",
+   "eyebrow": "OFFICE ADDRESS"
+  },
+  {
+   "t": "p",
+   "text": "Feel free adapt this based on the specific managed services, features, and unique selling points your IT service company provides."
+  },
+  {
+   "t": "p",
+   "text": "Working Hours",
+   "via": "span"
+  },
+  {
+   "t": "h6",
+   "text": "Mon to Sat : 8am- 9pm"
+  },
+  {
+   "t": "h6",
+   "text": "Sunday : Closed"
+  },
+  {
+   "t": "h2",
+   "text": "Connect with us"
+  },
+  {
+   "t": "h4",
+   "text": "Ready to take the first step towards unlocking opportunities, realising goals, and embracing innovation? We are here and eager to connect."
+  },
+  {
+   "t": "h3",
+   "text": "To More Inquiry"
+  },
+  {
+   "t": "h3",
+   "text": "Social Just You Connected Us!"
+  },
+  {
+   "t": "h3",
+   "text": "Your Success Starts Here!"
+  }
+ ],
+ "faqs": []
+}

@@ -1,0 +1,49 @@
+{"name": "Q2M Solutions", "version": 1,
+"color": {"themes": [{"id": "light", "name": "Light"}, {"id": "dark", "name": "Dark"}],
+ "tokens": [
+  {"name": "surface", "value": {"light": "#ffffff", "dark": "#0b0d10"}, "usage": "Page background. The logo was drawn on white, so light is the primary theme."},
+  {"name": "surface-raised", "value": {"light": "#f4f5f7", "dark": "#15181d"}, "usage": "Cards, panels, table headers and form fields sitting on surface."},
+  {"name": "ink", "value": {"light": "#000000", "dark": "#f4f6f8"}, "usage": "Headings and body copy on surface and surface-raised. Light value is the logo's pure black."},
+  {"name": "ink-muted", "value": {"light": "#5c6168", "dark": "#a3a9b0"}, "usage": "Secondary copy, captions, metadata on surface and surface-raised (5.7:1 or better in both themes)."},
+  {"name": "line", "value": {"light": "#e2e4e8", "dark": "#2a2e35"}, "usage": "Hairline dividers and card borders. Decorative only; never the sole boundary of a control."},
+  {"name": "q2m-blue", "value": {"light": "#0075ea", "dark": "#3d96f5"}, "usage": "The logo's dot-grid blue. Use for the dot motif, large display accents (24px and up), icons and fills. On white it is 4.44:1, so do not set body-size text in it; use action instead."},
+  {"name": "action", "value": {"light": "#0062c4", "dark": "#3d96f5"}, "usage": "Primary buttons, links and small blue text. 5.9:1 on surface in light, 6.4:1 in dark."},
+  {"name": "on-action", "value": {"light": "#ffffff", "dark": "#04121f"}, "usage": "Text and icons on an action fill."},
+  {"name": "q2m-grey", "value": {"light": "#898989", "dark": "#898989"}, "usage": "The SOLUTIONS grey from the logo. Decorative blocks and large display words only; 3.5:1 on white, so never body text."},
+  {"name": "block-dark", "value": {"light": "#000000", "dark": "#1e232a"}, "usage": "Solid dark slabs on banners, booth panels and section bands. Put ink-inverse text and q2m-blue dots on it."},
+  {"name": "ink-inverse", "value": {"light": "#ffffff", "dark": "#f4f6f8"}, "usage": "Text on block-dark."},
+  {"name": "tint-blue", "value": {"light": "#e6f1fd", "dark": "#10233a"}, "usage": "Quiet blue relief behind callouts, tags and highlighted rows. ink reads on it in both themes."},
+  {"name": "focus", "value": {"light": "#0062c4", "dark": "#7cb8ff"}, "usage": "2px solid focus ring with 2px offset on every interactive element."}
+ ]},
+"type": {"fonts": [],
+ "families": {"display": "\"Sora\", \"DM Sans\", system-ui, sans-serif", "body": "\"DM Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif", "mono": "\"JetBrains Mono\", ui-monospace, Menlo, monospace"},
+ "groups": [
+  {"name": "Display", "family": "display", "styles": [
+   {"name": "display-xl", "fontSize": "64px", "lineHeight": "60px", "fontWeight": 700, "letterSpacing": "-0.02em", "sample": "AI that ships", "usage": "Booth backdrop and website hero headline only."},
+   {"name": "display", "fontSize": "48px", "lineHeight": "52px", "fontWeight": 700, "letterSpacing": "-0.02em", "sample": "Book a 30-minute AI session", "usage": "Slide titles and banner headlines."},
+   {"name": "h1", "fontSize": "36px", "lineHeight": "40px", "fontWeight": 700, "letterSpacing": "-0.01em", "sample": "Agentic AI and automation", "usage": "Page and section titles."},
+   {"name": "h2", "fontSize": "28px", "lineHeight": "34px", "fontWeight": 600, "sample": "Industries we serve", "usage": "Section headings."},
+   {"name": "h3", "fontSize": "20px", "lineHeight": "28px", "fontWeight": 600, "sample": "3D Gaussian splatting", "usage": "Card and service titles."}]},
+  {"name": "Text", "family": "body", "styles": [
+   {"name": "body-lg", "fontSize": "18px", "lineHeight": "28px", "fontWeight": 400, "sample": "We build AI agents that do real work inside your systems.", "usage": "Lead paragraphs under a headline."},
+   {"name": "body", "fontSize": "16px", "lineHeight": "24px", "fontWeight": 400, "sample": "From proof of concept to production in weeks.", "usage": "Default running text."},
+   {"name": "small", "fontSize": "14px", "lineHeight": "20px", "fontWeight": 400, "sample": "Bengaluru, India", "usage": "Captions, footnotes, card metadata."},
+   {"name": "label", "fontSize": "12px", "lineHeight": "16px", "fontWeight": 600, "letterSpacing": "0.08em", "sample": "SERVICES", "usage": "Uppercase eyebrows and tags. Always set in capitals in the copy itself."}]},
+  {"name": "Data", "family": "mono", "styles": [
+   {"name": "mono", "fontSize": "13px", "lineHeight": "20px", "fontWeight": 500, "sample": "Stand H1-42 · 17 to 19 Nov", "usage": "Stand numbers, dates, metrics and code."}]}
+ ]},
+"spacing": {"tokens": [
+  {"name": "space-1", "value": "4px", "usage": "Icon to label gap."},
+  {"name": "space-2", "value": "8px", "usage": "Tight stacks, tag padding."},
+  {"name": "space-3", "value": "12px", "usage": "Dot-grid pitch on small marks; button vertical padding."},
+  {"name": "space-4", "value": "16px", "usage": "Dot-grid pitch on banners; card padding; phone gutter."},
+  {"name": "space-6", "value": "24px", "usage": "Gap between cards."},
+  {"name": "space-8", "value": "32px", "usage": "Card padding on large panels."},
+  {"name": "space-12", "value": "48px", "usage": "Space between sections on mobile."},
+  {"name": "space-16", "value": "64px", "usage": "Space between sections on desktop and slide margins."}]},
+"radius": {"tokens": [
+  {"name": "radius-sm", "value": "4px", "usage": "Tags, inputs."},
+  {"name": "radius-md", "value": "8px", "usage": "Buttons, cards."},
+  {"name": "radius-lg", "value": "16px", "usage": "Large panels and image frames."},
+  {"name": "radius-pill", "value": "999px", "usage": "Pill tags only."}]}
+}

@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/sora';
+@import '@fontsource-variable/dm-sans';
+@import '@fontsource-variable/jetbrains-mono';
+
+/* ═══════════════════════════════════════════════════════════════════
+   Q2M design tokens. Source of truth: Q2M_Brand_Kit
+   (Q2M_Brand_Guidelines.pdf v1, q2m-colors.css, q2m-tokens.json).
+   Rules: flat colour, no gradients, borders not shadows, one blue per
+   layout, left-aligned, sentence-case headlines, 4px spacing base.
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Brand palette (q2m-colors.css) */
+  --q2m-black: #000000;
+  --q2m-blue: #0075ea;
+  --q2m-action: #0062c4;
+  --q2m-grey: #898989;
+  --q2m-muted: #5c6168;
+  --q2m-tint: #e6f1fd;
+  --q2m-surface: #f4f5f7;
+  --q2m-line: #e2e4e8;
+  --q2m-white: #ffffff;
+
+  /* Semantic tokens: LIGHT (primary theme; the logo was drawn on white) */
+  --surface: #ffffff;
+  --surface-raised: #f4f5f7;
+  --ink: #000000;
+  --ink-muted: #5c6168;
+  --line: #e2e4e8;
+  --blue: #0075ea;        /* dots, icons, fills, display accents 24px+ */
+  --action: #0062c4;      /* buttons, links, small blue text */
+  --on-action: #ffffff;
+  --grey: #898989;        /* decorative only */
+  --block: #000000;       /* dark slabs */
+  --ink-inverse: #ffffff; /* text on slabs */
+  --block-muted: #a3a9b0; /* secondary text on slabs */
+  --block-line: #2a2e35;  /* hairlines on slabs */
+  --action-soft: #3d96f5; /* small blue text on slabs */
+  --tint: #e6f1fd;
+  --focus: #0062c4;
+  /* Sticky layout (single source of truth): header height + gap below it */
+  --header-height: 88px;
+  --sticky-gap: 24px;
+  /* Active-page state in the navigation (values resolve per theme because they reference theme tokens) */
+  --nav-active-color: var(--action);      /* AA on surface and on the tint pill, light and dark */
+  --nav-active-bg: var(--tint);           /* top-level pill */
+  --nav-active-indicator: var(--blue);    /* bar / ring: a shape cue, so colour is not the only signal */
+  --dot-idle: #d5d8dd;     /* idle dots in the hero dot field / image placeholders */
+}
+[data-theme='dark'] {
+  --surface: #0b0d10;
+  --surface-raised: #15181d;
+  --ink: #f4f6f8;
+  --ink-muted: #a3a9b0;
+  --line: #2a2e35;
+  --blue: #3d96f5;
+  --action: #3d96f5;
+  --on-action: #04121f;
+  --block: #1e232a;
+  --ink-inverse: #f4f6f8;
+  --tint: #10233a;
+  --focus: #7cb8ff;
+  --dot-idle: #2a2e35;
+}
+
+@theme inline {
+  --font-display: 'Sora Variable', 'DM Sans Variable', system-ui, sans-serif;
+  --font-sans: 'DM Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace;
+
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-q2m: var(--blue);
+  --color-action: var(--action);
+  --color-on-action: var(--on-action);
+  --color-grey: var(--grey);
+  --color-block: var(--block);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-block-muted: var(--block-muted);
+  --color-block-line: var(--block-line);
+  --color-action-soft: var(--action-soft);
+  --color-tint: var(--tint);
+
+  /* Radius: 4 tags/inputs · 8 buttons/cards · 16 panels/frames · pill for tags only */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  --container-page: 1280px;
+}
+
+/* Header is taller where the split layout is active (same 1024px breakpoint as .split below) */
+@media (min-width: 1024px) { :root { --header-height: 96px; } }
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-surface text-ink font-sans antialiased; font-size: 1rem; line-height: 1.5; overflow-x: clip; }
+  h1, h2, h3, h4, h5 { @apply font-display; text-wrap: balance; }
+  h1 { font-weight: 700; letter-spacing: -0.01em; }
+  h2 { font-weight: 600; }
+  h3, h4, h5 { font-weight: 600; }
+  p { text-wrap: pretty; }
+  /* 2px focus ring, 2px offset, on every interactive element */
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+  .on-dark { --focus: #7cb8ff; }
+  ::selection { background: var(--q2m-blue); color: #fff; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; } }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full px-4 sm:px-8 lg:px-12; max-width: calc(var(--container-page) + 6rem); }
+  /* 48px between sections on mobile, 64px+ on desktop (space-12 / space-16) */
+  .section { @apply py-12 md:py-24 lg:py-32; }
+  /* Label: DM Sans Bold 12/16, +8%, caps */
+  .eyebrow { @apply font-sans text-[0.75rem] font-bold uppercase text-action; line-height: 1rem; letter-spacing: 0.08em; }
+  .on-dark .eyebrow { @apply text-action-soft; }
+  /* Type scale (Sora): display-xl 64/60 700 (hero only) · display 48/52 700 · h1 36/40 700 · h2 28/34 600 · h3 20/28 600 */
+  .display-xl { font-size: clamp(2.5rem, 4vw + 1.25rem, 4rem); line-height: 0.94; font-weight: 700; letter-spacing: -0.02em; }
+  .display-lg { font-size: clamp(2rem, 2.4vw + 1rem, 3rem); line-height: 1.08; font-weight: 700; letter-spacing: -0.02em; }
+  .display-md { font-size: clamp(1.75rem, 1.2vw + 1.25rem, 2.25rem); line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; }
+  .lede { font-size: 1.125rem; line-height: 1.75rem; color: var(--ink-muted); }
+  .on-dark .lede { color: var(--block-muted); }
+  .mono { @apply font-mono; font-size: 0.8125rem; line-height: 1.25rem; font-weight: 500; }
+  .prose-q2m p { margin-block: 1em; max-width: 68ch; }
+  .prose-q2m h2 { font-size: 1.75rem; line-height: 2.125rem; margin: 2em 0 0.5em; }
+  .prose-q2m h3 { font-size: 1.25rem; line-height: 1.75rem; margin: 1.6em 0 0.4em; }
+  .prose-q2m ul { margin-block: 1em; padding-left: 1.25rem; list-style: disc; }
+  .prose-q2m li { margin-block: .4em; max-width: 66ch; }
+  .prose-q2m img { border-radius: var(--radius-lg); margin-block: 2rem; }
+  .hairline { border-color: var(--line); }
+  .on-dark .hairline { border-color: var(--block-line); }
+  /* Keyword strip (large grey display words separated by brand-blue dots). Static and wrapped for reduced motion. */
+  .marquee { overflow: hidden; }
+  .marquee-track { display: flex; width: max-content; gap: 2.5rem; animation: q2m-marquee 45s linear infinite; }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 2.5rem; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--q2m-grey); white-space: nowrap; }
+  .marquee-track span::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
+  @keyframes q2m-marquee { to { transform: translateX(calc(-50% - 1.25rem)); } }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; width: auto; flex-wrap: wrap; padding-inline: 1rem; } }
+  /* ── Two-column split: ONE shared layout + sticky behaviour for every page ─────────────────────────
+     .split         grid container (stacked below 1024px)
+     .split-aside   the column that stays in view (sticky); .split-main is the column that scrolls past
+     Variants (same on every page): default 5/7 · .split--lead 7/5 (hero, intro, text-beside-media) · .split--toc 3/9
+     Sticky is visible only while the sibling column is taller than the aside. Never put overflow on an ancestor. */
+  .split { display: grid; gap: 2.5rem; }
+  .split > * { min-width: 0; }
+  .scroll-anchor { scroll-margin-top: calc(var(--header-height) + var(--sticky-gap)); }
+  @media (min-width: 1024px) {
+    .split { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 3rem; row-gap: 2.5rem; }
+    .split-aside { grid-column: span 5; position: sticky; top: calc(var(--header-height) + var(--sticky-gap)); align-self: start; z-index: 1; }
+    .split-main { grid-column: span 7; }
+    .split--lead > .split-aside { grid-column: span 7; }
+    .split--lead > .split-main { grid-column: span 5; }
+    .split--toc > .split-aside { grid-column: span 3; }
+    .split--toc > .split-main { grid-column: span 9; }
+    /* Added automatically by useSplitFit() (src/lib/splitFit.ts) only when an aside is taller than the viewport AND its sibling is taller still */
+    .split-aside--scroll { max-height: calc(100vh - var(--header-height) - 48px); overflow-y: auto; }
+  }
+  /* Flat header band (replaces the live site's decorative breadcrumb background): brand surface colour, same on every page */
+  .page-band { background: var(--surface-raised); border-bottom: 1px solid var(--line); }
+  /* Theme-specific image variants (Clutch logo: dark artwork on light, white artwork on dark) */
+  .only-light { display: block; }
+  .only-dark { display: none; }
+  [data-theme='dark'] .only-light { display: none; }
+  [data-theme='dark'] .only-dark { display: block; }
+  /* Logo variants: colour on light, reverse on dark */
+  .logo-reverse { display: none; }
+  [data-theme='dark'] .logo-color { display: none; }
+  [data-theme='dark'] .logo-reverse { display: block; }
+  .on-block .logo-color { display: none; }
+  .on-block .logo-reverse { display: block; }
+}
+
+/* ── Navigation active state: ONE rule set for every menu, link and theme ───────────────────────────
+   Driven only by aria-current (set by src/lib/nav.ts). Unlayered on purpose so it wins over utility hover styles;
+   hover/focus stay distinct: hover = accent text + arrow, focus = 2px ring, active = bar/pill/ring that persists. */
+.nav-link { position: relative; }
+.nav-link[aria-current='page'] { color: var(--nav-active-color); font-weight: 600; }
+.nav-link[aria-current='page']::before {
+  content: ''; position: absolute; left: -12px; top: 50%; width: 3px; height: 1rem; border-radius: 2px;
+  background: var(--nav-active-indicator); transform: translateY(-50%);
+}
+.nav-top[aria-current]:not([data-open='true']) { background: var(--nav-active-bg); color: var(--nav-active-color); }
+.nav-featured { position: relative; }
+.nav-featured[aria-current='page']::after {
+  content: ''; position: absolute; inset: 0; border: 2px solid var(--nav-active-indicator); border-radius: inherit; pointer-events: none;
+}

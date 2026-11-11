@@ -1,0 +1,53 @@
+{
+ "counters": [
+  {
+   "value": "150",
+   "prefix": "",
+   "suffix": "+",
+   "label": "Enterprise projects delivered across APAC"
+  },
+  {
+   "value": "40",
+   "prefix": "",
+   "suffix": "%+",
+   "label": "Average reduction in manual processing time"
+  },
+  {
+   "value": "6",
+   "prefix": "",
+   "suffix": "wk",
+   "label": "Time-to-first-AI-value in production"
+  },
+  {
+   "value": "2",
+   "prefix": "",
+   "suffix": "",
+   "label": "Microsoft Solution Partner designations"
+  },
+  {
+   "value": "70",
+   "prefix": "",
+   "suffix": "%",
+   "label": "Faster document and data processing across client deployments"
+  },
+  {
+   "value": "45",
+   "prefix": "",
+   "suffix": "%",
+   "label": "Average ticket deflection rate for Copilot Studio deployments"
+  },
+  {
+   "value": "6",
+   "prefix": "",
+   "suffix": "wk",
+   "label": "Median time to first AI value in a production environment"
+  },
+  {
+   "value": "40",
+   "prefix": "",
+   "suffix": "%+",
+   "label": "Average reduction in manual processing time across APAC clients"
+  }
+ ],
+ "heroStat": "150+ Projects Delivered"
+}

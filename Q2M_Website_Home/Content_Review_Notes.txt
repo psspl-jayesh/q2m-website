@@ -1,0 +1,32 @@
+Q2M HOME PAGE: CONTENT REVIEW NOTES (Google helpful-content and E-E-A-T)
+
+The page has about 2,600 words of visible copy. Google has no preferred word count; every section
+was written to answer a real visitor question (what you build, for whom, how a project runs,
+what it costs, who owns the work, who the team is). Do not pad it further.
+
+WHO (trust and authorship). Fill these with real details only. Never use stock or AI headshots or made-up names.
+  [ ] Team section: real founder names, titles, 2-line backgrounds, real photos, LinkedIn links
+  [ ] Footer: CIN and registered office address
+  [ ] Contact email, phone, LinkedIn page
+  [ ] BTS dates and stand number
+
+HOW (evidence of real work). The image slots are where proof goes.
+  [ ] Replace every "Image slot" with a real photo, screen or capture from your own projects or demos
+      (no generic stock). Sizes are printed on each slot.
+  [ ] Once allowed, add one or two short case studies (client type, problem, what was built, result)
+      and link them from the "See the work" grid.
+
+ACCURACY. Confirm or edit these statements before launch; they are written as Q2M policy:
+  [ ] "We build for Meta, XREAL, Snap Spectacles and MentraOS glasses"
+  [ ] FAQ: discovery is fixed-price; pilot gets a fixed quote; pilots run in weeks
+  [ ] FAQ: client owns code, models and documentation once paid
+  [ ] Principles: NDA before sensitive data; data not used to train public models; deletion on request
+  [ ] "We follow up within a week" (session section)
+  [ ] Technology list matches what the team actually uses
+
+SEO (applied to people-first content)
+  - Title: Q2M Solutions | AI Agents, Automation and Smart Glasses Apps, India
+  - One H1, descriptive H2 per section, meta description set, alt text on logos
+  - When the domain is live: add Organization schema (name, logo URL, address, sameAs LinkedIn),
+    an About page and a page per service; connect the booking form.
+  - Copy was drafted with AI assistance and must be reviewed and approved by the Q2M team.

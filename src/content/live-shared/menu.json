@@ -1,0 +1,236 @@
+[
+ {
+  "label": "AI",
+  "href": "#",
+  "children": [
+   {
+    "label": "AI Development Services",
+    "href": "https://q2msolutions.com/ai-development-services/"
+   },
+   {
+    "label": "AI Chatbot Development Company",
+    "href": "https://q2msolutions.com/ai-chatbot-development-company/"
+   },
+   {
+    "label": "Machine Learning Development Services",
+    "href": "https://q2msolutions.com/machine-learning-development-services/"
+   },
+   {
+    "label": "AI Consulting Services",
+    "href": "https://q2msolutions.com/ai-consulting-services/"
+   },
+   {
+    "label": "AI App Development Services",
+    "href": "https://q2msolutions.com/ai-app-development-services/"
+   },
+   {
+    "label": "AI Agent Development Services",
+    "href": "https://q2msolutions.com/ai-agent-development-services/"
+   },
+   {
+    "label": "Generative AI Development Services",
+    "href": "https://q2msolutions.com/generative-ai-development-services/"
+   },
+   {
+    "label": "Smart Glasses and AR Wearable App Development Services",
+    "href": "https://q2msolutions.com/smart-glasses-ar-wearable-app-development-services/"
+   }
+  ]
+ },
+ {
+  "label": "Consulting",
+  "href": "#",
+  "children": [
+   {
+    "label": "Cloud Application",
+    "href": "https://q2msolutions.com/cloud-applications/"
+   },
+   {
+    "label": "Digital Transformation Services",
+    "href": "https://q2msolutions.com/digital-transformation-services/"
+   },
+   {
+    "label": "Enterprise Business Application",
+    "href": "https://q2msolutions.com/enterprise-business-application/"
+   },
+   {
+    "label": "Infrastructure",
+    "href": "https://q2msolutions.com/infrastructure-services/"
+   },
+   {
+    "label": "Modern Workplace",
+    "href": "https://q2msolutions.com/modern-workplace/"
+   },
+   {
+    "label": "Technology Consulting",
+    "href": "https://q2msolutions.com/technology-consulting-services/"
+   },
+   {
+    "label": "Digital Sustainability",
+    "href": "https://q2msolutions.com/digital-sustainability-services/"
+   },
+   {
+    "label": "Azure Data & AI",
+    "href": "https://q2msolutions.com/azure-data-ai-services/"
+   }
+  ]
+ },
+ {
+  "label": "Solutions",
+  "href": "#",
+  "children": [
+   {
+    "label": "SharePoint Development Services",
+    "href": "https://q2msolutions.com/sharepoint-development-services/"
+   },
+   {
+    "label": "Azure AI And Machine Learning",
+    "href": "https://q2msolutions.com/azure-ai-and-machine-learning/"
+   },
+   {
+    "label": "AI Solutions Dеvеlopmеnt",
+    "href": "https://q2msolutions.com/ai-solutions-development/"
+   },
+   {
+    "label": "Data Lakе And Big Data On Azurе",
+    "href": "https://q2msolutions.com/data-lake-and-big-data-on-azure/"
+   },
+   {
+    "label": "Azure Data Services",
+    "href": "https://q2msolutions.com/azure-data-services/"
+   },
+   {
+    "label": "Azurе Databasе Sеrvicеs",
+    "href": "https://q2msolutions.com/azure-database-services/"
+   },
+   {
+    "label": "Azurе IoT Solution",
+    "href": "https://q2msolutions.com/azure-iot-solution/"
+   },
+   {
+    "label": "Machinе Lеarning Modеls On Azurе",
+    "href": "https://q2msolutions.com/machine-learning-models-on-azure/"
+   },
+   {
+    "label": "Cognitivе Sеrvicе Implеmеntation",
+    "href": "https://q2msolutions.com/cognitive-service-implementation/"
+   },
+   {
+    "label": "Data Copilot For Azure AI",
+    "href": "https://q2msolutions.com/data-copilot-for-azure-ai/"
+   }
+  ]
+ },
+ {
+  "label": "Data",
+  "href": "#",
+  "children": [
+   {
+    "label": "Azure OpenAI Services",
+    "href": "#"
+   },
+   {
+    "label": "Generative AI Consulting",
+    "href": "#"
+   },
+   {
+    "label": "Microsoft Fabric Services",
+    "href": "https://q2msolutions.com/microsoft-fabric-services/"
+   },
+   {
+    "label": "Data Stratеgy And Consulting",
+    "href": "#"
+   },
+   {
+    "label": "AI-Powеrеd Analytics",
+    "href": "#"
+   },
+   {
+    "label": "Businеss Intеlligеncе Solutions",
+    "href": "#"
+   },
+   {
+    "label": "Data Govеrnancе And Compliancе",
+    "href": "#"
+   },
+   {
+    "label": "Advanced Analytics And Data Sciеncе",
+    "href": "#"
+   }
+  ]
+ },
+ {
+  "label": "Copilot",
+  "href": "#",
+  "children": [
+   {
+    "label": "Copilot Automation In Dynamics 365",
+    "href": "#"
+   },
+   {
+    "label": "Microsoft Copilot Studio",
+    "href": "#"
+   },
+   {
+    "label": "Copilot For Customer Service",
+    "href": "#"
+   },
+   {
+    "label": "Microsoft Copilot Integration Services",
+    "href": "#"
+   },
+   {
+    "label": "AI-Driven Legal Co-Pilot",
+    "href": "#"
+   }
+  ]
+ },
+ {
+  "label": "Resources",
+  "href": "#",
+  "children": [
+   {
+    "label": "News & PR",
+    "href": "#"
+   },
+   {
+    "label": "Webinars & Events",
+    "href": "#"
+   },
+   {
+    "label": "Customer Success Stories",
+    "href": "#"
+   },
+   {
+    "label": "Videos",
+    "href": "#"
+   },
+   {
+    "label": "EBooks/Whitepapers",
+    "href": "#"
+   },
+   {
+    "label": "Case Studies",
+    "href": "https://q2msolutions.com/case-studies/"
+   },
+   {
+    "label": "Blogs",
+    "href": "https://q2msolutions.com/blogs/"
+   },
+   {
+    "label": "Campus Click",
+    "href": "https://campusclick365.com/"
+   }
+  ]
+ },
+ {
+  "label": "About",
+  "href": "https://q2msolutions.com/about/",
+  "children": []
+ },
+ {
+  "label": "Contact",
+  "href": "https://q2msolutions.com/contact/",
+  "children": []
+ }
+]

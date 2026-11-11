@@ -1,0 +1,330 @@
+[
+ {
+  "label": "AI",
+  "href": "",
+  "children": [
+   {
+    "label": "AI Development Services",
+    "href": "/ai-development-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "AI Chatbot Development Company",
+    "href": "/ai-chatbot-development-company/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Machine Learning Development Services",
+    "href": "/machine-learning-development-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "AI Consulting Services",
+    "href": "/ai-consulting-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "AI App Development Services",
+    "href": "/ai-app-development-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "AI Agent Development Services",
+    "href": "/ai-agent-development-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Generative AI Development Services",
+    "href": "/generative-ai-development-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Smart Glasses and AR Wearable App Development Services",
+    "href": "/smart-glasses-ar-wearable-app-development-services/",
+    "external": false,
+    "placeholder": false
+   }
+  ]
+ },
+ {
+  "label": "Consulting",
+  "href": "",
+  "children": [
+   {
+    "label": "Cloud Application",
+    "href": "/cloud-applications/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Digital Transformation Services",
+    "href": "/digital-transformation-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Enterprise Business Application",
+    "href": "/enterprise-business-application/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Infrastructure",
+    "href": "/infrastructure-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Modern Workplace",
+    "href": "/modern-workplace/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Technology Consulting",
+    "href": "/technology-consulting-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Digital Sustainability",
+    "href": "/digital-sustainability-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Azure Data & AI",
+    "href": "/azure-data-ai-services/",
+    "external": false,
+    "placeholder": false
+   }
+  ]
+ },
+ {
+  "label": "Solutions",
+  "href": "",
+  "children": [
+   {
+    "label": "SharePoint Development Services",
+    "href": "/sharepoint-development-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Azure AI And Machine Learning",
+    "href": "/azure-ai-and-machine-learning/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "AI Solutions Development",
+    "href": "/ai-solutions-development/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Data Lake And Big Data On Azure",
+    "href": "/data-lake-and-big-data-on-azure/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Azure Data Services",
+    "href": "/azure-data-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Azure Database Services",
+    "href": "/azure-database-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Azure IoT Solution",
+    "href": "/azure-iot-solution/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Machine Learning Models On Azure",
+    "href": "/machine-learning-models-on-azure/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Cognitive Service Implementation",
+    "href": "/cognitive-service-implementation/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Data Copilot For Azure AI",
+    "href": "/data-copilot-for-azure-ai/",
+    "external": false,
+    "placeholder": false
+   }
+  ]
+ },
+ {
+  "label": "Data",
+  "href": "",
+  "children": [
+   {
+    "label": "Azure OpenAI Services",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Generative AI Consulting",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Microsoft Fabric Services",
+    "href": "/microsoft-fabric-services/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Data Strategy And Consulting",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "AI-Powered Analytics",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Business Intelligence Solutions",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Data Governance And Compliance",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Advanced Analytics And Data Science",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   }
+  ]
+ },
+ {
+  "label": "Copilot",
+  "href": "",
+  "children": [
+   {
+    "label": "Copilot Automation In Dynamics 365",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Microsoft Copilot Studio",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Copilot For Customer Service",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Microsoft Copilot Integration Services",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "AI-Driven Legal Co-Pilot",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   }
+  ]
+ },
+ {
+  "label": "Resources",
+  "href": "",
+  "children": [
+   {
+    "label": "News & PR",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Webinars & Events",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Customer Success Stories",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Videos",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "EBooks/Whitepapers",
+    "href": "",
+    "external": false,
+    "placeholder": true
+   },
+   {
+    "label": "Case Studies",
+    "href": "/case-studies/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Blogs",
+    "href": "/blogs/",
+    "external": false,
+    "placeholder": false
+   },
+   {
+    "label": "Campus Click",
+    "href": "https://campusclick365.com/",
+    "external": true,
+    "placeholder": false
+   }
+  ]
+ },
+ {
+  "label": "About",
+  "href": "/about/",
+  "children": []
+ },
+ {
+  "label": "Contact",
+  "href": "/contact/",
+  "children": []
+ }
+]

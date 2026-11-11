@@ -1,0 +1,248 @@
+{
+ "path": "/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/",
+ "slug": "case-study--rele-one-building-a-national-real-estate-platform-with-vibe-coding",
+ "type": "case-study",
+ "source": "https://q2msolutions.com/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/",
+ "syncedAt": "2026-11-11T08:57:52.160Z",
+ "seo": {
+  "title": "Rele.one: Building a National Real-Estate Platform with Vibe Coding - Q2M Solutions",
+  "description": "",
+  "h1": "Rele.one: Building a National Real-Estate Platform with Vibe Coding"
+ },
+ "furniture": {
+  "breadcrumb": [],
+  "meta": [],
+  "nav": []
+ },
+ "blocks": [
+  {
+   "t": "h1",
+   "text": "Rele.one: Building a National Real-Estate Platform with Vibe Coding",
+   "eyebrow": "CASE STUDY"
+  },
+  {
+   "t": "p",
+   "text": "How we designed and shipped a full AI-powered property marketplace for all of Australia — fast — using an AI-assisted “vibe coding” workflow."
+  },
+  {
+   "t": "btn",
+   "text": "Book a Discovery Call",
+   "href": "/contact/"
+  },
+  {
+   "t": "h2",
+   "text": "Executive Summary"
+  },
+  {
+   "t": "p",
+   "text": "Rele set out to launch a modern, national real-estate marketplace for Australia — a single place to buy, rent, and invest across all eight states and territories, with verified agents, AI-powered search, and live market data. Competing in a market dominated by long-entrenched incumbents meant Rele needed to reach a polished, feature-complete product quickly, without a multi-year build."
+  },
+  {
+   "t": "p",
+   "text": "We delivered exactly that using a vibe coding approach — an AI-assisted development workflow that pairs experienced engineers with AI tools (Claude Code and AI app builders such as Lovable, v0, and Bolt) to design, generate, and refine production code at a dramatically faster pace. The result is rele.one: a fast, server-rendered Next.js platform with AI property search, agent profiles, market insights, and a full suite of buyer tools — shipped in a fraction of the time a traditional build would take."
+  },
+  {
+   "t": "p",
+   "text": "This case study explains what we built, how vibe coding accelerated it, and why the approach delivers speed without sacrificing quality."
+  },
+  {
+   "t": "h2",
+   "text": "The Client & Vision"
+  },
+  {
+   "t": "p",
+   "text": "Rele's vision was to become Australia's most trusted property platform — combining extensive, verified listings with a genuinely modern search experience and transparent market data. The brief was ambitious: cover the entire country, serve buyers, renters, investors, and agents alike, and feel faster and cleaner than the established players from day one. For a new entrant, time-to-market is everything. Rele needed to move from concept to a credible, comprehensive product before that window closed."
+  },
+  {
+   "t": "h2",
+   "text": "The Challenge"
+  },
+  {
+   "t": "p",
+   "text": "Building a national real-estate marketplace is a large undertaking. The project had to deliver a lot, quickly, and to a high standard:"
+  },
+  {
+   "t": "h3",
+   "text": "Breadth of scope"
+  },
+  {
+   "t": "p",
+   "text": "Listings for sale, rent, and sold; new developments; agent directories; news, blogs, and guides; plus financial calculators — a genuine platform, not a landing page."
+  },
+  {
+   "t": "h3",
+   "text": "A modern search experience"
+  },
+  {
+   "t": "p",
+   "text": "Both a natural-language AI search (“3 bed Sydney”, “QLD invest”) and traditional filters, across every state and territory."
+  },
+  {
+   "t": "h3",
+   "text": "Trust and verification"
+  },
+  {
+   "t": "p",
+   "text": "Background-checked, licensed agents and verified listings, so users can transact with confidence."
+  },
+  {
+   "t": "h3",
+   "text": "Performance and SEO"
+  },
+  {
+   "t": "p",
+   "text": "A fast, server-rendered experience that ranks well and loads instantly — essential in a search-driven category."
+  },
+  {
+   "t": "h3",
+   "text": "Speed to market"
+  },
+  {
+   "t": "p",
+   "text": "All of the above, delivered fast enough to compete with incumbents that have had years and large teams."
+  },
+  {
+   "t": "h2",
+   "text": "Our Approach: Vibe Coding"
+  },
+  {
+   "t": "p",
+   "text": "“Vibe coding” is an AI-assisted way of building software: instead of hand-writing every line, engineers describe intent in natural language, generate working code and UI with AI tools, then review, refine, and harden it. Used well, it compresses the slowest parts of development — scaffolding, boilerplate, and first-draft UI — from weeks into hours, while engineers stay firmly in control of architecture, quality, and security."
+  },
+  {
+   "t": "h3",
+   "text": "AI-generated UI, human-refined"
+  },
+  {
+   "t": "p",
+   "text": "We used AI app builders (Lovable, v0, Bolt) to rapidly produce the page layouts, components, and responsive design, then refined them by hand for polish and brand consistency."
+  },
+  {
+   "t": "h3",
+   "text": "Claude Code as the engineering copilot"
+  },
+  {
+   "t": "p",
+   "text": "We used Claude Code to generate and iterate on application logic, API integrations, search behaviour, and data models — reviewing every change rather than accepting it blindly."
+  },
+  {
+   "t": "h3",
+   "text": "Tight iteration loops"
+  },
+  {
+   "t": "p",
+   "text": "Rapid prompt-generate-review cycles let us prototype features, get them in front of the client, and adjust in the same day."
+  },
+  {
+   "t": "h3",
+   "text": "Engineering discipline retained"
+  },
+  {
+   "t": "p",
+   "text": "AI accelerated the work; experienced engineers still owned architecture, code review, performance, accessibility, and security — so speed never came at the cost of a fragile product."
+  },
+  {
+   "t": "h2",
+   "text": "What We Built",
+   "eyebrow": "Our Solution"
+  },
+  {
+   "t": "p",
+   "text": "Rele.one launched as a comprehensive, production-grade marketplace. Core capabilities include:"
+  },
+  {
+   "t": "li",
+   "text": "AI Property Search Natural-language search (e.g. “3 bed Sydney”, “Apt Melbourne”, “QLD invest”) alongside classic manual filters."
+  },
+  {
+   "t": "li",
+   "text": "Buy · Rent · Sold Unified listings across sale, rental, and sold properties, filterable by state and suburb."
+  },
+  {
+   "t": "li",
+   "text": "Nationwide coverage Browse by all 8 states and territories — NSW, VIC, QLD, SA, WA, TAS, NT, ACT."
+  },
+  {
+   "t": "li",
+   "text": "Verified agents Background-checked, locally rated licensed agents and agent profiles for trusted transactions."
+  },
+  {
+   "t": "li",
+   "text": "Live market data Real-time price trends, auction clearance rates, and suburb reports."
+  },
+  {
+   "t": "li",
+   "text": "Buyer tools Affordability calculator, borrowing-power calculator, and a dedicated insights/REA calculator."
+  },
+  {
+   "t": "li",
+   "text": "New developments A dedicated section for off-the-plan and new-build opportunities."
+  },
+  {
+   "t": "li",
+   "text": "Insights & content Property news, RBA rate updates, blogs, and suburb-by-suburb guides for SEO and engagement."
+  },
+  {
+   "t": "li",
+   "text": "For Agents An agent onboarding and listing pathway to grow supply on the platform."
+  },
+  {
+   "t": "h2",
+   "text": "Technology & Why It's Better"
+  },
+  {
+   "t": "p",
+   "text": "The platform is built on a modern, SEO-friendly web stack, delivered through an AI-accelerated workflow."
+  },
+  {
+   "t": "p",
+   "text": "Area Choice & rationale Framework Next.js / React — server-side rendering for fast loads and strong SEO, essential in a search-driven property market. AI-assisted build Claude Code + AI app builders (Lovable / v0 / Bolt) — compress scaffolding and UI work, enabling rapid, iterative delivery. AI search Natural-language query understanding layered over structured listing filters, for a search experience that feels effortless. Content & insights A content layer (news, guides, calculators) that drives organic search traffic and repeat visits. Verification layer Agent background-checks and listing verification to build trust from day one.",
+   "via": "div"
+  },
+  {
+   "t": "h2",
+   "text": "Why vibe coding was the right call"
+  },
+  {
+   "t": "h3",
+   "text": "Speed to market"
+  },
+  {
+   "t": "p",
+   "text": "AI-assisted generation let us reach a feature-complete, national platform far faster than a traditional hand-built approach — the single biggest advantage for a new entrant."
+  },
+  {
+   "t": "h3",
+   "text": "Rapid iteration"
+  },
+  {
+   "t": "p",
+   "text": "Prompt-driven changes meant the client saw and shaped features in real time, not after long dev cycles."
+  },
+  {
+   "t": "h3",
+   "text": "Cost efficiency"
+  },
+  {
+   "t": "p",
+   "text": "Less time on boilerplate meant more budget spent on the things that differentiate — search quality, data, and polish."
+  },
+  {
+   "t": "h3",
+   "text": "Quality preserved"
+  },
+  {
+   "t": "p",
+   "text": "Human engineering oversight on architecture, performance, and security ensured the AI-accelerated build is production-grade, not a throwaway prototype."
+  },
+  {
+   "t": "h2",
+   "text": "Conclusion"
+  },
+  {
+   "t": "p",
+   "text": "For Rele, we turned an ambitious vision — a trusted, national, AI-powered property marketplace — into a live, comprehensive product, and we did it fast by embracing vibe coding. AI-assisted development handled the heavy lifting of UI and scaffolding, while our engineers steered architecture, quality, and performance. The outcome is rele.one: a modern Next.js platform spanning every Australian state, with AI search, verified agents, live market data, and buyer tools — proof that AI-accelerated delivery can ship serious products without cutting corners."
+  }
+ ],
+ "faqs": []
+}

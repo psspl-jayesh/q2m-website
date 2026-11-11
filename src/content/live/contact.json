@@ -1,0 +1,92 @@
+{
+ "path": "/contact/",
+ "slug": "contact",
+ "type": "page",
+ "url": "https://q2msolutions.com/contact/",
+ "fetchedAt": "2026-11-11T08:57:51.351Z",
+ "seo": {
+  "title": "Contact - Q2M Solutions",
+  "description": "Connect with the experts at Q2M Solutions and witness the power of AI and software development with their end-to-end assistance.",
+  "h1": "Contact",
+  "h1Count": 1,
+  "canonical": "https://q2msolutions.com/contact/"
+ },
+ "blocks": [
+  {
+   "t": "breadcrumb",
+   "text": "Home"
+  },
+  {
+   "t": "breadcrumb",
+   "text": "Contact"
+  },
+  {
+   "t": "h1",
+   "text": "Contact"
+  },
+  {
+   "t": "h2",
+   "text": "Our Office Location.",
+   "eyebrow": "OFFICE ADDRESS"
+  },
+  {
+   "t": "p",
+   "text": "Feel free adapt this based on the specific managed services, features, and unique selling points your IT service company provides."
+  },
+  {
+   "t": "h4",
+   "text": "Singapore"
+  },
+  {
+   "t": "p",
+   "text": "Cecil St",
+   "via": "span"
+  },
+  {
+   "t": "p",
+   "text": "143 Cecil Street, 25-03, GB Building, Singapore"
+  },
+  {
+   "t": "p",
+   "text": "Working Hours",
+   "via": "span"
+  },
+  {
+   "t": "h6",
+   "text": "Mon to Sat : 8am- 9pm"
+  },
+  {
+   "t": "h6",
+   "text": "Sunday : Closed"
+  },
+  {
+   "t": "h2",
+   "text": "Connect with us"
+  },
+  {
+   "t": "h4",
+   "text": "Ready to take the first step towards unlocking opportunities, realizing goals, and embracing innovation? We are here and eager to connect."
+  },
+  {
+   "t": "h3",
+   "text": "To More Inquiry"
+  },
+  {
+   "t": "p",
+   "text": "+6587430992"
+  },
+  {
+   "t": "h3",
+   "text": "Social Just You Connected Us!"
+  },
+  {
+   "t": "h3",
+   "text": "Your Success Starts Here!"
+  }
+ ],
+ "faqs": [],
+ "skipped": {
+  "deco": [],
+  "noise": []
+ }
+}
