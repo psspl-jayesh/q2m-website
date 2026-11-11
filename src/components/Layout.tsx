@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ChevronDown, Menu, X, ArrowUpRight, Mail, MapPin, Phone, Moon, Sun } from 'lucide-react'
@@ -13,6 +13,7 @@ import { useContent } from '@/lib/content'
 import { megaCopy } from '@/lib/menuCopy'
 import { useSplitFit } from '@/lib/splitFit'
 import { Button } from './ui'
+import SocialIcon from './SocialIcon'
 import siteCopy from '@/data/site-copy.json'
 import siteImages from '@/data/site-images.json'
 
@@ -183,44 +184,71 @@ function ThemeToggle() {
   )
 }
 
+/** One footer link group. Phones and tablets: a closed accordion (button with aria-expanded). Desktop (1024px and up): always open. */
+function FooterGroup({ title, columns = 1, children }: { title: string; columns?: 1 | 2; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false)
+  const id = useId()
+  return (
+    <nav aria-label={title} className={`border-b border-block-line lg:border-0 ${columns === 2 ? 'lg:col-span-2' : ''}`}>
+      <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen((v) => !v)}
+        className="eyebrow flex min-h-12 w-full items-center justify-between text-left lg:hidden">
+        {title}<ChevronDown aria-hidden className={`size-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      <p className="eyebrow mb-3 hidden lg:block">{title}</p>
+      <ul id={id} className={`${open ? 'grid' : 'hidden'} gap-y-2 pb-4 lg:grid lg:pb-0 ${columns === 2 ? 'sm:grid-cols-2 sm:gap-x-6' : ''}`}>{children}</ul>
+    </nav>
+  )
+}
+
+const footLink = 'text-sm leading-5 text-block-muted hover:text-ink-inverse'
+
 function Footer() {
+  const groups = NAV.filter((g) => g.key !== 'ai' && g.items.length > 1)
   return (
     <footer className="on-dark bg-block text-ink-inverse">
-      <div className="container-page py-16 md:py-24">
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <Logo onBlock width={120} />
-            <p className="mt-8 max-w-md text-block-muted">{siteCopy.footerBlurb}</p>
-            <ul className="mono mt-8 space-y-3 text-block-muted">
-              <li className="flex gap-3"><Mail aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></li>
-              {COMPANY.phone && <li className="flex gap-3"><Phone aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</a></li>}
-              <li className="flex gap-3"><MapPin aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer">{fullAddress()}</a></li>
+      <div className="container-page py-10 md:py-14">
+        <div className="grid gap-8 xl:grid-cols-12 xl:gap-10">
+          {/* Company: logo, short description, contact details (always visible) */}
+          <div className="lg:grid lg:grid-cols-2 lg:gap-10 xl:col-span-4 xl:block">
+            <div>
+            <Logo onBlock width={104} />
+            <p className="mt-4 max-w-sm text-sm leading-6 text-block-muted">{siteCopy.footerBlurb}</p>
+            </div>
+            <ul className="mono mt-5 space-y-2 !text-[0.8125rem] text-block-muted lg:mt-0 xl:mt-5">
+              <li className="flex gap-2.5"><Mail aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></li>
+              {COMPANY.phone && <li className="flex gap-2.5"><Phone aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</a></li>}
+              <li className="flex gap-2.5"><MapPin aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer">{fullAddress()}</a></li>
             </ul>
           </div>
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
-            <nav aria-label={footerContent.heading}>
-              <p className="eyebrow mb-5">{footerContent.heading}</p>
-              <ul className="space-y-3">{footerContent.links.map((l) => <li key={l.label}><Link className="text-[0.9375rem] text-block-muted hover:text-ink-inverse" to={l.href}>{l.label}</Link></li>)}</ul>
-            </nav>
-            {NAV.filter((g) => g.key !== 'ai' && g.items.length > 1).map((g) => (
-              <nav key={g.key} aria-label={g.label}>
-                <p className="eyebrow mb-5">{g.label}</p>
-                <ul className="space-y-3">
-                  {g.items.map((l) => <li key={l.href}>{l.external ? <a className="text-[0.9375rem] text-block-muted hover:text-ink-inverse" href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a> : <Link className="text-[0.9375rem] text-block-muted hover:text-ink-inverse" to={l.href}>{l.label}</Link>}</li>)}
-                </ul>
-              </nav>
+          {/* Link groups: compact columns; the long Solutions list uses two columns */}
+          <div className="lg:grid lg:grid-cols-5 lg:gap-x-8 xl:col-span-8">
+            <FooterGroup title={footerContent.heading}>
+              {footerContent.links.map((l) => <li key={l.label}><Link className={footLink} to={l.href}>{l.label}</Link></li>)}
+            </FooterGroup>
+            {groups.map((g) => (
+              <FooterGroup key={g.key} title={g.label} columns={g.items.length > 9 ? 2 : 1}>
+                {g.items.map((l) => <li key={l.href}>{l.external ? <a className={footLink} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a> : <Link className={footLink} to={l.href}>{l.label}</Link>}</li>)}
+              </FooterGroup>
             ))}
           </div>
         </div>
-        <div className="mt-16 flex flex-col gap-6 border-t border-block-line pt-8 text-sm text-block-muted md:flex-row md:items-center md:justify-between">
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            {TOP_LINKS.map((l) => <li key={l.to}><Link className="hover:text-ink-inverse" to={l.to}>{l.label}</Link></li>)}
-            <li><Link className="hover:text-ink-inverse" to={LEGAL.privacyPath}>Privacy Policy</Link></li>
-          </ul>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            {COMPANY.social.map((s) => <li key={s.label}><a className="hover:text-ink-inverse" href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a></li>)}
-          </ul>
-          <div className="flex items-center gap-6"><ThemeToggle /><p>Copyright {new Date().getFullYear()} {COMPANY.legalName}</p></div>
+        {/* Bottom row: copyright, legal links, social icons, theme switch (one line on desktop) */}
+        <div className="mt-8 flex flex-col gap-4 border-t border-block-line pt-6 text-sm text-block-muted md:mt-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-x-6">
+            <p>Copyright {new Date().getFullYear()} {COMPANY.legalName}</p>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              {TOP_LINKS.map((l) => <li key={l.to}><Link className="hover:text-ink-inverse" to={l.to}>{l.label}</Link></li>)}
+              <li><Link className="hover:text-ink-inverse" to={LEGAL.privacyPath}>Privacy Policy</Link></li>
+            </ul>
+          </div>
+          <div className="flex flex-wrap items-center gap-4">
+            <ul aria-label="Social media" className="flex items-center gap-1">
+              {COMPANY.social.map((s) => (
+                <li key={s.label}><a className="inline-flex size-10 items-center justify-center rounded-md hover:bg-white/10 hover:text-ink-inverse" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}><SocialIcon label={s.label} /></a></li>
+              ))}
+            </ul>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </footer>
