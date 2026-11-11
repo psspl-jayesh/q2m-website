@@ -16,13 +16,15 @@ export function trimSentences(text: string, max: number): string {
 
 /**
  * Copy for a mega-menu panel, taken only from the live pages the menu links to (nothing written by us):
- * - intro: live meta description of the group's first page, trimmed by whole sentences
+ * - intro: live meta description of the group's first page that has one, trimmed by whole sentences
  * - blurb: first paragraph of the featured (first) page, trimmed by whole sentences
  */
 export function megaCopy(c: Content, g: NavGroup): { intro: string; blurb: string } {
   const e = findEntry(c, g.items[0].href)
-  if (!e) return { intro: '', blurb: '' }
-  const intro = trimSentences(e.description || '', 170)
+  // intro: the first page in the group that has a live meta description (the featured page may have none, e.g. Case Studies)
+  const withDesc = g.items.map((i) => findEntry(c, i.href)).find((x) => x?.description)
+  const intro = trimSentences(withDesc?.description || '', 170)
+  if (!e) return { intro, blurb: '' }
   const firstP = e.blocks.find((b) => b.t === 'p' && (b.text || '').length > 60)?.text ?? ''
   const blurb = trimSentences(firstP, 130)
   return { intro, blurb: blurb === intro ? '' : blurb }
