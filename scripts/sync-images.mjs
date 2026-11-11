@@ -258,6 +258,8 @@ manifest.mapping = mapping
 // counts: live page images (page region, after exclusions) vs manifest
 const counts = {}
 for (const [p, v] of Object.entries(crawled)) { if (v.error) continue; const raw = v.items.filter((i) => i.region === 'page').length; const kept = (manifest.pages[p] ?? []).length; counts[p] = { live: raw, excluded: v.items.filter((i) => i.region === 'page' && i.skip).length, manifest: kept } }
+// the live section that holds the client logos is called "Trusted & Certified"; the logos are client references, so it is named after their own label
+for (const l of Object.values(manifest.pages)) for (const i of l) if (/^Trusted (&|and) Certified$/i.test(i.section)) { i.section = 'Our Global Clients'; i.sectionKey = 'our global clients' }
 manifest.stats = { pages: Object.keys(manifest.pages).length, images: Object.values(manifest.pages).reduce((a, l) => a + l.length, 0), uniqueFiles: localFor.size, download: dlStats, counts }
 writeFileSync(MANIFEST, JSON.stringify(manifest, null, 1))
 
