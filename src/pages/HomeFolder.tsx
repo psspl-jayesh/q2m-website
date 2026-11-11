@@ -124,18 +124,18 @@ export default function HomeFolder() {
       </section>
 
       {/* BTS 2026 band */}
-      <section id="bts" className="on-dark scroll-anchor bg-block text-ink-inverse">
+      <section id="bts" className="scroll-anchor bg-surface-raised text-ink border-y border-line">
         <div className="container-page split split--lead py-14 md:py-24">
           <div className="split-aside">
             <Reveal>
               <p className="eyebrow mb-4">{h.bts.eyebrow}</p>
               <h2 className="display-md max-w-2xl">{h.bts.title}</h2>
-              {h.bts.paras.map((p) => <p key={p} className="mt-5 max-w-[36em] text-block-muted">{p}</p>)}
+              {h.bts.paras.map((p) => <p key={p} className="mt-5 max-w-[36em] text-ink-muted">{p}</p>)}
             </Reveal>
           </div>
           <Reveal delay={0.1} className="split-main">
             <dl className="grid grid-cols-[7rem_1fr] gap-x-4 gap-y-5">
-              {h.bts.facts.map((f) => (<div key={f.k} className="contents"><dt className="mono text-block-muted">{f.k}</dt><dd className="mono !text-[0.9375rem]">{f.v}</dd></div>))}
+              {h.bts.facts.map((f) => (<div key={f.k} className="contents"><dt className="mono text-ink-muted">{f.k}</dt><dd className="mono !text-[0.9375rem]">{f.v}</dd></div>))}
             </dl>
           </Reveal>
         </div>
