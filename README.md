@@ -2,11 +2,11 @@
 
 A premium React rebuild of [q2msolutions.com](https://q2msolutions.com/), localised for India. It runs headless on the live WordPress content, uses the Q2M brand kit, and supports light and dark themes.
 
-![Home page, light theme](docs/screenshots/home-light.jpg)
+![Home page, light theme](docs/readme/home-light.jpg)
 
 | Dark theme | Service page |
 |---|---|
-| ![Home page, dark theme](docs/screenshots/home-dark.jpg) | ![Service page, light theme](docs/screenshots/service-page-light.jpg) |
+| ![Home page, dark theme](docs/readme/home-dark.jpg) | ![Service page, light theme](docs/readme/service-page-light.jpg) |
 
 ## What it is
 

@@ -8,7 +8,7 @@ import { COMPANY } from '@/config/locale'
 import ui from '@/content/shared/ui.json'
 import ctas from '@/content/shared/ctas.json'
 
-export function CaseCard({ e, large, i = 0 }: { e: Entry; large?: boolean; i?: number }) {
+export function CaseCard({ e, large, i = 0, as: Heading = 'h3' }: { e: Entry; large?: boolean; i?: number; as?: 'h2' | 'h3' }) {
   const c = useContent()
   const m = thumbFor(c, e)
   const lede = e.blocks.find((b) => b.t === 'p')?.text
@@ -19,7 +19,7 @@ export function CaseCard({ e, large, i = 0 }: { e: Entry; large?: boolean; i?: n
         <div className="flex flex-col justify-between gap-8 p-6 md:p-10">
           <div>
             <p className="eyebrow mb-4">{e.blocks.find((b) => b.t === 'h1')?.eyebrow}</p>
-            <h3 className={`font-display ${large ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl'}`}>{e.title}</h3>
+            <Heading className={`font-display ${large ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl'}`}>{e.title}</Heading>
             {lede && <p className="mt-4 line-clamp-3 text-ink-muted">{lede}</p>}
           </div>
           <span className="inline-flex items-center gap-1.5 font-medium text-action">{ui.caseCta}<ArrowUpRight aria-hidden className="size-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>

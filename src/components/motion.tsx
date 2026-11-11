@@ -79,12 +79,13 @@ export function StaggerItem({ children, as = 'div', className = '' }: { children
 }
 
 /** Image frame: clip-and-fade reveal on scroll, optional subtle parallax. Fixed aspect ratio, so no layout shift. */
-export function ImageFrame({ children, ratio, parallax = false, className = '' }: { children: ReactNode; ratio?: string; parallax?: boolean; className?: string }) {
+/** `maxWidth` (px): the frame never grows beyond the image's own width, so no image is ever shown larger than its intrinsic size. */
+export function ImageFrame({ children, ratio, parallax = false, className = '', maxWidth }: { children: ReactNode; ratio?: string; parallax?: boolean; className?: string; maxWidth?: number }) {
   const reduce = useReducedMotion()
   const [ref, shown] = useReveal<HTMLDivElement>()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['-4%', '4%'])
-  const style = ratio ? { aspectRatio: ratio } : undefined
+  const style = ratio || maxWidth ? { aspectRatio: ratio, maxWidth, marginInline: maxWidth ? 'auto' : undefined } : undefined
   const base = `overflow-hidden rounded-lg bg-surface-raised ${className}`
   if (reduce) return <div ref={ref} style={style} className={base}>{children}</div>
   return (

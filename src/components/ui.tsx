@@ -54,7 +54,7 @@ const BTN: Record<string, string> = {
   ghost: 'border border-current/30 hover:border-current hover:bg-current/5',
 }
 export function Button({ to, href, children, variant = 'primary', className = '', arrow = true, ...rest }: BtnProps) {
-  const cls = `group inline-flex h-12 items-center justify-center gap-2 rounded-md px-6 text-[0.9375rem] font-medium transition-[background-color,color,transform] duration-200 active:translate-y-px disabled:opacity-60 ${BTN[variant]} ${className}`
+  const cls = `group inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-6 py-2 text-center text-[0.9375rem] font-medium transition-[background-color,color,transform] duration-200 active:translate-y-px disabled:opacity-60 ${BTN[variant]} ${className}`
   const icon = arrow && <ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
   if (to) return <Link to={to} className={cls}>{children}{icon}</Link>
   if (href) {
@@ -175,7 +175,7 @@ export function SiteImage({ image, className = '', priority = false, ratio, size
 export function SiteFrame({ image, ratio, parallax, sizes, position, priority, className = '' }: { image: SiteImg; ratio?: string; parallax?: boolean; sizes?: string; position?: string; priority?: boolean; className?: string }) {
   const r = ratio ?? (image.w && image.h ? `${image.w}/${image.h}` : '4/3')
   return (
-    <ImageFrame ratio={r} parallax={parallax && (META[image.file]?.w ?? 0) >= 1600} className={className}>
+    <ImageFrame ratio={r} parallax={parallax && (META[image.file]?.w ?? 0) >= 1600} className={className} maxWidth={image.w ?? undefined}>
       <SiteImage image={image} priority={priority} sizes={sizes} position={position} ratio="auto" className="h-full w-full object-cover" />
     </ImageFrame>
   )

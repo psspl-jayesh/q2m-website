@@ -178,7 +178,7 @@ function ThemeToggle() {
     try { localStorage.setItem('q2m-theme', next ? 'dark' : 'light') } catch { /* storage unavailable */ }
   }
   return (
-    <button onClick={flip} aria-pressed={dark} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-block-line px-4 hover:border-ink-inverse hover:text-ink-inverse">
+    <button onClick={flip} aria-pressed={dark} className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-md border border-block-line px-4 hover:border-ink-inverse hover:text-ink-inverse">
       {dark ? <Sun aria-hidden className="size-4" /> : <Moon aria-hidden className="size-4" />}{dark ? 'Light theme' : 'Dark theme'}
     </button>
   )
