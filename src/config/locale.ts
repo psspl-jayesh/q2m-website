@@ -49,8 +49,8 @@ export const fullAddress = (a: typeof ADDRESS = ADDRESS) => `${a.addressLine1}, 
 export const COMPANY = {
   /** Brand name: logo, header and marketing copy. */
   name: 'Q2M Solutions',
-  /** Legal name: footer copyright line, Privacy Policy, Contact page company block, Organization JSON-LD. TO CONFIRM: "Solution" or "Solutions". */
-  legalName: 'Q2M Solution Private Limited',
+  /** Legal name: footer copyright line, Privacy Policy, Contact page company block, Organization JSON-LD. */
+  legalName: 'Q2M Solutions Private Limited',
   siteUrl: 'https://q2msolutions.com',
   email: 'info@q2msolutions.com',
   /** 10-digit Indian mobile. Shown as "+91 87994 65558" and linked as tel:+918799465558 by formatPhone() / phoneHref(). */
@@ -65,7 +65,7 @@ export const COMPANY = {
     { label: 'Instagram', href: 'https://www.instagram.com/qtomsolutions/' },
     { label: 'YouTube', href: 'https://www.youtube.com/@Q2MSolutions' },
   ],
-  /** TODO: Corporate Identity Number (CIN). Not supplied yet. */
+  /** TODO: Corporate Identity Number (CIN). Not supplied yet: while empty, nothing about the CIN is shown on the site. */
   cin: null as string | null,
   /** TODO: Data Protection / grievance contact required under the DPDP Act, 2023. NEEDS INPUT: name and designation. */
   grievanceOfficer: null as null | { name: string; designation: string; email: string },

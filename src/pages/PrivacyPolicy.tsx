@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
           <ul className="list-none space-y-1 pl-0">
             <li>Registered office: {fullAddress()}</li>
             <li>Phone: <a className="text-action underline underline-offset-4" href={phoneHref(COMPANY.phone ?? '')}>{formatPhone(COMPANY.phone ?? '')}</a></li>
-            <li>CIN: to be confirmed by Q2M.</li>
+            {COMPANY.cin && <li>CIN: {COMPANY.cin}</li>}
           </ul>
           <h2 className="text-ink">What we collect and why</h2>
           <p>When you use the contact or booking form we collect the details you enter: name, company, role, work email, mobile number, industry, preferred date and time, the process you want to discuss and, if you choose, your GSTIN and company address. We use them only to respond to your request and to schedule a session. We do not use them to train public AI models.</p>

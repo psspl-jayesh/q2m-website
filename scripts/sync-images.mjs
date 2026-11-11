@@ -21,8 +21,8 @@ const MANIFEST = 'src/data/image-manifest.json'
 const content = JSON.parse(readFileSync('src/data/content.json', 'utf8'))
 /** Third-party images you approved: downloaded and served locally (never hotlinked). */
 const APPROVED_THIRD_PARTY = new Set()
-/** The Clutch logo (light, dark, footer badge) is never shown or downloaded. Every other logo and badge stays. */
-const CLUTCH_IMAGE = /clutch/i
+/** The Clutch logo and the Google reviews logo (footer badge) are never shown or downloaded. */
+const CLUTCH_IMAGE = /clutch|google-review/i
 const LOGO_ALTS = JSON.parse(readFileSync('src/content/shared/logo-alts.json', 'utf8'))
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
@@ -267,7 +267,6 @@ writeFileSync('src/data/site-images.json', JSON.stringify({
   brand: manifest.brand,
   favicon: manifest.shared.icons[0]?.file ?? null,
   ogDefault: '/brand/og-default.png',
-  badges: [badge('google-review') && { ...badge('google-review'), label: 'Google reviews', alt: LOGO_ALTS['google-review.png'], href: null }].filter(Boolean),
   liveLogosNotUsed: manifest.shared.chrome.filter((c) => c.role === 'logo').map((c) => c.file),
 }, null, 1))
 

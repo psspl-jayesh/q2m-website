@@ -63,8 +63,11 @@ export function About({ entry }: { entry: Entry }) {
 }
 
 /* ───────── Contact ───────── */
-const CF7 = import.meta.env.VITE_CF7_ENDPOINT || 'https://q2msolutions.com/wp-json/contact-form-7/v1/contact-forms/18/feedback'
-const SITEKEY = import.meta.env.VITE_HCAPTCHA_SITEKEY as string | undefined
+/*
+ * Delivery: until a delivery option is chosen (docs/FORM_DELIVERY_OPTIONS.md), the form opens a pre-filled email to COMPANY.email
+ * in the visitor's mail app, the same path as the booking form. It never posts to the WordPress site (nonce-protected, will be replaced).
+ * Field names match the live Contact Form 7 form 18: full-name, organization, tel-phone, email-company, subject, textarea-message.
+ */
 const schema = z.object({
   'full-name': z.string().trim().min(2, 'Please enter your name.'),
   organization: z.string().trim().min(2, 'Please enter your company or organisation.'),
@@ -78,8 +81,6 @@ const schema = z.object({
 type Form = z.infer<typeof schema>
 type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'ok'; msg: string } | { kind: 'error'; msg: string }
 
-declare global { interface Window { hcaptcha?: { render: (el: HTMLElement, o: object) => string; getResponse: (id?: string) => string; reset: (id?: string) => void } } }
-
 export function Contact({ entry }: { entry: Entry }) {
   const csec = sectionize(entry.blocks)
   const connect = csec.find((x) => /connect with us/i.test(x.title))
@@ -87,40 +88,18 @@ export function Contact({ entry }: { entry: Entry }) {
   const lede = connect?.blocks.find((b) => b.t === 'h4')?.text
   const formHeading = connect?.blocks.find((b) => b.t === 'h3' && /success starts/i.test(b.text ?? ''))?.text
   const phoneLabel = connect?.blocks.find((b) => b.t === 'h3' && /inquiry/i.test(b.text ?? ''))?.text
-  const { register, handleSubmit, setError, reset, formState: { errors } } = useForm<Form>({ resolver: zodResolver(schema) as never })
+  const { register, handleSubmit, formState: { errors } } = useForm<Form>({ resolver: zodResolver(schema) as never })
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
-  const cap = useRef<HTMLDivElement>(null)
-  const capId = useRef<string | undefined>(undefined)
   const live = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!SITEKEY || !cap.current) return
-    const mount = () => { if (window.hcaptcha && cap.current && !capId.current) capId.current = window.hcaptcha.render(cap.current, { sitekey: SITEKEY }) }
-    if (window.hcaptcha) return mount()
-    const s = document.createElement('script'); s.src = 'https://js.hcaptcha.com/1/api.js?render=explicit'; s.async = true; s.onload = mount; document.head.appendChild(s)
-  }, [])
   useEffect(() => { if (status.kind === 'ok' || status.kind === 'error') live.current?.focus() }, [status])
 
-  const onSubmit = async (v: Form) => {
-    setStatus({ kind: 'sending' })
-    const fd = new FormData()
-    // CF7 form 18 has no GSTIN/address fields, so they travel inside the message text. Phone is stored in the shared +91 format.
-    const biz = describeBusiness(v)
-    fd.append('full-name', v['full-name']); fd.append('organization', v.organization); fd.append('email-company', v['email-company']); fd.append('subject', v.subject)
-    fd.append('tel-phone', formatPhone(v['tel-phone']))
-    fd.append('textarea-message', biz ? `${v['textarea-message']}\n\n${biz}\nConsent: given (DPDP Act, 2023)` : `${v['textarea-message']}\n\nConsent: given (DPDP Act, 2023)`)
-    fd.append('_wpcf7_unit_tag', 'wpcf7-f18-p63-o1')
-    if (SITEKEY && window.hcaptcha) fd.append('h-captcha-response', window.hcaptcha.getResponse(capId.current))
-    try {
-      const r = await fetch(CF7, { method: 'POST', body: fd })
-      const j = await r.json()
-      if (j.status === 'mail_sent') { setStatus({ kind: 'ok', msg: j.message }); reset(); window.hcaptcha?.reset(capId.current); return }
-      j.invalid_fields?.forEach((f: { field: string; message: string }) => setError(f.field as keyof Form, { message: f.message }))
-      setStatus({ kind: 'error', msg: j.message || 'We could not send your message. Please try again or email us directly.' })
-      window.hcaptcha?.reset(capId.current)
-    } catch {
-      setStatus({ kind: 'error', msg: `We couldn’t reach the server. Please email ${COMPANY.email} instead.` })
-    }
+  const onSubmit = (v: Form) => {
+    const body = [
+      `Full name: ${v['full-name']}`, `Company / organisation: ${v.organization}`, `Mobile: ${formatPhone(v['tel-phone'])}`, `Company email: ${v['email-company']}`,
+      describeBusiness(v), '', 'Message:', v['textarea-message'], '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
+    ].filter((l, k, a) => l !== '' || a[k - 1] !== '').join('\n')
+    window.location.href = `mailto:${COMPANY.email}?subject=${encodeURIComponent(v.subject)}&body=${encodeURIComponent(body)}`
+    setStatus({ kind: 'ok', msg: 'Your email app should now open with your message. Nothing has been sent until you press send there.' })
   }
 
   const field = (name: keyof Form, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => (
@@ -170,7 +149,6 @@ export function Contact({ entry }: { entry: Entry }) {
                 </div>
                 <BusinessDetails register={register} errors={errors} prefix="c" />
                 <ConsentField register={register} errors={errors} name="consent" id="c-consent" />
-                {SITEKEY && <div className="sm:col-span-2" ref={cap} />}
                 <div className="sm:col-span-2"><Button type="submit" disabled={status.kind === 'sending'}>{status.kind === 'sending' ? 'Sending…' : 'Send message'}</Button></div>
               </form>
             </div>
