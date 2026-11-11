@@ -215,7 +215,7 @@ export default function HomeFolder() {
       <section id="results" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
         <div className="container-page">
           <SectionHead title="The Results Our Clients Measure" />
-          <StaggerGroup as="dl" className="mt-12 grid gap-8 border-t border-ink pt-8 sm:grid-cols-2 lg:grid-cols-4">
+          <StaggerGroup as="dl" className="mt-12 grid gap-8 border-t border-line pt-8 sm:grid-cols-2 lg:grid-cols-4">
             {counters.map((k) => (
               <StaggerItem key={k.key}><dd className="font-display text-5xl font-bold leading-none">{k.prefix}{k.value}{k.suffix}</dd><dt className="mt-3 text-[0.9375rem] text-ink-muted">{k.label}</dt></StaggerItem>
             ))}
@@ -239,7 +239,7 @@ export default function HomeFolder() {
           <Head eyebrow={h.approach.eyebrow} title={h.approach.title} intro={h.approach.intro} />
           <StaggerGroup as="ol" className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {h.approach.steps.map((s) => (
-              <StaggerItem as="li" key={s.num} className="relative border-t-2 border-ink pt-6 lg:border-t-0 lg:pt-0">
+              <StaggerItem as="li" key={s.num} className="relative border-t border-line pt-6 lg:border-t-0 lg:pt-0">
                 <div aria-hidden className="mb-5 hidden items-center lg:flex"><span className="size-3 rounded-full bg-q2m" /><span className="ml-2 h-0.5 flex-1 bg-ink" /></div>
                 {topicImg(APPROACH_IMG, s.num) && <div className="mb-5"><SiteFrame image={topicImg(APPROACH_IMG, s.num)!} ratio="1/1" sizes="(min-width:1024px) 260px, (min-width:768px) 45vw, 100vw" /></div>}
                 <span className="mono text-action">{s.num}</span>
@@ -258,7 +258,7 @@ export default function HomeFolder() {
           <Head eyebrow={h.principles.eyebrow} title={h.principles.title} intro={h.principles.intro} />
           <StaggerGroup className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
             {h.principles.items.map((p) => (
-              <StaggerItem key={p.title} className="border-t border-ink pt-5"><h3 className="font-display text-xl font-semibold">{p.title}</h3><p className="mt-3 text-[0.9375rem] text-ink-muted">{p.text}</p></StaggerItem>
+              <StaggerItem key={p.title} className="border-t border-line pt-5"><h3 className="font-display text-xl font-semibold">{p.title}</h3><p className="mt-3 text-[0.9375rem] text-ink-muted">{p.text}</p></StaggerItem>
             ))}
           </StaggerGroup>
         </div>

@@ -238,7 +238,7 @@ function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?:
       <div className="grid gap-10 lg:grid-cols-12"><div className="lg:col-span-7"><SectionHead eyebrow={s.eyebrow} title={s.title} lede={lead.paras[0]} /><LeadExtra lead={lead} /></div></div>
       <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((g, k) => (
-          <Reveal key={g.title + k} delay={(k % 3) * 0.1}><div className={attach ? '' : 'border-t-2 border-ink pt-5'}>{cardImg(k)}<div className={attach ? 'border-t-2 border-ink pt-5' : ''}><Label g={g} /><h3 className="font-display text-2xl">{g.title}</h3>
+          <Reveal key={g.title + k} delay={(k % 3) * 0.1}><div className={attach ? '' : 'border-t border-line pt-5'}>{cardImg(k)}<div className={attach ? 'border-t border-line pt-5' : ''}><Label g={g} /><h3 className="font-display text-2xl">{g.title}</h3>
             {g.paras.map((p) => <p key={p} className="mt-3 text-[0.9375rem] text-ink-muted">{p}</p>)}
             {g.items.length > 0 && <Bullets items={g.items} />}{g.labels.length > 0 && <div className="mt-4"><Pills labels={g.labels} /></div>}</div></div></Reveal>
         ))}
@@ -320,7 +320,7 @@ function SectionExtras({ s }: { s: Section }) {
   return (
     <div className="container-page -mt-6 pb-12 md:-mt-12 md:pb-20">
       {stats.length > 0 && (
-        <StaggerGroup as="dl" className="mb-10 grid gap-8 border-t border-ink pt-8 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerGroup as="dl" className="mb-10 grid gap-8 border-t border-line pt-8 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((b, k) => (
             <StaggerItem key={k}><dd className="font-display text-5xl font-bold leading-none">{b.prefix}{b.value}{b.suffix}</dd><dt className="mt-3 text-[0.9375rem] text-ink-muted">{b.text}</dt></StaggerItem>
           ))}
