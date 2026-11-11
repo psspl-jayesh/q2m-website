@@ -81,4 +81,15 @@ export const IMAGES = {
   lowResHeroBelow: 800,
   /** Hero images at least this wide may be used as og:image. */
   ogMinWidth: 1200,
+  /**
+   * Pages whose live hero list has both a 466px and a 2000px file that are DIFFERENT pictures (checked side by side, docs/hero-compare/).
+   * These keep the 466px picture in the contained card. On every other page the widest hero is used (same picture, higher resolution).
+   */
+  lowResHeroPages: [
+    '/ai-consulting-services/',
+    '/ai-development-services/',
+    '/ai-app-development-services/',
+    '/ai-chatbot-development-company/',
+    '/machine-learning-development-services/',
+  ],
 } as const

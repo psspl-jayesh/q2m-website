@@ -2,7 +2,7 @@
 
 The live site shows Elementor's grey `placeholder.png` in these places. It is **never rendered** (excluded in `scripts/sync-images.mjs`, not in the manifest, not copied to `public/`). Sections render without an image; each reads correctly as text only.
 
-Total: 54 placements on 34 pages. You mentioned 38 pages; my crawl of the live HTML finds 34 (the 4-page difference is unexplained, so please check if you have a list).
+Total: 54 placements on 34 pages. **The "38 pages" figure was a labelling bug in my earlier sync report, not a different crawl:** the report heading printed the number of image placements recorded by the sync (38) as "pages", while its list already held 34 unique pages. Comparing the old list (baseline commit) with the current crawl: identical, 34 pages, **no page dropped out and none was added**. The report heading is fixed (`scripts/sync-images.mjs`).
 
 | Page | Section(s) where live shows placeholder.png |
 |---|---|
