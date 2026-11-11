@@ -1,6 +1,7 @@
 import home from '@/data/home.json'
 import { Accordion, Button, Reveal, SectionHead, Seo, StaggerGroup, StaggerItem, TextLink } from '@/components/ui'
 import DotField from '@/components/DotField'
+import DotArrow from '@/components/DotArrow'
 import DotPanel from '@/components/DotPanel'
 import BookingForm from '@/components/BookingForm'
 import { COMPANY } from '@/config/locale'
@@ -85,30 +86,41 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* Trusted & Certified: live home content, live client logos and Microsoft badges */}
-      <section id="trusted" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
-        <div className="container-page">
-          <div className="split split--lead">
-            <div className="split-aside"><SectionHead title="Trusted & Certified" /></div>
-            <div className="split-main">
-              <ul className="divide-y divide-line border-y border-line">
-                {certifications.map((x) => (
-                  <li key={x.title} className="grid gap-1 py-5 sm:grid-cols-[1fr_1fr] sm:gap-6"><h3 className="font-display text-xl font-semibold">{x.title}</h3><p className="text-ink-muted">{x.detail}</p></li>
-                ))}
-              </ul>
-              {msBadges.length > 0 && (
-                <ul className="mt-8 flex flex-wrap items-center gap-6">
-                  {msBadges.map((b) => <li key={b.file}><SiteImage image={b} ratio="auto" sizes="200px" className="h-auto w-[200px] md:w-[260px]" /></li>)}
-                </ul>
-              )}
-            </div>
-          </div>
+      {/* Trusted & Certified: live content (certifications, Microsoft badges, client logos) on a black slab */}
+      <section id="trusted" className="on-dark scroll-anchor relative overflow-hidden bg-block text-ink-inverse">
+        <DotArrow pitch={12} className="pointer-events-none absolute right-6 top-6 hidden h-auto w-[108px] md:block lg:right-12 lg:top-12" />
+        <div className="container-page relative py-16 md:py-28">
+          <Reveal><h2 className="display-xl max-w-3xl">Trusted <span className="text-grey">&amp; Certified</span></h2></Reveal>
+          <Reveal delay={0.12}><div aria-hidden className="mt-8 h-0.5 w-24 bg-action" /></Reveal>
+          <StaggerGroup as="ul" className="mt-12 grid gap-px overflow-hidden rounded-lg border border-block-line bg-block-line md:mt-16 lg:grid-cols-12">
+            {certifications.map((x, n) => (
+              <StaggerItem as="li" key={x.title} className={`group relative flex flex-col justify-between bg-block p-7 transition-colors duration-300 hover:bg-white/[0.04] md:p-9 ${n === 0 ? 'gap-12 lg:col-span-7 lg:row-span-3 lg:p-12' : 'gap-6 lg:col-span-5'}`}>
+                <span aria-hidden className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-action transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                <div>
+                  <span className="mono text-action-soft">{String(n + 1).padStart(2, '0')}</span>
+                  <h3 className={`mt-4 font-display font-bold leading-tight ${n === 0 ? 'text-3xl md:text-5xl lg:text-6xl' : 'text-2xl md:text-3xl'}`}>{x.title}</h3>
+                  <p className="mt-3 text-block-muted">{x.detail}</p>
+                </div>
+                {n === 0 && msBadges.length > 0 && (
+                  <ul className="flex flex-wrap gap-3">
+                    {msBadges.map((b) => <li key={b.file} className="rounded-md bg-white p-2"><SiteImage image={b} ratio="auto" sizes="220px" className="h-auto w-[150px] md:w-[200px]" /></li>)}
+                  </ul>
+                )}
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
           {clientLogos.length > 0 && (
-            <div className="mt-12">
-              <p className="mono text-ink-muted">Our Global Clients</p>
-              <ul className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-6">
-                {clientLogos.map((l) => <li key={l.file}><SiteImage image={l} ratio="auto" sizes="200px" className="h-9 w-auto max-w-[180px] object-contain" /></li>)}
-              </ul>
+            <div className="mt-16 border-t border-block-line pt-10 md:mt-24">
+              <p className="mono text-block-muted">Our Global Clients</p>
+              <div className="logo-marquee mt-8" role="group" aria-label="Our Global Clients">
+                <ul className="logo-marquee-track">
+                  {[...clientLogos, ...clientLogos].map((l, k) => (
+                    <li key={l.file + k} aria-hidden={k >= clientLogos.length || undefined} className="flex h-16 w-[170px] shrink-0 items-center justify-center rounded-md bg-white px-6">
+                      <SiteImage image={l} priority ratio="auto" sizes="140px" className="h-8 w-auto max-w-full object-contain" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
         </div>
