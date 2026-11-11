@@ -1,0 +1,169 @@
+{
+ "_note": "Landing page /bengaluru-tech-summit-2026/. All copy is taken verbatim from the designed home copy (Q2M_Website_Home, src/data/home.json): BTS band, 30-minute session, booking form, FAQ and the two demo tiles. Self-contained: the home page does not read this file.",
+ "path": "/bengaluru-tech-summit-2026/",
+ "seo": {
+  "title": "Bengaluru Tech Summit 2026 | Q2M Solutions",
+  "description": "Book a 30-minute session at our stand. Tell us where work piles up, and we will map an AI agent or automation that fits your systems, with a rough scope and timeline."
+ },
+ "hero": {
+  "eyebrow": "Meet us at BTS 2026",
+  "title": "Bengaluru Tech Summit 2026",
+  "venue": "BIEC, Bengaluru",
+  "lead": "Book a 30-minute session at our stand. Tell us where work piles up, and we will map an AI agent or automation that fits your systems, with a rough scope and timeline.",
+  "primary": {
+   "label": "Book a 30-minute AI session",
+   "href": "#book"
+  }
+ },
+ "facts": [
+  {
+   "k": "Event",
+   "v": "Bengaluru Tech Summit 2026"
+  },
+  {
+   "k": "Venue",
+   "v": "BIEC, Tumkur Road, Bengaluru"
+  },
+  {
+   "k": "Dates",
+   "v": "November 2026"
+  },
+  {
+   "k": "Live demos",
+   "v": "Smart glasses · AI agents"
+  }
+ ],
+ "pitch": {
+  "title": "Bring one process. Leave with an AI plan for it.",
+  "text": "To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one. If you are not sure where AI fits yet, come for the demos: try the smart glasses, watch an agent work through a stack of documents and ask the team anything."
+ },
+ "demos": {
+  "eyebrow": "Live demos",
+  "title": "Smart glasses · AI agents",
+  "items": [
+   {
+    "tag": "Live demo",
+    "title": "Guided vehicle inspection on smart glasses",
+    "image": "/images/case-studies/building-a-single-pane-of-glass-for-a-1500-truck-fleet-banner.webp",
+    "alt": "Engineers inspecting a heavy truck with augmented-reality overlays on screens around it"
+   },
+   {
+    "tag": "AI agents",
+    "title": "A claims agent reading and routing documents",
+    "image": "/images/ai-agent-development-services/ai-agent-development-service-banner.webp",
+    "alt": "An AI agent at the centre of a diagram connecting customer requests, email, tasks and reports"
+   }
+  ]
+ },
+ "session": {
+  "eyebrow": "The 30-minute session",
+  "title": "How a session at our stand works",
+  "intro": "No slides about AI in general. We talk about one process in your business.",
+  "steps": [
+   {
+    "min": "First 10 minutes",
+    "title": "You walk us through one process",
+    "text": "Who does it today, which systems it touches, how many cases you handle and where time or errors pile up."
+   },
+   {
+    "min": "Next 15 minutes",
+    "title": "We map the AI use case",
+    "text": "An agent, an automation or a glasses workflow, with a live demo of something similar where we have one. We note the data and approvals it would need."
+   },
+   {
+    "min": "Last 5 minutes",
+    "title": "You leave with next steps",
+    "text": "A rough scope, the data we would need and a suggested pilot. We follow up within a week."
+   }
+  ]
+ },
+ "book": {
+  "eyebrow": "Book a session",
+  "title": "Reserve 30 minutes at BTS 2026",
+  "intro": "Pick a day and tell us a little about the process you want to discuss. We will confirm your time slot by email.",
+  "industries": [
+   "Automotive",
+   "Insurance",
+   "Life sciences, health and biotech",
+   "Real estate",
+   "Fintech",
+   "BPO",
+   "Other"
+  ],
+  "placeholder": "For example: we read 400 claim forms a day by hand",
+  "note": "We use these details only to schedule your session."
+ },
+ "faq": {
+  "eyebrow": "Questions",
+  "title": "Frequently asked questions",
+  "intro": "Something else on your mind? Ask us at the stand or in the booking form below.",
+  "items": [
+   {
+    "q": "Who is Q2M Solutions?",
+    "a": [
+     "Q2M Solutions is an AI engineering company based in India. We design and build AI agents, intelligent automation, smart-glasses apps and 3D capture solutions for businesses in automotive, insurance, life sciences, real estate, fintech and BPO."
+    ]
+   },
+   {
+    "q": "What happens in the 30-minute session at BTS?",
+    "a": [
+     "You describe one process in your business. We ask questions, sketch how an AI agent, an automation or a smart-glasses app could handle it, and show a live demo of something similar where we have one. You leave with a rough scope and a suggested pilot. There is no charge and no obligation."
+    ]
+   },
+   {
+    "q": "Do we need clean data before we start?",
+    "a": [
+     "No. Most companies have data spread across email, PDFs, spreadsheets and several systems. Part of discovery is finding out what data exists, what state it is in and what the first version can work with. We tell you plainly if a use case needs more preparation first."
+    ]
+   },
+   {
+    "q": "How long does a pilot take?",
+    "a": [
+     "It depends on the process and the systems involved. A focused pilot on one workflow is usually measured in weeks, not months. We agree the timeline and the success measures in writing at the end of discovery."
+    ]
+   },
+   {
+    "q": "Can you work with our existing systems?",
+    "a": [
+     "Yes. We connect to the tools you already use, including Microsoft 365, Dynamics 365, Salesforce, ticketing systems, databases and custom APIs. We prefer to add AI to your current stack rather than replace it."
+    ]
+   },
+   {
+    "q": "Which smart glasses do you support?",
+    "a": [
+     "We build apps for Meta, XREAL, Snap Spectacles and MentraOS glasses. The right device depends on whether you need a display, a camera, all-day battery or a rugged frame. We help you choose before any hardware is bought."
+    ]
+   },
+   {
+    "q": "How do you handle security and confidentiality?",
+    "a": [
+     "We sign a mutual NDA before we see sensitive material, follow your access rules and keep data in the environment we agree with you. Every agent action is logged so you can review what happened and why."
+    ]
+   },
+   {
+    "q": "Do you work with companies outside India?",
+    "a": [
+     "Yes. We work with clients in India and abroad. Discovery workshops can run on site or remotely, and our team works across time zones to fit your schedule."
+    ]
+   },
+   {
+    "q": "What does a project cost?",
+    "a": [
+     "Cost depends on the scope, the number of systems involved and whether hardware such as smart glasses is needed. Discovery is a short fixed-price engagement. After discovery we give you a fixed quote for the pilot, so you know the cost before you commit to building."
+    ]
+   },
+   {
+    "q": "Who owns what you build?",
+    "a": [
+     "You do. Code, models trained on your data, prompts and documentation built for your project belong to you once the work is paid for. We can also hand over the full setup to your internal team with training."
+    ]
+   },
+   {
+    "q": "What if AI is not the right answer for our process?",
+    "a": [
+     "Then we will tell you. Some processes are better fixed with a simple rule, a form or a change in how work is assigned. A clear no in discovery saves you far more than a pilot that was never going to work."
+    ]
+   }
+  ]
+ }
+}

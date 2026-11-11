@@ -1,0 +1,44 @@
+{
+ "_note": "Team bento for the BTS landing page only. Names and roles from the live About page; photos are the live About page photos. Heading copy from the designed home (team). Stat values come from src/content/shared/stats.json (approved home counters), not from this file.",
+ "eyebrow": "Team",
+ "title": "The people you will work with",
+ "intro": "You meet the people who will design and build your system, at the stand and in every workshop after it.",
+ "people": [
+  {
+   "name": "Hardik Shah",
+   "role": "CEO & MD",
+   "photo": "/images/about/hardik-shah.webp",
+   "alt": "Hardik Shah, CEO & MD, Q2M Solutions"
+  },
+  {
+   "name": "Hetal Kachhadiya",
+   "role": "Operations Head",
+   "photo": "/images/about/hetal-kachhadiya.webp",
+   "alt": "Hetal Kachhadiya, Operations Head, Q2M Solutions"
+  },
+  {
+   "name": "Hema Upadhyay",
+   "role": "CPO",
+   "photo": "/images/about/hema-upadhyay.webp",
+   "alt": "Hema Upadhyay, CPO, Q2M Solutions"
+  },
+  {
+   "name": "Jinal Mehta",
+   "role": "Finance Head",
+   "photo": "/images/about/jinal-mehta.webp",
+   "alt": "Jinal Mehta, Finance Head, Q2M Solutions"
+  },
+  {
+   "name": "Manish Langa",
+   "role": "Practice Head",
+   "photo": "/images/about/manish-langa.webp",
+   "alt": "Manish Langa, Practice Head, Q2M Solutions"
+  }
+ ],
+ "stats": [
+  "counter0",
+  "counter1",
+  "counter2",
+  "counter3"
+ ]
+}

@@ -6,7 +6,7 @@ import { fix as spell } from './lib-spelling.mjs'
 const HOMO = { 'е': 'e', 'а': 'a', 'о': 'o', 'с': 'c', 'р': 'p', 'х': 'x', 'і': 'i' }
 const log = JSON.parse(readFileSync('docs/_prev/apply-log.json', 'utf8'))
 const live = Object.fromEntries(readdirSync('src/content/live').map((f) => JSON.parse(readFileSync(`src/content/live/${f}`, 'utf8'))).map((p) => [p.slug, p]))
-const fin = Object.fromEntries(readdirSync('src/content/pages').map((f) => JSON.parse(readFileSync(`src/content/pages/${f}`, 'utf8'))).map((p) => [p.slug, p]))
+const fin = Object.fromEntries(readdirSync('src/content/pages').filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`src/content/pages/${f}`, 'utf8'))).map((p) => [p.slug, p]))
 const overrideAfters = log.overrides.map((o) => o.after)
 const typoAfters = log.typos.map((t) => t.after)
 const tok = (t) => (t || '').split(/(\s+)/)
