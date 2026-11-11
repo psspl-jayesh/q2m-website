@@ -9,6 +9,8 @@ import { COMPANY, LEGAL, LOCALE } from '@/config/locale'
 import { formatPhone, phoneHref } from '@/lib/format'
 import { organizationJsonLd } from '@/lib/seo'
 import { ariaCurrent, useActiveNav } from '@/lib/nav'
+import { useContent } from '@/lib/content'
+import { megaCopy } from '@/lib/menuCopy'
 import { useSplitFit } from '@/lib/splitFit'
 import { Button } from './ui'
 import siteCopy from '@/data/site-copy.json'
@@ -34,14 +36,19 @@ function MenuLink({ item, nav, onClick, className, children }: { item: MenuItem;
 }
 
 function MegaPanel({ g, close, nav }: { g: NavGroup; close: () => void; nav: ReturnType<typeof useActiveNav> }) {
+  const c = useContent()
+  const { intro, blurb } = megaCopy(c, g)
   const [first, ...rest] = g.items
   const cols = rest.length > 6 ? [rest.slice(0, Math.ceil(rest.length / 2)), rest.slice(Math.ceil(rest.length / 2))] : [rest]
   return (
     <div className="grid grid-cols-12 gap-10 px-10 py-10">
       <div className="col-span-4">
         <p className="eyebrow mb-3">{g.label}</p>
-        <MenuLink item={first} nav={nav} onClick={close} className="nav-featured group mt-4 block rounded-md bg-block p-6 text-ink-inverse transition-colors hover:bg-action">
+        {intro && <p className="max-w-sm text-[0.9375rem] leading-relaxed text-ink-muted">{intro}</p>}
+        <MenuLink item={first} nav={nav} onClick={close} className="nav-featured group mt-6 block rounded-md bg-block p-6 text-ink-inverse transition-colors hover:bg-action">
+          <span className="mono mb-3 block !text-[0.6875rem] uppercase tracking-[0.08em] opacity-70">Featured</span>
           <span className="flex items-center justify-between font-display text-xl">{first.label}<ArrowUpRight aria-hidden className="size-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
+          {blurb && <span className="mt-3 block text-[0.875rem] leading-relaxed opacity-80">{blurb}</span>}
         </MenuLink>
       </div>
       <div className="col-span-8 grid grid-cols-2 gap-10">

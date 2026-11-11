@@ -5,9 +5,9 @@ import DotPanel from '@/components/DotPanel'
 import BookingForm from '@/components/BookingForm'
 import { COMPANY } from '@/config/locale'
 import { getPage, findEntry, useContent } from '@/lib/content'
-import { ogImageFor, pageImages } from '@/lib/images'
+import { hasClutch, ogImageFor, pageImages } from '@/lib/images'
 import { PostCard } from '@/components/Cards'
-import { SiteImage } from '@/components/ui'
+import { ClutchBadge, SiteImage } from '@/components/ui'
 import stats from '@/content/shared/stats.json'
 import certifications from '@/content/shared/certifications.json'
 
@@ -66,6 +66,7 @@ export default function HomeFolder() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button to="/#book">{h.hero.ctas[0].label}</Button>
                 <Button to="/#services" variant="ghost" arrow={false}>{h.hero.ctas[1].label}</Button>
+                {hasClutch(c, '/') && <ClutchBadge className="h-6 items-center" />}
               </div>
               <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{h.hero.meta.map((m) => <span key={m}>{m}</span>)}</p>
             </Reveal>
