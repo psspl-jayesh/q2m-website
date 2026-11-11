@@ -34,6 +34,14 @@
    "source": "live home counter data-to-value"
   },
   {
+   "key": "counter3",
+   "value": 2,
+   "prefix": "",
+   "suffix": "",
+   "label": "Microsoft Solution Partner designations",
+   "source": "live home counter data-to-value"
+  },
+  {
    "key": "counter4",
    "value": 70,
    "prefix": "",

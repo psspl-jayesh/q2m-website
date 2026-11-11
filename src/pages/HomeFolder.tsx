@@ -10,6 +10,7 @@ import { PostCard } from '@/components/Cards'
 import { SiteFrame, SiteImage, imgMeta, type SiteImg } from '@/components/ui'
 import homeImages from '@/content/shared/home-images.json'
 import stats from '@/content/shared/stats.json'
+import certifications from '@/content/shared/certifications.json'
 
 /** Existing Q2M pages that cover a practice. Practices with no page (agentic commerce, 3D Gaussian splatting) are not linked. */
 const SERVICE_PAGE: Record<string, string> = {
@@ -54,7 +55,8 @@ export default function HomeFolder() {
   const live = getPage(c, 'q2m-solutions')!
   const homeImgs = pageImages(c, '/')
   const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
-  const counters = stats.counters.slice(0, 3)
+  const msBadges = pageImages(c, '/about/').filter((i) => i.role === 'logo' && /\/microsoft-/.test(i.file))
+  const counters = stats.counters.slice(0, 4)
   const posts = TEAM_POSTS.map((p) => findEntry(c, p)).filter((e): e is NonNullable<typeof e> => !!e)
   return (
     <>
@@ -83,17 +85,34 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* Our Global Clients: the live client logos (certification, partner and review badges are not shown) */}
-      {clientLogos.length > 0 && (
-        <section id="clients" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
-          <div className="container-page">
-            <p className="mono text-ink-muted">Our Global Clients</p>
-            <ul className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-6">
-              {clientLogos.map((l) => <li key={l.file}><SiteImage image={l} ratio="auto" sizes="200px" className="h-9 w-auto max-w-[180px] object-contain" /></li>)}
-            </ul>
+      {/* Trusted & Certified: live home content, live client logos and Microsoft badges */}
+      <section id="trusted" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+        <div className="container-page">
+          <div className="split split--lead">
+            <div className="split-aside"><SectionHead title="Trusted & Certified" /></div>
+            <div className="split-main">
+              <ul className="divide-y divide-line border-y border-line">
+                {certifications.map((x) => (
+                  <li key={x.title} className="grid gap-1 py-5 sm:grid-cols-[1fr_1fr] sm:gap-6"><h3 className="font-display text-xl font-semibold">{x.title}</h3><p className="text-ink-muted">{x.detail}</p></li>
+                ))}
+              </ul>
+              {msBadges.length > 0 && (
+                <ul className="mt-8 flex flex-wrap items-center gap-6">
+                  {msBadges.map((b) => <li key={b.file}><SiteImage image={b} ratio="auto" sizes="200px" className="h-auto w-[200px] md:w-[260px]" /></li>)}
+                </ul>
+              )}
+            </div>
           </div>
-        </section>
-      )}
+          {clientLogos.length > 0 && (
+            <div className="mt-12">
+              <p className="mono text-ink-muted">Our Global Clients</p>
+              <ul className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-6">
+                {clientLogos.map((l) => <li key={l.file}><SiteImage image={l} ratio="auto" sizes="200px" className="h-9 w-auto max-w-[180px] object-contain" /></li>)}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* BTS 2026 band */}
       <section id="bts" className="on-dark scroll-anchor bg-block text-ink-inverse">

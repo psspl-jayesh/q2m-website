@@ -30,6 +30,16 @@
    "href": "https://q2msolutions.com/contact/"
   },
   {
+   "t": "p",
+   "text": "Review On",
+   "via": "div"
+  },
+  {
+   "t": "p",
+   "text": "(50 Reviews)",
+   "via": "span"
+  },
+  {
    "t": "h6",
    "text": "Welcome to Q2M Solutions"
   },
@@ -308,6 +318,22 @@
    "t": "h2",
    "text": "Why Choose Q2M Solutions?",
    "eyebrow": "Why Choose Us"
+  },
+  {
+   "t": "h4",
+   "text": "Microsoft Gold Partnership"
+  },
+  {
+   "t": "p",
+   "text": "As a reputable Microsoft Gold Partner, Q2M Solutions offers state-of-the-art AI and cloud solutions by fusing extensive Microsoft knowledge with Azure data copilot."
+  },
+  {
+   "t": "h4",
+   "text": "Award-Winning Excellence"
+  },
+  {
+   "t": "p",
+   "text": "Our numerous Microsoft awards demonstrate our demonstrated capacity for innovation and data copilot implementation for Azure services that generate quantifiable business value."
   },
   {
    "t": "h4",

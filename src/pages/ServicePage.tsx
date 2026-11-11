@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { attachLabels, sectionize, groupify, useContent, type Entry, type Block, type Group, type Section } from '@/lib/content'
 import { topicImagesFor } from '@/lib/topicImages'
-import { heroImage, imagesBySection, keyOf, ogImageFor, pageImages, type ManifestImage } from '@/lib/images'
-import { Accordion, Breadcrumbs, Button, HeroImage, type SiteImg, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem } from '@/components/ui'
+import { hasClutch, heroImage, imagesBySection, keyOf, ogImageFor, pageImages, type ManifestImage } from '@/lib/images'
+import { Accordion, Breadcrumbs, Button, ClutchBadge, HeroImage, type SiteImg, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem } from '@/components/ui'
 import DotArrow from '@/components/DotArrow'
 import { FinalCta } from '@/components/Cards'
 import { NAV, SITE_URL } from '@/lib/site'
@@ -112,7 +112,7 @@ export default function ServicePage({ entry }: { entry: Entry }) {
               {lede && <Reveal delay={0.16}><p className="lede mt-6 max-w-xl">{lede.text}</p></Reveal>}
               <Reveal delay={0.24}>
                 <div className="mt-8 flex flex-wrap gap-3"><Button to={heroHref}>{btn?.text ?? ctas.hero.label}</Button></div>
-                {meta.length > 0 && <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{meta.map((m, k) => <span key={k}>{m.text}</span>)}</p>}
+                {(meta.length > 0 || hasClutch(c, entry.path)) && <p className="mono mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-muted">{meta.map((m, k) => <span key={k}>{m.text}</span>)}{hasClutch(c, entry.path) && <ClutchBadge className="h-5 items-center" />}</p>}
               </Reveal>
             </div>
             <div className="split-main">

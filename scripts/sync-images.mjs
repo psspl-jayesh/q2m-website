@@ -20,9 +20,7 @@ const OUT = 'public/images'
 const MANIFEST = 'src/data/image-manifest.json'
 const content = JSON.parse(readFileSync('src/data/content.json', 'utf8'))
 /** Third-party images you approved: downloaded and served locally (never hotlinked). */
-const APPROVED_THIRD_PARTY = new Set()
-/** Clutch and certification / partner badges (Microsoft Solutions Partner, Azure Expert, ISO ...) are never shown or downloaded. Other logos stay. */
-const CERT_IMAGE = /clutch|microsoft-(data-and-ai|digital-and-app-innovation)|solutions?-partner|azure-expert|iso-?27001|certif/i
+const APPROVED_THIRD_PARTY = new Set(['https://zenfy-wp.egenslab.com/wp-content/uploads/2024/03/clutch-logo.svg'])
 const LOGO_ALTS = JSON.parse(readFileSync('src/content/shared/logo-alts.json', 'utf8'))
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
@@ -139,7 +137,6 @@ for (const [p, v] of Object.entries(crawled)) {
   if (v.error) continue
   for (const it of v.items) {
     const o = originalOf(it.url)
-    if (CERT_IMAGE.test(o)) { (flags.removedCert ??= []).push(`${p} [${it.section}] ${o.replace(BASE, '')}`); it.skip = 'certification'; continue }
     if (!isInternal(o) && !APPROVED_THIRD_PARTY.has(o)) { flags.thirdParty.push(`${p} [${it.section}] ${it.url}`); it.skip = 'third-party'; continue }
     if (/plugins\/elementor\/assets\/images\/placeholder/.test(o)) { flags.pluginPlaceholder.push(`${p} [${it.section}]`); it.skip = 'placeholder'; continue }
     if (DEMO_UPLOAD.test(o)) { flags.themeDemo.push(`${p} [${it.section}] ${o.replace(BASE, '')}`); it.skip = 'demo'; continue }
@@ -262,12 +259,13 @@ manifest.stats = { pages: Object.keys(manifest.pages).length, images: Object.val
 writeFileSync(MANIFEST, JSON.stringify(manifest, null, 1))
 
 /* small static file for components that need a few site-wide images without loading the full manifest */
+const badge = (name) => manifest.shared.chrome.find((c) => c.file.includes(name))
 writeFileSync('src/data/site-images.json', JSON.stringify({
   brand: manifest.brand,
   favicon: manifest.shared.icons[0]?.file ?? null,
   ogDefault: '/brand/og-default.png',
-  /** Footer logos that are not Clutch or certifications: the Google reviews logo (not linked: no profile URL is configured). */
-  badges: manifest.shared.chrome.filter((c) => /google-review/.test(c.file)).map((c) => ({ ...c, label: 'Google reviews', alt: 'Google reviews', href: null })),
+  clutch: { light: { file: '/images/shared/clutch-logo.svg', w: 78, h: 22, alt: LOGO_ALTS['clutch-logo.svg'] }, dark: { file: '/images/shared/clutch-logo-white.svg', w: localFor.get(BASE + '/wp-content/uploads/2024/03/clutch-logo-white.svg')?.w ?? 78, h: localFor.get(BASE + '/wp-content/uploads/2024/03/clutch-logo-white.svg')?.h ?? 22, alt: LOGO_ALTS['clutch-logo-white.svg'] } },
+  badges: [badge('clutch-logo-1') && { ...badge('clutch-logo-1'), label: 'Clutch', alt: LOGO_ALTS['clutch-logo-1.png'], href: 'https://clutch.co/profile/q2m-solutions' }, badge('google-review') && { ...badge('google-review'), label: 'Google reviews', alt: LOGO_ALTS['google-review.png'], href: null }].filter(Boolean),
   liveLogosNotUsed: manifest.shared.chrome.filter((c) => c.role === 'logo').map((c) => c.file),
 }, null, 1))
 

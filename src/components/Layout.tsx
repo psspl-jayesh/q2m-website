@@ -197,11 +197,13 @@ function Footer() {
               {COMPANY.phone && <li className="flex gap-3"><Phone aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</a></li>}
               <li className="flex gap-3"><MapPin aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer">{fullAddress()}</a></li>
             </ul>
-            {siteImages.badges.length > 0 && (
-              <ul aria-label="Reviews" className="mt-8 flex flex-wrap items-center gap-3">
-                {siteImages.badges.map((bd) => <li key={bd.file}><span className="flex h-12 items-center rounded-md bg-white px-3"><SiteImage image={bd} sizes="160px" className="h-8 w-auto object-contain" ratio="auto" /></span></li>)}
-              </ul>
-            )}
+            <ul aria-label="Reviews and ratings" className="mt-8 flex flex-wrap items-center gap-3">
+              {siteImages.badges.map((bd) => {
+                const img = <span className="flex h-12 items-center rounded-md bg-white px-3"><SiteImage image={bd} sizes="160px" className="h-8 w-auto object-contain" ratio="auto" /></span>
+                const href = bd.href
+                return <li key={bd.file}>{href ? <a href={href} target="_blank" rel="noopener noreferrer" aria-label={bd.label}>{img}</a> : img}</li>
+              })}
+            </ul>
           </div>
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
             <nav aria-label={footerContent.heading}>

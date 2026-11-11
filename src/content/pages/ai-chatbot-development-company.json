@@ -31,7 +31,8 @@
   },
   {
    "t": "h2",
-   "text": "Our Global Clients"
+   "text": "Our Global Clients",
+   "eyebrow": "Review On"
   },
   {
    "t": "h2",
@@ -339,7 +340,7 @@
   },
   {
    "t": "p",
-   "text": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, SSO through Azure Active Directory, and compliance with GDPR when applicable. We explain each security control in writing so that your InfoSec team can evaluate it without having to take it at face value."
+   "text": "Role-based access control, comprehensive auditing, your choice of Azure region for data residency, SSO through Azure Active Directory, and compliance with GDPR and ISO 27001 when applicable. We explain each security control in writing so that your InfoSec team can evaluate it without having to take it at face value."
   },
   {
    "t": "h2",
@@ -421,6 +422,14 @@
    "t": "btn",
    "text": "Connect With Us",
    "href": "/contact/"
+  },
+  {
+   "t": "h3",
+   "text": "Unmatched Microsoft AI Expertise"
+  },
+  {
+   "t": "p",
+   "text": "The members of our team have earned their Microsoft Certifications in Azure AI, Azure Solution Architect, and Power Platform. It is not just a tagline, it means we can access Microsoft engineering support when something complex comes up, we get early access to new Azure AI features, and we know how to make the Microsoft stack work the way it's supposed to in enterprise environments."
   },
   {
    "t": "h3",

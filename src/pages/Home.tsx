@@ -1,5 +1,5 @@
 import { getPage, sectionize, useContent } from '@/lib/content'
-import { Button, Reveal, Seo } from '@/components/ui'
+import { Button, ClutchBadge, Reveal, Seo } from '@/components/ui'
 import { ogImageFor } from '@/lib/images'
 import HeroSlider, { homeHeroSlides } from '@/components/HeroSlider'
 import { FinalCta } from '@/components/Cards'
@@ -30,6 +30,7 @@ export default function Home() {
             <Reveal delay={0.26}>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button to={resolveHref(btn?.href) ?? ctas.header.href}>{btn?.text ?? ctas.header.label}</Button>
+                {meta.some((m) => /review/i.test(m.text ?? '')) && <ClutchBadge className="h-6 items-center" />}
               </div>
               {meta.length > 0 && <p className="mono mt-8 flex flex-wrap gap-x-5 gap-y-1 text-ink-muted">{meta.map((m, k) => <span key={k}>{m.text}</span>)}</p>}
             </Reveal>
