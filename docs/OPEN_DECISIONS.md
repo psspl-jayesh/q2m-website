@@ -29,9 +29,6 @@ Severity: High = do soon (legal or business), Medium = fix soon, Low = polish, D
 | 19 | **Long button labels** (45 to 56 characters) wrap to two lines on phones; no clipping | 6 service pages | Accept, or shorter text | Low |
 | 20 | **Home hero:** dot field with the Q2M logo arrow (current), or a slider of the 3 live banners | Home | Decision | Low |
 | 21 | **Instagram handle** "qtomsolutions" is what the live site links to; confirm it is the right account | Footer, JSON-LD | Confirmation | Low |
-| 22 | **Smart glasses page (branch new-smart-glasses-page): automotive image slot.** The use-case grid shows the design's "Image slot · 800 × 800" placeholder tile. Supply the photo | /smart-glasses-ar-wearable-app-development-services/ | Image | High |
-| 23 | **Smart glasses page: "A fixed pilot quote after discovery"** (contact list and FAQ). Confirm this is Q2M policy | Same page | Yes/no | Medium |
-| 24 | **Smart glasses page: BTS live demos.** The FAQ says "Try live demos at our desk at Bengaluru Tech Summit 2026", but `BTS.liveDemos` is false. Confirm; the line changes after the event either way | Same page | Yes/no | High |
 
 ## Done (for reference)
 - Pre-rendered static HTML for every route; Lighthouse mobile 98–100 on home, BTS landing, a service page and contact (`docs/PRERENDER.md`).

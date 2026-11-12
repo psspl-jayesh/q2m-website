@@ -1,5 +1,5 @@
 {
-  "_note": "Smart glasses service page (design/smart-glasses-page/services/smart-glasses-app-development.html), shown at /smart-glasses-ar-wearable-app-development-services/. Copy is the design's, word for word. \"afterBts\" lines replace BTS lines after Bengaluru Tech Summit 2026 closes (src/config/bts.ts).",
+  "_note": "\"neutral\" is used instead of \"a\" while BTS.liveDemos is false (no desk with demos confirmed). Smart glasses service page (design/smart-glasses-page/services/smart-glasses-app-development.html), shown at /smart-glasses-ar-wearable-app-development-services/. Copy is the design's, word for word. \"afterBts\" lines replace BTS lines after Bengaluru Tech Summit 2026 closes (src/config/bts.ts).",
   "seo": {
     "title": "AI Smart Glasses App Development Company in India | Q2M Solutions",
     "description": "AI smart glasses app development in India by Q2M Solutions: guided inspections, remote expert, vision AI and voice assistants for Meta, XREAL, Snap Spectacles, MentraOS and Android XR glasses.",
@@ -40,7 +40,7 @@
     "tiles": [
       { "kind": "image", "size": "w2 h2", "file": "/images/home-new/aviation.jpg", "alt": "Aircraft technician using smart glasses with an inspection checklist", "tag": "Aviation and MRO", "caption": "Inspection cards in view, photos per card, remote engineer on call" },
       { "kind": "image", "size": "h2", "file": "/images/home-new/doctor.jpg", "alt": "Doctor using smart glasses in a consultation", "tag": "Healthcare", "caption": "Hands-free records and procedures", "position": "30% 50%" },
-      { "kind": "slot", "size": "", "text": "Image slot · 800 × 800 · technician inspecting a car with smart glasses" },
+      { "kind": "image", "size": "", "file": "/images/building-a-single-pane-of-glass-for-a-1500-truck-fleet/building-a-single-pane-of-glass-image-2.webp", "alt": "Technician wearing smart glasses inspecting a truck, with an AR checklist and hands-free photo capture", "position": "40% 50%" },
       { "kind": "text", "size": "", "title": "Automotive", "text": "Vehicle intake and pre-delivery inspections with a guided checklist and damage photos." },
       { "kind": "text", "size": "w2", "dark": true, "title": "Insurance", "text": "On-site assessments with photos and voice notes filed straight into the claim." },
       { "kind": "image", "size": "w2", "file": "/images/home-new/agent.jpg", "alt": "AI agent turning captured data into records", "tag": "Manufacturing and field service", "caption": "Quality checks and site visits that write their own report", "position": "50% 40%" }
@@ -119,7 +119,7 @@
       { "q": "How much does a smart glasses app cost?", "a": "It depends on the workflow, the number of systems to connect and the devices. We give a fixed quote for the pilot after on-site discovery, so you know the cost before you commit." },
       { "q": "Do smart glasses apps work offline?", "a": "Yes. Key steps run offline and sync photos, notes and results when the device or paired phone reconnects." },
       { "q": "How do you handle privacy with camera glasses?", "a": "Recording is limited to the steps that need it, with a visible indicator, consent steps where needed, and storage in your own cloud under your access rules." },
-      { "q": "Can we see a demo first?", "a": "Yes. Try live demos at our desk at Bengaluru Tech Summit 2026, or book a session and we will show a demo built around a workflow like yours.", "afterBts": "Yes. Book a session and we will show a demo built around a workflow like yours." }
+      { "q": "Can we see a demo first?", "a": "Yes. Try live demos at our desk at Bengaluru Tech Summit 2026, or book a session and we will show a demo built around a workflow like yours.", "neutral": "Yes. Meet us at Bengaluru Tech Summit 2026, or book a session and we will show a demo built around a workflow like yours.", "afterBts": "Yes. Book a session and we will show a demo built around a workflow like yours." }
     ]
   },
   "related": {
@@ -137,7 +137,7 @@
     "title": "See a smart glasses workflow built around your job",
     "intro": "In 30 minutes we map one hands-on process, show a similar demo and outline a pilot.",
     "pointsAfterCity": ". On-site discovery across India, remote anywhere",
-    "points": ["Device advice before you buy hardware", "A fixed pilot quote after discovery"],
+    "points": ["Device advice before you buy hardware", "A clear pilot quote after discovery"],
     "placeholder": "For example: 25 engineers do monthly equipment checks on paper",
     "submit": "Request a discovery call"
   }

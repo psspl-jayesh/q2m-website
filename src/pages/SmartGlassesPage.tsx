@@ -4,7 +4,7 @@ import d from '@/data/smart-glasses-page.json'
 import { Img, Seo } from '@/components/ui'
 import { DiscoveryForm, Ico, Pill, RingBadge, useReveal } from '@/components/GlassesDesign'
 import { COMPANY, ADDRESS } from '@/config/locale'
-import { useBtsPhase } from '@/config/bts'
+import { BTS, useBtsPhase } from '@/config/bts'
 import { useContent, type Entry } from '@/lib/content'
 import { ogImageFor } from '@/lib/images'
 import { SITE_URL } from '@/lib/site'
@@ -25,7 +25,8 @@ export default function SmartGlassesPage({ entry }: { entry: Entry }) {
   const root = useRef<HTMLDivElement>(null)
   useReveal(root)
   const btsOver = useBtsPhase() === 'after'
-  const faq = d.faq.items.map((f) => ({ q: f.q, a: btsOver && 'afterBts' in f && f.afterBts ? f.afterBts : f.a }))
+  // BTS line: booth wording only when BTS.liveDemos is on, neutral wording otherwise, and no BTS mention after the event
+  const faq = d.faq.items.map((f) => ({ q: f.q, a: btsOver && 'afterBts' in f && f.afterBts ? f.afterBts : !BTS.liveDemos && 'neutral' in f && f.neutral ? f.neutral : f.a }))
   const url = SITE_URL + entry.path
   const jsonLd = [
     {
@@ -87,11 +88,10 @@ export default function SmartGlassesPage({ entry }: { entry: Entry }) {
         <div className="bento">{d.useCases.tiles.map((t, i) => {
           const cls = `bt ${t.size}`.trim()
           if (t.kind === 'text') return <div className={`${cls} txt${'dark' in t && t.dark ? ' dark' : ''}`} data-reveal key={i}><h3>{t.title}</h3><p>{t.text}</p></div>
-          if (t.kind === 'slot') return <div className={`${cls} ph`} data-reveal key={i}>{t.text}</div>
           return (
             <figure className={cls} data-reveal key={i}>
               <Img src={t.file!} alt={t.alt ?? ''} position={t.position ?? 'center'} sizes={t.size.includes('w2') ? '(min-width:900px) 584px, 100vw' : '(min-width:900px) 290px, (min-width:560px) 50vw, 100vw'} />
-              <figcaption className="cp"><span>{t.tag}</span><b>{t.caption}</b></figcaption>
+              {t.caption && <figcaption className="cp"><span>{t.tag}</span><b>{t.caption}</b></figcaption>}
             </figure>
           )
         })}</div>
