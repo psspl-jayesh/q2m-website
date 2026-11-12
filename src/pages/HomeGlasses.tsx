@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import g from '@/data/home-glasses.json'
 import { Img, Seo } from '@/components/ui'
 import { COMPANY, LEGAL } from '@/config/locale'
-import { useBtsPhase } from '@/config/bts'
+import { BTS, useBtsPhase } from '@/config/bts'
 import { useContent } from '@/lib/content'
 import { ogImageFor } from '@/lib/images'
 import { emailServiceConfigured, isBot, openEmailDraft, sendSubmission } from '@/lib/formDelivery'
@@ -89,8 +89,12 @@ export default function HomeGlasses() {
   const btsOver = useBtsPhase() === 'after'
   const keep = <T extends { bts?: boolean }>(xs: T[]) => (btsOver ? xs.filter((x) => !x.bts) : xs)
   const marquee = keep(g.marquee)
-  const faq = g.faq.items.map((f) => ({ q: f.q, a: btsOver && 'afterBts' in f && f.afterBts ? f.afterBts : f.a }))
-  const tiles = keep(g.work.tiles).map((t) => ({ ...t, size: btsOver && 'afterBtsSize' in t && t.afterBtsSize ? t.afterBtsSize : t.size }))
+  // Booth wording ("live demos at our desk") only when BTS.liveDemos is on; neutral wording otherwise
+  const demos = BTS.liveDemos
+  const faq = g.faq.items.map((f) => ({ q: f.q, a: btsOver && 'afterBts' in f && f.afterBts ? f.afterBts : !demos && 'neutral' in f && f.neutral ? f.neutral : f.a }))
+  const tiles = keep(g.work.tiles).map((t) => ({ ...t, ...(!demos && 'neutral' in t && t.neutral ? t.neutral : {}), size: btsOver && 'afterBtsSize' in t && t.afterBtsSize ? t.afterBtsSize : t.size }))
+  const trust = keep(g.hero.trust).map((t) => (!demos && 'neutral' in t && t.neutral ? t.neutral : t.text))
+  const stats = g.stats.items.filter((s) => !('hidden' in s && s.hidden))
   const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
   return (
     <div className="hg" ref={root}>
@@ -106,7 +110,7 @@ export default function HomeGlasses() {
             <a className="btn btn-p" href={g.hero.primary.href}>{g.hero.primary.label} <span aria-hidden="true">&#8594;</span></a>
             <a className="btn btn-g" href={g.hero.secondary.href}>{g.hero.secondary.label}</a>
           </div>
-          <ul className="trust">{keep(g.hero.trust).map((t) => <li key={t.text}>{t.text}</li>)}</ul>
+          <ul className="trust">{trust.map((t) => <li key={t}>{t}</li>)}</ul>
         </div>
         <div className="hvis">
           <div className="ph"><Img src={g.hero.image.file} alt={g.hero.image.alt} eager sizes="(min-width:1200px) 552px, (min-width:900px) 46vw, 100vw" /></div>
@@ -135,7 +139,7 @@ export default function HomeGlasses() {
         </div>
         <div data-reveal>
           <Pill>{g.stats.pill}</Pill><h2 className="mt16">{g.stats.title}</h2>
-          <div className="stats">{g.stats.items.map((s) => (
+          <div className="stats">{stats.map((s) => (
             <div className="stat" key={s.label}>{'value' in s && typeof s.value === 'number' ? <CountUp to={s.value} /> : <b><span className="tbc">[TBC]</span></b>}<p>{s.label}</p></div>
           ))}</div>
         </div>
@@ -189,7 +193,7 @@ export default function HomeGlasses() {
 
       {/* Use cases */}
       <section className="sec sec-s" id="work"><div className="w">
-        <div className="hdr" data-reveal><Pill>{g.work.pill}</Pill><h2>{g.work.title}</h2><p>{g.work.intro}{!btsOver && g.work.introBts}</p></div>
+        <div className="hdr" data-reveal><Pill>{g.work.pill}</Pill><h2>{g.work.title}</h2><p>{g.work.intro}{!btsOver && (demos ? g.work.introBts : g.work.introBtsNeutral)}</p></div>
         <div className="bento">{tiles.map((t, i) => {
           const cls = `bt ${t.size}`.trim()
           if (t.kind === 'text') return <div className={`${cls} txt`} data-reveal key={i}><h3>{t.title}</h3><p>{t.text}</p><a className="btn btn-w" href="#contact">{t.cta}</a></div>

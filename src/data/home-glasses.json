@@ -1,5 +1,5 @@
 {
-  "_note": "Home page text (smart glasses design, design/home-new/index.html). Copy is the design's, word for word. Items with \"bts\": true hide after Bengaluru Tech Summit 2026 closes (src/config/bts.ts); \"afterBts\" is the line shown instead.",
+  "_note": "Home page text (smart glasses design, design/home-new/index.html). Copy is the design's, word for word. \"neutral\" lines are used instead while BTS.liveDemos is false (no desk with demos confirmed); \"hidden\" items are not shown (the pilots figure is not known yet). Items with \"bts\": true hide after Bengaluru Tech Summit 2026 closes (src/config/bts.ts); \"afterBts\" is the line shown instead.",
   "seo": {
     "title": "Smart Glasses App Development Company in India | Q2M Solutions",
     "description": "Q2M Solutions is an India-based smart glasses app development company building AI apps for Meta, XREAL, Snap Spectacles, MentraOS and Android XR glasses: guided inspections, remote expert and vision AI."
@@ -15,7 +15,7 @@
     "trust": [
       { "text": "7 glasses platforms" },
       { "text": "AI vision and voice built in" },
-      { "text": "Live demos at BTS 2026", "bts": true }
+      { "text": "Live demos at BTS 2026", "neutral": "Meet us at BTS 2026", "bts": true }
     ],
     "image": { "file": "/images/home-new/aviation.jpg", "alt": "Aircraft technician using AI smart glasses that show an inspection checklist" },
     "chip": { "title": "Step 3 of 7 checked", "sub": "Photo saved to job card" },
@@ -46,7 +46,7 @@
       { "value": 7, "label": "Smart glasses platforms we build for" },
       { "value": 4, "label": "Stages from on-site discovery to roll-out" },
       { "value": 1, "label": "Team for the glasses app, the AI and the back-office integration" },
-      { "tbc": true, "label": "Enterprise pilots delivered (add your real figure)" }
+      { "tbc": true, "hidden": true, "label": "Enterprise pilots delivered (add your real figure)" }
     ]
   },
   "why": {
@@ -125,11 +125,12 @@
     "title": "Smart glasses in action",
     "intro": "Workflows we design and demo.",
     "introBts": " Come and wear them at our desk at Bengaluru Tech Summit 2026.",
+    "introBtsNeutral": " Meet us at Bengaluru Tech Summit 2026.",
     "tiles": [
       { "kind": "image", "size": "w2 h2", "file": "/images/home-new/aviation.jpg", "alt": "Technician inspecting an aircraft wing with smart glasses", "tag": "Aviation", "caption": "Inspection cards in view, photos per card" },
       { "kind": "image", "size": "", "afterBtsSize": "h2", "file": "/images/home-new/glasses.jpg", "alt": "Smart glasses showing a checklist on the lens", "tag": "Heads-up", "caption": "Checklists in the lens" },
       { "kind": "image", "size": "h2", "file": "/images/home-new/doctor.jpg", "alt": "Doctor wearing smart glasses during a consultation", "tag": "Healthcare", "caption": "Hands-free records", "position": "30% 50%" },
-      { "kind": "text", "size": "", "bts": true, "title": "Try it live", "text": "Wear the glasses and run a real inspection at our BTS 2026 desk.", "cta": "Book a demo slot" },
+      { "kind": "text", "size": "", "bts": true, "title": "Try it live", "text": "Wear the glasses and run a real inspection at our BTS 2026 desk.", "cta": "Book a demo slot", "neutral": { "title": "Meet us at BTS 2026", "text": "Book a session and we will show a demo built around a workflow like yours.", "cta": "Book a session" } },
       { "kind": "image", "size": "w2", "file": "/images/home-new/agent.jpg", "alt": "Illustration of an AI agent turning documents into actions", "tag": "AI agent", "caption": "The report writes itself from the job", "position": "50% 40%" },
       { "kind": "image", "size": "w2", "file": "/images/case-studies/building-a-single-pane-of-glass-for-a-1500-truck-fleet-banner.webp", "alt": "Engineers inspecting a heavy truck with augmented-reality overlays on screens around it", "position": "50% 45%" }
     ]
@@ -154,7 +155,7 @@
       { "q": "Do smart glasses apps work without internet?", "a": "Yes. Key steps run offline and sync photos, notes and results when the device or the paired phone reconnects. We design for weak signal in workshops, hangars and plants from the start." },
       { "q": "How do you handle privacy when glasses have cameras?", "a": "Recording is limited to the steps that need it, with a visible indicator, consent steps for customers or patients, and storage in your own cloud under your access rules." },
       { "q": "How long does a smart glasses pilot take?", "a": "A focused pilot with one team and one workflow usually runs for weeks rather than months. We agree the timeline and the success measures in writing after the on-site discovery." },
-      { "q": "Can we try smart glasses before we decide?", "a": "Yes. Try live demos at our desk at Bengaluru Tech Summit 2026, or book a session and we will show a demo built around a workflow like yours.", "afterBts": "Yes. Book a session and we will show a demo built around a workflow like yours." }
+      { "q": "Can we try smart glasses before we decide?", "a": "Yes. Try live demos at our desk at Bengaluru Tech Summit 2026, or book a session and we will show a demo built around a workflow like yours.", "neutral": "Yes. Meet us at Bengaluru Tech Summit 2026, or book a session and we will show a demo built around a workflow like yours.", "afterBts": "Yes. Book a session and we will show a demo built around a workflow like yours." }
     ]
   }
 }
