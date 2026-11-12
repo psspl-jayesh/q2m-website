@@ -6,7 +6,7 @@ import { ROOT } from './config.mjs'
 
 const DIST = ROOT + 'dist'
 const files = []
-const walk = (d) => { for (const f of readdirSync(d)) { const p = `${d}/${f}`; if (statSync(p).isDirectory()) { if (f !== 'assets' && f !== 'images') walk(p) } else if (f.endsWith('.html')) files.push(p) } }
+const walk = (d) => { for (const f of readdirSync(d)) { const p = `${d}/${f}`; if (statSync(p).isDirectory()) { if (f !== 'assets' && f !== 'images') walk(p) } else if (f.endsWith('.html') && !/^google[0-9a-f]+\.html$/.test(f)) files.push(p) /* Search Console verification files are not pages */ } }
 walk(DIST)
 const hv = new HtmlValidate({ extends: ['html-validate:standard'] })
 const byRule = {}
