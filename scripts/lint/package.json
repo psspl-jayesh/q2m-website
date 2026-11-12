@@ -11,5 +11,11 @@
     "globals": "^17.14.0",
     "typescript": "~5.9",
     "typescript-eslint": "^8.72.2"
-  }
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.8"
+    }
+  },
+  "_overridesNote": "typescript-eslint's parser asks for minimatch 10.x, which has a moderate advisory (GHSA-g3hv-75wg-m249); it gets 11.x (same named API). Other packages keep their own minimatch."
 }
