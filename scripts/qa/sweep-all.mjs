@@ -19,8 +19,8 @@ const jobs = []
 for (const route of routes.filter((r) => !only || only.includes(r))) for (const w of widths) for (const th of themes) if (!done.has(`${route}|${w}|${th}`)) jobs.push({ route, w, th })
 console.log(`${jobs.length} loads to do (${done.size} already done)`)
 
-const b = await puppeteer.launch({ executablePath: CHROME, headless: true })
-async function run({ route, w, th }) {
+// one browser per worker: every page is the foreground tab, so animation frames and reveal timers run normally
+async function run(b, { route, w, th }) {
   const p = await b.newPage(); await p.setViewport({ width: w, height: w < 768 ? 800 : 900, isMobile: w < 768, hasTouch: w < 768 })
   const errs = []; p.on('pageerror', (e) => errs.push(String(e).slice(0, 160))); p.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warn') errs.push(`${m.type()}: ${m.text().slice(0, 160)}`) })
   await p.evaluateOnNewDocument((t) => { try { localStorage.setItem('q2m-theme', t) } catch { /* storage unavailable */ } window.__cls = 0; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value }).observe({ type: 'layout-shift', buffered: true }) }, th)
@@ -43,7 +43,9 @@ async function run({ route, w, th }) {
       const r = (lab && lab.getBoundingClientRect().height >= 44) ? lab.getBoundingClientRect() : e.getBoundingClientRect()
       return r.height < 44 && r.width < 44 && !e.closest('.logo-marquee')
     }).map((e) => `${e.tagName}:${(e.getAttribute('aria-label') || e.textContent).trim().slice(0, 24)} ${Math.round(e.getBoundingClientRect().width)}x${Math.round(e.getBoundingClientRect().height)}`) : []
-    const upscaled = [...document.images].filter((i) => vis(i) && i.naturalWidth && i.currentSrc && !/\.svg/.test(i.currentSrc) && i.getBoundingClientRect().width > i.naturalWidth * 1.05 * (window.devicePixelRatio > 1 ? 0.5 : 1) && getComputedStyle(i).objectFit !== 'cover').map((i) => i.currentSrc.split('/').pop())
+    // source pixel width of the file actually shown: the w-descriptor from srcset (naturalWidth is density-adjusted by sizes)
+    const srcW = (i) => { const sets = [i.srcset, ...[...(i.parentElement?.querySelectorAll('source') ?? [])].map((x) => x.srcset)].join(','); const file = i.currentSrc.split('/').pop(); const m = sets.split(',').map((x) => x.trim().split(/\s+/)).find(([u]) => u && u.endsWith(file)); return m && /w$/.test(m[1] || '') ? parseInt(m[1]) : i.naturalWidth }
+    const upscaled = [...document.images].filter((i) => vis(i) && i.complete && i.currentSrc && !/\.svg/.test(i.currentSrc) && getComputedStyle(i).objectFit !== 'cover' && i.getBoundingClientRect().width > srcW(i) * 1.05).map((i) => `${i.currentSrc.split('/').pop()} shown ${Math.round(i.getBoundingClientRect().width)}px from ${srcW(i)}px`)
     return {
       h1: document.querySelectorAll('h1').length, overflow: document.documentElement.scrollWidth - vw, offRight,
       broken: [...document.images].filter((i) => i.complete && !i.naturalWidth).map((i) => i.src.split('/').pop()),
@@ -58,6 +60,9 @@ async function run({ route, w, th }) {
   if (issue) console.log('ISSUE', route, w, th, JSON.stringify({ ...m, errs }).slice(0, 400))
 }
 let i = 0
-await Promise.all(Array.from({ length: 4 }, async () => { while (i < jobs.length) { const j = jobs[i++]; try { await run(j) } catch (e) { console.log('FAIL', j.route, j.w, j.th, String(e).slice(0, 120)) } } }))
-await b.close()
+await Promise.all(Array.from({ length: 4 }, async () => {
+  const b = await puppeteer.launch({ executablePath: CHROME, headless: true })
+  while (i < jobs.length) { const j = jobs[i++]; try { await run(b, j) } catch (e) { console.log('FAIL', j.route, j.w, j.th, String(e).slice(0, 120)) } }
+  await b.close()
+}))
 console.log('done')
