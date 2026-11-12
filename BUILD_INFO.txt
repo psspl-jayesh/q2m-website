@@ -1,0 +1,12 @@
+Q2M Solutions website: production build
+
+Built:          12 Nov 2026, 08:39 IST
+Source commit:  dbb2818 (main)
+Release tag:    release-2026-11-12-2
+Node version:   v24.16.0
+Pages:          71 pre-rendered routes + 404.html
+
+Upload everything in this folder to the web root.
+
+Server setup and checks: docs/DEPLOYMENT_FOR_ADMIN.md on the main branch
+(https://github.com/psspl-jayesh/q2m-website/blob/main/docs/DEPLOYMENT_FOR_ADMIN.md).
