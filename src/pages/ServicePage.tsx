@@ -307,8 +307,10 @@ function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?:
 
   // Editorial prose; the section's images sit in the right-hand column in live order
   const g0: Group = lead
+  // one image beside the text (its own image or a topic image): the image stays in view while the text scrolls
+  const oneImage = media.length === 1 || (media.length === 0 && !!topic)
   return (
-    <section className="section"><div className="container-page split split--lead">
+    <section className="section"><div className={`container-page split split--lead ${oneImage ? 'split--media' : ''}`}>
       <div className="split-aside">
         {s.eyebrow && <p className="eyebrow mb-4">{s.eyebrow}</p>}
         <h2 className="display-md">{s.title}</h2>

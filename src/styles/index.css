@@ -177,6 +177,7 @@
      .split         grid container (stacked below 1024px)
      .split-aside   the column that stays in view (sticky); .split-main is the column that scrolls past
      Variants (same on every page): default 5/7 · .split--lead 7/5 (hero, intro, text-beside-media) · .split--toc 3/9
+     · .split--media (text beside one image: the image is the sticky column)
      Sticky is visible only while the sibling column is taller than the aside. Never put overflow on an ancestor. */
   .split { display: grid; gap: 2.5rem; }
   .split > * { min-width: 0; }
@@ -189,6 +190,10 @@
     .split--lead > .split-main { grid-column: span 5; }
     .split--toc > .split-aside { grid-column: span 3; }
     .split--toc > .split-main { grid-column: span 9; }
+    /* .split--media: text beside ONE image. The long text scrolls and the image stays in view below the header (the reverse
+       of the default, where the shorter column is the aside). Same rule on every page that uses it. */
+    .split--media > .split-aside { position: static; }
+    .split--media > .split-main { position: sticky; top: calc(var(--header-height) + var(--sticky-gap)); align-self: start; }
     /* Added automatically by useSplitFit() (src/lib/splitFit.ts) only when an aside is taller than the viewport AND its sibling is taller still */
     .split-aside--scroll { max-height: calc(100vh - var(--header-height) - 48px); overflow-y: auto; }
   }
