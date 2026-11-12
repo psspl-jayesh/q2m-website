@@ -10,8 +10,8 @@ import { PostCard } from '@/components/Cards'
 import { SiteFrame, SiteImage, imgMeta, type SiteImg } from '@/components/ui'
 import homeImages from '@/content/shared/home-images.json'
 import stats from '@/content/shared/stats.json'
-import certifications from '@/content/shared/certifications.json'
-import { useBtsPhase } from '@/config/bts'
+import { BTS, useBtsPhase } from '@/config/bts'
+import btsWording from '@/content/sections/bts-wording.json'
 
 /** Existing Q2M pages that cover a practice. Practices with no page (agentic commerce, 3D Gaussian splatting) are not linked. */
 const SERVICE_PAGE: Record<string, string> = {
@@ -52,12 +52,15 @@ const AFTER_BTS_TILE_SIZE: Record<string, { w2?: boolean; h2?: boolean }> = {
   'Clinical and lab records, extracted': { w2: true },
 }
 
+const N = btsWording.neutral
+
 const TEAM_POSTS = ['/ai-chatbot-development-strategic-priority-2026/', '/machine-learning-development-scalable-ml-solutions/', '/top-ai-agent-development-companies/']
 
 /**
  * THE HOME PAGE (routed). The designed home from the Q2M_Website_Home folder: its design, section order and copy are kept as they were.
- * Three sections from the live home page are added where the meaning matches nothing in the design (Trusted & Certified with the
- * live client logos and Microsoft badges, The Results Our Clients Measure, From The Team). The live-structure home is kept as Home.tsx (not routed).
+ * Three sections from the live home page are added where the meaning matches nothing in the design (Our Global Clients logos,
+ * The Results Our Clients Measure, From The Team). "Trusted & Certified" was removed on the owner's request (12 Nov 2026).
+ * The live-structure home is kept as Home.tsx (not routed).
  * SEO title and description are the live ones.
  */
 export default function HomeFolder() {
@@ -66,10 +69,20 @@ export default function HomeFolder() {
   const live = getPage(c, 'q2m-solutions')!
   const homeImgs = pageImages(c, '/')
   const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
-  const msBadges = pageImages(c, '/about/').filter((i) => i.role === 'logo' && /\/microsoft-/.test(i.file))
   const counters = stats.counters.slice(0, 4)
   const btsOver = useBtsPhase() === 'after'
-  const tiles = btsOver ? h.work.tiles.filter((t) => t.tag !== BTS_TILE).map((t) => ({ ...t, ...AFTER_BTS_TILE_SIZE[t.title] })) : h.work.tiles
+  const tiles = (btsOver ? h.work.tiles.filter((t) => t.tag !== BTS_TILE).map((t) => ({ ...t, ...AFTER_BTS_TILE_SIZE[t.title] })) : h.work.tiles)
+    .map((t) => (!BTS.liveDemos && t.tag === N.demoTag.replaces ? { ...t, tag: N.demoTag.text } : t))
+  // Booth wording (BTS.liveDemos) and after-event hiding for the BTS lines in other sections
+  const booth = BTS.liveDemos
+  const btsParas = booth ? h.bts.paras : [N.lead.text, N.prepare.text]
+  const btsFacts = booth ? h.bts.facts : h.bts.facts.filter((f) => f.k !== btsWording.liveDemosFact)
+  const workIntro = booth && !btsOver ? h.work.intro : N.workIntro.text
+  const serviceTag = (tag: string) => (tag === btsWording.liveDemoServiceTag && (!booth || btsOver) ? '' : tag)
+  const session = booth ? h.session : { ...h.session, title: N.sessionTitle.text, steps: h.session.steps.map((x, i) => (i === 1 ? { ...x, text: N.sessionStep2.text } : x)) }
+  const faqIntro = btsOver ? undefined : booth ? h.faq.intro : N.faqIntro.text
+  const faqItems = btsOver ? h.faq.items.filter((f) => f.q !== btsWording.sessionFaqQuestion)
+    : booth ? h.faq.items : h.faq.items.map((f) => (f.q === btsWording.sessionFaqQuestion ? { ...f, a: [N.faqSessionAnswer.text] } : f))
   const posts = TEAM_POSTS.map((p) => findEntry(c, p)).filter((e): e is NonNullable<typeof e> => !!e)
   return (
     <>
@@ -98,43 +111,23 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* Trusted & Certified: live content (certifications, Microsoft badges, client logos), same title and card styles as the other sections, follows the light/dark theme */}
-      <section id="trusted" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
-        <div className="container-page">
-          <Head eyebrow="" title="Trusted & Certified" />
-          <StaggerGroup as="ul" className="mt-12 grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
-            {certifications.map((x, n) => (
-              <StaggerItem as="li" key={x.title} className={`group relative flex flex-col justify-between gap-8 bg-surface p-6 transition-colors duration-300 hover:bg-tint md:p-8 ${n === 0 ? 'md:col-span-3 md:flex-row md:items-end md:gap-12 md:p-10' : ''}`}>
-                <span aria-hidden className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-action transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                <div>
-                  <span className="mono text-action">{String(n + 1).padStart(2, '0')}</span>
-                  <h3 className={`mt-4 font-display leading-snug ${n === 0 ? 'text-[1.75rem] font-bold' : 'text-xl font-semibold'}`}>{x.title}</h3>
-                  <p className="mt-3 text-[0.9375rem] text-ink-muted">{x.detail}</p>
-                </div>
-                {n === 0 && msBadges.length > 0 && (
-                  <ul className="flex flex-wrap gap-3">
-                    {msBadges.map((b) => <li key={b.file} className="rounded-md border border-line bg-white p-2"><SiteImage image={b} ratio="auto" sizes="220px" className="h-auto w-[170px] md:w-[210px]" /></li>)}
-                  </ul>
-                )}
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-          {clientLogos.length > 0 && (
-            <div className="mt-14 md:mt-20">
-              <p className="mono text-ink-muted">Our Global Clients</p>
-              <div className="logo-marquee mt-6" role="group" aria-label="Our Global Clients">
-                <ul className="logo-marquee-track">
-                  {[...clientLogos, ...clientLogos].map((l, k) => (
-                    <li key={l.file + k} aria-hidden={k >= clientLogos.length || undefined} className="flex h-16 w-[170px] shrink-0 items-center justify-center rounded-md border border-line bg-white px-6">
-                      <SiteImage image={l} priority ratio="auto" sizes="140px" className="h-8 w-auto max-w-full object-contain" />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      {/* Our Global Clients: live client logos (the "Trusted & Certified" heading and certification cards were removed on the owner's request, 12 Nov 2026) */}
+      {clientLogos.length > 0 && (
+        <section id="clients" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+          <div className="container-page">
+            <p className="mono text-ink-muted">Our Global Clients</p>
+            <div className="logo-marquee mt-6" role="group" aria-label="Our Global Clients">
+              <ul className="logo-marquee-track">
+                {[...clientLogos, ...clientLogos].map((l, k) => (
+                  <li key={l.file + k} aria-hidden={k >= clientLogos.length || undefined} className="flex h-16 w-[170px] shrink-0 items-center justify-center rounded-md border border-line bg-white px-6">
+                    <SiteImage image={l} priority ratio="auto" sizes="140px" className="h-8 w-auto max-w-full object-contain" />
+                  </li>
+                ))}
+              </ul>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       {/* BTS 2026 band (hidden after the event) */}
       {!btsOver && <section id="bts" className="scroll-anchor bg-surface-raised text-ink border-y border-line">
@@ -143,13 +136,13 @@ export default function HomeFolder() {
             <Reveal>
               <p className="eyebrow mb-4">{h.bts.eyebrow}</p>
               <h2 className="display-md max-w-2xl">{h.bts.title}</h2>
-              {h.bts.paras.map((p) => <p key={p} className="mt-5 max-w-[36em] text-ink-muted">{p}</p>)}
+              {btsParas.map((p) => <p key={p} className="mt-5 max-w-[36em] text-ink-muted">{p}</p>)}
               <div className="mt-8"><Button to="/bengaluru-tech-summit-2026/">{h.bts.facts.find((f) => f.k === 'Event')?.v ?? h.bts.eyebrow}</Button></div>
             </Reveal>
           </div>
           <Reveal delay={0.1} className="split-main">
             <dl className="grid grid-cols-[7rem_1fr] gap-x-4 gap-y-5">
-              {h.bts.facts.map((f) => (<div key={f.k} className="contents"><dt className="mono text-ink-muted">{f.k}</dt><dd className="mono !text-[0.9375rem]">{f.v}</dd></div>))}
+              {btsFacts.map((f) => (<div key={f.k} className="contents"><dt className="mono text-ink-muted">{f.k}</dt><dd className="mono !text-[0.9375rem]">{f.v}</dd></div>))}
             </dl>
           </Reveal>
         </div>
@@ -158,7 +151,7 @@ export default function HomeFolder() {
       {/* See the work: live-site topic images; a tile with no matching image keeps the brand dot panel */}
       <section id="work" className="section scroll-anchor">
         <div className="container-page">
-          <Head eyebrow={h.work.eyebrow} title={h.work.title} intro={h.work.intro} />
+          <Head eyebrow={h.work.eyebrow} title={h.work.title} intro={workIntro} />
           <StaggerGroup className="mt-12 grid auto-rows-[minmax(150px,1fr)] grid-cols-2 gap-3 md:auto-rows-[minmax(180px,1fr)] md:grid-cols-4 md:gap-4">
             {tiles.map((t) => (
               <StaggerItem key={t.title} className={`relative min-h-[150px] overflow-hidden rounded-lg border border-line ${t.w2 ? 'col-span-2' : 'col-span-2 md:col-span-1'} ${t.h2 ? 'md:row-span-2' : ''}`}>
@@ -183,7 +176,7 @@ export default function HomeFolder() {
               {h.services.items.filter((s) => s.feature).map((s) => (
                 <article key={s.title} className="grid gap-8 bg-surface-raised p-6 md:p-10 lg:grid-cols-12 lg:gap-12">
                   <div className="lg:col-span-7">
-                  <span className="mb-4 inline-block rounded-sm bg-tint px-2 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-action">{s.tag}</span>
+                  {serviceTag(s.tag) && <span className="mb-4 inline-block rounded-sm bg-tint px-2 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-action">{serviceTag(s.tag)}</span>}
                   <h3 className="max-w-3xl font-display text-[1.75rem] font-bold leading-tight">{s.title}</h3>
                   <p className="mt-4 max-w-3xl text-ink-muted">{s.text}</p>
                   <ul className="mt-6 grid gap-x-8 gap-y-2 md:grid-cols-2">{s.ticks.map((x) => <li key={x} className="flex gap-3"><span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-q2m" />{x}</li>)}</ul>
@@ -293,19 +286,19 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* The 30-minute session */}
-      <section className="pb-12 md:pb-24 lg:pb-32">
+      {/* The 30-minute session (BTS: hidden after the event) */}
+      {!btsOver && <section className="pb-12 md:pb-24 lg:pb-32">
         <div className="container-page">
-          <Head eyebrow={h.session.eyebrow} title={h.session.title} intro={h.session.intro} />
+          <Head eyebrow={session.eyebrow} title={session.title} intro={session.intro} />
           <StaggerGroup className="mt-12 grid gap-4 md:grid-cols-3">
-            {h.session.steps.map((s) => (
+            {session.steps.map((s) => (
               <StaggerItem key={s.title} className="rounded-lg border border-line bg-surface-raised p-6 md:p-8">
                 <span className="mono text-action">{s.min}</span><h3 className="mt-4 font-display text-xl font-semibold">{s.title}</h3><p className="mt-3 text-ink-muted">{s.text}</p>
               </StaggerItem>
             ))}
           </StaggerGroup>
         </div>
-      </section>
+      </section>}
 
       {/* From The Team: the three live home blog posts with their live thumbnails */}
       {posts.length > 0 && (
@@ -321,8 +314,8 @@ export default function HomeFolder() {
       {/* FAQ */}
       <section id="faq" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
         <div className="container-page split">
-          <div className="split-aside"><SectionHead eyebrow={h.faq.eyebrow} title={h.faq.title} lede={h.faq.intro} /></div>
-          <div className="split-main"><Accordion items={h.faq.items} /></div>
+          <div className="split-aside"><SectionHead eyebrow={h.faq.eyebrow} title={h.faq.title} lede={faqIntro} /></div>
+          <div className="split-main"><Accordion items={faqItems} /></div>
         </div>
       </section>
 

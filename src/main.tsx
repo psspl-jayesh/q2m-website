@@ -1,49 +1,42 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { StrictMode, useEffect } from 'react'
+import { createRoot, hydrateRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import '@/styles/index.css'
-import Layout from '@/components/Layout'
-import { ContentProvider, findEntry, useContent } from '@/lib/content'
-import Home from '@/pages/HomeFolder'
-import BtsLanding from '@/pages/BtsLanding'
-import ServicePage from '@/pages/ServicePage'
-import { About, Contact, NotFound } from '@/pages/Company'
-import PrivacyPolicy from '@/pages/PrivacyPolicy'
-import siteImages from '@/data/site-images.json'
-import { LEGAL } from '@/config/locale'
-import { Article, Blogs, CaseStudies, CaseStudy, CategoryRoute } from '@/pages/Stories'
+import { ContentProvider, loadContent, normPath, type Content } from '@/lib/content'
+import { setHydrating } from '@/lib/ssr'
+import { btsPhase } from '@/config/bts'
+import { AppRoutes, Splash } from '@/App'
 
-/** Resolves any CMS path (kept identical to the live site's URLs) to the right template. */
-function Resolver() {
-  const c = useContent()
-  const { pathname } = useLocation()
-  const e = findEntry(c, pathname)
-  if (!e) return <NotFound />
-  if (e.slug === 'q2m-solutions') return <Home />
-  if (e.type === 'case-study') return <CaseStudy entry={e} />
-  if (e.type === 'post') return <Article entry={e} />
-  if (e.slug === 'about') return <About entry={e} />
-  if (e.slug === 'contact') return <Contact entry={e} />
-  if (e.slug === 'case-studies') return <CaseStudies entry={e} />
-  if (e.slug === 'blogs') return <Blogs entry={e} />
-  return <ServicePage entry={e} />
+/** Marks the end of the first render, so later in-app navigation uses the normal (client-only) behaviour. */
+function HydrationDone() {
+  useEffect(() => { setHydrating(false); document.documentElement.classList.remove('bts-stale') }, [])
+  return null
 }
 
-const Splash = <div className="grid min-h-screen place-items-center bg-surface"><img src={siteImages.brand.logoColor.file} alt={siteImages.brand.logoColor.alt} width={120} height={72} /></div>
-
-createRoot(document.getElementById('root')!).render(
+const app = (initial: Content | null) => (
   <StrictMode>
     <BrowserRouter>
-      <ContentProvider fallback={Splash}>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/category/:slug/*" element={<CategoryRoute />} />
-            <Route path={LEGAL.privacyPath} element={<PrivacyPolicy />} />
-            <Route path="/bengaluru-tech-summit-2026/" element={<BtsLanding />} />
-            <Route path="*" element={<Resolver />} />
-          </Route>
-        </Routes>
+      <ContentProvider fallback={Splash} initial={initial}>
+        <AppRoutes />
+        <HydrationDone />
       </ContentProvider>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )
+
+const root = document.getElementById('root')!
+const html = document.documentElement
+if (!root.hasChildNodes()) {
+  // No pre-rendered HTML (development server): render in the browser with the splash screen while content loads
+  setHydrating(false)
+  createRoot(root).render(app(null))
+} else {
+  // Pre-rendered page: hydrate it, unless it was built for another URL (host fallback page) or before a BTS date
+  // boundary that has since passed (then the BTS items in the HTML are out of date, so render fresh in the browser).
+  const sameRoute = html.dataset.prerendered === normPath(location.pathname)
+  const sameBtsPhase = !html.dataset.btsPhase || html.dataset.btsPhase === btsPhase()
+  loadContent().then((c) => {
+    if (sameRoute && sameBtsPhase) { setHydrating(true); hydrateRoot(root, app(c)) }
+    else { setHydrating(false); root.replaceChildren(); createRoot(root).render(app(c)) }
+  })
+}

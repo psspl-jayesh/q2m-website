@@ -1,0 +1,17 @@
+{
+ "_note": "BTS 2026 booth wording switch. With BTS.liveDemos = false (src/config/bts.ts: no booth with demos confirmed), the home page and the BTS landing page use these neutral lines instead of the booth/stand/demo lines in src/data/home.json and src/content/pages/bts-2026/page.json. Each line is the original with the booth/stand/demo part removed or changed to the owner's wording ('meet us at BTS', 'a 30-minute session'). The 'replaces' fields quote the original.",
+ "neutral": {
+  "lead": { "text": "Meet us at BTS 2026 for a 30-minute session. Tell us where work piles up, and we will map an AI agent or automation that fits your systems, with a rough scope and timeline.", "replaces": "Book a 30-minute session at our stand. Tell us where work piles up, and we will map an AI agent or automation that fits your systems, with a rough scope and timeline." },
+  "prepare": { "text": "To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one.", "replaces": "… If you are not sure where AI fits yet, come for the demos: try the smart glasses, watch an agent work through a stack of documents and ask the team anything." },
+  "workIntro": { "text": "Demos, captures and screens from what we build.", "replaces": "Demos, captures and screens from what we build. Come see the smart-glasses and agent demos live at our stand." },
+  "demoTag": { "text": "Smart glasses", "replaces": "Live demo" },
+  "sessionTitle": { "text": "How a 30-minute session works", "replaces": "How a session at our stand works" },
+  "sessionStep2": { "text": "An agent, an automation or a glasses workflow. We note the data and approvals it would need.", "replaces": "An agent, an automation or a glasses workflow, with a live demo of something similar where we have one. We note the data and approvals it would need." },
+  "faqIntro": { "text": "Something else on your mind? Ask us in the booking form below.", "replaces": "Something else on your mind? Ask us at the stand or in the booking form below." },
+  "faqSessionAnswer": { "text": "You describe one process in your business. We ask questions and sketch how an AI agent, an automation or a smart-glasses app could handle it. You leave with a rough scope and a suggested pilot. There is no charge and no obligation.", "replaces": "You describe one process in your business. We ask questions, sketch how an AI agent, an automation or a smart-glasses app could handle it, and show a live demo of something similar where we have one. You leave with a rough scope and a suggested pilot. There is no charge and no obligation." },
+  "teamIntro": { "text": "You meet the people who will design and build your system, at BTS and in every workshop after it.", "replaces": "You meet the people who will design and build your system, at the stand and in every workshop after it." }
+ },
+ "liveDemoServiceTag": "Live demo at BTS",
+ "liveDemosFact": "Live demos",
+ "sessionFaqQuestion": "What happens in the 30-minute session at BTS?"
+}

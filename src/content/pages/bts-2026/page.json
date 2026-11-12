@@ -35,8 +35,7 @@
  ],
  "pitch": {
   "title": "Bring one process. Leave with an AI plan for it.",
-  "text": "To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one. If you are not sure where AI fits yet, come for the demos: try the smart glasses, watch an agent work through a stack of documents and ask the team anything.",
-  "textNoDemos": "To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one."
+  "text": "To get the most from the session, bring a short description of the process, the systems it touches and a sample document or screenshot if you can share one. If you are not sure where AI fits yet, come for the demos: try the smart glasses, watch an agent work through a stack of documents and ask the team anything."
  },
  "demos": {
   "eyebrow": "Live demos",
@@ -207,7 +206,6 @@
   ]
  },
  "trust": {
-  "title": "Trusted & Certified",
   "logos": "Our Global Clients",
   "testimonials": {
    "eyebrow": "Client Feedback",

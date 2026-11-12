@@ -170,7 +170,9 @@ function MobileNav({ nav }: { nav: ReturnType<typeof useActiveNav> }) {
 }
 
 function ThemeToggle() {
-  const [dark, setDark] = useState(() => document.documentElement.dataset.theme === 'dark')
+  // Read the theme after mount: the pre-rendered HTML is built without a theme, so the first render must not depend on it
+  const [dark, setDark] = useState(false)
+  useEffect(() => { setDark(document.documentElement.dataset.theme === 'dark') }, [])
   const flip = () => {
     const next = !dark
     setDark(next)
@@ -235,7 +237,7 @@ function Footer() {
         {/* Bottom row: copyright, legal links, social icons, theme switch (one line on desktop) */}
         <div className="mt-8 flex flex-col gap-4 border-t border-block-line pt-6 text-sm text-block-muted md:mt-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-x-6">
-            <p>Copyright {new Date().getFullYear()} {COMPANY.legalName}</p>
+            <p suppressHydrationWarning>Copyright {new Date().getFullYear()} {COMPANY.legalName}</p>
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
               {TOP_LINKS.map((l) => <li key={l.to}><Link className="hover:text-ink-inverse" to={l.to}>{l.label}</Link></li>)}
               <li><Link className="hover:text-ink-inverse" to={LEGAL.privacyPath}>Privacy Policy</Link></li>

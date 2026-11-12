@@ -1,47 +1,18 @@
-import { useEffect, useId, useState, type ReactNode } from 'react'
+import { useContext, useEffect, useId, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ArrowRight, ArrowUpRight, Plus } from 'lucide-react'
-import { SITE_URL } from '@/lib/site'
-import { IMAGES, LOCALE } from '@/config/locale'
-import siteImages from '@/data/site-images.json'
+import { IMAGES } from '@/config/locale'
+import { HeadContext, type SeoInput } from '@/lib/ssr'
+import { applyHeadTags, seoTags } from '@/lib/seoTags'
 
 /* ───────── SEO: title, description, canonical, Open Graph, JSON-LD ───────── */
-export function Seo({ title, description, path, image, noindex, jsonLd }: {
-  title: string; description?: string; path: string; image?: string; noindex?: boolean; jsonLd?: object | object[]
-}) {
-  useEffect(() => {
-    document.title = title
-    const set = (sel: string, attr: string, key: string, val: string) => {
-      let el = document.head.querySelector<HTMLMetaElement | HTMLLinkElement>(sel)
-      if (!el) { el = document.createElement(sel.startsWith('link') ? 'link' : 'meta'); el.setAttribute(attr, key); document.head.appendChild(el) }
-      el.setAttribute(sel.startsWith('link') ? 'href' : 'content', val)
-    }
-    const url = SITE_URL + path
-    const img = image ? (image.startsWith('http') ? image : SITE_URL + image) : SITE_URL + siteImages.ogDefault
-    if (description) set('meta[name="description"]', 'name', 'description', description)
-    set('link[rel="canonical"]', 'rel', 'canonical', url)
-    set('meta[property="og:title"]', 'property', 'og:title', title)
-    set('meta[property="og:description"]', 'property', 'og:description', description ?? '')
-    set('meta[property="og:url"]', 'property', 'og:url', url)
-    set('meta[property="og:image"]', 'property', 'og:image', img)
-    set('meta[name="twitter:image"]', 'name', 'twitter:image', img)
-    set('meta[property="og:image:alt"]', 'property', 'og:image:alt', title)
-    if (img.endsWith(siteImages.ogDefault)) { set('meta[property="og:image:width"]', 'property', 'og:image:width', '1200'); set('meta[property="og:image:height"]', 'property', 'og:image:height', '630') }
-    set('meta[property="og:type"]', 'property', 'og:type', 'website')
-    set('meta[property="og:locale"]', 'property', 'og:locale', LOCALE.ogLocale)
-    set('meta[property="og:site_name"]', 'property', 'og:site_name', 'Q2M Solutions')
-    // hreflang: the site targets India only, so en-IN points at the canonical URL
-    let alt = document.head.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang]')
-    if (!alt) { alt = document.createElement('link'); alt.rel = 'alternate'; document.head.appendChild(alt) }
-    alt.hreflang = LOCALE.hreflang
-    alt.href = url
-    set('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image')
-    set('meta[name="robots"]', 'name', 'robots', noindex ? 'noindex,follow' : 'index,follow')
-    let ld = document.getElementById('ld-json')
-    if (!ld) { ld = document.createElement('script'); ld.id = 'ld-json'; ld.setAttribute('type', 'application/ld+json'); document.head.appendChild(ld) }
-    ld.textContent = jsonLd ? JSON.stringify(jsonLd) : ''
-  }, [title, description, path, image, noindex, jsonLd])
+export function Seo(props: SeoInput) {
+  // Server (pre-render): hand the head data to the build. Browser: update document.head after render.
+  const head = useContext(HeadContext)
+  if (head) head.seo = props
+  const { title, description, path, image, noindex, jsonLd } = props
+  useEffect(() => { applyHeadTags(seoTags({ title, description, path, image, noindex, jsonLd })) }, [title, description, path, image, noindex, jsonLd])
   return null
 }
 
