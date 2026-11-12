@@ -13,18 +13,17 @@
 2. Event at a glance: Event, Dates (from the config), Venue, Session 30 minutes (and Live demos when the flag is on).
 3. "Bring one process. Leave with an AI plan for it." (the "come for the demos" sentence shows only when `liveDemos` is on).
 4. What we can show you: smart-glasses vehicle inspection and the claims agent ("Live demos" wording when the flag is on).
-5. Trust points: Microsoft Solution Partner (with the Microsoft badges), Azure Expert, ISO 27001. The Clutch text is left out while OPEN_DECISIONS #19 is open.
-6. Why meet Q2M: AI agents, smart glasses, AI chatbots, AI consulting, with each page's live title and description.
-7. Team bento: names, roles and photos from the live About page.
-8. Client logos ("Our Global Clients", the home marquee logos).
-9. Testimonials ("Client Feedback / Trusted By Our Clients"). Hidden on every page while `SHOW_TESTIMONIALS` is false (`src/config/flags.ts`).
-10. The 30-minute session.
-11. Booking form (same form as home; opens a pre-filled email until a delivery option is chosen).
-12. Venue and directions.
-13. FAQ.
-14. Closing CTA band (the sitewide FinalCta) with "Book a Meeting" linking to the form.
+5. Why meet Q2M: AI agents, smart glasses, AI chatbots, AI consulting, with each page's live title and description.
+6. Team bento: names, roles and photos from the live About page.
+7. Client logos ("Our Global Clients", the home marquee logos).
+8. Testimonials ("Client Feedback / Trusted By Our Clients"). Hidden on every page while `SHOW_TESTIMONIALS` is false (`src/config/flags.ts`).
+9. The 30-minute session.
+10. Booking form (same form as home; opens a pre-filled email until a delivery option is chosen).
+11. Venue and directions.
+12. FAQ.
+13. Closing CTA band (the sitewide FinalCta) with "Book a Meeting" linking to the form.
 
-The shared sections live in `src/components/Sitewide.tsx`, with the same markup as the home Trusted & Certified section and the service-page quote cards. `FinalCta` got an optional `cta` prop that only this page uses; every other page is unchanged.
+The shared sections live in `src/components/Sitewide.tsx`, with the same markup as the home client-logo strip and the service-page quote cards. The "Trusted & Certified" section was removed from this page and from home on your request (12 Nov 2026). `FinalCta` got an optional `cta` prop that only this page uses; every other page is unchanged.
 
 ## After the event (from 19 Nov 2026, 18:00 IST)
 - **Landing page:**

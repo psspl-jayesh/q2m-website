@@ -10,7 +10,6 @@ import { PostCard } from '@/components/Cards'
 import { SiteFrame, SiteImage, imgMeta, type SiteImg } from '@/components/ui'
 import homeImages from '@/content/shared/home-images.json'
 import stats from '@/content/shared/stats.json'
-import certifications from '@/content/shared/certifications.json'
 import { BTS, useBtsPhase } from '@/config/bts'
 import btsWording from '@/content/sections/bts-wording.json'
 
@@ -59,8 +58,9 @@ const TEAM_POSTS = ['/ai-chatbot-development-strategic-priority-2026/', '/machin
 
 /**
  * THE HOME PAGE (routed). The designed home from the Q2M_Website_Home folder: its design, section order and copy are kept as they were.
- * Three sections from the live home page are added where the meaning matches nothing in the design (Trusted & Certified with the
- * live client logos and Microsoft badges, The Results Our Clients Measure, From The Team). The live-structure home is kept as Home.tsx (not routed).
+ * Three sections from the live home page are added where the meaning matches nothing in the design (Our Global Clients logos,
+ * The Results Our Clients Measure, From The Team). "Trusted & Certified" was removed on the owner's request (12 Nov 2026).
+ * The live-structure home is kept as Home.tsx (not routed).
  * SEO title and description are the live ones.
  */
 export default function HomeFolder() {
@@ -69,7 +69,6 @@ export default function HomeFolder() {
   const live = getPage(c, 'q2m-solutions')!
   const homeImgs = pageImages(c, '/')
   const clientLogos = homeImgs.filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
-  const msBadges = pageImages(c, '/about/').filter((i) => i.role === 'logo' && /\/microsoft-/.test(i.file))
   const counters = stats.counters.slice(0, 4)
   const btsOver = useBtsPhase() === 'after'
   const tiles = (btsOver ? h.work.tiles.filter((t) => t.tag !== BTS_TILE).map((t) => ({ ...t, ...AFTER_BTS_TILE_SIZE[t.title] })) : h.work.tiles)
@@ -112,43 +111,23 @@ export default function HomeFolder() {
         </div>
       </section>
 
-      {/* Trusted & Certified: live content (certifications, Microsoft badges, client logos), same title and card styles as the other sections, follows the light/dark theme */}
-      <section id="trusted" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
-        <div className="container-page">
-          <Head eyebrow="" title="Trusted & Certified" />
-          <StaggerGroup as="ul" className="mt-12 grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
-            {certifications.map((x, n) => (
-              <StaggerItem as="li" key={x.title} className={`group relative flex flex-col justify-between gap-8 bg-surface p-6 transition-colors duration-300 hover:bg-tint md:p-8 ${n === 0 ? 'md:col-span-3 md:flex-row md:items-end md:gap-12 md:p-10' : ''}`}>
-                <span aria-hidden className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-action transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                <div>
-                  <span className="mono text-action">{String(n + 1).padStart(2, '0')}</span>
-                  <h3 className={`mt-4 font-display leading-snug ${n === 0 ? 'text-[1.75rem] font-bold' : 'text-xl font-semibold'}`}>{x.title}</h3>
-                  <p className="mt-3 text-[0.9375rem] text-ink-muted">{x.detail}</p>
-                </div>
-                {n === 0 && msBadges.length > 0 && (
-                  <ul className="flex flex-wrap gap-3">
-                    {msBadges.map((b) => <li key={b.file} className="rounded-md border border-line bg-white p-2"><SiteImage image={b} ratio="auto" sizes="220px" className="h-auto w-[170px] md:w-[210px]" /></li>)}
-                  </ul>
-                )}
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-          {clientLogos.length > 0 && (
-            <div className="mt-14 md:mt-20">
-              <p className="mono text-ink-muted">Our Global Clients</p>
-              <div className="logo-marquee mt-6" role="group" aria-label="Our Global Clients">
-                <ul className="logo-marquee-track">
-                  {[...clientLogos, ...clientLogos].map((l, k) => (
-                    <li key={l.file + k} aria-hidden={k >= clientLogos.length || undefined} className="flex h-16 w-[170px] shrink-0 items-center justify-center rounded-md border border-line bg-white px-6">
-                      <SiteImage image={l} priority ratio="auto" sizes="140px" className="h-8 w-auto max-w-full object-contain" />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      {/* Our Global Clients: live client logos (the "Trusted & Certified" heading and certification cards were removed on the owner's request, 12 Nov 2026) */}
+      {clientLogos.length > 0 && (
+        <section id="clients" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
+          <div className="container-page">
+            <p className="mono text-ink-muted">Our Global Clients</p>
+            <div className="logo-marquee mt-6" role="group" aria-label="Our Global Clients">
+              <ul className="logo-marquee-track">
+                {[...clientLogos, ...clientLogos].map((l, k) => (
+                  <li key={l.file + k} aria-hidden={k >= clientLogos.length || undefined} className="flex h-16 w-[170px] shrink-0 items-center justify-center rounded-md border border-line bg-white px-6">
+                    <SiteImage image={l} priority ratio="auto" sizes="140px" className="h-8 w-auto max-w-full object-contain" />
+                  </li>
+                ))}
+              </ul>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       {/* BTS 2026 band (hidden after the event) */}
       {!btsOver && <section id="bts" className="scroll-anchor bg-surface-raised text-ink border-y border-line">

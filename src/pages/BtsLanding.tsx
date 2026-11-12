@@ -3,13 +3,12 @@ import { ArrowUpRight, Bot, CalendarDays, Clock, Glasses, MapPin, Ticket } from 
 import page from '@/content/pages/bts-2026/page.json'
 import team from '@/content/sections/team-bento.json'
 import stats from '@/content/shared/stats.json'
-import certifications from '@/content/shared/certifications.json'
 import testimonials from '@/content/shared/testimonials.json'
 import { Accordion, Button, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem, TextLink, imgMeta, type SiteImg } from '@/components/ui'
 import BookingForm from '@/components/BookingForm'
 import DotArrow from '@/components/DotArrow'
 import { FinalCta } from '@/components/Cards'
-import { ClientLogoStrip, TrustPoints, Testimonials } from '@/components/Sitewide'
+import { ClientLogoStrip, Testimonials } from '@/components/Sitewide'
 import { COMPANY } from '@/config/locale'
 import { SHOW_TESTIMONIALS } from '@/config/flags'
 import { BTS, btsDateRange, btsNow, useBtsPhase } from '@/config/bts'
@@ -24,11 +23,9 @@ import { trimSentences } from '@/lib/menuCopy'
  * from src/config/bts.ts. After the event closes, the countdown, session, booking form and venue hide and the hero thanks visitors.
  */
 const img = (file: string, alt: string): SiteImg => ({ file, alt, w: imgMeta(file)?.w ?? null, h: imgMeta(file)?.h ?? null })
-/** Trust points: Microsoft/Azure partner and ISO 27001. The Clutch text item is left out while its decision is open (OPEN_DECISIONS #19). */
 /** Neutral lines used while BTS.liveDemos is off (no booth with demos confirmed). */
 const N = btsWording.neutral
 const booth = BTS.liveDemos
-const TRUST = certifications.filter((x) => !/clutch/i.test(x.title))
 
 function useCountdown(target: string) {
   // Counted in the browser only (the pre-rendered HTML is built earlier, so it shows "--" until the page has loaded)
@@ -73,7 +70,6 @@ export default function BtsLanding() {
   const bentoFacts = [fact('Venue'), BTS.liveDemos ? fact('Live demos') : dates].filter((f): f is { k: string; v: string } => !!f)
   const why = page.why.pages.map((p) => findEntry(c, p)).filter((e): e is NonNullable<typeof e> => !!e)
   const clientLogos = pageImages(c, '/').filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
-  const msBadges = pageImages(c, '/about/').filter((i) => i.role === 'logo' && /\/microsoft-/.test(i.file))
   const faqItems = after ? page.faq.items.filter((f) => f.q !== btsWording.sessionFaqQuestion)
     : booth ? page.faq.items : page.faq.items.map((f) => (f.q === btsWording.sessionFaqQuestion ? { ...f, a: [N.faqSessionAnswer.text] } : f))
   const demos = BTS.liveDemos ? page.demos : { ...page.demos, eyebrow: page.demos.noDemos.eyebrow, items: page.demos.items.map((d, i) => ({ ...d, tag: page.demos.noDemos.tags[i] ?? d.tag })) }
@@ -137,9 +133,6 @@ export default function BtsLanding() {
           </StaggerGroup>
         </div>
       </section>
-
-      {/* Trust points */}
-      <TrustPoints title={page.trust.title} items={TRUST} badges={msBadges} />
 
       {/* Why meet Q2M: our AI service pages (live titles and descriptions) */}
       {why.length > 0 && (
