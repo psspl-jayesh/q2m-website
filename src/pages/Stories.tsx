@@ -186,7 +186,7 @@ export function Article({ entry }: { entry: Entry }) {
           <p className="mt-6 text-sm text-ink-muted">{entry.furniture?.meta?.find((m) => /^by,/i.test(m))} · <time dateTime={entry.date}>{fmtDate(entry.date)}</time></p>
           {media && <div className={`mt-10 ${(media.w ?? 0) / (media.h ?? 1) >= 1.6 ? '' : 'max-w-3xl'}`}><SiteFrame image={media} priority parallax sizes="(min-width:1280px) 1400px, (min-width:896px) 896px, 100vw" /></div>}
         </div></header>
-        <div className="container-page split split--toc pb-20">
+        <div className="container-page split split--toc pb-20 pt-12 md:pt-16">
           {headings.length > 1 && (
             <aside className="split-aside hidden lg:block"><nav aria-label="Contents"><p className="eyebrow mb-4">Contents</p>
               <ul className="space-y-2.5 border-l hairline pl-4 text-sm">{headings.map((h) => <li key={h.text}><a className="text-ink-muted hover:text-action" href={`#${slugify(h.text!)}`}>{h.text}</a></li>)}</ul></nav></aside>
