@@ -1,0 +1,160 @@
+{
+  "_note": "Home page text (smart glasses design, design/home-new/index.html). Copy is the design's, word for word. Items with \"bts\": true hide after Bengaluru Tech Summit 2026 closes (src/config/bts.ts); \"afterBts\" is the line shown instead.",
+  "seo": {
+    "title": "Smart Glasses App Development Company in India | Q2M Solutions",
+    "description": "Q2M Solutions is an India-based smart glasses app development company building AI apps for Meta, XREAL, Snap Spectacles, MentraOS and Android XR glasses: guided inspections, remote expert and vision AI."
+  },
+  "hero": {
+    "pill": "Smart glasses app experts in India",
+    "titleBefore": "India's ",
+    "titleAccent": "Smart Glasses",
+    "titleAfter": " App Development Company",
+    "lead": "Q2M Solutions designs and builds AI-powered apps for smart glasses: guided inspections, hands-free capture, remote expert calls and vision AI, connected to the systems your business already runs. We work with automotive, aviation, manufacturing, healthcare and insurance teams across India and abroad.",
+    "primary": { "label": "Book a Discovery Call", "href": "#contact" },
+    "secondary": { "label": "See use cases", "href": "#work" },
+    "trust": [
+      { "text": "7 glasses platforms" },
+      { "text": "AI vision and voice built in" },
+      { "text": "Live demos at BTS 2026", "bts": true }
+    ],
+    "image": { "file": "/images/home-new/aviation.jpg", "alt": "Aircraft technician using AI smart glasses that show an inspection checklist" },
+    "chip": { "title": "Step 3 of 7 checked", "sub": "Photo saved to job card" },
+    "badge": "DISCOVER · PILOT · DEPLOY · SCALE · "
+  },
+  "marquee": [
+    { "text": "Meta" }, { "text": "XREAL" }, { "text": "Snap Spectacles" }, { "text": "MentraOS" }, { "text": "Android XR" },
+    { "text": "Samsung XR" }, { "text": "RayNeo" }, { "text": "Live at Bengaluru Tech Summit 2026", "bts": true }, { "text": "Built in India" }
+  ],
+  "platforms": {
+    "pill": "Platforms we build for",
+    "title": "One team for every major smart glasses platform",
+    "intro": "Hardware changes every year. We keep your app portable across devices and choose the right glasses for each job.",
+    "logos": [
+      { "file": "/images/home-new/logo-meta.png", "alt": "Meta" },
+      { "file": "/images/home-new/logo-xreal.svg", "alt": "XREAL", "w": 1917, "h": 533 },
+      { "file": "/images/home-new/logo-spectacles.svg", "alt": "Snap Spectacles", "w": 2839, "h": 673 },
+      { "file": "/images/home-new/logo-mentra.svg", "alt": "Mentra", "w": 3472, "h": 764 },
+      { "text": "Samsung XR" },
+      { "text": "RayNeo" }
+    ],
+    "disclaimer": "Logos are trademarks of their respective owners, shown for reference only. They do not imply partnership or endorsement."
+  },
+  "stats": {
+    "pill": "What we deliver",
+    "title": "The numbers behind our work",
+    "items": [
+      { "value": 7, "label": "Smart glasses platforms we build for" },
+      { "value": 4, "label": "Stages from on-site discovery to roll-out" },
+      { "value": 1, "label": "Team for the glasses app, the AI and the back-office integration" },
+      { "tbc": true, "label": "Enterprise pilots delivered (add your real figure)" }
+    ]
+  },
+  "why": {
+    "pill": "Why Q2M Solutions",
+    "title": "A smart glasses company built differently",
+    "intro": "Most agencies build a demo app. We build the whole working system: the glasses app, the AI inside it and the connection to your records.",
+    "items": [
+      { "icon": "device", "title": "Device-neutral by design", "text": "We build for Meta, XREAL, Snap Spectacles, MentraOS, Android XR, Samsung XR and RayNeo. We test devices with your team on site, so you buy the glasses that fit the job, not the ones that demo best." },
+      { "icon": "robot", "title": "AI built into the glasses", "text": "Vision models that read labels and flag damage, voice assistants that answer from your manuals, and agents that write the report. The AI is part of the app, not an add-on." },
+      { "icon": "network", "title": "Connected to your back office", "text": "Every photo, checklist and note lands in your job, asset, claim or quality system through its existing APIs, so the report is complete before the wearer leaves the site." },
+      { "icon": "hardhat", "title": "Built for real working conditions", "text": "Offline steps for weak signal, voice control for gloved hands, minimal overlays for safety, and battery plans for full shifts. Designed on the shop floor, not in a meeting room." }
+    ]
+  },
+  "services": {
+    "pill": "What we build",
+    "title": "Smart glasses app development services",
+    "intro": "Six services that take a hands-on workflow from paper or tablet to smart glasses, with AI and your systems connected.",
+    "more": "Discuss this service",
+    "items": [
+      { "icon": "glasses", "title": "Custom smart glasses app development", "text": "Native apps for display, camera and AR glasses, built around one workflow and the people who do it." },
+      { "icon": "robot", "title": "AI vision and voice assistants", "text": "Models that read serial numbers, gauges and labels, and assistants that answer questions from your own SOPs." },
+      { "icon": "headset", "title": "Remote expert and see-what-I-see support", "text": "Live calls where a senior engineer sees the wearer's view, talks them through the fix and marks up the scene." },
+      { "icon": "chart", "title": "Guided inspection and checklist apps", "text": "Step-by-step procedures in view, photo and voice capture per step, and a complete report at the end of the job." },
+      { "icon": "network", "title": "Back-office and ERP integration", "text": "Results written to SAP, Dynamics, Salesforce, ServiceNow or your custom system, with an audit trail for every step." },
+      { "icon": "cycle", "title": "Device selection, pilots and fleet management", "text": "On-site device trials, a measured pilot with one team, then charging, updates, assignment and wiping at scale." }
+    ]
+  },
+  "devices": {
+    "pill": "Choosing glasses",
+    "title": "Built on the glasses your teams will actually wear",
+    "intro": "Smart glasses fall into four broad types. We match the type to the job, then test the shortlist on your site before you buy in volume.",
+    "items": [
+      { "title": "Display glasses", "text": "A small display in one or both lenses for checklists, step numbers and alerts in view.", "on": "XREAL · RayNeo · Meta display glasses" },
+      { "title": "Camera and AI glasses", "text": "Camera, microphones and speakers in a normal frame, for capture, voice assistants and remote calls.", "on": "Meta camera glasses" },
+      { "title": "AR glasses and headsets", "text": "Graphics placed in the world around the wearer, for spatial guidance and training.", "on": "Snap Spectacles · Samsung XR" },
+      { "title": "Open platforms", "text": "Operating systems and SDKs that run one app across several glasses, so your app outlives the hardware.", "on": "MentraOS · Android XR" }
+    ]
+  },
+  "industries": {
+    "pill": "Industries",
+    "title": "Smart glasses built for your industry",
+    "intro": "The best cases share three traits: hands-on work, a procedure to follow, and evidence that matters later.",
+    "cta": "Talk to an expert",
+    "items": [
+      { "icon": "car", "title": "Automotive", "text": "Vehicle intake, pre-delivery inspection and damage capture with a guided checklist." },
+      { "icon": "hardhat", "title": "Aviation and MRO", "text": "Inspection cards under the wing, photo evidence per card, a remote engineer on call." },
+      { "icon": "layers", "title": "Manufacturing", "text": "Quality checks, line changeovers and work instructions without stopping the line." },
+      { "icon": "medical", "title": "Healthcare and life sciences", "text": "Hands-free records and lab procedures where staff cannot touch a screen." },
+      { "icon": "shield", "title": "Insurance", "text": "On-site assessments with photos and voice notes filed straight into the claim." },
+      { "icon": "gauge", "title": "Field service and utilities", "text": "Meter, asset and site checks, with offline steps for remote locations." }
+    ]
+  },
+  "stack": {
+    "pill": "Technology",
+    "title": "The smart glasses and AI stack we build on",
+    "groups": [
+      { "title": "Glasses platforms", "tags": ["Meta", "XREAL", "Snap Spectacles", "MentraOS", "Android XR", "Samsung XR", "RayNeo"] },
+      { "title": "AI and vision", "tags": ["Speech recognition", "Vision models", "OCR", "On-device AI", "LLM assistants", "RAG on your SOPs"] },
+      { "title": "Cloud and back office", "tags": ["Microsoft Azure", "AWS", "Google Cloud", "SAP", "Dynamics 365", "Salesforce", "ServiceNow"] },
+      { "title": "Build tools", "tags": ["Unity", "Android", "Kotlin", "Lens Studio", "WebRTC", "REST and GraphQL APIs"] }
+    ]
+  },
+  "process": {
+    "pill": "How we work",
+    "title": "How our smart glasses projects work",
+    "intro": "Small, measured steps. You decide whether to continue after each one, and you keep everything we produce.",
+    "steps": [
+      { "image": "/images/home-new/aviation.jpg", "title": "Discovery on site", "text": "We ride along with the team, map one workflow and record today's time per job, error rate and travel." },
+      { "image": "/images/home-new/glasses.jpg", "title": "Device trial", "text": "Two or three devices tested in your real lighting, noise and safety gear. The team picks what they will actually wear." },
+      { "image": "/images/home-new/agent.jpg", "title": "Pilot build", "text": "The app for that workflow, connected to one back-office system, run with a small group over several weeks." },
+      { "image": "/images/home-new/doctor.jpg", "title": "Roll-out", "text": "Fixes from the pilot, device management, training, and a plan to add teams and workflows." }
+    ]
+  },
+  "work": {
+    "pill": "Use cases",
+    "title": "Smart glasses in action",
+    "intro": "Workflows we design and demo.",
+    "introBts": " Come and wear them at our desk at Bengaluru Tech Summit 2026.",
+    "tiles": [
+      { "kind": "image", "size": "w2 h2", "file": "/images/home-new/aviation.jpg", "alt": "Technician inspecting an aircraft wing with smart glasses", "tag": "Aviation", "caption": "Inspection cards in view, photos per card" },
+      { "kind": "image", "size": "", "afterBtsSize": "h2", "file": "/images/home-new/glasses.jpg", "alt": "Smart glasses showing a checklist on the lens", "tag": "Heads-up", "caption": "Checklists in the lens" },
+      { "kind": "image", "size": "h2", "file": "/images/home-new/doctor.jpg", "alt": "Doctor wearing smart glasses during a consultation", "tag": "Healthcare", "caption": "Hands-free records", "position": "30% 50%" },
+      { "kind": "text", "size": "", "bts": true, "title": "Try it live", "text": "Wear the glasses and run a real inspection at our BTS 2026 desk.", "cta": "Book a demo slot" },
+      { "kind": "image", "size": "w2", "file": "/images/home-new/agent.jpg", "alt": "Illustration of an AI agent turning documents into actions", "tag": "AI agent", "caption": "The report writes itself from the job", "position": "50% 40%" },
+      { "kind": "image", "size": "w2", "file": "/images/case-studies/building-a-single-pane-of-glass-for-a-1500-truck-fleet-banner.webp", "alt": "Engineers inspecting a heavy truck with augmented-reality overlays on screens around it", "position": "50% 45%" }
+    ]
+  },
+  "contact": {
+    "pill": "Book a discovery call",
+    "title": "Tell us about one hands-on workflow",
+    "intro": "In 30 minutes we map how smart glasses could handle it, show a similar demo, and outline a pilot.",
+    "pointsAfterCity": ". On-site discovery across India, remote anywhere",
+    "points": ["Device advice before you buy hardware", "A written pilot plan with agreed measures"],
+    "workflows": ["Inspections and quality checks", "Remote expert support", "Training and work instructions", "Field service", "Something else"],
+    "placeholder": "For example: 40 technicians do vehicle intake inspections on paper",
+    "submit": "Request a discovery call"
+  },
+  "faq": {
+    "pill": "FAQ",
+    "title": "Questions enterprise buyers ask us",
+    "items": [
+      { "q": "What does a smart glasses app development company do?", "a": "We design and build the software that runs on smart glasses: guided workflows, photo and voice capture, remote expert calls and AI that reads the scene, plus the connections that send results to your business systems." },
+      { "q": "Which smart glasses do you develop for?", "a": "Meta, XREAL, Snap Spectacles, MentraOS, Android XR, Samsung XR and RayNeo. We pick the device per task after testing it with your team, and keep the app portable where the platform allows." },
+      { "q": "Why work with an India-based smart glasses developer?", "a": "You get a team that covers glasses apps, AI and back-office integration in one place, working across Indian, Middle East, European and US time zones, with on-site visits for discovery and device trials in India." },
+      { "q": "Do smart glasses apps work without internet?", "a": "Yes. Key steps run offline and sync photos, notes and results when the device or the paired phone reconnects. We design for weak signal in workshops, hangars and plants from the start." },
+      { "q": "How do you handle privacy when glasses have cameras?", "a": "Recording is limited to the steps that need it, with a visible indicator, consent steps for customers or patients, and storage in your own cloud under your access rules." },
+      { "q": "How long does a smart glasses pilot take?", "a": "A focused pilot with one team and one workflow usually runs for weeks rather than months. We agree the timeline and the success measures in writing after the on-site discovery." },
+      { "q": "Can we try smart glasses before we decide?", "a": "Yes. Try live demos at our desk at Bengaluru Tech Summit 2026, or book a session and we will show a demo built around a workflow like yours.", "afterBts": "Yes. Book a session and we will show a demo built around a workflow like yours." }
+    ]
+  }
+}

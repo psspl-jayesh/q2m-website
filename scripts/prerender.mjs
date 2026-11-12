@@ -2,7 +2,7 @@
 // For each route: dist/<route>/index.html with the rendered page in #root and the page's own <head> tags
 // (title, description, canonical, hreflang, Open Graph, Twitter, robots, JSON-LD). dist/404.html for unknown URLs.
 // The browser then hydrates the HTML (src/main.tsx).
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
@@ -30,12 +30,17 @@ if (!entry) throw new Error('index.html: app entry script not found')
 const deferred = base.replace(entry[0], `<link rel="modulepreload" crossorigin href="${entry[1]}">
     <script>(function(){var go=function(){if(go.done)return;go.done=1;var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="${entry[1]}";document.head.appendChild(s)};addEventListener("load",go,{once:true});setTimeout(go,2500)})()</script>`)
 
+// Home page only: preload its two design fonts (Hanken Grotesk, Inter; Latin subsets) so the hero text does not change size when
+// they arrive (layout shift). Other pages do not use them, so they do not get these preloads.
+const homeFonts = readdirSync(join(DIST, 'assets')).filter((f) => /^(hanken-grotesk|inter)-latin-wght-normal-.*\.woff2$/.test(f))
+  .map((f) => `<link rel="preload" as="font" type="font/woff2" href="/assets/${f}" crossorigin>\n    `).join('')
+
 function page(route, { html, head }) {
   const btsPage = BTS_PAGES.includes(route)
   const attrs = ` data-prerendered="${route}"${btsPage ? ` data-bts-phase="${bts.phase}"` : ''}`
   return deferred
     .replace('<html lang="en-IN">', `<html lang="en-IN"${attrs}>`)
-    .replace('</head>', `    ${head}\n${btsPage ? `    ${btsGuard}\n` : ''}  </head>`)
+    .replace('</head>', `    ${route === '/' ? homeFonts : ''}${head}\n${btsPage ? `    ${btsGuard}\n` : ''}  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
 }
 
