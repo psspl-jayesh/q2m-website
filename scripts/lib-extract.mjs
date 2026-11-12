@@ -84,7 +84,7 @@ export function extractPage(html) {
   const blocks = []
   for (let i = 0; i < out.length; i++) {
     const b = out[i], n = out[i + 1]
-    if (b.t === 'p' && (b.via === 'span' || b.via === 'div') && n && /^h[12]$/.test(n.t) && b.text.length < 60 && !/^(book|free|get|contact|read|view|learn|register|start|talk)/i.test(b.text)) { blocks.push({ ...n, eyebrow: b.text }); i++; continue }
+    if (b.t === 'p' && (b.via === 'span' || b.via === 'div') && n && /^h[12]$/.test(n.t) && b.text.length < 60 && !/^(book|free|get|contact|read|view|learn|register|start|talk)\b/i.test(b.text)) { blocks.push({ ...n, eyebrow: b.text }); i++; continue }
     if (b.t === 'eyebrow') { if (n && HEAD.test(n.t)) { blocks.push({ ...n, eyebrow: b.text }); i++ } else blocks.push({ t: 'p', text: b.text, via: 'eyebrow' }); continue }
     blocks.push(b)
   }

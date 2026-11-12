@@ -35,9 +35,9 @@ const htaccess = [
   'RewriteCond %{HTTPS} off',
   'RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]',
   '',
-  '# Use ONE host name. The site uses https://q2msolutions.com (no www): www is redirected to it.',
-  'RewriteCond %{HTTP_HOST} ^www\\.q2msolutions\\.com$ [NC]',
-  'RewriteRule ^(.*)$ https://q2msolutions.com/$1 [R=301,L]',
+  '# Use ONE host name. The site uses https://q2msolutions.in (no www): www is redirected to it.',
+  'RewriteCond %{HTTP_HOST} ^www\\.q2msolutions\\.in$ [NC]',
+  'RewriteRule ^(.*)$ https://q2msolutions.in/$1 [R=301,L]',
   '',
   '# Old URLs',
   ...REDIRECTS.map(([from, to]) => `RewriteRule ^${esc(from).slice(1)}/?$ ${to} [R=301,L]`),
@@ -57,7 +57,7 @@ const htaccess = [
 
 const nginx = [
   head,
-  '# nginx: paste inside the server { } block for q2msolutions.com, with root pointing at the uploaded folder.',
+  '# nginx: paste inside the server { } block for q2msolutions.in, with root pointing at the uploaded folder.',
   '# HTTPS and the www -> non-www redirect are set in the server blocks themselves (see docs/DEPLOYMENT_FOR_ADMIN.md).',
   '',
   'index index.html;',

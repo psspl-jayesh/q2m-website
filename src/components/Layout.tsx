@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ChevronDown, Menu, X, ArrowRight, ArrowUpRight, Mail, MapPin, Phone, Moon, Sun } from 'lucide-react'
@@ -50,7 +50,7 @@ function MegaPanel({ g, close, nav }: { g: NavGroup; close: () => void; nav: Ret
       <div className="col-span-4">
         <p className="eyebrow mb-3">{g.label}</p>
         {intro && <p className="max-w-sm text-[0.9375rem] leading-relaxed text-ink-muted">{intro}</p>}
-        <MenuLink item={first} nav={nav} onClick={close} className="nav-featured group mt-6 block rounded-md bg-block p-6 text-ink-inverse transition-colors hover:bg-action">
+        <MenuLink item={first} nav={nav} onClick={close} className="nav-featured group mt-6 block rounded-md border border-block-line bg-block p-6 text-ink-inverse transition-colors hover:bg-action">
           <span className="mono mb-3 block !text-[0.6875rem] uppercase tracking-[0.08em] opacity-70">Featured</span>
           <span className="flex items-center justify-between font-display text-xl">{first.label}<ArrowUpRight aria-hidden className="size-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
           {blurb && <span className="mt-3 block text-[0.875rem] leading-relaxed opacity-80">{blurb}</span>}
@@ -84,7 +84,9 @@ function Header() {
   const timer = useRef<number>(0)
   const bar = useRef<HTMLDivElement>(null)
 
-  useEffect(() => { setOpen(null); setMobile(false) }, [loc.pathname])
+  // Close the menus when the page changes (state adjusted during render: https://react.dev/learn/you-might-not-need-an-effect)
+  const [path, setPath] = useState(loc.pathname)
+  if (path !== loc.pathname) { setPath(loc.pathname); setOpen(null); setMobile(false) }
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 8)
     on(); window.addEventListener('scroll', on, { passive: true }); return () => window.removeEventListener('scroll', on)
@@ -178,13 +180,18 @@ function MobileNav({ nav }: { nav: ReturnType<typeof useActiveNav> }) {
   )
 }
 
+/** The theme lives on <html data-theme>. Pre-rendered HTML is built without a theme, so the server/hydration snapshot is "light". */
+const subscribeTheme = (cb: () => void) => {
+  const mo = new MutationObserver(cb)
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+  return () => mo.disconnect()
+}
+const isDark = () => document.documentElement.dataset.theme === 'dark'
+
 function ThemeToggle() {
-  // Read the theme after mount: the pre-rendered HTML is built without a theme, so the first render must not depend on it
-  const [dark, setDark] = useState(false)
-  useEffect(() => { setDark(document.documentElement.dataset.theme === 'dark') }, [])
+  const dark = useSyncExternalStore(subscribeTheme, isDark, () => false)
   const flip = () => {
     const next = !dark
-    setDark(next)
     document.documentElement.dataset.theme = next ? 'dark' : 'light'
     try { localStorage.setItem('q2m-theme', next ? 'dark' : 'light') } catch { /* storage unavailable */ }
   }
@@ -288,16 +295,16 @@ function Footer() {
           <div className="flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center md:gap-3 md:gap-x-4">
             <p suppressHydrationWarning>Copyright © {new Date().getFullYear()} {COMPANY.legalName}</p>
             <span aria-hidden className="hidden h-4 w-px bg-line md:block" />
-            <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <ul className="flex flex-wrap items-center gap-x-4">
               {legal.map((l, i) => (
-                <li key={l.to} className="flex items-center gap-x-4">{i > 0 && <span aria-hidden className="h-4 w-px bg-line" />}<Link className="transition-colors hover:text-ink" to={l.to}>{l.label}</Link></li>
+                <li key={l.to} className="flex items-center gap-x-4">{i > 0 && <span aria-hidden className="h-4 w-px bg-line" />}<Link className="inline-flex min-h-11 items-center transition-colors hover:text-ink" to={l.to}>{l.label}</Link></li>
               ))}
             </ul>
           </div>
           <div className="flex flex-wrap items-center gap-3 md:gap-4">
             <ul aria-label="Social media" className="flex items-center gap-2">
               {COMPANY.social.map((s) => (
-                <li key={s.label}><a className="inline-flex size-10 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-action hover:text-action" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}><SocialIcon label={s.label} /></a></li>
+                <li key={s.label}><a className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-action hover:text-action" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}><SocialIcon label={s.label} /></a></li>
               ))}
             </ul>
             <span aria-hidden className="hidden h-6 w-px bg-line sm:block" />

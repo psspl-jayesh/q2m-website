@@ -1,0 +1,21 @@
+{
+  "name": "q2m-lint",
+  "private": true,
+  "type": "module",
+  "description": "ESLint for the Q2M site. Separate install because the site builds with TypeScript 7 (native, no JS API yet) while ESLint's TypeScript parser needs TypeScript 5.x. Run from the repo root: npm run lint",
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "typescript": "~5.9",
+    "typescript-eslint": "^8.72.2"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.8"
+    }
+  },
+  "_overridesNote": "typescript-eslint's parser asks for minimatch 10.x, which has a moderate advisory (GHSA-g3hv-75wg-m249); it gets 11.x (same named API). Other packages keep their own minimatch."
+}

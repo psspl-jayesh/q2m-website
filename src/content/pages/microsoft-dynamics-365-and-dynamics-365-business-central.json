@@ -2,7 +2,7 @@
  "path": "/microsoft-dynamics-365-and-dynamics-365-business-central/",
  "slug": "microsoft-dynamics-365-and-dynamics-365-business-central",
  "type": "post",
- "source": "https://q2msolutions.com/microsoft-dynamics-365-and-dynamics-365-business-central/",
+ "source": "/microsoft-dynamics-365-and-dynamics-365-business-central/",
  "syncedAt": "2026-11-11T08:57:52.080Z",
  "seo": {
   "title": "A Detailed Comparison of Microsoft Dynamics 365 and Dynamics 365 Business Central",
@@ -171,7 +171,7 @@
   {
    "t": "btn",
    "text": "PRV PROJECT",
-   "href": "https://q2msolutions.com/the-transformative-power-of-ai-in-software-development/"
+   "href": "/the-transformative-power-of-ai-in-software-development/"
   },
   {
    "t": "p",
@@ -184,7 +184,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/guide-microsoft-fabric-enables-real-time-analytics/"
+   "href": "/guide-microsoft-fabric-enables-real-time-analytics/"
   }
  ],
  "faqs": []

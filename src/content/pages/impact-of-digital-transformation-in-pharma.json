@@ -2,7 +2,7 @@
  "path": "/impact-of-digital-transformation-in-pharma/",
  "slug": "impact-of-digital-transformation-in-pharma",
  "type": "post",
- "source": "https://q2msolutions.com/impact-of-digital-transformation-in-pharma/",
+ "source": "/impact-of-digital-transformation-in-pharma/",
  "syncedAt": "2026-11-11T08:57:51.885Z",
  "seo": {
   "title": "Discovering The Impact of Digital Transformation in Pharma Industry",
@@ -407,7 +407,7 @@
   {
    "t": "btn",
    "text": "PRV PROJECT",
-   "href": "https://q2msolutions.com/how-software-consulting-services-help-you-choose-the-right-project-model/"
+   "href": "/how-software-consulting-services-help-you-choose-the-right-project-model/"
   },
   {
    "t": "p",
@@ -420,7 +420,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/ai-development-lifecycle/"
+   "href": "/ai-development-lifecycle/"
   }
  ],
  "faqs": []

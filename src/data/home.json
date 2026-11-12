@@ -63,7 +63,29 @@
     "k": "Live demos",
     "v": "Smart glasses · AI agents"
    }
-  ]
+  ],
+  "card": {
+   "_note": "Home BTS section card (owner's design, Nov 2026). Date pill comes from src/config/bts.ts.",
+   "badge": "Upcoming event · 2026",
+   "titleLead": "Bring one process. Leave with an ",
+   "accent": "AI plan",
+   "titleTail": " for it.",
+   "text": "Meet our team at Bengaluru Tech Summit 2026. Discover how AI agents and automation can simplify your everyday business processes.",
+   "cta": "Meet us at BTS",
+   "meta": "30-minute consultation",
+   "facts": [
+    {
+     "k": "Venue",
+     "v": "BIEC, Bengaluru",
+     "icon": "venue"
+    },
+    {
+     "k": "Event",
+     "v": "BTS 2026",
+     "icon": "event"
+    }
+   ]
+  }
  },
  "work": {
   "eyebrow": "In action",

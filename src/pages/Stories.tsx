@@ -27,7 +27,7 @@ export function CaseStudies({ entry }: { entry: Entry }) {
         <Breadcrumbs trail={[{ label: 'Home', to: '/' }, { label: crumbOf(entry) }]} />
         <Reveal y={28}><h1 className="display-xl mt-10 max-w-4xl">{h1Of(entry)}</h1></Reveal>
       </div></section>
-      <section className="pb-24"><div className="container-page grid gap-8 lg:grid-cols-12">{c.caseStudies.map((e, i) => <CaseCard key={e.id} e={e} large={i === 0} i={i} as="h2" />)}</div></section>
+      <section className="pb-24 pt-12 md:pt-16"><div className="container-page grid gap-8 lg:grid-cols-12">{c.caseStudies.map((e, i) => <CaseCard key={e.id} e={e} large={i === 0} i={i} as="h2" />)}</div></section>
     </>
   )
 }
@@ -77,7 +77,7 @@ function StorySection({ title, blocks, imgs }: { title: string; blocks: ReturnTy
   const id = slugify(title)
   // Results → metric band
   if (/^results/i.test(title) && groups.length) return (
-    <section id={id} className="on-dark my-16 scroll-anchor rounded-lg bg-block p-8 text-ink-inverse md:p-14">
+    <section id={id} className="on-dark my-16 scroll-anchor rounded-lg border border-block-line bg-block p-8 text-ink-inverse md:p-14">
       <h2 className="display-md">{title}</h2>
       {lead.paras[0] && <p className="lede mt-4 max-w-2xl">{lead.paras[0]}</p>}
       <dl className="mt-10 grid gap-8 sm:grid-cols-2">
@@ -129,27 +129,27 @@ export function Blogs({ entry, category }: { entry?: Entry; category?: string })
         <div className="mt-12 flex flex-col gap-6 border-y hairline py-5 lg:flex-row lg:items-center lg:justify-between">
           <div role="group" aria-label="Filter by topic" className="flex flex-wrap gap-2">
             {[{ slug: 'all', name: 'All' }, ...cats].map((x) => (
-              <button key={x.slug} aria-pressed={cat === x.slug} onClick={() => { setCat(x.slug); setPage(1) }} className={`min-h-11 rounded-full border px-4 text-sm transition-colors ${cat === x.slug ? 'border-ink bg-block text-ink-inverse' : 'border-line hover:border-ink'}`}>{x.name}</button>
+              <button key={x.slug} aria-pressed={cat === x.slug} onClick={() => { setCat(x.slug); setPage(1) }} className={`min-h-11 rounded-full border px-4 text-sm transition-colors ${cat === x.slug ? 'border-action bg-action text-on-action' : 'border-line hover:border-action hover:text-action'}`}>{x.name}</button>
             ))}
           </div>
           <label className="relative block lg:w-80"><span className="sr-only">Search articles</span>
             <Search aria-hidden className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-ink-muted" />
-            <input type="search" value={q} onChange={(e) => { setQ(e.target.value); setPage(1) }} placeholder="Search articles" className="h-12 w-full rounded-sm border border-line bg-surface pl-11 pr-4 text-sm outline-none focus:border-q2m" />
+            <input type="search" value={q} onChange={(e) => { setQ(e.target.value); setPage(1) }} placeholder="Search articles" className="h-12 w-full rounded-sm border border-line bg-surface pl-11 pr-4 text-sm focus:border-q2m" />
           </label>
         </div>
       </div></section>
 
-      <section className="pb-24"><div className="container-page">
+      <section className="pb-24 pt-12 md:pt-16"><div className="container-page">
         {featured && (
           <Reveal><Link to={featured.path} className="group mb-16 grid gap-8 lg:grid-cols-12 lg:items-center">
             {fm && <div className="lg:col-span-7 [&_img]:transition-transform [&_img]:duration-700 group-hover:[&_img]:scale-[1.03]"><SiteFrame image={fm} priority ratio="16/10" sizes="(min-width:1024px) 700px, 100vw" /></div>}
             <div className="lg:col-span-5"><p className="eyebrow mb-4">Featured · {fmtDate(featured.date)}</p><h2 className="display-md group-hover:text-action">{featured.title}</h2><p className="mt-4 line-clamp-4 text-ink-muted">{featured.excerpt}</p><p className="mt-6 text-sm text-ink-muted">{readingTime(featured)} min read</p></div>
           </Link></Reveal>
         )}
-        {view.length === 0 ? <p className="py-16 text-center text-ink-muted" role="status">No articles match your search.</p> : <div className="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">{view.map((p, i) => <PostCard key={p.id} e={p} i={i} />)}</div>}
+        {view.length === 0 ? <p className="py-16 text-center text-ink-muted" role="status">No articles match your search.</p> : <div className="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">{view.map((p, i) => <PostCard key={p.id} e={p} i={i} as={featured ? 'h3' : 'h2'} />)}</div>}
         {pages > 1 && (
           <nav aria-label="Pagination" className="mt-16 flex justify-center gap-2">
-            {Array.from({ length: pages }, (_, i) => i + 1).map((n) => <button key={n} aria-current={n === page ? 'page' : undefined} onClick={() => { setPage(n); window.scrollTo({ top: 0 }) }} className={`size-11 rounded-md border text-sm ${n === page ? 'border-ink bg-block text-ink-inverse' : 'border-line hover:border-ink'}`}>{n}</button>)}
+            {Array.from({ length: pages }, (_, i) => i + 1).map((n) => <button key={n} aria-current={n === page ? 'page' : undefined} onClick={() => { setPage(n); window.scrollTo({ top: 0 }) }} className={`size-11 rounded-md border text-sm ${n === page ? 'border-action bg-action text-on-action' : 'border-line hover:border-action hover:text-action'}`}>{n}</button>)}
           </nav>
         )}
       </div></section>
@@ -186,7 +186,7 @@ export function Article({ entry }: { entry: Entry }) {
           <p className="mt-6 text-sm text-ink-muted">{entry.furniture?.meta?.find((m) => /^by,/i.test(m))} · <time dateTime={entry.date}>{fmtDate(entry.date)}</time></p>
           {media && <div className={`mt-10 ${(media.w ?? 0) / (media.h ?? 1) >= 1.6 ? '' : 'max-w-3xl'}`}><SiteFrame image={media} priority parallax sizes="(min-width:1280px) 1400px, (min-width:896px) 896px, 100vw" /></div>}
         </div></header>
-        <div className="container-page split split--toc pb-20">
+        <div className="container-page split split--toc pb-20 pt-12 md:pt-16">
           {headings.length > 1 && (
             <aside className="split-aside hidden lg:block"><nav aria-label="Contents"><p className="eyebrow mb-4">Contents</p>
               <ul className="space-y-2.5 border-l hairline pl-4 text-sm">{headings.map((h) => <li key={h.text}><a className="text-ink-muted hover:text-action" href={`#${slugify(h.text!)}`}>{h.text}</a></li>)}</ul></nav></aside>
@@ -200,14 +200,14 @@ export function Article({ entry }: { entry: Entry }) {
                 if (b.t === 'li') { list.push(b.text!); return }
                 flush(i)
                 if (b.t === 'h2') {
-                  if (introImgs.length && !out.some((o) => (o as { key?: string }).key === 'intro-imgs')) out.push(<div key="intro-imgs">{introImgs.map((m) => <SiteImage key={m.file} image={m} className="h-auto w-full" ratio="auto" />)}</div>)
+                  if (introImgs.length && !out.some((o) => (o as { key?: string }).key === 'intro-imgs')) out.push(<div key="intro-imgs">{introImgs.map((m) => <SiteImage key={m.file} image={m} sizes="(min-width:1440px) 950px, (min-width:1024px) 67vw, 100vw" className="h-auto w-full" ratio="auto" />)}</div>)
                   out.push(<h2 key={i} id={slugify(b.text!)} className="scroll-anchor">{b.text}</h2>)
-                  ;(secImgs.get(keyOf(b.text!)) ?? []).forEach((m) => out.push(<SiteImage key={m.file + m.order} image={m} className="h-auto w-full" ratio="auto" />))
+                  ;(secImgs.get(keyOf(b.text!)) ?? []).forEach((m) => out.push(<SiteImage key={m.file + m.order} image={m} className="h-auto w-full" ratio="auto" sizes="(min-width:1440px) 950px, (min-width:1024px) 67vw, 100vw" />))
                 }
                 else if (b.t === 'h3' || b.t === 'h4' || b.t === 'h5' || b.t === 'h6') out.push(<h3 key={i}>{b.text}</h3>)
                 else if (b.t === 'btn') { const h = resolveHref(b.href); if (h) out.push(<p key={i}><Button to={h}>{b.text}</Button></p>) }
                 else if (b.t === 'p') out.push(<p key={i}>{b.text}</p>)
-                else if (b.t === 'img') out.push(<SiteImage key={i} image={{ file: b.src!, alt: altForFile(c, b.src!) }} className="h-auto w-full" ratio="auto" />)
+                else if (b.t === 'img') out.push(<SiteImage key={i} image={{ file: b.src!, alt: altForFile(c, b.src!) }} className="h-auto w-full" ratio="auto" sizes="(min-width:1440px) 950px, (min-width:1024px) 67vw, 100vw" />)
               })
               flush(9999)
               return out

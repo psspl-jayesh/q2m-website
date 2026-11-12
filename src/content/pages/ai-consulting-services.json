@@ -2,7 +2,7 @@
  "path": "/ai-consulting-services/",
  "slug": "ai-consulting-services",
  "type": "page",
- "source": "https://q2msolutions.com/ai-consulting-services/",
+ "source": "/ai-consulting-services/",
  "syncedAt": "2026-11-11T08:57:49.986Z",
  "seo": {
   "title": "AI Consulting Services | Artificial Intelligence Consulting",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Get in Touch with Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -227,7 +227,7 @@
   {
    "t": "btn",
    "text": "Scale your Business Operations",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -321,7 +321,7 @@
   {
    "t": "btn",
    "text": "Schedule a Meet With Our AI Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

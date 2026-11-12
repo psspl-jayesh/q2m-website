@@ -2,7 +2,7 @@
  "path": "/machine-learning-development-services/",
  "slug": "machine-learning-development-services",
  "type": "page",
- "source": "https://q2msolutions.com/machine-learning-development-services/",
+ "source": "/machine-learning-development-services/",
  "syncedAt": "2026-11-11T08:57:50.147Z",
  "seo": {
   "title": "Machine Learning Development Services - Q2M Solutions",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Start Your ML Journey!",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -369,7 +369,7 @@
   {
    "t": "btn",
    "text": "Book a Free ML Consultation",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

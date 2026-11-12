@@ -10,8 +10,10 @@ import { PostCard } from '@/components/Cards'
 import { SiteFrame, SiteImage, imgMeta, type SiteImg } from '@/components/ui'
 import homeImages from '@/content/shared/home-images.json'
 import stats from '@/content/shared/stats.json'
-import { BTS, useBtsPhase } from '@/config/bts'
+import { BTS, btsDateRangeShort, useBtsPhase } from '@/config/bts'
 import btsWording from '@/content/sections/bts-wording.json'
+import { ArrowUpRight, CalendarDays, Clock, MapPin } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 /** Existing Q2M pages that cover a practice. Practices with no page (agentic commerce, 3D Gaussian splatting) are not linked. */
 const SERVICE_PAGE: Record<string, string> = {
@@ -75,8 +77,7 @@ export default function HomeFolder() {
     .map((t) => (!BTS.liveDemos && t.tag === N.demoTag.replaces ? { ...t, tag: N.demoTag.text } : t))
   // Booth wording (BTS.liveDemos) and after-event hiding for the BTS lines in other sections
   const booth = BTS.liveDemos
-  const btsParas = booth ? h.bts.paras : [N.lead.text, N.prepare.text]
-  const btsFacts = booth ? h.bts.facts : h.bts.facts.filter((f) => f.k !== btsWording.liveDemosFact)
+  const card = h.bts.card
   const workIntro = booth && !btsOver ? h.work.intro : N.workIntro.text
   const serviceTag = (tag: string) => (tag === btsWording.liveDemoServiceTag && (!booth || btsOver) ? '' : tag)
   const session = booth ? h.session : { ...h.session, title: N.sessionTitle.text, steps: h.session.steps.map((x, i) => (i === 1 ? { ...x, text: N.sessionStep2.text } : x)) }
@@ -120,7 +121,7 @@ export default function HomeFolder() {
               <ul className="logo-marquee-track">
                 {[...clientLogos, ...clientLogos].map((l, k) => (
                   <li key={l.file + k} aria-hidden={k >= clientLogos.length || undefined} className="flex h-16 w-[170px] shrink-0 items-center justify-center rounded-md border border-line bg-white px-6">
-                    <SiteImage image={l} priority ratio="auto" sizes="140px" className="h-8 w-auto max-w-full object-contain" />
+                    <SiteImage image={l} priority ratio="auto" sizes="160px" className="h-8 w-auto max-w-full object-contain" />
                   </li>
                 ))}
               </ul>
@@ -129,21 +130,55 @@ export default function HomeFolder() {
         </section>
       )}
 
-      {/* BTS 2026 band (hidden after the event) */}
-      {!btsOver && <section id="bts" className="scroll-anchor bg-surface-raised text-ink border-y border-line">
-        <div className="container-page split split--lead py-14 md:py-24">
-          <div className="split-aside">
-            <Reveal>
-              <p className="eyebrow mb-4">{h.bts.eyebrow}</p>
-              <h2 className="display-md max-w-2xl">{h.bts.title}</h2>
-              {btsParas.map((p) => <p key={p} className="mt-5 max-w-[36em] text-ink-muted">{p}</p>)}
-              <div className="mt-8"><Button to="/bengaluru-tech-summit-2026/">{h.bts.facts.find((f) => f.k === 'Event')?.v ?? h.bts.eyebrow}</Button></div>
-            </Reveal>
-          </div>
-          <Reveal delay={0.1} className="split-main">
-            <dl className="grid grid-cols-[7rem_1fr] gap-x-4 gap-y-5">
-              {btsFacts.map((f) => (<div key={f.k} className="contents"><dt className="mono text-ink-muted">{f.k}</dt><dd className="mono !text-[0.9375rem]">{f.v}</dd></div>))}
-            </dl>
+      {/* BTS 2026 card (hidden after the event): owner's design. Soft shapes and a small dot grid sit away from the text. */}
+      {!btsOver && <section id="bts" aria-labelledby="bts-title" className="scroll-anchor relative overflow-hidden border-y border-line bg-surface-raised">
+        <div aria-hidden className="pointer-events-none absolute -right-28 -top-28 size-80 rounded-full bg-q2m/10 md:size-[26rem]" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-36 -left-28 size-80 rounded-full bg-q2m/10" />
+        <div aria-hidden className="pointer-events-none absolute left-[max(1rem,calc(50%-41rem))] top-8 hidden h-10 w-28 bg-[radial-gradient(circle,var(--blue)_1.5px,transparent_1.6px)] [background-size:16px_14px] opacity-40 md:block" />
+        <div className="container-page relative py-14 md:py-24">
+          <Reveal>
+            <div className="grid gap-8 rounded-lg border border-line bg-surface p-6 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-10 lg:p-12">
+              <div className="lg:col-span-7">
+                <p className="inline-flex items-center gap-2 rounded-full bg-tint px-4 py-2 text-[0.8125rem] font-bold uppercase tracking-[0.08em] text-action">
+                  <CalendarDays aria-hidden className="size-4" />{card.badge}
+                </p>
+                <h2 id="bts-title" className="display-lg mt-6">
+                  {card.titleLead}
+                  <span className="relative inline-block whitespace-nowrap text-action">
+                    {card.accent}
+                    <svg aria-hidden viewBox="0 0 200 12" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-2.5 w-full text-q2m"><path d="M3 9 C 55 2, 145 2, 197 7" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" /></svg>
+                  </span>
+                  {card.titleTail}
+                </h2>
+                <p className="lede mt-6 max-w-xl text-ink-muted">{card.text}</p>
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                  <Link to={BTS.path} className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-action px-7 font-medium text-on-action transition-colors hover:bg-q2m">
+                    {card.cta}<ArrowUpRight aria-hidden className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </Link>
+                  <span aria-hidden className="hidden h-9 w-px bg-line sm:block" />
+                  <p className="flex items-center gap-2 text-ink-muted"><Clock aria-hidden className="size-5" />{card.meta}</p>
+                </div>
+              </div>
+              <div className="lg:col-span-5">
+                <div className="rounded-lg border border-line bg-surface-raised p-6 sm:p-8">
+                  <div className="flex lg:justify-end">
+                    <p className="inline-flex items-center gap-2 rounded-full bg-tint px-4 py-1.5 text-sm font-semibold text-action"><span aria-hidden className="size-2 rounded-full bg-q2m" />{btsDateRangeShort()}</p>
+                  </div>
+                  <dl className="-mb-5 mt-1 divide-y divide-line">
+                    {card.facts.map((f) => { const Icon = f.icon === 'venue' ? MapPin : CalendarDays; return (
+                      <div key={f.k} className="relative flex min-h-24 flex-col justify-center py-5 pl-[4.5rem]">
+                        {/* the icon sits inside the label (<dt>) so the list keeps valid dt/dd structure */}
+                        <dt className="text-[0.75rem] font-bold uppercase tracking-[0.08em] text-ink-muted">
+                          <span aria-hidden className="absolute left-0 top-1/2 flex size-14 -translate-y-1/2 items-center justify-center rounded-md bg-tint text-action"><Icon className="size-6" /></span>
+                          {f.k}
+                        </dt>
+                        <dd className="mt-1 font-display text-xl font-semibold">{f.v}</dd>
+                      </div>
+                    ) })}
+                  </dl>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>}
@@ -156,10 +191,10 @@ export default function HomeFolder() {
             {tiles.map((t) => (
               <StaggerItem key={t.title} className={`relative min-h-[150px] overflow-hidden rounded-lg border border-line ${t.w2 ? 'col-span-2' : 'col-span-2 md:col-span-1'} ${t.h2 ? 'md:row-span-2' : ''}`}>
                 {topicImg(WORK, t.title) ? <SiteImage image={topicImg(WORK, t.title)!} ratio="auto" sizes="(min-width:768px) 50vw, 100vw" className="absolute inset-0 h-full w-full object-cover" /> : <DotPanel dark={t.dark} className="absolute inset-0" />}
-                <figcaption className="absolute inset-x-3 bottom-3 rounded-md bg-surface p-3 md:inset-x-4 md:bottom-4">
+                <div className="absolute inset-x-3 bottom-3 rounded-md bg-surface p-3 md:inset-x-4 md:bottom-4">
                   <span className="mb-1.5 inline-block rounded-sm bg-action px-2 py-0.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-on-action">{t.tag}</span>
                   <b className="block font-display text-[0.9375rem] font-semibold leading-snug md:text-base">{t.title}</b>
-                </figcaption>
+                </div>
               </StaggerItem>
             ))}
           </StaggerGroup>

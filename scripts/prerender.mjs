@@ -23,10 +23,17 @@ if (base === template) throw new Error('index.html: default title/description no
 const btsGuard = `<style>.bts-stale #main{visibility:hidden}</style>
     <script>(function(){var n=Date.now(),p=n<${Date.parse(bts.start)}?"before":n<${Date.parse(bts.end)}?"live":"after";if(p!==document.documentElement.dataset.btsPhase)document.documentElement.classList.add("bts-stale")})()</script>`
 
+// The app script starts after the page has loaded (or 2.5 s at most): the pre-rendered HTML is already complete, so the first
+// paint and the hero image are not held back by script evaluation. The script still downloads early (modulepreload).
+const entry = base.match(/<script type="module" crossorigin src="([^"]+)"><\/script>/)
+if (!entry) throw new Error('index.html: app entry script not found')
+const deferred = base.replace(entry[0], `<link rel="modulepreload" crossorigin href="${entry[1]}">
+    <script>(function(){var go=function(){if(go.done)return;go.done=1;var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="${entry[1]}";document.head.appendChild(s)};addEventListener("load",go,{once:true});setTimeout(go,2500)})()</script>`)
+
 function page(route, { html, head }) {
   const btsPage = BTS_PAGES.includes(route)
   const attrs = ` data-prerendered="${route}"${btsPage ? ` data-bts-phase="${bts.phase}"` : ''}`
-  return base
+  return deferred
     .replace('<html lang="en-IN">', `<html lang="en-IN"${attrs}>`)
     .replace('</head>', `    ${head}\n${btsPage ? `    ${btsGuard}\n` : ''}  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`)

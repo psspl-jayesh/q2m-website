@@ -12,7 +12,8 @@
     "images": "node scripts/sync-images.mjs && node scripts/derive-images.mjs && node scripts/optimize-images.mjs",
     "sync": "node scripts/sync-content.mjs && node scripts/apply-content.mjs && node scripts/verify-content.mjs && node scripts/flags-content.mjs && node scripts/sync-images.mjs && node scripts/derive-images.mjs && node scripts/optimize-images.mjs && node scripts/generate-seo.mjs",
     "content:compare": "node scripts/compare-content.mjs",
-    "brand:assets": "node scripts/make-og-image.mjs && node scripts/make-icons.mjs"
+    "brand:assets": "node scripts/make-og-image.mjs && node scripts/make-icons.mjs",
+    "lint": "node scripts/lint/node_modules/eslint/bin/eslint.js -c scripts/lint/eslint.config.js ."
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.3.0",

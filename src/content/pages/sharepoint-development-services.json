@@ -2,7 +2,7 @@
  "path": "/sharepoint-development-services/",
  "slug": "sharepoint-development-services",
  "type": "page",
- "source": "https://q2msolutions.com/sharepoint-development-services/",
+ "source": "/sharepoint-development-services/",
  "syncedAt": "2026-11-11T08:57:49.474Z",
  "seo": {
   "title": "SharePoint Development Services for a Smarter Workplace",
@@ -26,7 +26,7 @@
   {
    "t": "btn",
    "text": "Discuss with Our SharePoint Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

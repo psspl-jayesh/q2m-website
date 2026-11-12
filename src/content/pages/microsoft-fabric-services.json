@@ -2,7 +2,7 @@
  "path": "/microsoft-fabric-services/",
  "slug": "microsoft-fabric-services",
  "type": "page",
- "source": "https://q2msolutions.com/microsoft-fabric-services/",
+ "source": "/microsoft-fabric-services/",
  "syncedAt": "2026-11-11T08:57:50.311Z",
  "seo": {
   "title": "Microsoft Fabric Services",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Talk to our Experts Today!",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -359,7 +359,7 @@
   {
    "t": "btn",
    "text": "Talk to our experts today.",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

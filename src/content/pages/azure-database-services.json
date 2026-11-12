@@ -2,7 +2,7 @@
  "path": "/azure-database-services/",
  "slug": "azure-database-services",
  "type": "page",
- "source": "https://q2msolutions.com/azure-database-services/",
+ "source": "/azure-database-services/",
  "syncedAt": "2026-11-11T08:57:50.603Z",
  "seo": {
   "title": "Azure Database Services & Solutions",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Talk to Our Azure Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -94,7 +94,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -445,7 +445,7 @@
   {
    "t": "btn",
    "text": "Contact us today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   }
  ],
  "faqs": []

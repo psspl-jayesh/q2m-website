@@ -2,7 +2,7 @@
  "path": "/azure-data-services/",
  "slug": "azure-data-services",
  "type": "page",
- "source": "https://q2msolutions.com/azure-data-services/",
+ "source": "/azure-data-services/",
  "syncedAt": "2026-11-11T08:57:50.637Z",
  "seo": {
   "title": "Azure Data Services",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -356,7 +356,7 @@
   {
    "t": "btn",
    "text": "Contact Us Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

@@ -3,7 +3,7 @@
 //   output: public/brand/og-default.png
 import sharp from 'sharp'
 import opentype from 'opentype.js'
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 
 const W = 1200, H = 630
 const TAGLINE = ['Enterprise AI', 'Development Company', 'in India']

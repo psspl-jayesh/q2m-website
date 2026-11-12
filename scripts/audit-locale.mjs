@@ -19,11 +19,11 @@ content.push(...walkJson(home))
 const P = {
   'currency symbols / codes': /(\$\s?\d|\bUSD\b|\bEUR\b|\bGBP\b|€|£|\bdollars?\b|\bINR\b|₹|\bRs\.?\s?\d)/i,
   'prices / cost figures': /\b(price|pricing|cost|costs|budget|fee|fees)\b[^.]{0,60}\d|\d[^.]{0,30}\b(per hour|\/hr|per month|\/month)\b/i,
-  'dates': /\b(\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4}|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2}(st|nd|rd|th)?,?\s*\d{0,4}|\d{1,2}(st|nd|rd|th)?\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?(\s+\d{4})?)/i,
+  'dates': /\b(\d{1,2}[/\-.]\d{1,2}[/\-.]\d{2,4}|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2}(st|nd|rd|th)?,?\s*\d{0,4}|\d{1,2}(st|nd|rd|th)?\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?(\s+\d{4})?)/i,
   'times / timezones': /\b(\d{1,2}:\d{2}\s?(am|pm)?|\b(EST|PST|CST|GMT|UTC|IST|SGT|BST|CET)\b|24\/7|business hours|time zones?)\b/i,
   'phone numbers': /(\+\d{1,3}[\s-]?\(?\d[\d\s-]{6,}|\btel:)/i,
   'addresses / venues': /\b(Cecil Street|GB Building|BIEC|Tumkur|Bengaluru|Bangalore|street|suite|floor)\b/i,
-  'non-Indian regions': /(Singapore|APAC|Asia[- ]Pacific|USA|U\.S\.|US|United States|America|American|UK|United Kingdom|Britain|London|New York|Las Vegas|Denver|California|Texas|Europe|European|Australia|Dubai|UAE|Canada|Fortune 500)/,
+  'non-Indian regions': /\b(Singapore|APAC|Asia[- ]Pacific|USA|U\.S\.|US|United States|America|American|UK|United Kingdom|Britain|London|New York|Las Vegas|Denver|California|Texas|Europe|European|Australia|Dubai|UAE|Canada|Fortune 500)\b/,
   'privacy / legal frameworks': /\b(GDPR|CCPA|DPDP|privacy policy|cookie|consent|HIPAA|SOC ?2)\b/i,
 }
 const US = ['optimiz', 'organiz', 'moderniz', 'customiz', 'personaliz', 'utiliz', 'standardiz', 'minimiz', 'maximiz', 'prioritiz', 'categoriz', 'visualiz', 'summariz', 'recogniz', 'synchroniz', 'centraliz', 'digitiz', 'monetiz', 'analyz', 'color', 'behavior', 'favor', 'center', 'license', 'catalog', 'program(?!me)', 'labor', 'neighbor', 'defense', 'offense', 'fulfill', 'enrollment', 'artifact', 'gray', 'traveler', 'modeling', 'labeling', 'cancel(?:ed|ing)', 'judgment', 'aging', 'sizable', 'sceptic']

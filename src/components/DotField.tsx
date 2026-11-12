@@ -70,12 +70,12 @@ export default function DotField({ className = '' }: { className?: string }) {
     const still = () => draw(start + 99999)
 
     size()
-    reduce ? still() : kick()
+    if (reduce) still(); else kick()
     const onResize = () => { size(); still() }
     const onMove = (e: PointerEvent) => {
       const b = canvas.getBoundingClientRect()
       pointer = { x: e.clientX - b.left, y: e.clientY - b.top }
-      reduce ? still() : kick()
+      if (reduce) still(); else kick()
     }
     const onLeave = () => { pointer = null; still() }
     window.addEventListener('resize', onResize)

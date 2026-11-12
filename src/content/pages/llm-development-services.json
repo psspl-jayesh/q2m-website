@@ -2,7 +2,7 @@
  "path": "/llm-development-services/",
  "slug": "llm-development-services",
  "type": "page",
- "source": "https://q2msolutions.com/llm-development-services/",
+ "source": "/llm-development-services/",
  "syncedAt": "2026-11-11T08:57:49.845Z",
  "seo": {
   "title": "LLM Development Services | LLM as a service",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Let’s Connect to See What We Build",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -433,7 +433,7 @@
   {
    "t": "btn",
    "text": "Book Your Free Discovery Call Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

@@ -2,7 +2,7 @@
  "path": "/data-lake-and-big-data-on-azure/",
  "slug": "data-lake-and-big-data-on-azure",
  "type": "page",
- "source": "https://q2msolutions.com/data-lake-and-big-data-on-azure/",
+ "source": "/data-lake-and-big-data-on-azure/",
  "syncedAt": "2026-11-11T08:57:50.676Z",
  "seo": {
   "title": "Data Lake and Big Data on Azure",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Talk to Azure Data Expert",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -94,7 +94,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -388,7 +388,7 @@
   {
    "t": "btn",
    "text": "Schedule a Consultation",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

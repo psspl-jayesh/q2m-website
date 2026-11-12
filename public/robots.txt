@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://q2msolutions.com/sitemap.xml
+Sitemap: https://q2msolutions.in/sitemap.xml

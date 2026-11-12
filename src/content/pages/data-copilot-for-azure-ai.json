@@ -2,7 +2,7 @@
  "path": "/data-copilot-for-azure-ai/",
  "slug": "data-copilot-for-azure-ai",
  "type": "page",
- "source": "https://q2msolutions.com/data-copilot-for-azure-ai/",
+ "source": "/data-copilot-for-azure-ai/",
  "syncedAt": "2026-11-11T08:57:50.388Z",
  "seo": {
   "title": "Data Copilot for Azure AI",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Talk to Our Azure Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -348,7 +348,7 @@
   {
    "t": "btn",
    "text": "Talk to our experts today.",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

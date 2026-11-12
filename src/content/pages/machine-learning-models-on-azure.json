@@ -2,7 +2,7 @@
  "path": "/machine-learning-models-on-azure/",
  "slug": "machine-learning-models-on-azure",
  "type": "page",
- "source": "https://q2msolutions.com/machine-learning-models-on-azure/",
+ "source": "/machine-learning-models-on-azure/",
  "syncedAt": "2026-11-11T08:57:50.498Z",
  "seo": {
   "title": "Machine Learning Models on Azure | Machine Learning Solutions",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Talk to Our Azure Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -343,7 +343,7 @@
   {
    "t": "btn",
    "text": "Start Your Journey Today!",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

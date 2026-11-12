@@ -76,7 +76,7 @@ Performance profiling (Lighthouse/INP), a manual look at every page at tablet wi
 **Not published (see `docs/CONTENT_GAPS.md`):**
 - 21 `[TBC]` placeholders are stripped: BTS stand and exact dates, contact phone, LinkedIn URL, CIN, registered office, and all three founder entries. The Team section is therefore left out of the home page. The live About page still shows its existing team.
 - 15 image slots have no real image: the folder contains only the two logos. Nothing was substituted with stock. Tiles show brand dot-pattern panels with their captions until real captures are supplied.
-- Booking form is not connected. Set `VITE_BOOKING_ENDPOINT` to POST to a real service. Until then it validates, then opens a pre-filled email draft to info@q2msolutions.com and says nothing has been sent.
+- Contact and booking forms send through Web3Forms when `VITE_WEB3FORMS_ACCESS_KEY` is set at build time (see .env.example). Without it they open a pre-filled email draft to info@q2msolutions.in.
 
 **Decisions needed (conflicts between the folder and the live site):**
 1. Location: the folder says India. The live Contact page says Singapore (143 Cecil Street, +65 phone). The footer now follows the folder (email, India). The Contact page keeps the live details.

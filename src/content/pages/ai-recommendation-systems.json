@@ -2,7 +2,7 @@
  "path": "/ai-recommendation-systems/",
  "slug": "ai-recommendation-systems",
  "type": "page",
- "source": "https://q2msolutions.com/ai-recommendation-systems/",
+ "source": "/ai-recommendation-systems/",
  "syncedAt": "2026-11-11T08:57:48.521Z",
  "seo": {
   "title": "AI Recommendation Systems | Personalised AI Solutions",
@@ -26,7 +26,7 @@
   {
    "t": "btn",
    "text": "Talk to Our AI Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -287,7 +287,7 @@
   {
    "t": "btn",
    "text": "Check Our Pricing Guide",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -332,7 +332,7 @@
   {
    "t": "btn",
    "text": "Book a Free Consultation with Q2M",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   }
  ],
  "faqs": [

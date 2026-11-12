@@ -7,14 +7,14 @@ import { Button } from './ui'
 import { BusinessDetails, ConsentField, MobileField, businessFields, consentRequired, describeBusiness, mobileOptional, requireWholeAddress } from './forms'
 import { COMPANY, LOCALE } from '@/config/locale'
 import { bookableDates, businessHoursLabel, formatPhone, timeSlots } from '@/lib/format'
+import { emailServiceConfigured, isBot, openEmailDraft, sendSubmission } from '@/lib/formDelivery'
 
 /**
  * Booking form (fields and options come from the Q2M home page copy, localised for India).
  * Slots are requests, not confirmed bookings: dates and times are offered in IST within the business hours set in src/config/locale.ts.
- * Delivery: if VITE_BOOKING_ENDPOINT is set, details are POSTed there as JSON and success is shown only on an OK response.
- * Otherwise nothing is "sent" by this page: a pre-filled email draft opens in the visitor's mail app and the message says so.
+ * Delivery (src/lib/formDelivery.ts): sent through Web3Forms when VITE_WEB3FORMS_ACCESS_KEY is set at build time, and success is
+ * shown only on an OK response. Otherwise a pre-filled email draft opens in the visitor's mail app and the message says so.
  */
-const ENDPOINT = import.meta.env.VITE_BOOKING_ENDPOINT as string | undefined
 
 const schema = z.object({
   name: z.string().trim().min(2, 'Please enter your full name.'),
@@ -47,49 +47,60 @@ export default function BookingForm({ industries, placeholder, note }: { industr
   const date = watch('date')
   const times = useMemo(() => (date ? timeSlots(date) : []), [date])
 
-  const onSubmit = async (v: Values) => {
-    setStatus({ kind: 'sending' })
+  useEffect(() => {
+    if (status.kind !== 'ok' && status.kind !== 'error') return
+    live.current?.focus({ preventScroll: true })
+    live.current?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }, [status])
+
+  const onSubmit = async (v: Values, e?: React.BaseSyntheticEvent) => {
     const slot = `${dates.find((d) => d.value === v.date)?.label}, ${times.find((t) => t.value === v.time)?.label ?? v.time}`
-    const payload = { ...v, mobile: v.mobile ? formatPhone(v.mobile) : '', slot, timezone: LOCALE.timeZone, consentGiven: true }
-    if (ENDPOINT) {
-      try {
-        const r = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-        if (!r.ok) throw new Error(String(r.status))
-        setStatus({ kind: 'ok', msg: 'Thank you. We will confirm your time slot by email.' }); reset()
-      } catch {
-        setStatus({ kind: 'error', msg: `We could not send your request. Please email ${COMPANY.email} instead.` })
-      }
-      live.current?.focus()
+    const mobile = v.mobile ? formatPhone(v.mobile) : '-'
+    if (!emailServiceConfigured) {
+      const body = [
+        `Name: ${v.name}`, `Company: ${v.company}`, `Role: ${v.role || '-'}`, `Work email: ${v.email}`, `Mobile: ${mobile}`, `Industry: ${v.industry}`,
+        `Preferred slot: ${slot}`, describeBusiness(v), '', 'Process to discuss:', v.topic || '-', '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
+      ].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n')
+      openEmailDraft('30-minute AI session request', body)
+      setStatus({ kind: 'ok', msg: 'Your email app should now open with these details. Press Send there to send your request to us.' })
       return
     }
-    const body = [
-      `Name: ${v.name}`, `Company: ${v.company}`, `Role: ${v.role || '-'}`, `Work email: ${v.email}`, `Mobile: ${payload.mobile || '-'}`, `Industry: ${v.industry}`,
-      `Preferred slot: ${slot}`, describeBusiness(v), '', 'Process to discuss:', v.topic || '-', '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
-    ].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n')
-    window.location.href = `mailto:${COMPANY.email}?subject=${encodeURIComponent('30-minute AI session request')}&body=${encodeURIComponent(body)}`
-    setStatus({ kind: 'ok', msg: 'Your email app should now open with these details. Nothing has been sent until you press send there.' })
-    live.current?.focus()
+    setStatus({ kind: 'sending' })
+    try {
+      await sendSubmission({
+        subject: `30-minute AI session request: ${v.company}`, name: v.name, replyTo: v.email, botcheck: isBot(e),
+        fields: {
+          Name: v.name, Company: v.company, Role: v.role || '-', 'Work email': v.email, Mobile: mobile, Industry: v.industry,
+          'Preferred slot': slot, 'Business details': describeBusiness(v), 'Process to discuss': v.topic || '-',
+          Consent: 'Given (Digital Personal Data Protection Act, 2023)',
+        },
+      })
+      reset(); if (dates[0]) setValue('date', dates[0].value)
+      setStatus({ kind: 'ok', msg: 'Thank you! Your request has been sent. We’ll confirm your time slot by email.' })
+    } catch {
+      setStatus({ kind: 'error', msg: `We could not send your request. Please try again, or email ${COMPANY.email} instead.` })
+    }
   }
 
-  const input = (name: 'name' | 'company' | 'role' | 'email', label: string, opts: { type?: string; autoComplete?: string } = {}) => (
+  const input = (name: 'name' | 'company' | 'role' | 'email', label: string, opts: { type?: string; autoComplete?: string; optional?: boolean } = {}) => (
     <div>
-      <label htmlFor={`b-${name}`} className="mb-2 block text-sm font-medium">{label}</label>
-      <input id={`b-${name}`} type={opts.type} autoComplete={opts.autoComplete} aria-invalid={!!errors[name]} aria-describedby={errors[name] ? `b-${name}-e` : undefined} {...register(name)}
-        className={`h-12 w-full rounded-sm border bg-surface px-4 outline-none transition-colors focus:border-action ${errors[name] ? 'border-red-600' : 'border-line'}`} />
-      {errors[name] && <p id={`b-${name}-e`} className="mt-1.5 text-sm text-red-700">{errors[name]!.message as string}</p>}
+      <label htmlFor={`b-${name}`} className="mb-2 block text-sm font-medium">{label}{opts.optional ? ' (optional)' : ''}</label>
+      <input id={`b-${name}`} type={opts.type} autoComplete={opts.autoComplete} aria-required={opts.optional ? undefined : true} aria-invalid={!!errors[name]} aria-describedby={errors[name] ? `b-${name}-e` : undefined} {...register(name)}
+        className={`h-12 w-full rounded-sm border bg-surface px-4 transition-colors focus:border-action ${errors[name] ? 'border-error' : 'border-line'}`} />
+      {errors[name] && <p id={`b-${name}-e`} className="mt-1.5 text-sm text-error">{errors[name]!.message as string}</p>}
     </div>
   )
-  const selectCls = 'h-12 w-full rounded-sm border border-line bg-surface px-3 outline-none focus:border-action'
+  const selectCls = 'h-12 w-full rounded-sm border border-line bg-surface px-3 focus:border-action'
 
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)} aria-label="Book a session" className="grid gap-5 sm:grid-cols-2">
       <div ref={live} tabIndex={-1} role="status" aria-live="polite" className="outline-none sm:col-span-2">
         {status.kind === 'ok' && <p className="flex gap-3 rounded-md border border-line bg-surface p-4"><CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-action" />{status.msg}</p>}
-        {status.kind === 'error' && <p className="flex gap-3 rounded-md border border-red-600 bg-surface p-4"><TriangleAlert aria-hidden className="mt-0.5 size-5 shrink-0 text-red-700" />{status.msg}</p>}
+        {status.kind === 'error' && <p className="flex gap-3 rounded-md border border-error bg-surface p-4"><TriangleAlert aria-hidden className="mt-0.5 size-5 shrink-0 text-error" />{status.msg}</p>}
       </div>
       {input('name', 'Full name', { autoComplete: 'name' })}
       {input('company', 'Company', { autoComplete: 'organization' })}
-      {input('role', 'Role', { autoComplete: 'organization-title' })}
+      {input('role', 'Role', { autoComplete: 'organization-title', optional: true })}
       {input('email', 'Work email', { type: 'email', autoComplete: 'email' })}
       <MobileField<Values> name="mobile" register={register} errors={errors} id="b-mobile" />
       <div>
@@ -98,26 +109,28 @@ export default function BookingForm({ industries, placeholder, note }: { industr
       </div>
       <div>
         <label htmlFor="b-date" className="mb-2 block text-sm font-medium">Preferred date</label>
-        <select id="b-date" {...register('date')} aria-invalid={!!errors.date} className={selectCls}>{dates.map((d) => <option key={d.value} value={d.value}>{d.label}</option>)}</select>
-        {errors.date && <p className="mt-1.5 text-sm text-red-700">{errors.date.message}</p>}
+        <select id="b-date" {...register('date')} aria-required="true" aria-invalid={!!errors.date} className={selectCls}>{dates.map((d) => <option key={d.value} value={d.value}>{d.label}</option>)}</select>
+        {errors.date && <p className="mt-1.5 text-sm text-error">{errors.date.message}</p>}
       </div>
       <div>
         <label htmlFor="b-time" className="mb-2 block text-sm font-medium">Preferred time ({LOCALE.timeZoneLabel})</label>
-        <select id="b-time" {...register('time')} aria-invalid={!!errors.time} aria-describedby="b-time-hint" className={selectCls}>
+        <select id="b-time" {...register('time')} aria-required="true" aria-invalid={!!errors.time} aria-describedby="b-time-hint" className={selectCls}>
           <option value="">Select a time</option>
           {times.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
         </select>
-        {errors.time && <p className="mt-1.5 text-sm text-red-700">{errors.time.message}</p>}
+        {errors.time && <p className="mt-1.5 text-sm text-error">{errors.time.message}</p>}
       </div>
       <p id="b-time-hint" className="mono self-end pb-3 text-ink-muted">
         {businessHoursLabel()}. We confirm your slot by email.
       </p>
       <div className="sm:col-span-2">
-        <label htmlFor="b-topic" className="mb-2 block text-sm font-medium">What process do you want to discuss?</label>
-        <textarea id="b-topic" rows={4} placeholder={placeholder} {...register('topic')} className="w-full rounded-sm border border-line bg-surface p-4 outline-none focus:border-action" />
+        <label htmlFor="b-topic" className="mb-2 block text-sm font-medium">What process do you want to discuss? (optional)</label>
+        <textarea id="b-topic" rows={4} placeholder={placeholder} {...register('topic')} className="w-full rounded-sm border border-line bg-surface p-4 focus:border-action" />
       </div>
       <BusinessDetails register={register} errors={errors} prefix="b" />
       <ConsentField register={register} errors={errors} name="consent" id="b-consent" />
+      {/* spam trap: hidden from people and assistive tech; bots that tick it are dropped by the form service */}
+      <input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" className="hidden" />
       <p className="text-sm text-ink-muted sm:col-span-2">{note}</p>
       <div className="sm:col-span-2"><Button type="submit" disabled={status.kind === 'sending'} className="w-full">{status.kind === 'sending' ? 'Sending…' : 'Request a session'}</Button></div>
     </form>

@@ -2,7 +2,7 @@
  "path": "/digital-sustainability-services/",
  "slug": "digital-sustainability-services",
  "type": "page",
- "source": "https://q2msolutions.com/digital-sustainability-services/",
+ "source": "/digital-sustainability-services/",
  "syncedAt": "2026-11-11T08:57:50.894Z",
  "seo": {
   "title": "Digital Sustainability Services & Solutions",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -306,7 +306,7 @@
   {
    "t": "btn",
    "text": "Schedule your FREE consultation now",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

@@ -2,7 +2,7 @@
  "path": "/case-studies/",
  "slug": "case-studies",
  "type": "page",
- "source": "https://q2msolutions.com/case-studies/",
+ "source": "/case-studies/",
  "syncedAt": "2026-11-11T08:57:51.263Z",
  "seo": {
   "title": "Case Studies - Q2M Solutions",
@@ -29,7 +29,7 @@
   {
    "t": "btn",
    "text": "Read The Success Stories",
-   "href": "https://q2msolutions.com/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/"
+   "href": "/case-study/rele-one-building-a-national-real-estate-platform-with-vibe-coding/"
   },
   {
    "t": "h4",
@@ -38,7 +38,7 @@
   {
    "t": "btn",
    "text": "Read The Success Stories",
-   "href": "https://q2msolutions.com/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/"
+   "href": "/case-study/mindshift-an-ai-powered-personal-growth-wellbeing-app/"
   },
   {
    "t": "h4",
@@ -47,7 +47,7 @@
   {
    "t": "btn",
    "text": "Read The Success Stories",
-   "href": "https://q2msolutions.com/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/"
+   "href": "/case-study/building-a-single-pane-of-glass-for-a-1500-truck-fleet/"
   },
   {
    "t": "p",

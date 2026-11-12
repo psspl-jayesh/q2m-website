@@ -2,7 +2,7 @@
  "path": "/infrastructure-services/",
  "slug": "infrastructure-services",
  "type": "page",
- "source": "https://q2msolutions.com/infrastructure-services/",
+ "source": "/infrastructure-services/",
  "syncedAt": "2026-11-11T08:57:51.179Z",
  "seo": {
   "title": "IT Infrastructure Services",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -401,7 +401,7 @@
   {
    "t": "btn",
    "text": "Contact Us for your Infrastructure Assessment",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   }
  ],
  "faqs": []

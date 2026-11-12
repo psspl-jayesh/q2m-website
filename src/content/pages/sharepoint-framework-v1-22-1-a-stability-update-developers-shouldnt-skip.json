@@ -2,7 +2,7 @@
  "path": "/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/",
  "slug": "sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip",
  "type": "post",
- "source": "https://q2msolutions.com/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/",
+ "source": "/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/",
  "syncedAt": "2026-11-11T08:57:51.922Z",
  "seo": {
   "title": "SharePoint Framework v1.22.1: A Stability Update Developers Shouldn’t Skip",
@@ -95,7 +95,7 @@
   {
    "t": "btn",
    "text": "PRV PROJECT",
-   "href": "https://q2msolutions.com/guide-microsoft-fabric-enables-real-time-analytics/"
+   "href": "/guide-microsoft-fabric-enables-real-time-analytics/"
   },
   {
    "t": "p",
@@ -108,7 +108,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/how-software-consulting-services-help-you-choose-the-right-project-model/"
+   "href": "/how-software-consulting-services-help-you-choose-the-right-project-model/"
   }
  ],
  "faqs": []

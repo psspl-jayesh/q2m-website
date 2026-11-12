@@ -13,7 +13,6 @@ const meta = new Map([...prev.pages, ...prev.posts, ...prev.caseStudies].map((e)
 
 const log = { cyrillic: [], typos: [], overrides: [], spelling: 0, notRewritten: [], dropped: [], h1: [], statsDropped: [], titleLong: [], descLong: [], clutchKept: [] }
 const HOMO = { 'е': 'e', 'а': 'a', 'о': 'o', 'с': 'c', 'р': 'p', 'х': 'x', 'і': 'i', 'ѕ': 's', 'ј': 'j', 'ԁ': 'd', 'ɡ': 'g' }
-const hasNonLatin = (w) => /[Ѐ-ӿ]/.test(w) && /[A-Za-z]/.test(w)
 
 /* ───────── Step 6: content errors on the live site (not copied) ───────── */
 const TYPOS = [ // exact, clear errors only; each is logged with page and location
@@ -69,7 +68,7 @@ const stats = {
   projectsDelivered: { key: 'projectsDelivered', value: 150, prefix: '', suffix: '+', label: 'Projects Delivered', text: heroStat || '150+ Projects Delivered', source: 'live home hero: "150+ Projects Delivered"' },
   counters: L.stats.counters.map((c, i) => ({ key: `counter${i}`, value: Number(c.value), prefix: c.prefix || '', suffix: c.suffix || '', label: rewriteText('shared/stats', `counter${i}`, c.label), source: 'live home counter data-to-value' })),
 }
-const statFromBlock = (path, b, idx) => {
+const statFromBlock = (path, b) => {
   const label = b.text || ''
   // 1) exact home counter (value comes from the counter's data-to-value attribute)
   const counter = stats.counters.find((c) => c.label.toLowerCase() === label.toLowerCase())
@@ -86,7 +85,7 @@ log.removals = []
 const REVIEW_LINE = /^(review on|\(\d+ reviews?\))$/i
 function stripClutchWidget(path, blocks) {
   return blocks.flatMap((x) => {
-    if (x.eyebrow && REVIEW_LINE.test(x.eyebrow.trim())) { log.removals.push({ path, what: 'Clutch review eyebrow', before: x.eyebrow }); const { eyebrow, ...rest } = x; return [rest] }
+    if (x.eyebrow && REVIEW_LINE.test(x.eyebrow.trim())) { log.removals.push({ path, what: 'Clutch review eyebrow', before: x.eyebrow }); const { eyebrow: _eyebrow, ...rest } = x; return [rest] }
     if (x.t === 'p' && REVIEW_LINE.test((x.text || '').trim())) { log.removals.push({ path, what: 'Clutch review line', before: x.text }); return [] }
     return [x]
   })

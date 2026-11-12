@@ -50,12 +50,12 @@ const shape = (x, type) => {
   }
 }
 
-const [pages, posts, cases, cats, media] = await Promise.all([all('pages'), all('posts'), all('case-study'), all('categories'), Promise.resolve([])])
+const [pages, posts, cases, cats] = await Promise.all([all('pages'), all('posts'), all('case-study'), all('categories')])
 const mediaIds = [...pages, ...posts, ...cases].map((x) => x.featured_media).filter(Boolean)
 const mediaMap = {}
 for (let i = 0; i < mediaIds.length; i += 50) {
   const ids = mediaIds.slice(i, i + 50).join(',')
-  try { (await get(`${BASE}/wp-json/wp/v2/media?include=${ids}&per_page=50&_fields=id,source_url,alt_text,media_details`)).forEach((m) => (mediaMap[m.id] = { src: m.source_url, alt: m.alt_text, w: m.media_details?.width, h: m.media_details?.height })) } catch {}
+  try { (await get(`${BASE}/wp-json/wp/v2/media?include=${ids}&per_page=50&_fields=id,source_url,alt_text,media_details`)).forEach((m) => (mediaMap[m.id] = { src: m.source_url, alt: m.alt_text, w: m.media_details?.width, h: m.media_details?.height })) } catch { /* media details are optional: images fall back to the manifest */ }
 }
 // FAQs are server-rendered Elementor widgets (not in REST content) -> read them from the live HTML
 const faqOf = async (url) => {

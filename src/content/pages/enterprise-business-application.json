@@ -2,7 +2,7 @@
  "path": "/enterprise-business-application/",
  "slug": "enterprise-business-application",
  "type": "page",
- "source": "https://q2msolutions.com/enterprise-business-application/",
+ "source": "/enterprise-business-application/",
  "syncedAt": "2026-11-11T08:57:51.022Z",
  "seo": {
   "title": "Enterprise Business Application - Q2M Solutions",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -376,7 +376,7 @@
   {
    "t": "btn",
    "text": "Connect with us today to start your enterprise transformation journey",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

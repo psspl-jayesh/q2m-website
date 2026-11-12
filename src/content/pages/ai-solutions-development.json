@@ -2,7 +2,7 @@
  "path": "/ai-solutions-development/",
  "slug": "ai-solutions-development",
  "type": "page",
- "source": "https://q2msolutions.com/ai-solutions-development/",
+ "source": "/ai-solutions-development/",
  "syncedAt": "2026-11-11T08:57:50.737Z",
  "seo": {
   "title": "AI Solutions Development",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Talk to an Expert",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -449,7 +449,7 @@
   {
    "t": "btn",
    "text": "Start Your AI Journey Today!",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

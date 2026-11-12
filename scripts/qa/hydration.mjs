@@ -1,7 +1,7 @@
 // Production build (vite preview :4173): load every pre-rendered route, check hydration (no React errors, the server DOM is
 // kept: a marker node set before JS runs must survive), the page is not blank before JS, and the head tags are correct.
 import puppeteer from 'puppeteer-core'
-import { readFileSync, readdirSync, statSync } from 'node:fs'
+import { readdirSync, statSync } from 'node:fs'
 import { BASE, CHROME, ROOT } from './config.mjs'
 const R = ROOT + 'dist'
 const routes = []

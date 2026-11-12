@@ -2,7 +2,7 @@
  "path": "/ai-chatbot-development-company/",
  "slug": "ai-chatbot-development-company",
  "type": "page",
- "source": "https://q2msolutions.com/ai-chatbot-development-company/",
+ "source": "/ai-chatbot-development-company/",
  "syncedAt": "2026-11-11T08:57:50.215Z",
  "seo": {
   "title": "AI Chatbot Development Company | Custom Chatbot Solutions",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Schedule A Consultation Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

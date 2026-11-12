@@ -2,7 +2,7 @@
  "path": "/azure-ai-and-machine-learning/",
  "slug": "azure-ai-and-machine-learning",
  "type": "page",
- "source": "https://q2msolutions.com/azure-ai-and-machine-learning/",
+ "source": "/azure-ai-and-machine-learning/",
  "syncedAt": "2026-11-11T08:57:50.794Z",
  "seo": {
   "title": "Microsoft Azure AI and Machine Learning",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -458,7 +458,7 @@
   {
    "t": "btn",
    "text": "Speak with a Microsoft Azure AI Consultant",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

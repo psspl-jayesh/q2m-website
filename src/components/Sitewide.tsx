@@ -17,7 +17,7 @@ export function ClientLogoStrip({ label, logos }: { label: string; logos: SiteIm
           <ul className="logo-marquee-track">
             {[...logos, ...logos].map((l, k) => (
               <li key={l.file + k} aria-hidden={k >= logos.length || undefined} className="flex h-16 w-[170px] shrink-0 items-center justify-center rounded-md border border-line bg-white px-6">
-                <SiteImage image={l} ratio="auto" sizes="140px" className="h-8 w-auto max-w-full object-contain" />
+                <SiteImage image={l} ratio="auto" sizes="160px" className="h-8 w-auto max-w-full object-contain" />
               </li>
             ))}
           </ul>

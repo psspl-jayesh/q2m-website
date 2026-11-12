@@ -2,7 +2,7 @@
  "path": "/azure-iot-solution/",
  "slug": "azure-iot-solution",
  "type": "page",
- "source": "https://q2msolutions.com/azure-iot-solution/",
+ "source": "/azure-iot-solution/",
  "syncedAt": "2026-11-11T08:57:50.554Z",
  "seo": {
   "title": "Azure IoT Solution",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Talk to Our Azure Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -98,7 +98,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -355,7 +355,7 @@
   {
    "t": "btn",
    "text": "Get started with Azure IoT Solutions",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

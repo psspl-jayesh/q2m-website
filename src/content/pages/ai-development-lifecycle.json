@@ -2,7 +2,7 @@
  "path": "/ai-development-lifecycle/",
  "slug": "ai-development-lifecycle",
  "type": "post",
- "source": "https://q2msolutions.com/ai-development-lifecycle/",
+ "source": "/ai-development-lifecycle/",
  "syncedAt": "2026-11-11T08:57:51.853Z",
  "seo": {
   "title": "The AI Development Lifecycle: From Discovery to Deployment",
@@ -355,7 +355,7 @@
   {
    "t": "btn",
    "text": "PRV PROJECT",
-   "href": "https://q2msolutions.com/impact-of-digital-transformation-in-pharma/"
+   "href": "/impact-of-digital-transformation-in-pharma/"
   },
   {
    "t": "p",
@@ -368,7 +368,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/ai-agent-development-cost/"
+   "href": "/ai-agent-development-cost/"
   }
  ],
  "faqs": []

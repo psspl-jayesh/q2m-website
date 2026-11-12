@@ -2,7 +2,7 @@
 // clipped text, empty sections, layout shift, console errors, one H1. Appends JSON lines to sweep.jsonl.
 import puppeteer from 'puppeteer-core'
 import { appendFileSync, writeFileSync } from 'node:fs'
-import { BASE, CHROME, ROOT } from './config.mjs'
+import { BASE, CHROME } from './config.mjs'
 const OUT = new URL(process.env.SWOUT || './results/sweep.jsonl', import.meta.url); writeFileSync(OUT, '')
 const AFTER = '2026-11-19T18:01:00+05:30'
 const PAGES = [['landing', '/bengaluru-tech-summit-2026/'], ['landing-after', '/bengaluru-tech-summit-2026/', AFTER], ['home', '/'], ['home-after', '/', AFTER],
@@ -14,7 +14,7 @@ const b = await puppeteer.launch({ executablePath: CHROME, headless: true })
 for (const [name, path, now] of PAGES.filter((x) => !process.env.ONLY || process.env.ONLY.split(',').includes(x[0]))) for (const w of (process.env.WIDTHS || '360,390,768,1024,1440,1920').split(',').map(Number)) for (const th of ['light', 'dark']) {
   const p = await b.newPage(); await p.setViewport({ width: w, height: 900, isMobile: w < 768 }); await p.bringToFront()
   const errs = []; p.on('pageerror', (e) => errs.push(String(e).slice(0, 160))); p.on('console', (m) => { if (m.type() === 'error') errs.push(m.text().slice(0, 160)) })
-  await p.evaluateOnNewDocument((t) => { try { localStorage.setItem('q2m-theme', t) } catch {} window.__cls = 0; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value }).observe({ type: 'layout-shift', buffered: true }) }, th)
+  await p.evaluateOnNewDocument((t) => { try { localStorage.setItem('q2m-theme', t) } catch { /* storage unavailable */ } window.__cls = 0; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value }).observe({ type: 'layout-shift', buffered: true }) }, th)
   if (now) await p.evaluateOnNewDocument(fakeNow(now))
   await p.goto(BASE + path, { waitUntil: 'load' }); await new Promise((r) => setTimeout(r, 900))
   for (let pass = 0; pass < 2; pass++) await p.evaluate(async () => { [...document.images].forEach((i) => (i.loading = 'eager')); for (let y = 0; y < document.documentElement.scrollHeight; y += 300) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 90)) } await new Promise((r) => setTimeout(r, 800)) })

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import { ArrowUpRight, Bot, CalendarDays, Clock, Glasses, MapPin, Ticket } from 'lucide-react'
 import page from '@/content/pages/bts-2026/page.json'
 import team from '@/content/sections/team-bento.json'
@@ -26,13 +26,12 @@ const img = (file: string, alt: string): SiteImg => ({ file, alt, w: imgMeta(fil
 const N = btsWording.neutral
 const booth = BTS.liveDemos
 
+const subscribeMinute = (cb: () => void) => { const t = window.setInterval(cb, 15_000); return () => window.clearInterval(t) }
+
 function useCountdown(target: string) {
-  // Counted in the browser only (the pre-rendered HTML is built earlier, so it shows "--" until the page has loaded)
-  const calc = () => Math.max(0, new Date(target).getTime() - btsNow().getTime())
-  const [ms, setMs] = useState<number | null>(null)
-  useEffect(() => { setMs(calc()); const t = window.setInterval(() => setMs(calc()), 15_000); return () => window.clearInterval(t) }, [target]) // eslint-disable-line react-hooks/exhaustive-deps
-  if (ms === null) return [null, null, null]
-  const min = Math.floor(ms / 60_000)
+  // Counted in the browser only: the pre-rendered HTML is built earlier, so the server/hydration snapshot is null ("--")
+  const min = useSyncExternalStore(subscribeMinute, () => Math.floor(Math.max(0, new Date(target).getTime() - btsNow().getTime()) / 60_000), () => null)
+  if (min === null) return [null, null, null]
   return [Math.floor(min / 1440), Math.floor((min % 1440) / 60), min % 60]
 }
 

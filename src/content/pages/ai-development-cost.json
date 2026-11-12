@@ -2,7 +2,7 @@
  "path": "/ai-development-cost/",
  "slug": "ai-development-cost",
  "type": "post",
- "source": "https://q2msolutions.com/ai-development-cost/",
+ "source": "/ai-development-cost/",
  "syncedAt": "2026-11-11T08:57:51.612Z",
  "seo": {
   "title": "A Complete Pricing Guide on AI Development Cost in 2026: Budget, Factors, and Optimisation Strategies",
@@ -575,7 +575,7 @@
   {
    "t": "btn",
    "text": "PRV PROJECT",
-   "href": "https://q2msolutions.com/hire-generative-ai-developers/"
+   "href": "/hire-generative-ai-developers/"
   },
   {
    "t": "p",
@@ -588,7 +588,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/top-ai-agent-development-companies/"
+   "href": "/top-ai-agent-development-companies/"
   }
  ],
  "faqs": []

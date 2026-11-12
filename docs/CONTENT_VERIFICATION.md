@@ -79,7 +79,7 @@ Pages checked: 60. Blocks identical to live: 4877. Blocks changed only by the li
 - p: Ready to take the first step towards unl (3)
 - h4: To More Inquiry (3)
 - h4: To Send Email (3)
-- p: info@q2msolutions.com (3)
+- p: info@q2msolutions.in (3)
 - h2: Social You Just Connected Us (3)
 - p: Linkedin Instagram Facebook (3)
 - stat: % Client Satisfaction We Stand Behind (1)
