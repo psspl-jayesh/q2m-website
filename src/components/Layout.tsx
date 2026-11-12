@@ -221,9 +221,9 @@ function FooterGroup({ title, links }: { title: string; links: MenuItem[] }) {
 /** Footer contact line: small icon in a soft circle, text in the body font; wrapped lines align with the first line. */
 function ContactItem({ icon: Icon, href, external, children }: { icon: typeof Mail; href: string; external?: boolean; children: React.ReactNode }) {
   return (
-    <li className="grid grid-cols-[2.25rem_1fr] items-start gap-x-3">
-      <span aria-hidden className="flex size-9 items-center justify-center rounded-full bg-tint text-action"><Icon className="size-4" /></span>
-      <a className="pt-1.5 text-[0.9375rem] leading-6 text-ink-muted transition-colors hover:text-ink" href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{children}</a>
+    <li className="grid grid-cols-[2rem_1fr] items-start gap-x-3 md:grid-cols-[2.25rem_1fr]">
+      <span aria-hidden className="flex size-8 items-center justify-center rounded-full bg-tint text-action md:size-9"><Icon className="size-4" /></span>
+      <a className="pt-1 text-[0.9375rem] leading-6 text-ink-muted transition-colors hover:text-ink md:pt-1.5" href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{children}</a>
     </li>
   )
 }
@@ -249,18 +249,18 @@ function Footer() {
     <footer className="site-footer border-t border-line bg-surface-raised text-ink">
       <div className="container-page">
         {/* CTA band */}
-        <div className="border-b border-line py-12 md:py-14">
-          <DotArrow pitch={7} className="mb-5 block h-auto w-[63px]" />
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <div className="border-b border-line py-8 md:py-14">
+          <DotArrow pitch={7} className="mb-3 block h-auto w-[49px] md:mb-5 md:w-[63px]" />
+          <div className="flex flex-col gap-5 md:gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h2 className="display-md">{lead}{accent && <span className="text-action">{accent}</span>}</h2>
-            <p className="mt-3 max-w-xl text-ink-muted">{footerContent.cta.line}</p>
+            <p className="mt-2 max-w-xl text-[0.9375rem] text-ink-muted md:mt-3 md:text-base">{footerContent.cta.line}</p>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:shrink-0">
-            <Link to={cta.href} className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-action px-7 font-medium text-on-action transition-colors hover:bg-q2m">
+          <div className="flex flex-wrap gap-3 lg:shrink-0">
+            <Link to={cta.href} className="group inline-flex min-h-12 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-action px-5 font-medium sm:flex-none md:px-7 text-on-action transition-colors hover:bg-q2m">
               {cta.label}<ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <a href={`mailto:${COMPANY.email}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line px-7 font-medium text-ink transition-colors hover:border-action hover:text-action">
+            <a href={`mailto:${COMPANY.email}`} className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line px-5 font-medium sm:flex-none md:px-7 text-ink transition-colors hover:border-action hover:text-action">
               <Mail aria-hidden className="size-4" />{ui.finalCtaEmail}
             </a>
           </div>
@@ -268,11 +268,11 @@ function Footer() {
         </div>
 
         {/* Main footer: brand + contact, four link columns */}
-        <div className="grid gap-10 py-12 md:py-14 xl:grid-cols-12 xl:gap-12">
+        <div className="grid gap-6 py-8 md:gap-10 md:py-14 xl:grid-cols-12 xl:gap-12">
           <div className="xl:col-span-4">
             <Logo width={112} />
-            <p className="mt-5 max-w-md text-[0.9375rem] leading-6 text-ink-muted">{siteCopy.footerBlurb}</p>
-            <ul className="mt-6 max-w-md space-y-4 border-t border-line pt-6">
+            <p className="mt-4 max-w-md text-[0.9375rem] leading-6 text-ink-muted md:mt-5">{siteCopy.footerBlurb}</p>
+            <ul className="mt-5 max-w-md space-y-2.5 border-t border-line pt-5 md:mt-6 md:space-y-4 md:pt-6">
               <ContactItem icon={Mail} href={`mailto:${COMPANY.email}`}>{COMPANY.email}</ContactItem>
               {COMPANY.phone && <ContactItem icon={Phone} href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</ContactItem>}
               <ContactItem icon={MapPin} href={COMPANY.mapUrl} external>{fullAddress()}</ContactItem>
@@ -284,8 +284,8 @@ function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div data-back-to-top-avoid className="flex flex-col gap-5 border-t border-line py-6 text-sm text-ink-muted lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-x-4">
+        <div data-back-to-top-avoid className="flex flex-col gap-4 border-t border-line py-5 text-sm text-ink-muted md:gap-5 md:py-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center md:gap-3 md:gap-x-4">
             <p suppressHydrationWarning>Copyright © {new Date().getFullYear()} {COMPANY.legalName}</p>
             <span aria-hidden className="hidden h-4 w-px bg-line md:block" />
             <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -294,7 +294,7 @@ function Footer() {
               ))}
             </ul>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 md:gap-4">
             <ul aria-label="Social media" className="flex items-center gap-2">
               {COMPANY.social.map((s) => (
                 <li key={s.label}><a className="inline-flex size-10 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-action hover:text-action" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}><SocialIcon label={s.label} /></a></li>
