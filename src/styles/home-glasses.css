@@ -104,6 +104,7 @@
 .hg .stat b { display: block; font: 900 46px/1 var(--g-hd); color: var(--g-blue); margin-bottom: 12px; font-variant-numeric: tabular-nums; }
 [data-theme='dark'] .hg .stat b { color: var(--g-blue-l); }
 .hg .stat p { font-size: 15px; line-height: 1.5; }
+.hg .stat:last-child:nth-child(odd) { grid-column: 1 / -1; } /* an odd number of stats: the last card spans the row */
 .hg .tbc { background: var(--g-tint); color: var(--g-ink); padding: 0 6px; border-radius: 3px; font-size: 0.8em; }
 @media (max-width: 900px) { .hg .two { grid-template-columns: minmax(0, 1fr); } }
 
