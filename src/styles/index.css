@@ -38,6 +38,7 @@
   --action-soft: #3d96f5; /* small blue text on slabs */
   --tint: #e6f1fd;
   --focus: #0062c4;
+  --error: #b91c1c;        /* form error text and borders (AA on surface) */
   /* Sticky layout (single source of truth): header height + gap below it */
   --header-height: 88px;
   --sticky-gap: 24px;
@@ -60,6 +61,7 @@
   --ink-inverse: #f4f6f8;
   --tint: #10233a;
   --focus: #7cb8ff;
+  --error: #f87171;
   --dot-idle: #2a2e35;
 }
 
@@ -83,6 +85,7 @@
   --color-block-line: var(--block-line);
   --color-action-soft: var(--action-soft);
   --color-tint: var(--tint);
+  --color-error: var(--error);
 
   /* Radius: 4 tags/inputs · 8 buttons/cards · 16 panels/frames · pill for tags only */
   --radius-sm: 4px;
@@ -96,7 +99,8 @@
 @media (min-width: 1024px) { :root { --header-height: 96px; } }
 
 @layer base {
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  /* scroll-padding: anything scrolled into view (keyboard focus, in-page links) stops below the sticky header */
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-height) + 16px); }
   body { @apply bg-surface text-ink font-sans antialiased; font-size: 1rem; line-height: 1.5; overflow-x: clip; }
   h1, h2, h3, h4, h5 { @apply font-display; text-wrap: balance; }
   h1 { font-weight: 700; letter-spacing: -0.01em; }

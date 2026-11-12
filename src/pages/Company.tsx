@@ -103,9 +103,9 @@ export function Contact({ entry }: { entry: Entry }) {
   const field = (name: keyof Form, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => (
     <div>
       <label htmlFor={name} className="mb-2 block text-sm font-medium">{label} <span aria-hidden className="text-action">*</span></label>
-      <input id={name} aria-invalid={!!errors[name]} aria-describedby={errors[name] ? `${name}-e` : undefined} {...register(name)} {...props}
-        className={`h-12 w-full rounded-sm border bg-surface px-4 outline-none transition-colors focus:border-q2m ${errors[name] ? 'border-red-600' : 'border-line'}`} />
-      {errors[name] && <p id={`${name}-e`} className="mt-1.5 text-sm text-red-700">{errors[name]!.message as string}</p>}
+      <input id={name} aria-required="true" aria-invalid={!!errors[name]} aria-describedby={errors[name] ? `${name}-e` : undefined} {...register(name)} {...props}
+        className={`h-12 w-full rounded-sm border bg-surface px-4 transition-colors focus:border-q2m ${errors[name] ? 'border-error' : 'border-line'}`} />
+      {errors[name] && <p id={`${name}-e`} className="mt-1.5 text-sm text-error">{errors[name]!.message as string}</p>}
     </div>
   )
 
@@ -130,8 +130,8 @@ export function Contact({ entry }: { entry: Entry }) {
             <div className="rounded-lg bg-surface p-6 sm:p-10">
               {formHeading && <h2 className="mb-8 font-display text-2xl font-semibold">{formHeading}</h2>}
               <div ref={live} tabIndex={-1} role="status" aria-live="polite" className="outline-none">
-                {status.kind === 'ok' && <div className="mb-8 flex gap-3 rounded-md bg-green-50 p-4 text-green-900"><CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0" /><p><strong className="block">Message sent.</strong>{status.msg}</p></div>}
-                {status.kind === 'error' && <div className="mb-8 flex gap-3 rounded-md bg-red-50 p-4 text-red-900"><TriangleAlert aria-hidden className="mt-0.5 size-5 shrink-0" /><p><strong className="block">Not sent.</strong>{status.msg}</p></div>}
+                {status.kind === 'ok' && <div className="mb-8 flex gap-3 rounded-md border border-line bg-tint p-4 text-ink"><CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-action" /><p><strong className="block">Message sent.</strong>{status.msg}</p></div>}
+                {status.kind === 'error' && <div className="mb-8 flex gap-3 rounded-md border border-error bg-surface p-4 text-ink"><TriangleAlert aria-hidden className="mt-0.5 size-5 shrink-0 text-error" /><p><strong className="block">Not sent.</strong>{status.msg}</p></div>}
               </div>
               <form noValidate onSubmit={handleSubmit(onSubmit)} className="grid gap-6 sm:grid-cols-2" aria-label="Contact form">
                 {field('full-name', 'Full name', { autoComplete: 'name' })}
@@ -141,9 +141,9 @@ export function Contact({ entry }: { entry: Entry }) {
                 <div className="sm:col-span-2">{field('subject', 'Subject')}</div>
                 <div className="sm:col-span-2">
                   <label htmlFor="textarea-message" className="mb-2 block text-sm font-medium">Message <span aria-hidden className="text-action">*</span></label>
-                  <textarea id="textarea-message" rows={6} aria-invalid={!!errors['textarea-message']} aria-describedby={errors['textarea-message'] ? 'msg-e' : undefined} {...register('textarea-message')}
-                    className={`w-full rounded-sm border bg-surface p-4 outline-none transition-colors focus:border-q2m ${errors['textarea-message'] ? 'border-red-600' : 'border-line'}`} />
-                  {errors['textarea-message'] && <p id="msg-e" className="mt-1.5 text-sm text-red-700">{errors['textarea-message'].message}</p>}
+                  <textarea id="textarea-message" rows={6} aria-required="true" aria-invalid={!!errors['textarea-message']} aria-describedby={errors['textarea-message'] ? 'msg-e' : undefined} {...register('textarea-message')}
+                    className={`w-full rounded-sm border bg-surface p-4 transition-colors focus:border-q2m ${errors['textarea-message'] ? 'border-error' : 'border-line'}`} />
+                  {errors['textarea-message'] && <p id="msg-e" className="mt-1.5 text-sm text-error">{errors['textarea-message'].message}</p>}
                 </div>
                 <BusinessDetails register={register} errors={errors} prefix="c" />
                 <ConsentField register={register} errors={errors} name="consent" id="c-consent" />
