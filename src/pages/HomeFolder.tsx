@@ -59,7 +59,7 @@ const N = btsWording.neutral
 const TEAM_POSTS = ['/ai-chatbot-development-strategic-priority-2026/', '/machine-learning-development-scalable-ml-solutions/', '/top-ai-agent-development-companies/']
 
 /**
- * THE HOME PAGE (routed). The designed home from the Q2M_Website_Home folder: its design, section order and copy are kept as they were.
+ * BACKUP, NOT ROUTED since the smart glasses home (HomeGlasses.tsx) became the home page on branch new-home-page (12 Nov 2026; see docs/BACKUP_OLD_DESIGN.md). Previously THE HOME PAGE. The designed home from the Q2M_Website_Home folder: its design, section order and copy are kept as they were.
  * Three sections from the live home page are added where the meaning matches nothing in the design (Our Global Clients logos,
  * The Results Our Clients Measure, From The Team). "Trusted & Certified" was removed on the owner's request (12 Nov 2026).
  * The live-structure home is kept as Home.tsx (not routed).

@@ -28,3 +28,7 @@ scripts/qa/node_modules/
 scripts/qa/results/
 scripts/qa/package-lock.json
 scripts/lint/node_modules/
+
+# Design reference screenshots (kept locally, not committed)
+design/**/*.png
+!design/**/images/*.png

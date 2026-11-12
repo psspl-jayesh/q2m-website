@@ -29,6 +29,9 @@ Severity: High = do soon (legal or business), Medium = fix soon, Low = polish, D
 | 19 | **Long button labels** (45 to 56 characters) wrap to two lines on phones; no clipping | 6 service pages | Accept, or shorter text | Low |
 | 20 | **Home hero:** dot field with the Q2M logo arrow (current), or a slider of the 3 live banners | Home | Decision | Low |
 | 21 | **Instagram handle** "qtomsolutions" is what the live site links to; confirm it is the right account | Footer, JSON-LD | Confirmation | Low |
+| 22 | **New home (branch new-home-page): "[TBC]" stat.** "Enterprise pilots delivered" shows [TBC] as in the design. Give the real figure or remove the card | Home | Number | High |
+| 23 | **New home: automotive image slot.** The use-case grid shows the design's "Image slot · 1600 × 800" placeholder tile. Supply the photo | Home | Image | High |
+| 24 | **New home: BTS live demos.** The design says "Live demos at BTS 2026" and "at our BTS 2026 desk", but `BTS.liveDemos` is false (no desk with demos confirmed). Confirm, or the lines need neutral wording. They hide after the event either way | Home | Yes/no | High |
 
 ## Done (for reference)
 - Pre-rendered static HTML for every route; Lighthouse mobile 98–100 on home, BTS landing, a service page and contact (`docs/PRERENDER.md`).

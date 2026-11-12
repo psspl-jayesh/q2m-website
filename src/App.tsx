@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Layout from '@/components/Layout'
 import { findEntry, useContent } from '@/lib/content'
-import Home from '@/pages/HomeFolder'
+import Home from '@/pages/HomeGlasses'
 import BtsLanding from '@/pages/BtsLanding'
 import ServicePage from '@/pages/ServicePage'
 import { About, Contact, NotFound } from '@/pages/Company'
