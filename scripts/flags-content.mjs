@@ -1,11 +1,10 @@
 // Writes docs/CONTENT_FLAGS.md: everything that needs a decision, built from the sync data and the apply log.
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 const log = JSON.parse(readFileSync('docs/_prev/apply-log.json', 'utf8'))
 const menu = JSON.parse(readFileSync('src/content/shared/menu.json', 'utf8'))
 const ui = JSON.parse(readFileSync('src/content/shared/ui.json', 'utf8'))
 const liveFooter = JSON.parse(readFileSync('src/content/live-shared/footer.json', 'utf8'))
 const home = JSON.parse(readFileSync('docs/_prev/home.before-live-sync.json', 'utf8'))
-const liveHome = JSON.parse(readFileSync('src/content/live/home.json', 'utf8'))
 const hidden = menu.flatMap((m) => m.children.filter((c) => c.placeholder).map((c) => ({ g: m.label, l: c.label })))
 const byGroup = {}; hidden.forEach((h) => (byGroup[h.g] ??= []).push(h.l))
 const statCounts = {}; log.statsDropped.forEach((s) => { const k = s.original.replace(/\s+/g, ' '); statCounts[k] = (statCounts[k] || { n: 0, pages: new Set() }); statCounts[k].n++; statCounts[k].pages.add(s.path) })

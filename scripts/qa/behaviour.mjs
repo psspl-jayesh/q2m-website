@@ -1,6 +1,6 @@
 // Behaviour on the pre-rendered production build (vite preview :4173).
 import puppeteer from 'puppeteer-core'
-import { BASE, CHROME, ROOT } from './config.mjs'
+import { BASE, CHROME } from './config.mjs'
 const B = BASE
 const b = await puppeteer.launch({ executablePath: CHROME, headless: true })
 const fakeNow = (iso) => `(() => { const T = Date.parse(${JSON.stringify(iso)}); const off = T - Date.now(); const D = Date;
@@ -10,7 +10,7 @@ async function open(path, { w = 1440, now, theme } = {}) {
   const p = await b.newPage(); await p.setViewport({ width: w, height: 900, isMobile: w < 768 })
   const errs = []; p.on('pageerror', (e) => errs.push(String(e).slice(0, 160))); p.on('console', (m) => { if (m.type() === 'error') errs.push(m.text().slice(0, 160)) })
   if (now) await p.evaluateOnNewDocument(fakeNow(now))
-  if (theme) await p.evaluateOnNewDocument((t) => { try { localStorage.setItem('q2m-theme', t) } catch {} }, theme)
+  if (theme) await p.evaluateOnNewDocument((t) => { try { localStorage.setItem('q2m-theme', t) } catch { /* storage unavailable */ } }, theme)
   await p.evaluateOnNewDocument(() => { document.addEventListener('DOMContentLoaded', () => { window.__staleAtDcl = document.documentElement.classList.contains('bts-stale'); const el = document.querySelector('#root > *'); if (el) el.__ssrMark = true }) })
   await p.goto(B + path, { waitUntil: 'networkidle0' }); await new Promise((r) => setTimeout(r, 800))
   return { p, errs }

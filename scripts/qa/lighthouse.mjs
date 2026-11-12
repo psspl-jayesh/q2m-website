@@ -2,7 +2,7 @@
 import lighthouse from 'lighthouse'
 import puppeteer from 'puppeteer-core'
 import { writeFileSync } from 'node:fs'
-import { BASE, CHROME, ROOT } from './config.mjs'
+import { BASE, CHROME } from './config.mjs'
 const base = BASE
 const urls = (process.argv[2] || '/bengaluru-tech-summit-2026/').split(',')
 const out = []

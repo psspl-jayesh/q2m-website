@@ -17,13 +17,13 @@ const rows = []
 for (const [name, path] of PAGES.filter((x) => !process.env.ONLY || process.env.ONLY.split(',').includes(x[0]))) for (const w of (process.env.WIDTHS || '360,768,1440').split(',').map(Number)) for (const th of (process.env.THEMES || 'light,dark').split(',')) {
   const p = await b.newPage(); await p.setViewport({ width: w, height: w < 768 ? 780 : 900, isMobile: w < 768, hasTouch: w < 768 })
   const errs = []; p.on('pageerror', (e) => errs.push(String(e).slice(0, 150))); p.on('console', (m) => { if (m.type() === 'error') errs.push(m.text().slice(0, 150)) })
-  await p.evaluateOnNewDocument((t) => { try { localStorage.setItem('q2m-theme', t) } catch {} window.__cls = 0; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value }).observe({ type: 'layout-shift', buffered: true }) }, th)
+  await p.evaluateOnNewDocument((t) => { try { localStorage.setItem('q2m-theme', t) } catch { /* storage unavailable */ } window.__cls = 0; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value }).observe({ type: 'layout-shift', buffered: true }) }, th)
   await p.goto(base + path, { waitUntil: 'networkidle0' }); await wait(500)
   const r = { name, w, th, errs }
   r.top = (await state(p)).visible
   await p.evaluate(() => window.scrollTo({ top: 400, behavior: 'instant' })); await wait(500); r.at400 = (await state(p)).visible
   await p.evaluate(() => window.scrollTo({ top: 900, behavior: 'instant' })); await wait(600); const s900 = await state(p); r.at900 = s900.visible
-  const mid = await p.evaluate(() => { const y = Math.round((document.documentElement.scrollHeight - innerHeight) / 2); window.scrollTo({ top: y, behavior: 'instant' }); return y }); await wait(500)
+  await p.evaluate(() => { const y = Math.round((document.documentElement.scrollHeight - innerHeight) / 2); window.scrollTo({ top: y, behavior: 'instant' }); return y }); await wait(500)
   const sm = await state(p); r.ringMid = [sm.ring, sm.expect]
   // inside the viewport, 16/24px from the edges
   r.edges = [sm.vw - sm.rect[2], sm.vh - sm.rect[3]]

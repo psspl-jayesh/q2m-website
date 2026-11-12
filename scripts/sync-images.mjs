@@ -153,7 +153,7 @@ mkdirSync(OUT, { recursive: true })
 const slugFor = new Map()
 const usedNames = new Map() // dir/filename -> original
 const localFor = new Map() // original -> { file, w, h, bytes, from }
-const cleanName = (o) => decodeURIComponent(path.basename(o)).toLowerCase().replace(/[\s_]+/g, '-').replace(/[^a-z0-9.\-]/g, '')
+const cleanName = (o) => decodeURIComponent(path.basename(o)).toLowerCase().replace(/[\s_]+/g, '-').replace(/[^a-z0-9.-]/g, '')
 for (const [o, u] of unique) {
   const shared = u.chrome || u.pages.size >= 2
   const dir = shared ? 'shared' : slugOfPath([...u.pages][0])
@@ -178,7 +178,7 @@ await pool([...unique.entries()], 8, async ([o, u]) => {
       }
       let w = null, h = null
       try { const m = await sharp(dest).metadata(); w = m.width; h = m.height } catch { /* svg without size */ }
-      if (/\.svg$/i.test(name)) { const svg = readFileSync(dest, 'utf8'); const vb = svg.match(/viewBox=["']\s*[\d.\-]+\s+[\d.\-]+\s+([\d.]+)\s+([\d.]+)/); const wa = svg.match(/<svg[^>]*\swidth=["']([\d.]+)/); const ha = svg.match(/<svg[^>]*\sheight=["']([\d.]+)/); w = w || Math.round(+(wa?.[1] ?? vb?.[1] ?? 0)) || null; h = h || Math.round(+(ha?.[1] ?? vb?.[2] ?? 0)) || null }
+      if (/\.svg$/i.test(name)) { const svg = readFileSync(dest, 'utf8'); const vb = svg.match(/viewBox=["']\s*[\d.-]+\s+[\d.-]+\s+([\d.]+)\s+([\d.]+)/); const wa = svg.match(/<svg[^>]*\swidth=["']([\d.]+)/); const ha = svg.match(/<svg[^>]*\sheight=["']([\d.]+)/); w = w || Math.round(+(wa?.[1] ?? vb?.[1] ?? 0)) || null; h = h || Math.round(+(ha?.[1] ?? vb?.[2] ?? 0)) || null }
       localFor.set(o, { file: `/images/${dir}/${name}`, w, h, fromOriginal: i === 0 })
       i === 0 ? dlStats.ok++ : dlStats.fallback++
       return
@@ -198,7 +198,6 @@ const roleOf = (it, loc) => {
 }
 const humanise = (file) => path.basename(file).replace(/\.[a-z0-9]+$/i, '').replace(/-(img|image|banner|logo|\d{3,4}x\d{3,4})$/gi, '').replace(/[-_]+/g, ' ').trim()
 const manifest = { generatedAt: new Date().toISOString(), source: BASE, pages: {}, shared: { chrome: [], icons: [] }, brand: {}, stats: {}, mapping: {} }
-const altReview = []
 const altByFile = new Map()
 for (const [p, v] of Object.entries(crawled)) {
   if (v.error) continue
@@ -251,7 +250,6 @@ writeFileSync('src/data/content.json', JSON.stringify(content))
 
 /* mapping (Step 1) */
 const liveOnly = sitemap.filter((p) => !localPaths.has(p))
-const localOnly = [...localPaths, ...EXTRA_LOCAL].filter((p) => !sitemap.includes(p) && !crawled[p])
 const mapping = { sitemap, menu, liveWithRoute: sitemap.filter((p) => localPaths.has(p)), liveWithoutRoute: liveOnly, menuWithoutRoute: menu.filter((p) => !localPaths.has(p) && !/^\/(category|tag|author|\d{4})/.test(p)), localWithoutLive: [...localPaths].filter((p) => !sitemap.includes(p)).concat(EXTRA_LOCAL) }
 manifest.mapping = mapping
 
@@ -262,7 +260,6 @@ manifest.stats = { pages: Object.keys(manifest.pages).length, images: Object.val
 writeFileSync(MANIFEST, JSON.stringify(manifest, null, 1))
 
 /* small static file for components that need a few site-wide images without loading the full manifest */
-const badge = (name) => manifest.shared.chrome.find((c) => c.file.includes(name))
 writeFileSync('src/data/site-images.json', JSON.stringify({
   brand: manifest.brand,
   favicon: manifest.shared.icons[0]?.file ?? null,

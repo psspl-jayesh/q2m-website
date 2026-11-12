@@ -3,7 +3,7 @@
 // Output: public/images/_opt/<dir>__<name>-<w>.{avif,webp}  and  src/data/images.json  (local src -> {w,h,widths,name,dir})
 // SVGs are served as-is (no raster variants); their size comes from the manifest.
 import sharp from 'sharp'
-import { readdirSync, mkdirSync, readFileSync, writeFileSync, existsSync, statSync, rmSync } from 'node:fs'
+import { readdirSync, mkdirSync, readFileSync, writeFileSync, statSync, rmSync } from 'node:fs'
 import path from 'node:path'
 
 const ROOT = 'public/images'

@@ -1,6 +1,6 @@
 // Checks the pre-rendered dist: every sitemap URL has its own HTML with title, description, canonical (= its URL), og tags.
 import { existsSync, readFileSync } from 'node:fs'
-import { BASE, CHROME, ROOT } from './config.mjs'
+import { ROOT } from './config.mjs'
 const R = ROOT
 const locs = [...readFileSync(R + 'public/sitemap.xml', 'utf8').matchAll(/<loc>https:\/\/q2msolutions\.com([^<]*)<\/loc>/g)].map((m) => m[1])
 const miss = [], bad = [], titles = new Map()

@@ -27,3 +27,4 @@ dist-ssr/
 scripts/qa/node_modules/
 scripts/qa/results/
 scripts/qa/package-lock.json
+scripts/lint/node_modules/
