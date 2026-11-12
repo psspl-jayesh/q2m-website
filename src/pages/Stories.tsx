@@ -77,7 +77,7 @@ function StorySection({ title, blocks, imgs }: { title: string; blocks: ReturnTy
   const id = slugify(title)
   // Results → metric band
   if (/^results/i.test(title) && groups.length) return (
-    <section id={id} className="on-dark my-16 scroll-anchor rounded-lg bg-block p-8 text-ink-inverse md:p-14">
+    <section id={id} className="on-dark my-16 scroll-anchor rounded-lg border border-block-line bg-block p-8 text-ink-inverse md:p-14">
       <h2 className="display-md">{title}</h2>
       {lead.paras[0] && <p className="lede mt-4 max-w-2xl">{lead.paras[0]}</p>}
       <dl className="mt-10 grid gap-8 sm:grid-cols-2">

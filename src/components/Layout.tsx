@@ -50,7 +50,7 @@ function MegaPanel({ g, close, nav }: { g: NavGroup; close: () => void; nav: Ret
       <div className="col-span-4">
         <p className="eyebrow mb-3">{g.label}</p>
         {intro && <p className="max-w-sm text-[0.9375rem] leading-relaxed text-ink-muted">{intro}</p>}
-        <MenuLink item={first} nav={nav} onClick={close} className="nav-featured group mt-6 block rounded-md bg-block p-6 text-ink-inverse transition-colors hover:bg-action">
+        <MenuLink item={first} nav={nav} onClick={close} className="nav-featured group mt-6 block rounded-md border border-block-line bg-block p-6 text-ink-inverse transition-colors hover:bg-action">
           <span className="mono mb-3 block !text-[0.6875rem] uppercase tracking-[0.08em] opacity-70">Featured</span>
           <span className="flex items-center justify-between font-display text-xl">{first.label}<ArrowUpRight aria-hidden className="size-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
           {blurb && <span className="mt-3 block text-[0.875rem] leading-relaxed opacity-80">{blurb}</span>}

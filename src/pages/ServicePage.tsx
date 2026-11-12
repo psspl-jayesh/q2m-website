@@ -41,7 +41,7 @@ export function resolveHref(h?: string | null): string | null {
 function OutlinePanel({ title, items, hasFaq }: { title: string; items: { title: string; id: string }[]; hasFaq: boolean }) {
   const row = 'group flex min-h-12 items-center gap-4 py-3 transition-colors hover:text-action-soft'
   return (
-    <div className="on-dark rounded-lg bg-block p-6 text-ink-inverse sm:p-8">
+    <div className="on-dark rounded-lg border border-block-line bg-block p-6 text-ink-inverse sm:p-8">
       <DotArrow pitch={12} className="mb-6 ml-auto block h-auto w-[84px]" />
       <p className="eyebrow mb-4">{ui.onThisPage}</p>
       <p className="sr-only">{title}</p>
