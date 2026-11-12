@@ -229,7 +229,7 @@ function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?:
   const logoStrip = textBlocks.length > 0 && logos.length > 0 ? (
     <div className="mt-14 border-t hairline pt-8">
       {stripLabel && <p className="eyebrow mb-6">{stripLabel}</p>}
-      <StaggerGroup as="ul" className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">{logos.map((m) => <StaggerItem as="li" key={m.file + m.order} className="flex h-16 items-center justify-center rounded-md border border-line bg-white px-5"><SiteImage image={m} sizes="140px" className="h-8 w-auto max-w-full object-contain" /></StaggerItem>)}</StaggerGroup>
+      <StaggerGroup as="ul" className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">{logos.map((m) => <StaggerItem as="li" key={m.file + m.order} className="flex h-16 items-center justify-center rounded-md border border-line bg-white px-5"><SiteImage image={m} sizes="160px" className="h-8 w-auto max-w-full object-contain" /></StaggerItem>)}</StaggerGroup>
     </div>
   ) : null
   const tail = <>{gallery}{logoStrip}</>
@@ -238,7 +238,7 @@ function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?:
   if (textBlocks.length === 0 && logos.length > 0) return (
     <section aria-label={s.title} className="border-y hairline bg-surface-raised py-12"><div className="container-page">
       <p className="eyebrow mb-8">{s.title}</p>
-      <StaggerGroup as="ul" className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">{logos.map((m) => <StaggerItem as="li" key={m.file + m.order} className="flex h-16 items-center justify-center rounded-md border border-line bg-white px-5"><SiteImage image={m} sizes="140px" className="h-8 w-auto max-w-full object-contain" /></StaggerItem>)}</StaggerGroup>
+      <StaggerGroup as="ul" className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">{logos.map((m) => <StaggerItem as="li" key={m.file + m.order} className="flex h-16 items-center justify-center rounded-md border border-line bg-white px-5"><SiteImage image={m} sizes="160px" className="h-8 w-auto max-w-full object-contain" /></StaggerItem>)}</StaggerGroup>
     </div></section>
   )
   // Heading with images only
