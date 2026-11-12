@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import type { Manifest } from './images'
+import { SHOW_TESTIMONIALS } from '@/config/flags'
 
 /** One piece of page content, copied from the live site (src/content/pages/*.json). */
 export type Block = {
@@ -54,7 +55,8 @@ export function sectionize(blocks: Block[]): Section[] {
     if (b.t === 'h1' || b.t === 'h2') out.push({ title: b.text ?? '', eyebrow: b.eyebrow, level: b.t, blocks: [] })
     else out[out.length - 1].blocks.push(b)
   }
-  return out.filter((s) => s.title || s.blocks.length)
+  // Sections that hold client quotes are hidden as a whole while testimonials are not confirmed (src/config/flags.ts)
+  return out.filter((s) => (s.title || s.blocks.length) && (SHOW_TESTIMONIALS || !s.blocks.some((b) => b.t === 'quote')))
 }
 
 /** Group a section's blocks into groups that start at each h3/h4/h5 */

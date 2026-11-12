@@ -11,6 +11,7 @@ import DotArrow from '@/components/DotArrow'
 import { FinalCta } from '@/components/Cards'
 import { ClientLogoStrip, TrustPoints, Testimonials } from '@/components/Sitewide'
 import { COMPANY } from '@/config/locale'
+import { SHOW_TESTIMONIALS } from '@/config/flags'
 import { BTS, btsDateRange, btsNow, useBtsPhase } from '@/config/bts'
 import { findEntry, useContent } from '@/lib/content'
 import { pageImages } from '@/lib/images'
@@ -208,7 +209,7 @@ export default function BtsLanding() {
 
       {/* Client logos and testimonials */}
       <ClientLogoStrip label={page.trust.logos} logos={clientLogos} />
-      <Testimonials eyebrow={page.trust.testimonials.eyebrow} title={page.trust.testimonials.title} items={testimonials} />
+      {SHOW_TESTIMONIALS && <Testimonials eyebrow={page.trust.testimonials.eyebrow} title={page.trust.testimonials.title} items={testimonials} />}
 
       {!after && (
         <>
