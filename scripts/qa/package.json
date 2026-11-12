@@ -1,0 +1,10 @@
+{
+  "name": "q2m-qa",
+  "private": true,
+  "type": "module",
+  "description": "QA scripts for the Q2M site (separate from the site's own dependencies). See README.md.",
+  "devDependencies": {
+    "lighthouse": "^13.6.0",
+    "puppeteer-core": "^25.17.0"
+  }
+}

@@ -24,3 +24,6 @@ docs/qa/
 # Local agent notes (not committed for now)
 AGENTS.md
 dist-ssr/
+scripts/qa/node_modules/
+scripts/qa/results/
+scripts/qa/package-lock.json

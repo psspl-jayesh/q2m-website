@@ -47,5 +47,8 @@ for (const route of all) {
 const nf = render('/404-not-found/')
 writeFileSync(join(DIST, '404.html'), page('/404-not-found/', nf))
 rmSync('dist-ssr', { recursive: true, force: true })
+// Server files for the web root: Apache .htaccess and Netlify/Cloudflare _redirects (old URLs, 404, HTTPS); see docs/deploy/
+const { writeRedirects } = await import(pathToFileURL('scripts/redirects.mjs').href)
+writeRedirects(['docs/deploy', DIST])
 console.log(`prerender: ${n} routes + 404.html, BTS phase at build: ${bts.phase}`)
 if (missing.length) { console.error('Routes without <Seo>:', missing); process.exit(1) }

@@ -3,18 +3,21 @@
 // Output: public/images/_opt/<dir>__<name>-<w>.{avif,webp}  and  src/data/images.json  (local src -> {w,h,widths,name,dir})
 // SVGs are served as-is (no raster variants); their size comes from the manifest.
 import sharp from 'sharp'
-import { readdirSync, mkdirSync, writeFileSync, existsSync, statSync, rmSync } from 'node:fs'
+import { readdirSync, mkdirSync, readFileSync, writeFileSync, existsSync, statSync, rmSync } from 'node:fs'
 import path from 'node:path'
 
 const ROOT = 'public/images'
 const OUT = `${ROOT}/_opt`
 const STEPS = [320, 480, 640, 800, 1024, 1280, 1600, 2000]
-rmSync(OUT, { recursive: true, force: true })
+// --only <path> [...]: process just these images (paths under public/images) and merge them into images.json,
+// keeping every other variant as it is. Without it, all images are rebuilt from scratch.
+const only = process.argv.includes('--only') ? process.argv.slice(process.argv.indexOf('--only') + 1).map((p) => path.normalize(p)) : null
+if (!only) rmSync(OUT, { recursive: true, force: true })
 mkdirSync(OUT, { recursive: true })
 
 const walk = (d) => readdirSync(d).flatMap((f) => { const p = path.join(d, f); return p === OUT ? [] : statSync(p).isDirectory() ? walk(p) : [p] })
-const files = walk(ROOT).filter((f) => /\.(png|jpe?g|webp)$/i.test(f))
-const meta = {}
+const files = walk(ROOT).filter((f) => /\.(png|jpe?g|webp)$/i.test(f)).filter((f) => !only || only.includes(path.normalize(f)))
+const meta = only ? JSON.parse(readFileSync('src/data/images.json', 'utf8')) : {}
 let n = 0
 for (const f of files) {
   const rel = path.relative(ROOT, f).split(path.sep).join('/')           // e.g. shared/linde.png

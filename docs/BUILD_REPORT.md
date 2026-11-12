@@ -3,12 +3,12 @@
 ## Stack and how it runs
 Vite + React 19 + TypeScript + Tailwind v4 + React Router + Motion + React Hook Form + Zod + Lucide.
 
-- `npm run content` pulls live content from the WordPress REST API into `src/data/content.json` (read-only).
+- `npm run content` pulls live content from the live site's content API into `src/data/content.json` (read-only).
 - `node scripts/mirror-images.mjs` self-hosts the images in `public/media` and runs the content-hygiene pass.
 - `npm run seo` writes the sitemap, robots.txt and `docs/page-tracker.csv`.
 - `npm run dev` / `npm run build` run the app.
 
-**Integration strategy:** headless. WordPress stays the editing CMS, and the React site renders its content at the same URLs. Every string comes from the CMS, with nothing invented.
+**Integration strategy:** headless. The live site's CMS stays the editing tool, and the React site renders its content at the same URLs. Every string comes from the CMS, with nothing invented.
 
 ## Done
 - Design system: tokens in `src/styles/index.css` (8px spacing, one accent #0474EC sampled from the logo, Fraunces + Inter, shared radii).

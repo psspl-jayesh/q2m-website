@@ -43,5 +43,11 @@
   }
  ],
  "copyright": "Copyright 2026 Q2M Solutions",
- "genericTextNotUsed": "THEY TOLD ABOUT What Sets Us Apart? Welcome to Q2M Solutions, where innovation meets our passion in a journey that started with a simple idea and a shared dream. "
+ "genericTextNotUsed": "THEY TOLD ABOUT What Sets Us Apart? Welcome to Q2M Solutions, where innovation meets our passion in a journey that started with a simple idea and a shared dream. ",
+ "cta": {
+  "_note": "Footer CTA band. Title is the shared header CTA label (ctas.json); accent = the part shown in brand blue. Line and button label from the owner (Nov 2026).",
+  "accent": "Discovery Call",
+  "line": "Let's discuss your ideas and explore how we can help you grow.",
+  "primary": "Book a Meeting"
+ }
 }

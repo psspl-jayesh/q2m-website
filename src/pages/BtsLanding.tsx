@@ -7,7 +7,6 @@ import testimonials from '@/content/shared/testimonials.json'
 import { Accordion, Button, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem, TextLink, imgMeta, type SiteImg } from '@/components/ui'
 import BookingForm from '@/components/BookingForm'
 import DotArrow from '@/components/DotArrow'
-import { FinalCta } from '@/components/Cards'
 import { ClientLogoStrip, Testimonials } from '@/components/Sitewide'
 import { COMPANY } from '@/config/locale'
 import { SHOW_TESTIMONIALS } from '@/config/flags'
@@ -161,7 +160,7 @@ export default function BtsLanding() {
           <StaggerGroup className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-12 lg:auto-rows-[minmax(150px,auto)]">
             {/* lead photo */}
             <StaggerItem className="relative col-span-2 min-h-[320px] overflow-hidden rounded-lg border border-line lg:col-span-5 lg:row-span-2">
-              <SiteImage image={lead.image} ratio="auto" sizes="(min-width:1024px) 520px, 100vw" position="center 20%" className="absolute inset-0 h-full w-full object-cover" />
+              <SiteImage image={lead.image} ratio="auto" sizes="(min-width:1024px) 520px, 100vw" position="center top" className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute bottom-3 left-3 rounded-md bg-surface px-3 py-2 md:bottom-4 md:left-4"><b className="block font-display text-base font-semibold">{lead.name}</b><span className="text-sm text-ink-muted">{lead.role}</span></div>
             </StaggerItem>
             {/* intro card with the whole team */}
@@ -187,7 +186,7 @@ export default function BtsLanding() {
             {/* team photos */}
             {rest.map((p) => (
               <StaggerItem key={p.name} className="relative min-h-[220px] overflow-hidden rounded-lg border border-line sm:min-h-[260px] lg:col-span-2 lg:row-span-2">
-                <SiteImage image={p.image} ratio="auto" sizes="(min-width:1024px) 220px, 50vw" position="center 20%" className="absolute inset-0 h-full w-full object-cover" />
+                <SiteImage image={p.image} ratio="auto" sizes="(min-width:1024px) 220px, 50vw" position="center top" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-x-2 bottom-2 rounded-md bg-surface px-3 py-2"><b className="block text-sm font-semibold leading-tight">{p.name}</b><span className="text-xs text-ink-muted">{p.role}</span></div>
               </StaggerItem>
             ))}
@@ -268,8 +267,6 @@ export default function BtsLanding() {
         </div>
       </section>
 
-      {/* Closing CTA band (the sitewide FinalCta; the button goes to the booking form, or to Contact after the event) */}
-      <FinalCta cta={after ? page.after.cta : page.closing.cta} />
     </>
   )
 }

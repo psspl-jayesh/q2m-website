@@ -4,7 +4,6 @@ import { topicImagesFor } from '@/lib/topicImages'
 import { heroImage, imagesBySection, keyOf, ogImageFor, pageImages, type ManifestImage } from '@/lib/images'
 import { Accordion, Breadcrumbs, Button, HeroImage, type SiteImg, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem } from '@/components/ui'
 import DotArrow from '@/components/DotArrow'
-import { FinalCta } from '@/components/Cards'
 import { NAV, SITE_URL } from '@/lib/site'
 import { areaServedIndia, indiaDescription, indiaTitle } from '@/lib/seo'
 import ctas from '@/content/shared/ctas.json'
@@ -136,7 +135,6 @@ export default function ServicePage({ entry }: { entry: Entry }) {
           </div>
         </section>
       )}
-      <FinalCta />
     </>
   )
 }

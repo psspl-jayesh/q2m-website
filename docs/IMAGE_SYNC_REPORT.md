@@ -20,7 +20,7 @@ Generated 2026-11-11T13:50:48.458Z by scripts/sync-images.mjs. Source: https://q
 - / [Our Creative Showcase] /wp-content/uploads/2024/03/portfolio-image-05.webp
 - / [Our Creative Showcase] /wp-content/uploads/2024/03/portfolio-image-03.webp
 
-### Elementor plugin placeholder.png still on live pages (not copied; 34 pages, 38 image placements)
+### Page-builder placeholder.png still on live pages (not copied; 34 pages, 38 image placements)
 - /ai-consulting-services/
 - /ai-development-services/
 - /ai-app-development-services/

@@ -1,7 +1,7 @@
 # Topic images in text-only sections (for your review)
 
 Request: sections where the right-hand column was empty (heading + paragraphs + bullets, no image on the live page) now show a topic-related image. Rules (`src/lib/topicImages.ts`, `src/content/shared/topic-images.json`):
-- Every image is one the live site already uses on another page, unmodified (nothing new, nothing from the Elementor placeholder).
+- Every image is one the live site already uses on another page, unmodified (nothing new, nothing from the page-builder placeholder).
 - Only editorial prose sections with enough text (250+ characters) get one. FAQ, call-to-action bands, testimonials, pricing/engagement blocks, tech stacks and card grids do not.
 - A page gets the images of its topic family in order, skipping any it already shows. When a family is used up, or no live image fits the topic (smart glasses), the section stays as it is.
 - Alt text was written from the images; please review.
