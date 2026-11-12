@@ -20,7 +20,7 @@ Distinct (label, value) pairs on the live site: 23. Stat blocks hidden on our pa
 
 ## BTS landing page stats: where each value comes from on the live site
 
-The team section of `/bengaluru-tech-summit-2026/` shows these four (keys in `src/content/sections/team-bento.json`). Each is an Elementor counter on the live home page https://q2msolutions.com/ (checked in the live HTML on 11 Nov 2026). All four are live values; nothing was added.
+The team section of `/bengaluru-tech-summit-2026/` shows these four (keys in `src/content/sections/team-bento.json`). Each is a counter widget on the live home page https://q2msolutions.com/ (checked in the live HTML on 11 Nov 2026). All four are live values; nothing was added.
 
 **Approved by the owner for now (12 Nov 2026): 150+, 40%+, 6wk, 2**, with the neutral labels below (no "APAC" or "India"; the live 150+ label says "across APAC", ours does not).
 

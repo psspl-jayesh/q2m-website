@@ -2,7 +2,7 @@
 
 Measured in the browser (Vite dev server, 1024px, light mode) for all 61 routes: the set of image files rendered in `<main>` compared with the live page's images from `src/data/image-manifest.json` (hero, section images, logos, in live order).
 
-**Excluded by design (never rendered):** Elementor `placeholder.png` (see `docs/PLACEHOLDER_SECTIONS.md`), theme demo images from zenfy-wp.egenslab.com (`banner-img-4.jpg`, `breadcrumb-bg.png`), decorative theme backgrounds and icons. The Clutch logo is the approved exception: it is served locally from `public/images/shared/clutch-logo.svg` (+ `clutch-logo-white.svg` for dark mode) in the hero meta line and is not counted below.
+**Excluded by design (never rendered):** the page builder's `placeholder.png` (see `docs/PLACEHOLDER_SECTIONS.md`), theme demo images from zenfy-wp.egenslab.com (`banner-img-4.jpg`, `breadcrumb-bg.png`), decorative theme backgrounds and icons. The Clutch logo is the approved exception: it is served locally from `public/images/shared/clutch-logo.svg` (+ `clutch-logo-white.svg` for dark mode) in the hero meta line and is not counted below.
 **Hero rule:** when a live page lists several hero images, the widest is used (`heroImage()` in `src/lib/images.ts`), so the counts exclude the 466px duplicate on the 6 pages listed in `docs/LOWRES_HEROES.md`. Images under 800px are never enlarged.
 
 **Result: 61/61 routes accounted for. 56 match exactly; 3 case-study pages differ only by the related-case cards; the home page waits for your approval; /privacy-policy/ is new.** Image files referenced: all exist on disk; no broken image on any route after eager loading.

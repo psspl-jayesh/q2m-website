@@ -9,7 +9,7 @@ import { Breadcrumbs, Button, Reveal, SectionHead, Seo, Accordion, SiteFrame, Si
 import { CaseCard, PostCard } from '@/components/Cards'
 import { SITE_URL } from '@/lib/site'
 import siteImages from '@/data/site-images.json'
-import { indiaDescription, indiaTitle } from '@/lib/seo'
+import { descriptionFor, indiaDescription, indiaTitle } from '@/lib/seo'
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 const SKIP = /connect with us|social|your success starts/i
@@ -22,7 +22,7 @@ export function CaseStudies({ entry }: { entry: Entry }) {
   const c = useContent()
   return (
     <>
-      <Seo title={indiaTitle(entry.metaTitle || 'Case Studies')} description={indiaDescription(entry.description)} path={entry.path} />
+      <Seo title={indiaTitle(entry.metaTitle || 'Case Studies')} description={indiaDescription(descriptionFor(entry))} path={entry.path} />
       <section className="page-band pt-10 pb-14 md:pt-20"><div className="container-page">
         <Breadcrumbs trail={[{ label: 'Home', to: '/' }, { label: crumbOf(entry) }]} />
         <Reveal y={28}><h1 className="display-xl mt-10 max-w-4xl">{h1Of(entry)}</h1></Reveal>
@@ -44,7 +44,7 @@ export function CaseStudy({ entry }: { entry: Entry }) {
   const ogImage = ogImageFor(c, entry.path)
   return (
     <>
-      <Seo title={entry.metaTitle || `${entry.title} | Q2M Solutions`} description={entry.description} path={entry.path} image={ogImage}
+      <Seo title={entry.metaTitle || `${entry.title} | Q2M Solutions`} description={descriptionFor(entry)} path={entry.path} image={ogImage}
         jsonLd={{ '@context': 'https://schema.org', '@type': 'Article', headline: entry.title, datePublished: entry.date, dateModified: entry.modified, image: ogImage ? SITE_URL + ogImage : undefined, publisher: { '@type': 'Organization', name: 'Q2M Solutions' } }} />
       <article>
         <header className="pt-8 pb-14 md:pt-14 md:pb-20"><div className="container-page">

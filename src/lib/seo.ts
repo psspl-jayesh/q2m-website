@@ -1,6 +1,8 @@
 import { COMPANY, LOCALE } from '@/config/locale'
 import { nationalDigits } from '@/lib/format'
 import siteImages from '@/data/site-images.json'
+import type { Entry } from '@/lib/content'
+import { trimSentences } from '@/lib/menuCopy'
 
 /** India-targeted metadata helpers. All wording and region data come from src/config/locale.ts. */
 
@@ -50,3 +52,10 @@ export function organizationJsonLd() {
   }
 }
 export const areaServedIndia = { '@type': 'Country', name: LOCALE.country }
+
+/** Meta description: the page's live description, or (when the live page has none) its first real paragraph, trimmed to whole sentences. */
+export function descriptionFor(e: Entry): string {
+  if (e.description) return e.description
+  const p = e.blocks.find((b) => b.t === 'p' && (b.text || '').length > 60)?.text ?? ''
+  return trimSentences(p, 155)
+}

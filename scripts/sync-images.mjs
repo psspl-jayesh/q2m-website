@@ -278,7 +278,7 @@ md.push('# Image sync report', '', `Generated ${manifest.generatedAt} by scripts
   '## Flags', '',
   `### Third-party / theme demo domain images (not copied; ${flags.thirdParty.length})`, ...[...new Set(flags.thirdParty.map((x) => x.replace(/^\S+ \[[^\]]*\] /, '')))].map((x) => `- ${x} (on ${flags.thirdParty.filter((f) => f.endsWith(x)).length} places)`), '',
   `### Theme demo placeholders in /uploads/2024/03 (not copied, need your decision; ${flags.themeDemo.length})`, ...flags.themeDemo.map((x) => `- ${x}`), '',
-  `### Elementor plugin placeholder.png still on live pages (not copied; ${new Set(flags.pluginPlaceholder.map((x) => x.split(' ')[0])).size} pages, ${flags.pluginPlaceholder.length} image placements)`, ...[...new Set(flags.pluginPlaceholder.map((x) => x.split(' ')[0]))].map((x) => `- ${x}`), '',
+  `### Page-builder placeholder.png still on live pages (not copied; ${new Set(flags.pluginPlaceholder.map((x) => x.split(' ')[0])).size} pages, ${flags.pluginPlaceholder.length} image placements)`, ...[...new Set(flags.pluginPlaceholder.map((x) => x.split(' ')[0]))].map((x) => `- ${x}`), '',
   `### Download failures / 404 (${flags.notFound.length})`, ...flags.notFound.map((x) => `- ${x}`), '',
   `### Pages that failed to crawl (${flags.failedPages.length})`, ...flags.failedPages.map((x) => `- ${x}`), '',
   `### Low resolution sources (< 800px wide, hero/media; ${flags.lowRes.length})`, ...flags.lowRes.map((x) => `- ${x}`), '',

@@ -1,36 +1,38 @@
-# Open issues and decisions
+# Open decisions after launch
 
-From `docs/FINAL_STATUS.md` (status "Not ready") plus items found since. Severity: High = blocks launch, Medium = fix soon, Low = polish, Decision = needs your answer before work.
+Launched with the release of 12 Nov 2026. Everything below is still waiting on a decision, on information from Q2M, or on a later step. Nothing here blocks the site from going live.
 
-| # | Issue | Page(s) | Severity |
-|---|---|---|---|
-| 1 | Performance: done by pre-rendering (`docs/PRERENDER.md`). Lighthouse mobile now home 100, BTS landing 99, /ai-consulting-services/ 100, /contact/ 100 (were 75, 80, 81, 83; LCP 0.8 to 0.9 s, was 4.7 to 5.4 s) | All pages | Done |
-| 2 | Long live button labels (45 to 56 characters) wrap to two lines on phones (360/390px). No clipping or overflow. Accept two lines, or approve shorter text | /azure-ai-and-machine-learning/, /cyber-security-services/, /digital-transformation-services/, /enterprise-business-application/, /infrastructure-services/, /technology-consulting-services/ | Low / Decision |
-| 3 | Lighthouse SEO 92: one non-descriptive link text left | Home | Low |
-| 4 | Conflicting live stat values stay hidden (79 stat blocks). Approve one value per stat: `docs/STATS_FOR_APPROVAL.md` | About and about 36 service pages | Decision |
-| 5 | SEO titles over 60 characters (18) and descriptions over 155 (10): proposals in `docs/SEO_PROPOSALS.md` (not applied) | 28 pages | Low / Decision |
-| 6 | Legal review of the draft Privacy Policy and consent wording (DPDP Act text) | Privacy Policy, every form | High (legal) |
-| 7 | Legal name: done ("Q2M Solutions Private Limited", one value `COMPANY.legalName`) | Footer, Privacy, Contact, JSON-LD | Done |
-| 8 | CIN (empty TODO in config, nothing shown while empty) and grievance officer still missing | Privacy Policy | Medium |
-| 9 | Google reviews logo: removed from the footer (and the profile URL setting) | Footer | Done |
-| 10 | Check the Instagram handle "qtomsolutions" (it is what the live site links to) | Footer, JSON-LD | Low |
-| 11 | Home hero: dot field (current) or slider of the 3 live banners | Home | Decision |
-| 12 | Home topic images: review pairings (Insurance, Agentic commerce, Automotive) and industry images: `docs/HOME_IMAGES.md` | Home | Decision |
-| 13 | Topic images in text-only sections (73 sections on 36 pages) and their alt texts: `docs/TOPIC_IMAGES.md` | 36 service pages | Decision |
-| 14 | Mega-menu intro and Featured text: `docs/MEGA_MENU_COPY.md` | Header on every page | Decision |
-| 15 | Placeholder sections (live site shows Elementor placeholder): `docs/PLACEHOLDER_SECTIONS.md` | 34 pages | Info |
-| 16 | 466px heroes shown in a contained card: `docs/LOWRES_HEROES.md` | 23 pages | Info |
-| 17 | Not tested yet: below-the-fold visual review of every page, Safari and Firefox, real touch devices, a real booking or contact submission | All | Medium |
-| 18 | Contact and booking form delivery: choose option A, B or C in `docs/FORM_DELIVERY_OPTIONS.md`, and tell me if a CRM should also receive submissions (check WordPress: Contact Form 7, form 18, Mail tab). Until then both forms open a pre-filled email to info@q2msolutions.com | Contact, Home booking form | Decision |
-| 19 | "Clutch Top AI Developer / APAC region" text: keep or remove. Since the "Trusted & Certified" section was removed from home and the BTS page (12 Nov 2026), it only remains in the Ai4 article paragraph ("recognised by Clutch as a Top AI Developer in the APAC region"). `src/content/shared/certifications.json` is no longer shown anywhere | /q2m-solutions-is-heading-to-ai4-2026/ | Decision |
-| 20 | Privacy Policy placeholders still shown as "to be confirmed": retention period, grievance officer, analytics tools (the page is a draft, noindex) | Privacy Policy | Decision (legal) |
-| 21 | BTS 2026 band details (event, venue, dates and stand facts from the designed home copy) | Home | Decision |
-| 22 | BTS live demos: owner answered "no booth" (12 Nov 2026), so `BTS.liveDemos = false`. All booth, stand and demo wording on home and the BTS page is under this flag and switches to neutral lines (`src/content/sections/bts-wording.json`). Set the flag to `true` if a booth with demos is confirmed later | BTS landing, Home | Done (flag off) |
-| 23 | Home BTS wording after the event: done. After 19 Nov 2026 18:00 IST the session section, the FAQ intro and the BTS FAQ question also hide | Home | Done |
-| 24 | Testimonials (Sarah Chen, Marcus Webb, Priya Roberts): not confirmed, so hidden on every page by one flag (`SHOW_TESTIMONIALS` in `src/config/flags.ts`): BTS landing section and the About "Trusted By Our Clients" section. Send real, approved testimonials to turn it back on | BTS landing, About | Waiting for real testimonials |
-| 25 | BTS landing Lighthouse: done by pre-rendering (performance 99, accessibility 100, best practices 100, SEO 92) | BTS landing | Done |
-| 26 | Rebuild and redeploy once after 19 Nov 2026 18:00 IST, so the static HTML no longer has the BTS items (until then the browser hides and re-renders them; `docs/PRERENDER.md`) | Home, BTS landing | Reminder |
-| 27 | Hosting: serve `dist/404.html` with status 404 for unknown URLs, and make `/path/` resolve to `dist/path/index.html` | Hosting | Setup |
-| 28 | "Read more" links on home and the BTS page now say what they link to ("Read more about AI agent development", etc.), so Lighthouse SEO no longer flags link text | Home, BTS landing | Done |
-| 29 | No meta description on the live site for /case-studies/ and the three case-study pages, so the pre-rendered HTML has none either (all other tags are there). Add descriptions in WordPress, or approve proposals | 4 pages | Low / Decision |
-| 30 | "Trusted & Certified" removed from the home page and the BTS page on the owner's request (12 Nov 2026); confirmed to stay removed. Client logos ("Our Global Clients") kept | Home, BTS landing | Done |
+Severity: High = do soon (legal or business), Medium = fix soon, Low = polish, Decision = needs your answer before work.
+
+## Pending
+
+| # | Item | Where | What is needed | Severity |
+|---|---|---|---|---|
+| 1 | **Form delivery.** Contact and booking forms open a pre-filled email to info@q2msolutions.com (mailto). Choose option A, B or C in `docs/FORM_DELIVERY_OPTIONS.md`, and say whether a CRM should also receive submissions | Contact, home and BTS booking forms | Your choice of option | High |
+| 2 | **Legal review** of the draft Privacy Policy and the consent wording (DPDP Act). The page says "DRAFT: pending legal review" and is noindex until then | Privacy Policy, every form | Legal counsel review | High |
+| 3 | **Privacy details** still shown as "to be confirmed by Q2M": service providers, retention period, grievance officer, analytics tools (kept visible on purpose for launch) | Privacy Policy | The real details | High |
+| 4 | **Grievance officer** (DPDP Act): name, designation, email (`COMPANY.grievanceOfficer` in `src/config/locale.ts`) | Privacy Policy | The details | High |
+| 5 | **CIN** (Corporate Identity Number): not shown while empty (`COMPANY.cin`) | Footer, Privacy, JSON-LD | The number | Medium |
+| 6 | **Rebuild after the event.** After 19 Nov 2026, 6:00 PM IST, rebuild and re-upload once so the static files no longer contain the Bengaluru Tech Summit booking items (the browser already hides them) | Home, BTS landing | Rebuild + upload | Medium |
+| 7 | **Testimonials** (Sarah Chen, Marcus Webb, Priya Roberts) are hidden on every page (`SHOW_TESTIMONIALS` in `src/config/flags.ts`) until confirmed as real, nameable clients | BTS landing, About | Real, approved testimonials | Decision |
+| 8 | **Live demos at BTS:** flag off (`BTS.liveDemos` in `src/config/bts.ts`); all booth/stand/demo wording is neutral. Turn on if a booth with demos is confirmed | BTS landing, home | Confirmation | Decision |
+| 9 | **"Clutch Top AI Developer / APAC region"** text: keep or remove. Only left in the Ai4 article paragraph | /q2m-solutions-is-heading-to-ai4-2026/ | Keep or remove | Decision |
+| 10 | **Stats:** 150+, 40%+, 6wk, 2 approved. 79 other stat blocks with conflicting live values stay hidden until one value per stat is approved: `docs/STATS_FOR_APPROVAL.md` | About and 36 service pages | One value per stat | Decision |
+| 11 | **SEO titles and descriptions:** 18 titles over 60 characters and 10 descriptions over 155; proposals in `docs/SEO_PROPOSALS.md` (not applied). `/case-studies/` has no meta description (its live page has no text) | 28 pages + /case-studies/ | Approve proposals / a description | Low / Decision |
+| 12 | **Mega-menu text** (intro and Featured lines): `docs/MEGA_MENU_COPY.md` | Header on every page | Approve or edit | Decision |
+| 13 | **Alt texts and topic images** for text-only sections (73 sections on 36 pages): `docs/TOPIC_IMAGES.md` | 36 service pages | Review | Decision |
+| 14 | **Home image pairings** (Insurance, Agentic commerce, Automotive) and industry images: `docs/HOME_IMAGES.md` | Home | Review | Decision |
+| 15 | **Low-resolution heroes** (466px sources shown in a contained card): `docs/LOWRES_HEROES.md` | 23 pages | Larger images, or accept | Low |
+| 16 | **Placeholder sections:** where the live site shows a page-builder placeholder image, our pages show no image: `docs/PLACEHOLDER_SECTIONS.md` | 34 pages | Real images, or accept | Low |
+| 17 | **Testing not yet done:** Safari and Firefox, real phones (iOS and Android), a real booking/contact submission once form delivery is chosen, a below-the-fold visual review of every page | All | Manual testing | Medium |
+| 18 | **Footer "Solutions"** shows all 11 links (no "View all" because there is no page listing all solutions). Say if a Solutions overview page should be added | Footer | Decision | Low |
+| 19 | **Long button labels** (45 to 56 characters) wrap to two lines on phones; no clipping | 6 service pages | Accept, or shorter text | Low |
+| 20 | **Home hero:** dot field with the Q2M logo arrow (current), or a slider of the 3 live banners | Home | Decision | Low |
+| 21 | **Instagram handle** "qtomsolutions" is what the live site links to; confirm it is the right account | Footer, JSON-LD | Confirmation | Low |
+
+## Done (for reference)
+- Pre-rendered static HTML for every route; Lighthouse mobile 98–100 on home, BTS landing, a service page and contact (`docs/PRERENDER.md`).
+- Legal name "Q2M Solutions Private Limited", Vadodara address, phone +91 87994 65558, email info@q2msolutions.com; Clutch logo and Google review badge removed; social links kept.
+- BTS landing page and home BTS items with automatic hiding after 19 Nov 2026, 6:00 PM IST; "Trusted & Certified" removed from home and BTS on request; client logos kept.
+- Footer redesign; back-to-top button on every page; hero dot field shows the Q2M logo arrow; descriptive "Read more" links.
+- Deployment: `docs/DEPLOYMENT_FOR_ADMIN.md`, redirect files in `docs/deploy/`, 404 page, sitemap and robots.txt.
