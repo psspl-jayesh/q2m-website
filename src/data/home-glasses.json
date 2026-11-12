@@ -131,7 +131,7 @@
       { "kind": "image", "size": "h2", "file": "/images/home-new/doctor.jpg", "alt": "Doctor wearing smart glasses during a consultation", "tag": "Healthcare", "caption": "Hands-free records", "position": "30% 50%" },
       { "kind": "text", "size": "", "bts": true, "title": "Try it live", "text": "Wear the glasses and run a real inspection at our BTS 2026 desk.", "cta": "Book a demo slot" },
       { "kind": "image", "size": "w2", "file": "/images/home-new/agent.jpg", "alt": "Illustration of an AI agent turning documents into actions", "tag": "AI agent", "caption": "The report writes itself from the job", "position": "50% 40%" },
-      { "kind": "slot", "size": "w2", "text": "Image slot · 1600 × 800 · automotive technician inspecting a car with smart glasses" }
+      { "kind": "image", "size": "w2", "file": "/images/case-studies/building-a-single-pane-of-glass-for-a-1500-truck-fleet-banner.webp", "alt": "Engineers inspecting a heavy truck with augmented-reality overlays on screens around it", "position": "50% 45%" }
     ]
   },
   "contact": {

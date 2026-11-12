@@ -193,11 +193,10 @@ export default function HomeGlasses() {
         <div className="bento">{tiles.map((t, i) => {
           const cls = `bt ${t.size}`.trim()
           if (t.kind === 'text') return <div className={`${cls} txt`} data-reveal key={i}><h3>{t.title}</h3><p>{t.text}</p><a className="btn btn-w" href="#contact">{t.cta}</a></div>
-          if (t.kind === 'slot') return <div className={`${cls} ph`} data-reveal key={i}>{t.text}</div>
           return (
             <figure className={cls} data-reveal key={i}>
               <Img src={t.file!} alt={t.alt ?? ''} position={t.position ?? 'center'} sizes={t.size.includes('w2') ? '(min-width:900px) 584px, 100vw' : '(min-width:900px) 290px, (min-width:560px) 50vw, 100vw'} />
-              <figcaption className="cp"><span>{t.tag}</span><b>{t.caption}</b></figcaption>
+              {t.caption && <figcaption className="cp"><span>{t.tag}</span><b>{t.caption}</b></figcaption>}
             </figure>
           )
         })}</div>

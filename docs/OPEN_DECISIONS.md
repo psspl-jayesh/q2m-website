@@ -30,7 +30,6 @@ Severity: High = do soon (legal or business), Medium = fix soon, Low = polish, D
 | 20 | **Home hero:** dot field with the Q2M logo arrow (current), or a slider of the 3 live banners | Home | Decision | Low |
 | 21 | **Instagram handle** "qtomsolutions" is what the live site links to; confirm it is the right account | Footer, JSON-LD | Confirmation | Low |
 | 22 | **New home (branch new-home-page): "[TBC]" stat.** "Enterprise pilots delivered" shows [TBC] as in the design. Give the real figure or remove the card | Home | Number | High |
-| 23 | **New home: automotive image slot.** The use-case grid shows the design's "Image slot · 1600 × 800" placeholder tile. Supply the photo | Home | Image | High |
 | 24 | **New home: BTS live demos.** The design says "Live demos at BTS 2026" and "at our BTS 2026 desk", but `BTS.liveDemos` is false (no desk with demos confirmed). Confirm, or the lines need neutral wording. They hide after the event either way | Home | Yes/no | High |
 
 ## Done (for reference)
