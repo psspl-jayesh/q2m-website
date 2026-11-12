@@ -4,6 +4,7 @@ import { findEntry, useContent } from '@/lib/content'
 import Home from '@/pages/HomeFolder'
 import BtsLanding from '@/pages/BtsLanding'
 import ServicePage from '@/pages/ServicePage'
+import SmartGlassesPage from '@/pages/SmartGlassesPage'
 import { About, Contact, NotFound } from '@/pages/Company'
 import PrivacyPolicy from '@/pages/PrivacyPolicy'
 import siteImages from '@/data/site-images.json'
@@ -22,6 +23,7 @@ function Resolver() {
   if (e.type === 'post') return <Article entry={e} />
   if (e.slug === 'about') return <About entry={e} />
   if (e.slug === 'contact') return <Contact entry={e} />
+  if (e.slug === 'smart-glasses-ar-wearable-app-development-services') return <SmartGlassesPage entry={e} />
   if (e.slug === 'case-studies') return <CaseStudies entry={e} />
   if (e.slug === 'blogs') return <Blogs entry={e} />
   return <ServicePage entry={e} />
