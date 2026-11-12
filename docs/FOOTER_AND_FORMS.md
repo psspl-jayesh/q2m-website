@@ -27,7 +27,7 @@ Screenshots: `docs/readme/footer_before_{360,768,1024,1440}.jpg` and `docs/readm
 What changed: less padding and smaller gaps; logo, short description and contact details in one column; link groups in compact columns (the 11-item Solutions group uses two columns); bottom row with copyright, legal links, social icons and the theme switch on one line on desktop. Below 1024px the four link groups are accordions, closed by default; contact details and social icons stay visible. All 41 footer links, the address (map link), phone and email are kept. Social links are now icons with their names as accessible labels.
 
 ## 4. Forms
-See `docs/FORM_DELIVERY_OPTIONS.md` for the live form report (Contact Form 7, form 18, hCaptcha, Google Analytics, no visible CRM) and the three delivery options. Until you choose, the Contact and booking forms open a pre-filled email to info@q2msolutions.com; nothing is posted to the old site any more.
+See `docs/FORM_DELIVERY_OPTIONS.md` for the live form report (Contact Form 7, form 18, hCaptcha, Google Analytics, no visible CRM) and the three delivery options. Until you choose, the Contact and booking forms open a pre-filled email to info@q2msolutions.in; nothing is posted to the old site any more.
 
 ## 6. Checks
 - Footer and Contact sweep: 9 page types (home, service, article, case study, About, Contact, Blogs, Case Studies, Privacy) at 360, 768, 1024 and 1440px in light and dark = 72 loads. No horizontal overflow, no clipped or overlapping text, no contrast failures, no console errors, one H1, no layout shift above 0.1, same 41 footer links everywhere.

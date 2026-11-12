@@ -52,7 +52,7 @@ export const COMPANY = {
   /** Legal name: footer copyright line, Privacy Policy, Contact page company block, Organization JSON-LD. */
   legalName: 'Q2M Solutions Private Limited',
   siteUrl: 'https://q2msolutions.com',
-  email: 'info@q2msolutions.com',
+  email: 'info@q2msolutions.in',
   /** 10-digit Indian mobile. Shown as "+91 87994 65558" and linked as tel:+918799465558 by formatPhone() / phoneHref(). */
   phone: '8799465558' as string | null,
   address: ADDRESS,

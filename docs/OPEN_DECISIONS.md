@@ -8,7 +8,7 @@ Severity: High = do soon (legal or business), Medium = fix soon, Low = polish, D
 
 | # | Item | Where | What is needed | Severity |
 |---|---|---|---|---|
-| 1 | **Form delivery.** Contact and booking forms open a pre-filled email to info@q2msolutions.com (mailto). Choose option A, B or C in `docs/FORM_DELIVERY_OPTIONS.md`, and say whether a CRM should also receive submissions | Contact, home and BTS booking forms | Your choice of option | High |
+| 1 | **Form delivery.** Contact and booking forms open a pre-filled email to info@q2msolutions.in (mailto). Choose option A, B or C in `docs/FORM_DELIVERY_OPTIONS.md`, and say whether a CRM should also receive submissions | Contact, home and BTS booking forms | Your choice of option | High |
 | 2 | **Legal review** of the draft Privacy Policy and the consent wording (DPDP Act). The page says "DRAFT: pending legal review" and is noindex until then | Privacy Policy, every form | Legal counsel review | High |
 | 3 | **Privacy details** still shown as "to be confirmed by Q2M": service providers, retention period, grievance officer, analytics tools (kept visible on purpose for launch) | Privacy Policy | The real details | High |
 | 4 | **Grievance officer** (DPDP Act): name, designation, email (`COMPANY.grievanceOfficer` in `src/config/locale.ts`) | Privacy Policy | The details | High |
@@ -32,7 +32,7 @@ Severity: High = do soon (legal or business), Medium = fix soon, Low = polish, D
 
 ## Done (for reference)
 - Pre-rendered static HTML for every route; Lighthouse mobile 98–100 on home, BTS landing, a service page and contact (`docs/PRERENDER.md`).
-- Legal name "Q2M Solutions Private Limited", Vadodara address, phone +91 87994 65558, email info@q2msolutions.com; Clutch logo and Google review badge removed; social links kept.
+- Legal name "Q2M Solutions Private Limited", Vadodara address, phone +91 87994 65558, email info@q2msolutions.in; Clutch logo and Google review badge removed; social links kept.
 - BTS landing page and home BTS items with automatic hiding after 19 Nov 2026, 6:00 PM IST; "Trusted & Certified" removed from home and BTS on request; client logos kept.
 - Footer redesign; back-to-top button on every page; hero dot field shows the Q2M logo arrow; descriptive "Read more" links.
 - Deployment: `docs/DEPLOYMENT_FOR_ADMIN.md`, redirect files in `docs/deploy/`, 404 page, sitemap and robots.txt.

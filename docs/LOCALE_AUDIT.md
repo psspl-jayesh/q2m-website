@@ -4,7 +4,7 @@ Generated 2026-11-11T08:08:50.505Z by scripts/audit-locale.mjs. Read-only; run b
 
 ## 1. Hardcoded region details in source code
 - `src/lib/content.tsx:64` [locale call] export const fmtDate = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
-- `src/lib/site.ts:63` [phone numbers] email: 'info@q2msolutions.com', phone: '+65 8743 0992', phoneHref: 'tel:+6587430992',
+- `src/lib/site.ts:63` [phone numbers] email: 'info@q2msolutions.in', phone: '+65 8743 0992', phoneHref: 'tel:+6587430992',
 - `src/lib/site.ts:64` [addresses / venues] address: '143 Cecil Street, 25-03, GB Building, Singapore', mapUrl: 'https://maps.app.goo.gl/HgnmwmcT8tpns2pMA',
 - `src/pages/Company.tsx:71` [privacy / legal frameworks] consent: z.literal(true, { message: 'Please confirm you agree to be contacted.' }),
 - `src/pages/Company.tsx:96` [privacy / legal frameworks] Object.entries(v).forEach(([k, val]) => k !== 'consent' && fd.append(k, String(val)))
