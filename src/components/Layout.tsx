@@ -295,16 +295,16 @@ function Footer() {
           <div className="flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center md:gap-3 md:gap-x-4">
             <p suppressHydrationWarning>Copyright © {new Date().getFullYear()} {COMPANY.legalName}</p>
             <span aria-hidden className="hidden h-4 w-px bg-line md:block" />
-            <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <ul className="flex flex-wrap items-center gap-x-4">
               {legal.map((l, i) => (
-                <li key={l.to} className="flex items-center gap-x-4">{i > 0 && <span aria-hidden className="h-4 w-px bg-line" />}<Link className="transition-colors hover:text-ink" to={l.to}>{l.label}</Link></li>
+                <li key={l.to} className="flex items-center gap-x-4">{i > 0 && <span aria-hidden className="h-4 w-px bg-line" />}<Link className="inline-flex min-h-11 items-center transition-colors hover:text-ink" to={l.to}>{l.label}</Link></li>
               ))}
             </ul>
           </div>
           <div className="flex flex-wrap items-center gap-3 md:gap-4">
             <ul aria-label="Social media" className="flex items-center gap-2">
               {COMPANY.social.map((s) => (
-                <li key={s.label}><a className="inline-flex size-10 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-action hover:text-action" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}><SocialIcon label={s.label} /></a></li>
+                <li key={s.label}><a className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-action hover:text-action" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}><SocialIcon label={s.label} /></a></li>
               ))}
             </ul>
             <span aria-hidden className="hidden h-6 w-px bg-line sm:block" />

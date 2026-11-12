@@ -86,7 +86,7 @@ export function Breadcrumbs({ trail }: { trail: { label: string; to?: string }[]
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
         {trail.map((t, i) => (
           <li key={i} className="flex items-center gap-2">
-            {t.to ? <Link className="hover:text-ink hover:underline underline-offset-4" to={t.to}>{t.label}</Link> : <span aria-current="page" className="text-ink">{t.label}</span>}
+            {t.to ? <Link className="inline-flex min-h-11 items-center hover:text-ink hover:underline underline-offset-4" to={t.to}>{t.label}</Link> : <span aria-current="page" className="text-ink">{t.label}</span>}
             {i < trail.length - 1 && <span aria-hidden>/</span>}
           </li>
         ))}
