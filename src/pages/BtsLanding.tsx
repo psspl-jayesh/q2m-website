@@ -147,7 +147,7 @@ export default function BtsLanding() {
                     <h3 className="mt-5 font-display text-xl font-semibold leading-snug">{e.title}</h3>
                     {e.description && <p className="mt-3 text-[0.9375rem] text-ink-muted">{trimSentences(e.description, 170)}</p>}
                   </div>
-                  <p><TextLink to={e.path} label={`Read more about ${e.title}`}>Read more</TextLink></p>
+                  <p><TextLink to={e.path}>{`Read more about ${page.why.links[page.why.pages.indexOf(e.path)] ?? e.title}`}</TextLink></p>
                 </StaggerItem>
               ))}
             </StaggerGroup>
