@@ -60,7 +60,7 @@ async function run(b, { route, w, th }) {
   if (issue) console.log('ISSUE', route, w, th, JSON.stringify({ ...m, errs }).slice(0, 400))
 }
 let i = 0
-await Promise.all(Array.from({ length: 4 }, async () => {
+await Promise.all(Array.from({ length: +(process.env.CONC || 4) }, async () => {
   const b = await puppeteer.launch({ executablePath: CHROME, headless: true })
   while (i < jobs.length) { const j = jobs[i++]; try { await run(b, j) } catch (e) { console.log('FAIL', j.route, j.w, j.th, String(e).slice(0, 120)) } }
   await b.close()
