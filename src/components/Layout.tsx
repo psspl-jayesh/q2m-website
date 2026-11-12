@@ -16,6 +16,7 @@ import { Button } from './ui'
 import SocialIcon from './SocialIcon'
 import siteCopy from '@/data/site-copy.json'
 import siteImages from '@/data/site-images.json'
+import BackToTop from '@/components/BackToTop'
 
 
 /** Official Q2M logos from Q2M_Brand_Kit, unmodified (826x498). Colour on light, reverse on dark. Min width 96px. */
@@ -88,7 +89,11 @@ function Header() {
     const k = (e: KeyboardEvent) => { if (e.key === 'Escape') { setOpen(null); setMobile(false) } }
     window.addEventListener('keydown', k); return () => window.removeEventListener('keydown', k)
   }, [])
-  useEffect(() => { document.body.style.overflow = mobile ? 'hidden' : ''; return () => { document.body.style.overflow = '' } }, [mobile])
+  useEffect(() => {
+    document.body.style.overflow = mobile ? 'hidden' : ''
+    document.documentElement.toggleAttribute('data-menu-open', mobile) // lets fixed widgets (Back to top) step aside
+    return () => { document.body.style.overflow = ''; document.documentElement.removeAttribute('data-menu-open') }
+  }, [mobile])
   useEffect(() => {
     if (!open) return
     const click = (e: MouseEvent) => { if (bar.current && !bar.current.contains(e.target as Node)) setOpen(null) }
@@ -235,7 +240,7 @@ function Footer() {
           </div>
         </div>
         {/* Bottom row: copyright, legal links, social icons, theme switch (one line on desktop) */}
-        <div className="mt-8 flex flex-col gap-4 border-t border-block-line pt-6 text-sm text-block-muted md:mt-10 lg:flex-row lg:items-center lg:justify-between">
+        <div data-back-to-top-avoid className="mt-8 flex flex-col gap-4 border-t border-block-line pt-6 text-sm text-block-muted md:mt-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-x-6">
             <p suppressHydrationWarning>Copyright {new Date().getFullYear()} {COMPANY.legalName}</p>
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
@@ -275,6 +280,7 @@ export default function Layout() {
       <Header />
       <main id="main" tabIndex={-1}><Outlet /></main>
       <Footer />
+      <BackToTop />
     </>
   )
 }
