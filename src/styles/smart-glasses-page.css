@@ -1,0 +1,66 @@
+/*
+ * Smart glasses service page (design/smart-glasses-page/services/smart-glasses-app-development.html). Shared design rules come from
+ * home-glasses.css (scope .hg); these are the rules only this page uses (scope .hg.sgp). Values are the design's. Accessibility changes
+ * (WCAG AA contrast): white or light text on blue fills uses --g-blue-d (#0062C4) instead of #0075EA.
+ */
+.sgp .crumb { font: 500 13px/1 var(--g-bd); color: var(--g-mut); padding-top: 22px; }
+.sgp .crumb ol { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.sgp .crumb li + li::before { content: '/'; margin-right: 6px; }
+.sgp .crumb a { color: var(--g-mut); text-decoration: none; }
+.sgp .crumb a:hover { color: var(--g-link); }
+.sgp .crumb + .pill { margin-top: 18px; }
+
+.sgp .cap6 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+
+/* devices table */
+.sgp .dtbl { overflow-x: auto; contain: paint; max-width: 100%; border: 1px solid var(--g-line); border-radius: 10px; }
+.sgp .dtbl table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 15px; }
+.sgp .dtbl th, .sgp .dtbl td { text-align: left; vertical-align: top; padding: 16px 18px; border-bottom: 1px solid var(--g-line); }
+.sgp .dtbl thead th { background: var(--g-soft); font: 700 13px/1.2 var(--g-bd); letter-spacing: 0.06em; text-transform: uppercase; color: var(--g-mut); }
+.sgp .dtbl tbody th { font: 800 17px/1.3 var(--g-hd); color: var(--g-ink); }
+.sgp .dtbl td { color: var(--g-mut); }
+.sgp .dtbl tbody tr:hover { background: var(--g-tint); }
+.sgp .dtbl tbody tr:last-child > * { border-bottom: 0; }
+.sgp .logos.l4 { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 28px; }
+
+/* four-part flow */
+.sgp .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; position: relative; margin: 0; padding: 0; list-style: none; }
+.sgp .fnode { position: relative; padding: 26px; border: 1px solid var(--g-line-d); background: var(--g-card-d); border-radius: 10px; margin-right: 34px; }
+.sgp .fnode:last-child { margin-right: 0; background: var(--g-blue-d); border-color: var(--g-blue-d); }
+.sgp .fnode:last-child p { color: #e3eeff; }
+.sgp .fnode::after { content: ''; position: absolute; right: -30px; top: 50%; width: 26px; height: 2px; background: var(--g-blue-l); }
+.sgp .fnode::before { content: ''; position: absolute; right: -31px; top: calc(50% - 5px); border: 6px solid transparent; border-left-color: var(--g-blue-l); transform: translateX(6px); }
+.sgp .fnode:last-child::after, .sgp .fnode:last-child::before { display: none; }
+.sgp .fnode b { display: block; font: 600 12px/1 var(--g-bd); letter-spacing: 0.1em; color: var(--g-blue-l); margin-bottom: 10px; }
+.sgp .fnode:last-child b { color: #fff; }
+.sgp .fnode h3 { margin-bottom: 8px; }
+.sgp .fnode p { color: var(--g-mut-d); font-size: 15px; }
+.sgp .flow-note { color: var(--g-mut-d); text-align: center; margin-top: 30px; }
+@media (prefers-reduced-motion: no-preference) {
+  .sgp .fnode::after { background: linear-gradient(90deg, var(--g-blue-l) 50%, transparent 50%); background-size: 10px 2px; animation: sgp-dash 1s linear infinite; }
+}
+@keyframes sgp-dash { to { background-position: 10px 0; } }
+@media (max-width: 1000px) {
+  .sgp .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .sgp .fnode { margin-right: 0; }
+  .sgp .fnode::after, .sgp .fnode::before { display: none; }
+  .sgp .cap6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) { .sgp .flow, .sgp .cap6 { grid-template-columns: minmax(0, 1fr); } }
+
+/* use-case text tiles */
+.sgp .bt.txt.dark { background: var(--g-dark); }
+.sgp .bt.txt.dark p { color: #b9c2cf; }
+
+/* measuring results */
+.sgp .meas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.sgp .meas li { border-left: 4px solid var(--g-blue); padding: 6px 0 6px 18px; }
+.sgp .meas h3 { font-size: 19px; }
+.sgp .meas p { color: var(--g-mut); font-size: 15px; margin-top: 6px; }
+@media (max-width: 900px) { .sgp .meas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .sgp .meas { grid-template-columns: minmax(0, 1fr); } }
+
+/* related services */
+.sgp .rel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 800px) { .sgp .rel { grid-template-columns: minmax(0, 1fr); } }
+.sgp .sec.pb0 { padding-bottom: 0; }

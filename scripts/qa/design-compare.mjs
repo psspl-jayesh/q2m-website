@@ -31,7 +31,7 @@ for (const w of widths.split(',').map(Number)) {
   const H = Math.max(l.h, r.h) + label
   const text = (s, x) => ({ input: Buffer.from(`<svg width="${w}" height="${label}"><text x="16" y="36" font-family="Arial" font-size="24" font-weight="700" fill="#0b0c0c">${s}</text></svg>`), left: x, top: 0 })
   await sharp({ create: { width: w * 2 + gap, height: H, channels: 3, background: '#d9dde4' } })
-    .composite([text(`Design HTML · ${w}px · ${l.h}px tall`, 0), text(`New home · ${w}px · ${r.h}px tall`, w + gap), { input: l.buf, left: 0, top: label }, { input: r.buf, left: w + gap, top: label }])
+    .composite([text(`Design HTML · ${w}px · ${l.h}px tall`, 0), text(`New page · ${w}px · ${r.h}px tall`, w + gap), { input: l.buf, left: 0, top: label }, { input: r.buf, left: w + gap, top: label }])
     .png().toFile(`${ROOT}scripts/qa/${out}-${w}-${theme}.png`)
   console.log(w, theme, 'design', l.h, 'site', r.h, '->', `${out}-${w}-${theme}.png`)
 }

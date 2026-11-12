@@ -30,9 +30,10 @@ if (!entry) throw new Error('index.html: app entry script not found')
 const deferred = base.replace(entry[0], `<link rel="modulepreload" crossorigin href="${entry[1]}">
     <script>(function(){var go=function(){if(go.done)return;go.done=1;var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="${entry[1]}";document.head.appendChild(s)};addEventListener("load",go,{once:true});setTimeout(go,2500)})()</script>`)
 
-// Home page only: preload its two design fonts (Hanken Grotesk, Inter; Latin subsets) so the hero text does not change size when
-// they arrive (layout shift). Other pages do not use them, so they do not get these preloads.
-const homeFonts = readdirSync(join(DIST, 'assets')).filter((f) => /^(hanken-grotesk|inter)-latin-wght-normal-.*\.woff2$/.test(f))
+// Pages in the smart glasses design: preload its two fonts (Hanken Grotesk, Inter; Latin subsets) so the hero text does not change
+// size when they arrive (layout shift). Other pages do not use them, so they do not get these preloads.
+const DESIGN_FONT_ROUTES = ['/', '/smart-glasses-ar-wearable-app-development-services/']
+const designFonts = readdirSync(join(DIST, 'assets')).filter((f) => /^(hanken-grotesk|inter)-latin-wght-normal-.*\.woff2$/.test(f))
   .map((f) => `<link rel="preload" as="font" type="font/woff2" href="/assets/${f}" crossorigin>\n    `).join('')
 
 function page(route, { html, head }) {
@@ -40,7 +41,7 @@ function page(route, { html, head }) {
   const attrs = ` data-prerendered="${route}"${btsPage ? ` data-bts-phase="${bts.phase}"` : ''}`
   return deferred
     .replace('<html lang="en-IN">', `<html lang="en-IN"${attrs}>`)
-    .replace('</head>', `    ${route === '/' ? homeFonts : ''}${head}\n${btsPage ? `    ${btsGuard}\n` : ''}  </head>`)
+    .replace('</head>', `    ${DESIGN_FONT_ROUTES.includes(route) ? designFonts : ''}${head}\n${btsPage ? `    ${btsGuard}\n` : ''}  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
 }
 
