@@ -11,6 +11,24 @@ import ui from '@/content/shared/ui.json'
 
 export const anchor = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
+/**
+ * Section ids for one page, made from the section headings and unique on the page: "faq" stays reserved for the FAQ block,
+ * and a heading that repeats gets "-2", "-3". Used by the sections and by the "On this page" links, so they always match.
+ */
+export function sectionIds(entry: Entry, secs: Section[]): Map<Section, string> {
+  const used = new Set(entry.faqs.length ? ['faq'] : [])
+  const ids = new Map<Section, string>()
+  for (const s of secs) {
+    const base = anchor(s.title)
+    if (!base) continue
+    let id = base
+    for (let n = 2; used.has(id); n++) id = `${base}-${n}`
+    used.add(id)
+    ids.set(s, id)
+  }
+  return ids
+}
+
 /** Link target from the live site: internal paths stay in the app; "#" and empty targets are dead links and return null. */
 export function resolveHref(h?: string | null): string | null {
   if (!h || h === '#') return null
@@ -20,7 +38,7 @@ export function resolveHref(h?: string | null): string | null {
 }
 
 /** Brand panel used when the live page has no hero image: black slab, dot arrow in the corner, on-page index. */
-function OutlinePanel({ title, items, hasFaq }: { title: string; items: string[]; hasFaq: boolean }) {
+function OutlinePanel({ title, items, hasFaq }: { title: string; items: { title: string; id: string }[]; hasFaq: boolean }) {
   const row = 'group flex min-h-12 items-center gap-4 py-3 transition-colors hover:text-action-soft'
   return (
     <div className="on-dark rounded-lg bg-block p-6 text-ink-inverse sm:p-8">
@@ -29,7 +47,7 @@ function OutlinePanel({ title, items, hasFaq }: { title: string; items: string[]
       <p className="sr-only">{title}</p>
       <ol className="divide-y divide-block-line border-y border-block-line">
         {items.map((t, k) => (
-          <li key={t}><a href={`#${anchor(t)}`} className={row}><span className="mono text-block-muted">{String(k + 1).padStart(2, '0')}</span><span className="text-[0.9375rem] leading-snug">{t}</span></a></li>
+          <li key={t.id}><a href={`#${t.id}`} className={row}><span className="mono text-block-muted">{String(k + 1).padStart(2, '0')}</span><span className="text-[0.9375rem] leading-snug">{t.title}</span></a></li>
         ))}
         {hasFaq && <li><a href="#faq" className={row}><span className="mono text-block-muted">FAQ</span><span className="text-[0.9375rem]">{ui.faqFallback}</span></a></li>}
       </ol>
@@ -57,6 +75,7 @@ export function PageBody({ entry, secs, images = true }: { entry: Entry; secs: S
   const c = useContent()
   const faqSec = entry.faqs.length ? [...secs].reverse().find((x) => isFaqHeading(x.title) && !x.blocks.some((b) => b.t !== 'img')) : undefined
   const shown = secs.filter((x) => x !== faqSec)
+  const ids = sectionIds(entry, secs)
   // images=false: a page whose image placement is awaiting approval (the home page) renders without manifest images
   const sectionImgs = images ? imagesBySection(c, entry.path, shown.map((x) => x.title)) : new Map<string, ManifestImage[]>()
   // Prose sections whose live page has no image get a topic image (pages with images=false get none)
@@ -66,7 +85,7 @@ export function PageBody({ entry, secs, images = true }: { entry: Entry; secs: S
   const topics = shown.map((s) => (layoutOf(s, sectionImgs.get(keyOf(s.title)) ?? []) === 'prose-bare' ? pool[next++] : undefined))
   return (
     <>
-      {shown.map((s, i) => <div key={s.title + i} id={anchor(s.title)} className="scroll-anchor"><SectionBlock s={s} i={i} imgs={sectionImgs.get(keyOf(s.title)) ?? []} topic={topics[i]} /></div>)}
+      {shown.map((s, i) => <div key={s.title + i} id={ids.get(s)} className="scroll-anchor"><SectionBlock s={s} i={i} imgs={sectionImgs.get(keyOf(s.title)) ?? []} topic={topics[i]} /></div>)}
       {entry.faqs.length > 0 && (
         <section id="faq" className="section scroll-anchor border-t hairline">
           <div className="container-page split">
@@ -84,6 +103,8 @@ export default function ServicePage({ entry }: { entry: Entry }) {
   const { h1, lede, btn, meta, body } = splitHero(entry.blocks)
   const hero = heroImage(c, entry.path) // the banner shown under the title on the live page (manifest is the source of truth)
   const secs = sectionize(body)
+  const secIds = sectionIds(entry, secs)
+  const outline = secs.filter((x) => !isFaqHeading(x.title) && secIds.has(x)).slice(0, 7).map((x) => ({ title: x.title, id: secIds.get(x)! }))
   const nav = groupOfNav(entry.slug)
   const related = (nav?.items ?? []).filter((l) => l.href !== entry.path && !l.external).slice(0, 6)
   const title = indiaTitle(entry.metaTitle || entry.title)
@@ -117,7 +138,7 @@ export default function ServicePage({ entry }: { entry: Entry }) {
             <div className="split-main">
               {hero
                 ? <HeroImage image={hero} />
-                : <Reveal delay={0.2} y={28}><OutlinePanel title={entry.title} items={secs.map((x) => x.title).filter((t) => !isFaqHeading(t)).slice(0, 7)} hasFaq={entry.faqs.length > 0} /></Reveal>}
+                : <Reveal delay={0.2} y={28}><OutlinePanel title={entry.title} items={outline} hasFaq={entry.faqs.length > 0} /></Reveal>}
             </div>
           </div>
         </div>
@@ -208,7 +229,7 @@ function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?:
   const logoStrip = textBlocks.length > 0 && logos.length > 0 ? (
     <div className="mt-14 border-t hairline pt-8">
       {stripLabel && <p className="eyebrow mb-6">{stripLabel}</p>}
-      <StaggerGroup as="ul" className="grid grid-cols-2 items-center gap-x-10 gap-y-8 sm:grid-cols-4 lg:grid-cols-8">{logos.map((m) => <StaggerItem as="li" key={m.file + m.order}><SiteImage image={m} sizes="120px" className="mx-auto max-h-10 w-auto object-contain opacity-70 grayscale" /></StaggerItem>)}</StaggerGroup>
+      <StaggerGroup as="ul" className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">{logos.map((m) => <StaggerItem as="li" key={m.file + m.order} className="flex h-16 items-center justify-center rounded-md border border-line bg-white px-5"><SiteImage image={m} sizes="140px" className="h-8 w-auto max-w-full object-contain" /></StaggerItem>)}</StaggerGroup>
     </div>
   ) : null
   const tail = <>{gallery}{logoStrip}</>
@@ -217,7 +238,7 @@ function SectionBody({ s, i, imgs = [], topic }: { s: Section; i: number; imgs?:
   if (textBlocks.length === 0 && logos.length > 0) return (
     <section aria-label={s.title} className="border-y hairline bg-surface-raised py-12"><div className="container-page">
       <p className="eyebrow mb-8">{s.title}</p>
-      <StaggerGroup as="ul" className="grid grid-cols-2 items-center gap-x-10 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">{logos.map((m) => <StaggerItem as="li" key={m.file + m.order}><SiteImage image={m} sizes="120px" className="mx-auto max-h-10 w-auto object-contain opacity-70 grayscale" /></StaggerItem>)}</StaggerGroup>
+      <StaggerGroup as="ul" className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">{logos.map((m) => <StaggerItem as="li" key={m.file + m.order} className="flex h-16 items-center justify-center rounded-md border border-line bg-white px-5"><SiteImage image={m} sizes="140px" className="h-8 w-auto max-w-full object-contain" /></StaggerItem>)}</StaggerGroup>
     </div></section>
   )
   // Heading with images only

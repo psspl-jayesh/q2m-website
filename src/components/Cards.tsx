@@ -29,7 +29,8 @@ export function CaseCard({ e, large, i = 0, as: Heading = 'h3' }: { e: Entry; la
   )
 }
 
-export function PostCard({ e, i = 0 }: { e: Entry; i?: number }) {
+/** `as`: heading level for the title (h2 when the cards follow the page H1 directly, so heading levels never skip). */
+export function PostCard({ e, i = 0, as: Heading = 'h3' }: { e: Entry; i?: number; as?: 'h2' | 'h3' }) {
   const c = useContent()
   const m = thumbFor(c, e)
   const cat = c.categories.find((x) => e.categories.includes(x.id) && x.slug !== 'uncategorized')
@@ -38,7 +39,7 @@ export function PostCard({ e, i = 0 }: { e: Entry; i?: number }) {
       <Link to={e.path} className="group block">
         {m && <div className="overflow-hidden rounded-md"><SiteImage image={{ ...m, alt: '' }} ratio="16/10" sizes="(min-width:1024px) 400px, (min-width:768px) 50vw, 100vw" className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" /></div>}
         <p className="mono mt-5 text-ink-muted">{cat?.name ?? 'Insight'} · {fmtDate(e.date)}</p>
-        <h3 className="mt-2 font-display text-xl leading-snug transition-colors duration-200 group-hover:text-action">{e.title}</h3>
+        <Heading className="mt-2 font-display text-xl leading-snug transition-colors duration-200 group-hover:text-action">{e.title}</Heading>
       </Link>
     </Reveal>
   )

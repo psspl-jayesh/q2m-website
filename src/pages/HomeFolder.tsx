@@ -156,10 +156,10 @@ export default function HomeFolder() {
             {tiles.map((t) => (
               <StaggerItem key={t.title} className={`relative min-h-[150px] overflow-hidden rounded-lg border border-line ${t.w2 ? 'col-span-2' : 'col-span-2 md:col-span-1'} ${t.h2 ? 'md:row-span-2' : ''}`}>
                 {topicImg(WORK, t.title) ? <SiteImage image={topicImg(WORK, t.title)!} ratio="auto" sizes="(min-width:768px) 50vw, 100vw" className="absolute inset-0 h-full w-full object-cover" /> : <DotPanel dark={t.dark} className="absolute inset-0" />}
-                <figcaption className="absolute inset-x-3 bottom-3 rounded-md bg-surface p-3 md:inset-x-4 md:bottom-4">
+                <div className="absolute inset-x-3 bottom-3 rounded-md bg-surface p-3 md:inset-x-4 md:bottom-4">
                   <span className="mb-1.5 inline-block rounded-sm bg-action px-2 py-0.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-on-action">{t.tag}</span>
                   <b className="block font-display text-[0.9375rem] font-semibold leading-snug md:text-base">{t.title}</b>
-                </figcaption>
+                </div>
               </StaggerItem>
             ))}
           </StaggerGroup>
