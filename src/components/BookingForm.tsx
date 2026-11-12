@@ -66,7 +66,7 @@ export default function BookingForm({ industries, placeholder, note }: { industr
       `Name: ${v.name}`, `Company: ${v.company}`, `Role: ${v.role || '-'}`, `Work email: ${v.email}`, `Mobile: ${payload.mobile || '-'}`, `Industry: ${v.industry}`,
       `Preferred slot: ${slot}`, describeBusiness(v), '', 'Process to discuss:', v.topic || '-', '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
     ].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n')
-    window.location.href = `mailto:${COMPANY.email}?subject=${encodeURIComponent('30-minute AI session request')}&body=${encodeURIComponent(body)}`
+    window.location.assign(`mailto:${COMPANY.email}?subject=${encodeURIComponent('30-minute AI session request')}&body=${encodeURIComponent(body)}`)
     setStatus({ kind: 'ok', msg: 'Your email app should now open with these details. Nothing has been sent until you press send there.' })
     live.current?.focus()
   }

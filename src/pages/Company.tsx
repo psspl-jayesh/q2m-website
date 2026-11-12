@@ -96,7 +96,7 @@ export function Contact({ entry }: { entry: Entry }) {
       `Full name: ${v['full-name']}`, `Company / organisation: ${v.organization}`, `Mobile: ${formatPhone(v['tel-phone'])}`, `Company email: ${v['email-company']}`,
       describeBusiness(v), '', 'Message:', v['textarea-message'], '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
     ].filter((l, k, a) => l !== '' || a[k - 1] !== '').join('\n')
-    window.location.href = `mailto:${COMPANY.email}?subject=${encodeURIComponent(v.subject)}&body=${encodeURIComponent(body)}`
+    window.location.assign(`mailto:${COMPANY.email}?subject=${encodeURIComponent(v.subject)}&body=${encodeURIComponent(body)}`)
     setStatus({ kind: 'ok', msg: 'Your email app should now open with your message. Nothing has been sent until you press send there.' })
   }
 

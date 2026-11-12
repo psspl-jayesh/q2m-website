@@ -29,7 +29,7 @@ export function routes(): string[] {
 export const BTS_PAGES = ['/', BTS.path]
 
 export function render(url: string) {
-  const head: HeadData = {}
+  const head: HeadData = { setSeo(s) { head.seo = s } }
   const html = renderToString(
     <StrictMode>
       <HeadContext.Provider value={head}>

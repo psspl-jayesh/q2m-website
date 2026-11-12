@@ -11,8 +11,8 @@ let hydrating = typeof window === 'undefined'
 export const isHydrating = () => hydrating
 export const setHydrating = (v: boolean) => { hydrating = v }
 
-/** Server only: <Seo> writes the page's head data here so the build can put the tags in the HTML. Null in the browser. */
-export type HeadData = { seo?: SeoInput }
+/** Server only: <Seo> hands the page's head data to the build (setSeo) so the tags go into the HTML. Null in the browser. */
+export type HeadData = { seo?: SeoInput; setSeo: (s: SeoInput) => void }
 export const HeadContext = createContext<HeadData | null>(null)
 
 export type SeoInput = { title: string; description?: string; path: string; image?: string; noindex?: boolean; jsonLd?: object | object[] }

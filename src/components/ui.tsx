@@ -10,7 +10,7 @@ import { applyHeadTags, seoTags } from '@/lib/seoTags'
 export function Seo(props: SeoInput) {
   // Server (pre-render): hand the head data to the build. Browser: update document.head after render.
   const head = useContext(HeadContext)
-  if (head) head.seo = props
+  head?.setSeo(props)
   const { title, description, path, image, noindex, jsonLd } = props
   useEffect(() => { applyHeadTags(seoTags({ title, description, path, image, noindex, jsonLd })) }, [title, description, path, image, noindex, jsonLd])
   return null

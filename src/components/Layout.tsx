@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ChevronDown, Menu, X, ArrowRight, ArrowUpRight, Mail, MapPin, Phone, Moon, Sun } from 'lucide-react'
@@ -84,7 +84,9 @@ function Header() {
   const timer = useRef<number>(0)
   const bar = useRef<HTMLDivElement>(null)
 
-  useEffect(() => { setOpen(null); setMobile(false) }, [loc.pathname])
+  // Close the menus when the page changes (state adjusted during render: https://react.dev/learn/you-might-not-need-an-effect)
+  const [path, setPath] = useState(loc.pathname)
+  if (path !== loc.pathname) { setPath(loc.pathname); setOpen(null); setMobile(false) }
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 8)
     on(); window.addEventListener('scroll', on, { passive: true }); return () => window.removeEventListener('scroll', on)
@@ -178,13 +180,18 @@ function MobileNav({ nav }: { nav: ReturnType<typeof useActiveNav> }) {
   )
 }
 
+/** The theme lives on <html data-theme>. Pre-rendered HTML is built without a theme, so the server/hydration snapshot is "light". */
+const subscribeTheme = (cb: () => void) => {
+  const mo = new MutationObserver(cb)
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+  return () => mo.disconnect()
+}
+const isDark = () => document.documentElement.dataset.theme === 'dark'
+
 function ThemeToggle() {
-  // Read the theme after mount: the pre-rendered HTML is built without a theme, so the first render must not depend on it
-  const [dark, setDark] = useState(false)
-  useEffect(() => { setDark(document.documentElement.dataset.theme === 'dark') }, [])
+  const dark = useSyncExternalStore(subscribeTheme, isDark, () => false)
   const flip = () => {
     const next = !dark
-    setDark(next)
     document.documentElement.dataset.theme = next ? 'dark' : 'light'
     try { localStorage.setItem('q2m-theme', next ? 'dark' : 'light') } catch { /* storage unavailable */ }
   }
