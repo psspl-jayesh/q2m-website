@@ -2,7 +2,7 @@
  "path": "/guide-microsoft-fabric-enables-real-time-analytics/",
  "slug": "guide-microsoft-fabric-enables-real-time-analytics",
  "type": "post",
- "source": "https://q2msolutions.com/guide-microsoft-fabric-enables-real-time-analytics/",
+ "source": "/guide-microsoft-fabric-enables-real-time-analytics/",
  "syncedAt": "2026-11-11T08:57:52.049Z",
  "seo": {
   "title": "Guide: Microsoft Fabric Enables Real-time Analytics - Q2M Solutions",
@@ -135,7 +135,7 @@
   {
    "t": "btn",
    "text": "PRV PROJECT",
-   "href": "https://q2msolutions.com/microsoft-dynamics-365-and-dynamics-365-business-central/"
+   "href": "/microsoft-dynamics-365-and-dynamics-365-business-central/"
   },
   {
    "t": "p",
@@ -148,7 +148,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/"
+   "href": "/sharepoint-framework-v1-22-1-a-stability-update-developers-shouldnt-skip/"
   }
  ],
  "faqs": []

@@ -2,7 +2,7 @@
  "path": "/generative-ai-integration-services/",
  "slug": "generative-ai-integration-services",
  "type": "page",
- "source": "https://q2msolutions.com/generative-ai-integration-services/",
+ "source": "/generative-ai-integration-services/",
  "syncedAt": "2026-11-11T08:57:49.164Z",
  "seo": {
   "title": "Generative AI Integration Services",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Let’s Connect to See What We Build",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -476,7 +476,7 @@
   {
    "t": "btn",
    "text": "Book Your Free Discovery Call Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

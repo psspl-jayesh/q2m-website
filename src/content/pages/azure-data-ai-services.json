@@ -2,7 +2,7 @@
  "path": "/azure-data-ai-services/",
  "slug": "azure-data-ai-services",
  "type": "page",
- "source": "https://q2msolutions.com/azure-data-ai-services/",
+ "source": "/azure-data-ai-services/",
  "syncedAt": "2026-11-11T08:57:50.838Z",
  "seo": {
   "title": "Azure Data & AI Services",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -237,7 +237,7 @@
   {
    "t": "btn",
    "text": "Contact us today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

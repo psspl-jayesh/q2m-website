@@ -2,7 +2,7 @@
  "path": "/the-transformative-power-of-ai-in-software-development/",
  "slug": "the-transformative-power-of-ai-in-software-development",
  "type": "post",
- "source": "https://q2msolutions.com/the-transformative-power-of-ai-in-software-development/",
+ "source": "/the-transformative-power-of-ai-in-software-development/",
  "syncedAt": "2026-11-11T08:57:52.118Z",
  "seo": {
   "title": "Agile Reimagined: The Transformative Power of AI in Software Development",
@@ -203,7 +203,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/microsoft-dynamics-365-and-dynamics-365-business-central/"
+   "href": "/microsoft-dynamics-365-and-dynamics-365-business-central/"
   }
  ],
  "faqs": []

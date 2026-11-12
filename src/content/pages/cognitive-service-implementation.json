@@ -2,7 +2,7 @@
  "path": "/cognitive-service-implementation/",
  "slug": "cognitive-service-implementation",
  "type": "page",
- "source": "https://q2msolutions.com/cognitive-service-implementation/",
+ "source": "/cognitive-service-implementation/",
  "syncedAt": "2026-11-11T08:57:50.436Z",
  "seo": {
   "title": "Cognitive Service Implementation",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Talk to Our Azure Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",
@@ -94,7 +94,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -416,7 +416,7 @@
   {
    "t": "btn",
    "text": "Contact us today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

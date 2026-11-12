@@ -5,7 +5,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { ROOT } from './config.mjs'
 
 const DIST = ROOT + 'dist'
-const SITE = 'https://q2msolutions.com'
+const SITE = 'https://q2msolutions.in'
 const files = []
 const walk = (d) => { for (const f of readdirSync(d)) { const p = `${d}/${f}`; statSync(p).isDirectory() ? walk(p) : files.push(p) } }
 walk(DIST)

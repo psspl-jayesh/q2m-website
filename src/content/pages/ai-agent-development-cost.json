@@ -2,7 +2,7 @@
  "path": "/ai-agent-development-cost/",
  "slug": "ai-agent-development-cost",
  "type": "post",
- "source": "https://q2msolutions.com/ai-agent-development-cost/",
+ "source": "/ai-agent-development-cost/",
  "syncedAt": "2026-11-11T08:57:51.812Z",
  "seo": {
   "title": "A Complete Breakdown of the AI Agent Development Cost in 2026",
@@ -367,7 +367,7 @@
   {
    "t": "btn",
    "text": "PRV PROJECT",
-   "href": "https://q2msolutions.com/ai-development-lifecycle/"
+   "href": "/ai-development-lifecycle/"
   },
   {
    "t": "p",
@@ -380,7 +380,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/q2m-solutions-is-heading-to-ai4-2026/"
+   "href": "/q2m-solutions-is-heading-to-ai4-2026/"
   }
  ],
  "faqs": []

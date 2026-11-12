@@ -2,7 +2,7 @@
  "path": "/generative-ai-development-services/",
  "slug": "generative-ai-development-services",
  "type": "page",
- "source": "https://q2msolutions.com/generative-ai-development-services/",
+ "source": "/generative-ai-development-services/",
  "syncedAt": "2026-11-11T08:57:49.945Z",
  "seo": {
   "title": "Generative AI Development Services | GenAI Development Company",
@@ -251,7 +251,7 @@
   {
    "t": "btn",
    "text": "Request a Free Quote from Q2M Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

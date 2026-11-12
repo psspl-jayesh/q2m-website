@@ -2,7 +2,7 @@
  "path": "/cyber-security-services/",
  "slug": "cyber-security-services",
  "type": "page",
- "source": "https://q2msolutions.com/cyber-security-services/",
+ "source": "/cyber-security-services/",
  "syncedAt": "2026-11-11T08:57:49.314Z",
  "seo": {
   "title": "Cyber Security Services & Consulting | Cyber Security Solutions",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -245,7 +245,7 @@
   {
    "t": "btn",
    "text": "Schedule Your Cybersecurity Consultation",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

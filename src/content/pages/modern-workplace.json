@@ -2,7 +2,7 @@
  "path": "/modern-workplace/",
  "slug": "modern-workplace",
  "type": "page",
- "source": "https://q2msolutions.com/modern-workplace/",
+ "source": "/modern-workplace/",
  "syncedAt": "2026-11-11T08:57:50.978Z",
  "seo": {
   "title": "Modern Workplace Consulting Services - Q2M Solutions",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -319,7 +319,7 @@
   {
    "t": "btn",
    "text": "Talk to our Modern Workplace Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   }
  ],
  "faqs": []

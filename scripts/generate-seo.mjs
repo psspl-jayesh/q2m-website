@@ -1,7 +1,7 @@
 // Generates public/sitemap.xml, public/robots.txt and docs/page-tracker.csv from synced content.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 const c = JSON.parse(readFileSync('src/data/content.json', 'utf8'))
-const base = 'https://q2msolutions.com'
+const base = 'https://q2msolutions.in'
 const all = [...c.pages, ...c.posts, ...c.caseStudies]
 const loc = (e) => `${base}${e.slug === 'q2m-solutions' ? '/' : e.path}`
 /** Pages that are not in the CMS content (built in this project). */

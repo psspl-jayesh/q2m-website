@@ -28,9 +28,9 @@ if (!/^<\?xml version="1\.0" encoding="UTF-8"\?>/.test(sm.trim())) problems.push
 if (!sm.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"')) problems.push('sitemap: missing namespace')
 const open = (sm.match(/<url>/g) || []).length, close = (sm.match(/<\/url>/g) || []).length
 if (open !== close) problems.push('sitemap: unbalanced <url> tags')
-for (const l of sm.matchAll(/<loc>([^<]*)<\/loc>/g)) if (!/^https:\/\/q2msolutions\.com\//.test(l[1]) || /[&<>]/.test(l[1])) problems.push(`sitemap: bad loc ${l[1]}`)
+for (const l of sm.matchAll(/<loc>([^<]*)<\/loc>/g)) if (!/^https:\/\/q2msolutions.in\//.test(l[1]) || /[&<>]/.test(l[1])) problems.push(`sitemap: bad loc ${l[1]}`)
 for (const d of sm.matchAll(/<lastmod>([^<]*)<\/lastmod>/g)) if (!/^\d{4}-\d{2}-\d{2}/.test(d[1])) problems.push(`sitemap: bad lastmod ${d[1]}`)
 const robots = readFileSync(DIST + '/robots.txt', 'utf8')
-if (!/^User-agent: \*/m.test(robots) || !/^Sitemap: https:\/\/q2msolutions\.com\/sitemap\.xml/m.test(robots)) problems.push('robots.txt: missing User-agent or Sitemap line')
+if (!/^User-agent: \*/m.test(robots) || !/^Sitemap: https:\/\/q2msolutions.in\/sitemap\.xml/m.test(robots)) problems.push('robots.txt: missing User-agent or Sitemap line')
 console.log(JSON.stringify({ pages: files.length, jsonLdBlocks: blocks, types, sitemapUrls: open, problems }, null, 1))
 process.exit(problems.length ? 1 : 0)

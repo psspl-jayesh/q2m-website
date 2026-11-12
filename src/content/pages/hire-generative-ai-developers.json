@@ -2,7 +2,7 @@
  "path": "/hire-generative-ai-developers/",
  "slug": "hire-generative-ai-developers",
  "type": "post",
- "source": "https://q2msolutions.com/hire-generative-ai-developers/",
+ "source": "/hire-generative-ai-developers/",
  "syncedAt": "2026-11-11T08:57:51.630Z",
  "seo": {
   "title": "Hire Generative AI Developers to Enhance Your Enterprise AI: An In-Depth Guide",
@@ -319,7 +319,7 @@
   {
    "t": "btn",
    "text": "PRV PROJECT",
-   "href": "https://q2msolutions.com/generative-ai-app-development-cost/"
+   "href": "/generative-ai-app-development-cost/"
   },
   {
    "t": "p",
@@ -332,7 +332,7 @@
   {
    "t": "btn",
    "text": "NXT PROJECT",
-   "href": "https://q2msolutions.com/ai-development-cost/"
+   "href": "/ai-development-cost/"
   }
  ],
  "faqs": []

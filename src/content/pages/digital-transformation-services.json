@@ -2,7 +2,7 @@
  "path": "/digital-transformation-services/",
  "slug": "digital-transformation-services",
  "type": "page",
- "source": "https://q2msolutions.com/digital-transformation-services/",
+ "source": "/digital-transformation-services/",
  "syncedAt": "2026-11-11T08:57:51.123Z",
  "seo": {
   "title": "Digital Transformation Services - Q2M Solutions",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -277,7 +277,7 @@
   {
    "t": "btn",
    "text": "Let’s Modernise Together – Talk to Our Experts!",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -397,7 +397,7 @@
   {
    "t": "btn",
    "text": "Start Your Transformation – Schedule a Free Consultation Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

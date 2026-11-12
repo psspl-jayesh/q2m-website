@@ -2,7 +2,7 @@
  "path": "/ai-development-services/",
  "slug": "ai-development-services",
  "type": "page",
- "source": "https://q2msolutions.com/ai-development-services/",
+ "source": "/ai-development-services/",
  "syncedAt": "2026-11-11T08:57:50.354Z",
  "seo": {
   "title": "AI Development Services - Q2M Solutions",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Schedule A Consultation Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -202,7 +202,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -412,7 +412,7 @@
   {
    "t": "btn",
    "text": "Get a Free Quote Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

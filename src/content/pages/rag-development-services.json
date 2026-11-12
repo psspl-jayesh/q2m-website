@@ -2,7 +2,7 @@
  "path": "/rag-development-services/",
  "slug": "rag-development-services",
  "type": "page",
- "source": "https://q2msolutions.com/rag-development-services/",
+ "source": "/rag-development-services/",
  "syncedAt": "2026-11-11T08:57:49.785Z",
  "seo": {
   "title": "RAG Development Services & Company | Custom RAG Solutions",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Let’s Connect to See What We Build",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h6",

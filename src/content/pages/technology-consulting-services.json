@@ -2,7 +2,7 @@
  "path": "/technology-consulting-services/",
  "slug": "technology-consulting-services",
  "type": "page",
- "source": "https://q2msolutions.com/technology-consulting-services/",
+ "source": "/technology-consulting-services/",
  "syncedAt": "2026-11-11T08:57:50.941Z",
  "seo": {
   "title": "Technology Consulting Services & Solutions",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",
@@ -270,7 +270,7 @@
   {
    "t": "btn",
    "text": "Accelerate Innovation and Growth – Speak with Our Technology Experts",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

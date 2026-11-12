@@ -2,7 +2,7 @@
  "path": "/ai-app-development-services/",
  "slug": "ai-app-development-services",
  "type": "page",
- "source": "https://q2msolutions.com/ai-app-development-services/",
+ "source": "/ai-app-development-services/",
  "syncedAt": "2026-11-11T08:57:50.273Z",
  "seo": {
   "title": "AI App Development Services & Company",
@@ -27,7 +27,7 @@
   {
    "t": "btn",
    "text": "Get in Touch with Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -315,7 +315,7 @@
   {
    "t": "btn",
    "text": "Request a Free Quote from Q2M Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -540,7 +540,7 @@
   {
    "t": "btn",
    "text": "Request a Free Quote from Q2M Today",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",

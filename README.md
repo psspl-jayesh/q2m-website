@@ -1,6 +1,6 @@
 # Q2M Solutions website
 
-A premium React rebuild of [q2msolutions.com](https://q2msolutions.com/), localised for India. It runs on the live site's content (synced at build time), uses the Q2M brand kit, and supports light and dark themes.
+The React website for [q2msolutions.in](https://q2msolutions.in/) (Q2M Solutions, India). It runs on content synced at build time from the global site's CMS (q2msolutions.com, a separate site), uses the Q2M brand kit, and supports light and dark themes.
 
 ![Home page, light theme](docs/readme/home-light.jpg)
 

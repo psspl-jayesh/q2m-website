@@ -2,7 +2,7 @@
  "path": "/cloud-applications/",
  "slug": "cloud-applications",
  "type": "page",
- "source": "https://q2msolutions.com/cloud-applications/",
+ "source": "/cloud-applications/",
  "syncedAt": "2026-11-11T08:57:51.336Z",
  "seo": {
   "title": "Cloud Applications - Q2M Solutions",
@@ -90,7 +90,7 @@
   {
    "t": "btn",
    "text": "Connect With Us",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h3",

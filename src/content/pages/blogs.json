@@ -2,7 +2,7 @@
  "path": "/blogs/",
  "slug": "blogs",
  "type": "page",
- "source": "https://q2msolutions.com/blogs/",
+ "source": "/blogs/",
  "syncedAt": "2026-11-11T08:57:51.388Z",
  "seo": {
   "title": "Blogs - Q2M Solutions",
@@ -47,7 +47,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/ai-chatbot-development-strategic-priority-2026/"
+   "href": "/ai-chatbot-development-strategic-priority-2026/"
   },
   {
    "t": "li",
@@ -64,7 +64,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/machine-learning-development-scalable-ml-solutions/"
+   "href": "/machine-learning-development-scalable-ml-solutions/"
   },
   {
    "t": "p",
@@ -86,7 +86,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/top-ai-agent-development-companies/"
+   "href": "/top-ai-agent-development-companies/"
   },
   {
    "t": "p",
@@ -108,7 +108,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/ai-development-cost/"
+   "href": "/ai-development-cost/"
   },
   {
    "t": "p",
@@ -130,7 +130,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/hire-generative-ai-developers/"
+   "href": "/hire-generative-ai-developers/"
   },
   {
    "t": "p",
@@ -152,7 +152,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/generative-ai-app-development-cost/"
+   "href": "/generative-ai-app-development-cost/"
   },
   {
    "t": "p",
@@ -174,7 +174,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/q2m-solutions-is-heading-to-ai4-2026/"
+   "href": "/q2m-solutions-is-heading-to-ai4-2026/"
   },
   {
    "t": "p",
@@ -196,7 +196,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/ai-agent-development-cost/"
+   "href": "/ai-agent-development-cost/"
   },
   {
    "t": "p",
@@ -218,7 +218,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/ai-development-lifecycle/"
+   "href": "/ai-development-lifecycle/"
   },
   {
    "t": "p",
@@ -240,7 +240,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/impact-of-digital-transformation-in-pharma/"
+   "href": "/impact-of-digital-transformation-in-pharma/"
   },
   {
    "t": "li",

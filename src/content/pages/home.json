@@ -2,7 +2,7 @@
  "path": "/",
  "slug": "home",
  "type": "page",
- "source": "https://q2msolutions.com/",
+ "source": "/",
  "syncedAt": "2026-11-11T08:57:51.247Z",
  "seo": {
   "title": "Custom AI Development Services by Q2M Solutions",
@@ -624,7 +624,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/ai-chatbot-development-strategic-priority-2026/"
+   "href": "/ai-chatbot-development-strategic-priority-2026/"
   },
   {
    "t": "li",
@@ -637,7 +637,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/machine-learning-development-scalable-ml-solutions/"
+   "href": "/machine-learning-development-scalable-ml-solutions/"
   },
   {
    "t": "p",
@@ -655,7 +655,7 @@
   {
    "t": "btn",
    "text": "Read More",
-   "href": "https://q2msolutions.com/top-ai-agent-development-companies/"
+   "href": "/top-ai-agent-development-companies/"
   },
   {
    "t": "h2",

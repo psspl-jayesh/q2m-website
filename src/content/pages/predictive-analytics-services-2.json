@@ -2,7 +2,7 @@
  "path": "/predictive-analytics-services-2/",
  "slug": "predictive-analytics-services-2",
  "type": "page",
- "source": "https://q2msolutions.com/predictive-analytics-services-2/",
+ "source": "/predictive-analytics-services-2/",
  "syncedAt": "2026-11-11T08:57:49.713Z",
  "seo": {
   "title": "Predictive Analytics Services for Startups & Enterprises | Q2M Solutions",
@@ -26,7 +26,7 @@
   {
    "t": "btn",
    "text": "Book an Appointment",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -347,7 +347,7 @@
   {
    "t": "btn",
    "text": "Check Our Pricing Guide",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   },
   {
    "t": "h2",
@@ -440,7 +440,7 @@
   {
    "t": "btn",
    "text": "Register to Get a Free Quote",
-   "href": "https://q2msolutions.com/contact/"
+   "href": "/contact/"
   }
  ],
  "faqs": [
