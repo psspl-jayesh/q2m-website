@@ -6,7 +6,7 @@ import { altForFile, heroImage, imagesBySection, keyOf, ogImageFor, pageImages, 
 import ui from '@/content/shared/ui.json'
 import { resolveHref } from './ServicePage'
 import { Breadcrumbs, Button, Reveal, SectionHead, Seo, Accordion, SiteFrame, SiteImage } from '@/components/ui'
-import { CaseCard, FinalCta, PostCard } from '@/components/Cards'
+import { CaseCard, PostCard } from '@/components/Cards'
 import { SITE_URL } from '@/lib/site'
 import siteImages from '@/data/site-images.json'
 import { indiaDescription, indiaTitle } from '@/lib/seo'
@@ -28,7 +28,6 @@ export function CaseStudies({ entry }: { entry: Entry }) {
         <Reveal y={28}><h1 className="display-xl mt-10 max-w-4xl">{h1Of(entry)}</h1></Reveal>
       </div></section>
       <section className="pb-24"><div className="container-page grid gap-8 lg:grid-cols-12">{c.caseStudies.map((e, i) => <CaseCard key={e.id} e={e} large={i === 0} i={i} as="h2" />)}</div></section>
-      <FinalCta />
     </>
   )
 }
@@ -69,7 +68,6 @@ export function CaseStudy({ entry }: { entry: Entry }) {
         <section className="section bg-surface-raised"><div className="container-page"><SectionHead eyebrow="Related work" title="More from our portfolio." />
           <div className="mt-12 grid gap-8 lg:grid-cols-12">{others.map((e, i) => <CaseCard key={e.id} e={e} i={i} />)}</div></div></section>
       )}
-      <FinalCta />
     </>
   )
 }
@@ -155,7 +153,6 @@ export function Blogs({ entry, category }: { entry?: Entry; category?: string })
           </nav>
         )}
       </div></section>
-      <FinalCta />
     </>
   )
 }
@@ -221,7 +218,6 @@ export function Article({ entry }: { entry: Entry }) {
       </article>
       <section className="section bg-surface-raised"><div className="container-page"><SectionHead title={ui.popularPosts} /><div className="mt-12 grid gap-8 md:grid-cols-3">{more.map((p, i) => <PostCard key={p.id} e={p} i={i} />)}</div>
         <div className="mt-12"><Button to="/blogs/" variant="dark">All insights</Button></div></div></section>
-      <FinalCta />
     </>
   )
 }

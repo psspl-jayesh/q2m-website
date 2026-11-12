@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { ChevronDown, Menu, X, ArrowUpRight, Mail, MapPin, Phone, Moon, Sun } from 'lucide-react'
+import { ChevronDown, Menu, X, ArrowRight, ArrowUpRight, Mail, MapPin, Phone, Moon, Sun } from 'lucide-react'
 import { NAV, TOP_LINKS, type MenuItem, type NavGroup } from '@/lib/site'
 import ctas from '@/content/shared/ctas.json'
 import footerContent from '@/content/shared/footer.json'
@@ -17,6 +17,10 @@ import SocialIcon from './SocialIcon'
 import siteCopy from '@/data/site-copy.json'
 import siteImages from '@/data/site-images.json'
 import BackToTop from '@/components/BackToTop'
+import DotArrow from '@/components/DotArrow'
+import ui from '@/content/shared/ui.json'
+import btsPage from '@/content/pages/bts-2026/page.json'
+import { BTS, useBtsPhase } from '@/config/bts'
 
 
 /** Official Q2M logos from Q2M_Brand_Kit, unmodified (826x498). Colour on light, reverse on dark. Min width 96px. */
@@ -185,75 +189,118 @@ function ThemeToggle() {
     try { localStorage.setItem('q2m-theme', next ? 'dark' : 'light') } catch { /* storage unavailable */ }
   }
   return (
-    <button onClick={flip} aria-pressed={dark} className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-md border border-block-line px-4 hover:border-ink-inverse hover:text-ink-inverse">
+    <button onClick={flip} aria-pressed={dark} className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-line px-5 text-sm text-ink transition-colors hover:border-action hover:text-action">
       {dark ? <Sun aria-hidden className="size-4" /> : <Moon aria-hidden className="size-4" />}{dark ? 'Light theme' : 'Dark theme'}
     </button>
   )
 }
 
-/** One footer link group. Phones and tablets: a closed accordion (button with aria-expanded). Desktop (1024px and up): always open. */
-function FooterGroup({ title, columns = 1, children }: { title: string; columns?: 1 | 2; children: React.ReactNode }) {
+/** One footer link group: uppercase blue heading with a short accent line, links with an arrow. Phones: a closed accordion. */
+function FooterGroup({ title, links }: { title: string; links: MenuItem[] }) {
   const [open, setOpen] = useState(false)
   const id = useId()
+  const head = 'font-sans text-[0.8125rem] font-bold uppercase tracking-[0.08em] text-action'
   return (
-    <nav aria-label={title} className={`border-b border-block-line lg:border-0 ${columns === 2 ? 'lg:col-span-2' : ''}`}>
-      <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen((v) => !v)}
-        className="eyebrow flex min-h-12 w-full items-center justify-between text-left lg:hidden">
+    <nav aria-label={title} className="border-b border-line md:border-0">
+      <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen((v) => !v)} className={`${head} flex min-h-12 w-full items-center justify-between text-left md:hidden`}>
         {title}<ChevronDown aria-hidden className={`size-4 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
-      <p className="eyebrow mb-3 hidden lg:block">{title}</p>
-      <ul id={id} className={`${open ? 'grid' : 'hidden'} gap-y-2 pb-4 lg:grid lg:pb-0 ${columns === 2 ? 'sm:grid-cols-2 sm:gap-x-6' : ''}`}>{children}</ul>
+      <p className={`${head} hidden md:block`}>{title}</p>
+      <span aria-hidden className="mt-2.5 hidden h-0.5 w-10 rounded-full bg-q2m md:block" />
+      <ul id={id} className={`${open ? 'grid' : 'hidden'} gap-y-3 pb-5 md:mt-6 md:grid md:pb-0`}>
+        {links.map((l) => {
+          const body = <><ArrowRight aria-hidden className="mt-[4px] size-3.5 shrink-0 text-action transition-transform group-hover:translate-x-0.5" /><span>{l.label}</span></>
+          const cls = 'group grid grid-cols-[0.875rem_1fr] gap-x-2.5 text-[0.9375rem] leading-[1.375rem] text-ink-muted transition-colors hover:text-ink'
+          return <li key={l.label + l.href}>{l.external ? <a className={cls} href={l.href} target="_blank" rel="noopener noreferrer">{body}</a> : <Link className={cls} to={l.href}>{body}</Link>}</li>
+        })}
+      </ul>
     </nav>
   )
 }
 
-const footLink = 'text-sm leading-5 text-block-muted hover:text-ink-inverse'
-
-function Footer() {
-  const groups = NAV.filter((g) => g.key !== 'ai' && g.items.length > 1)
+/** Footer contact line: small icon in a soft circle, text in the body font; wrapped lines align with the first line. */
+function ContactItem({ icon: Icon, href, external, children }: { icon: typeof Mail; href: string; external?: boolean; children: React.ReactNode }) {
   return (
-    <footer className="on-dark bg-block text-ink-inverse">
-      <div className="container-page py-10 md:py-14">
-        <div className="grid gap-8 xl:grid-cols-12 xl:gap-10">
-          {/* Company: logo, short description, contact details (always visible) */}
-          <div className="lg:grid lg:grid-cols-2 lg:gap-10 xl:col-span-4 xl:block">
-            <div>
-            <Logo onBlock width={104} />
-            <p className="mt-4 max-w-sm text-sm leading-6 text-block-muted">{siteCopy.footerBlurb}</p>
-            </div>
-            <ul className="mono mt-5 space-y-2 !text-[0.8125rem] text-block-muted lg:mt-0 xl:mt-5">
-              <li className="flex gap-2.5"><Mail aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></li>
-              {COMPANY.phone && <li className="flex gap-2.5"><Phone aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</a></li>}
-              <li className="flex gap-2.5"><MapPin aria-hidden className="mt-0.5 size-4 shrink-0" /><a className="hover:text-ink-inverse" href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer">{fullAddress()}</a></li>
-            </ul>
+    <li className="grid grid-cols-[2.25rem_1fr] items-start gap-x-3">
+      <span aria-hidden className="flex size-9 items-center justify-center rounded-full bg-tint text-action"><Icon className="size-4" /></span>
+      <a className="pt-1.5 text-[0.9375rem] leading-6 text-ink-muted transition-colors hover:text-ink" href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{children}</a>
+    </li>
+  )
+}
+
+/**
+ * Sitewide footer: CTA band, brand + contact column with four link columns, bottom bar. Follows the light/dark theme.
+ * Links from the menu config (hidden "#" items stay hidden), contact and social data from the company config.
+ * The CTA band replaces the per-page closing band; on the BTS page its button goes to the booking form (Contact after the event).
+ */
+function Footer() {
+  const { pathname } = useLocation()
+  const bts = pathname === BTS.path
+  const after = useBtsPhase() === 'after'
+  const cta = bts ? (after ? btsPage.after.cta : btsPage.closing.cta) : { label: footerContent.cta.primary, href: ctas.header.href }
+  const title = ctas.header.label
+  const [lead, accent] = title.endsWith(footerContent.cta.accent) ? [title.slice(0, -footerContent.cta.accent.length), footerContent.cta.accent] : [title, '']
+  const columns: { title: string; links: MenuItem[] }[] = [
+    { title: footerContent.heading, links: footerContent.links.map((l) => ({ label: l.label, href: l.href, external: false })) },
+    ...['consulting', 'solutions', 'resources'].map((k) => NAV.find((g) => g.key === k)).filter((g): g is NavGroup => !!g).map((g) => ({ title: g.label, links: g.items })),
+  ]
+  const legal = [...TOP_LINKS.map((l) => ({ to: l.to, label: l.label })), { to: LEGAL.privacyPath, label: 'Privacy Policy' }]
+  return (
+    <footer className="site-footer border-t border-line bg-surface-raised text-ink">
+      <div className="container-page">
+        {/* CTA band */}
+        <div className="border-b border-line py-12 md:py-14">
+          <DotArrow pitch={7} className="mb-5 block h-auto w-[63px]" />
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h2 className="display-md">{lead}{accent && <span className="text-action">{accent}</span>}</h2>
+            <p className="mt-3 max-w-xl text-ink-muted">{footerContent.cta.line}</p>
           </div>
-          {/* Link groups: compact columns; the long Solutions list uses two columns */}
-          <div className="lg:grid lg:grid-cols-5 lg:gap-x-8 xl:col-span-8">
-            <FooterGroup title={footerContent.heading}>
-              {footerContent.links.map((l) => <li key={l.label}><Link className={footLink} to={l.href}>{l.label}</Link></li>)}
-            </FooterGroup>
-            {groups.map((g) => (
-              <FooterGroup key={g.key} title={g.label} columns={g.items.length > 9 ? 2 : 1}>
-                {g.items.map((l) => <li key={l.href}>{l.external ? <a className={footLink} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a> : <Link className={footLink} to={l.href}>{l.label}</Link>}</li>)}
-              </FooterGroup>
-            ))}
+          <div className="flex flex-col gap-3 sm:flex-row lg:shrink-0">
+            <Link to={cta.href} className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-action px-7 font-medium text-on-action transition-colors hover:bg-q2m">
+              {cta.label}<ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <a href={`mailto:${COMPANY.email}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line px-7 font-medium text-ink transition-colors hover:border-action hover:text-action">
+              <Mail aria-hidden className="size-4" />{ui.finalCtaEmail}
+            </a>
+          </div>
           </div>
         </div>
-        {/* Bottom row: copyright, legal links, social icons, theme switch (one line on desktop) */}
-        <div data-back-to-top-avoid className="mt-8 flex flex-col gap-4 border-t border-block-line pt-6 text-sm text-block-muted md:mt-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-x-6">
-            <p suppressHydrationWarning>Copyright {new Date().getFullYear()} {COMPANY.legalName}</p>
-            <ul className="flex flex-wrap gap-x-5 gap-y-2">
-              {TOP_LINKS.map((l) => <li key={l.to}><Link className="hover:text-ink-inverse" to={l.to}>{l.label}</Link></li>)}
-              <li><Link className="hover:text-ink-inverse" to={LEGAL.privacyPath}>Privacy Policy</Link></li>
+
+        {/* Main footer: brand + contact, four link columns */}
+        <div className="grid gap-10 py-12 md:py-14 xl:grid-cols-12 xl:gap-12">
+          <div className="xl:col-span-4">
+            <Logo width={112} />
+            <p className="mt-5 max-w-md text-[0.9375rem] leading-6 text-ink-muted">{siteCopy.footerBlurb}</p>
+            <ul className="mt-6 max-w-md space-y-4 border-t border-line pt-6">
+              <ContactItem icon={Mail} href={`mailto:${COMPANY.email}`}>{COMPANY.email}</ContactItem>
+              {COMPANY.phone && <ContactItem icon={Phone} href={phoneHref(COMPANY.phone)}>{formatPhone(COMPANY.phone)}</ContactItem>}
+              <ContactItem icon={MapPin} href={COMPANY.mapUrl} external>{fullAddress()}</ContactItem>
+            </ul>
+          </div>
+          <div className="grid md:grid-cols-2 md:gap-x-10 md:gap-y-10 lg:grid-cols-[1fr_1.1fr_1.3fr_0.7fr] lg:gap-x-8 xl:col-span-8">
+            {columns.map((c) => <FooterGroup key={c.title} title={c.title} links={c.links} />)}
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div data-back-to-top-avoid className="flex flex-col gap-5 border-t border-line py-6 text-sm text-ink-muted lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-x-4">
+            <p suppressHydrationWarning>Copyright © {new Date().getFullYear()} {COMPANY.legalName}</p>
+            <span aria-hidden className="hidden h-4 w-px bg-line md:block" />
+            <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              {legal.map((l, i) => (
+                <li key={l.to} className="flex items-center gap-x-4">{i > 0 && <span aria-hidden className="h-4 w-px bg-line" />}<Link className="transition-colors hover:text-ink" to={l.to}>{l.label}</Link></li>
+              ))}
             </ul>
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            <ul aria-label="Social media" className="flex items-center gap-1">
+            <ul aria-label="Social media" className="flex items-center gap-2">
               {COMPANY.social.map((s) => (
-                <li key={s.label}><a className="inline-flex size-10 items-center justify-center rounded-md hover:bg-white/10 hover:text-ink-inverse" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}><SocialIcon label={s.label} /></a></li>
+                <li key={s.label}><a className="inline-flex size-10 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-action hover:text-action" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}><SocialIcon label={s.label} /></a></li>
               ))}
             </ul>
+            <span aria-hidden className="hidden h-6 w-px bg-line sm:block" />
             <ThemeToggle />
           </div>
         </div>

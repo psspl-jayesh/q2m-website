@@ -7,7 +7,6 @@ import { useContent, sectionize, type Entry } from '@/lib/content'
 import { Breadcrumbs, Button, Reveal, Seo, SectionHead, SiteFrame, SiteImage, StaggerGroup, StaggerItem } from '@/components/ui'
 import { imagesBySection, keyOf } from '@/lib/images'
 import { SectionBlock } from './ServicePage'
-import { FinalCta } from '@/components/Cards'
 import { SITE_URL } from '@/lib/site'
 import { COMPANY, fullAddress } from '@/config/locale'
 import { formatPhone, phoneHref } from '@/lib/format'
@@ -57,7 +56,6 @@ export function About({ entry }: { entry: Entry }) {
         }
         return <SectionBlock key={s.title + i} s={s} i={i} imgs={bySec.get(keyOf(s.title)) ?? []} />
       })}
-      <FinalCta />
     </>
   )
 }

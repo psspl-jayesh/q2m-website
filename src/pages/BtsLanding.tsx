@@ -7,7 +7,6 @@ import testimonials from '@/content/shared/testimonials.json'
 import { Accordion, Button, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem, TextLink, imgMeta, type SiteImg } from '@/components/ui'
 import BookingForm from '@/components/BookingForm'
 import DotArrow from '@/components/DotArrow'
-import { FinalCta } from '@/components/Cards'
 import { ClientLogoStrip, Testimonials } from '@/components/Sitewide'
 import { COMPANY } from '@/config/locale'
 import { SHOW_TESTIMONIALS } from '@/config/flags'
@@ -268,8 +267,6 @@ export default function BtsLanding() {
         </div>
       </section>
 
-      {/* Closing CTA band (the sitewide FinalCta; the button goes to the booking form, or to Contact after the event) */}
-      <FinalCta cta={after ? page.after.cta : page.closing.cta} />
     </>
   )
 }
