@@ -49,6 +49,12 @@ export function btsDateRange(): string {
   return `${fmt(BTS.start, { day: 'numeric' })} to ${fmt(BTS.end, { day: 'numeric', month: 'long', year: 'numeric' })}`
 }
 
+/** "17–19 November 2026" (en dash), for compact labels such as the home date pill. */
+export function btsDateRangeShort(): string {
+  const fmt = (iso: string, o: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', ...o }).format(new Date(iso))
+  return `${fmt(BTS.start, { day: 'numeric' })}–${fmt(BTS.end, { day: 'numeric', month: 'long', year: 'numeric' })}`
+}
+
 /** React hook: the current BTS phase, re-checked every 30 seconds so pages switch at the right moment without a reload. */
 export function useBtsPhase(): BtsPhase {
   const [phase, setPhase] = useState<BtsPhase>(() => btsPhase())
