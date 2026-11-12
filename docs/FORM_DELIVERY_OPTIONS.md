@@ -29,3 +29,11 @@
 | Spam protection | Built in (honeypot, captcha) | hCaptcha or Cloudflare Turnstile, verified on the server | hCaptcha or Turnstile, verified on the server |
 
 **My recommendation: B**, once the hosting platform is decided (or **C** if the site will be hosted on Azure). Both keep submissions under your control and send to info@q2msolutions.in. Tell me which option, and whether any CRM should also receive the submissions after you check the current site's form settings.
+
+## Decision (12 Nov 2026): option A, Web3Forms
+- Both forms POST to Web3Forms (`src/lib/formDelivery.ts`) when `VITE_WEB3FORMS_ACCESS_KEY` is set at build time. Web3Forms emails each submission to the address the key was created for; Reply-To is the visitor's email.
+- Success ("Thank you! Your message has been sent…") shows only after Web3Forms confirms. On failure the visitor is asked to try again or email info@q2msolutions.in.
+- Without the key the forms fall back to the mailto draft, and the message tells the visitor to press Send in their email app.
+- Spam: a hidden `botcheck` honeypot. Web3Forms free plan: 250 submissions/month.
+- **Setup (owner):** 1) at https://web3forms.com enter info@q2msolutions.in and get the access key by email; 2) put `VITE_WEB3FORMS_ACCESS_KEY=<key>` in `.env.local` (not committed) or in the hosting build environment; 3) rebuild and deploy; 4) send one test from /contact/ and from the booking form.
+- **Privacy (DPDP):** Web3Forms processes the submitted personal data. The privacy policy should name it as a processor (legal review).

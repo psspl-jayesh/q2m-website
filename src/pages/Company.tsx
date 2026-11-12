@@ -12,6 +12,7 @@ import { COMPANY, fullAddress } from '@/config/locale'
 import { formatPhone, phoneHref } from '@/lib/format'
 import { BusinessDetails, ConsentField, MobileField, businessFields, consentRequired, describeBusiness, mobileRequired, requireWholeAddress } from '@/components/forms'
 import { areaServedIndia, indiaDescription, indiaTitle } from '@/lib/seo'
+import { emailServiceConfigured, isBot, openEmailDraft, sendSubmission } from '@/lib/formDelivery'
 
 /* ───────── About ───────── */
 export function About({ entry }: { entry: Entry }) {
@@ -62,8 +63,8 @@ export function About({ entry }: { entry: Entry }) {
 
 /* ───────── Contact ───────── */
 /*
- * Delivery: until a delivery option is chosen (docs/FORM_DELIVERY_OPTIONS.md), the form opens a pre-filled email to COMPANY.email
- * in the visitor's mail app, the same path as the booking form. It never posts to the WordPress site (nonce-protected, will be replaced).
+ * Delivery (src/lib/formDelivery.ts, docs/FORM_DELIVERY_OPTIONS.md): sent through Web3Forms when VITE_WEB3FORMS_ACCESS_KEY is set
+ * at build time, otherwise a pre-filled email opens in the visitor's mail app. It never posts to the WordPress site.
  * Field names match the live Contact Form 7 form 18: full-name, organization, tel-phone, email-company, subject, textarea-message.
  */
 const schema = z.object({
@@ -86,18 +87,39 @@ export function Contact({ entry }: { entry: Entry }) {
   const lede = connect?.blocks.find((b) => b.t === 'h4')?.text
   const formHeading = connect?.blocks.find((b) => b.t === 'h3' && /success starts/i.test(b.text ?? ''))?.text
   const phoneLabel = connect?.blocks.find((b) => b.t === 'h3' && /inquiry/i.test(b.text ?? ''))?.text
-  const { register, handleSubmit, formState: { errors } } = useForm<Form>({ resolver: zodResolver(schema) as never })
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<Form>({ resolver: zodResolver(schema) as never })
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
   const live = useRef<HTMLDivElement>(null)
-  useEffect(() => { if (status.kind === 'ok' || status.kind === 'error') live.current?.focus() }, [status])
+  useEffect(() => {
+    if (status.kind !== 'ok' && status.kind !== 'error') return
+    live.current?.focus({ preventScroll: true })
+    live.current?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }, [status])
 
-  const onSubmit = (v: Form) => {
-    const body = [
-      `Full name: ${v['full-name']}`, `Company / organisation: ${v.organization}`, `Mobile: ${formatPhone(v['tel-phone'])}`, `Company email: ${v['email-company']}`,
-      describeBusiness(v), '', 'Message:', v['textarea-message'], '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
-    ].filter((l, k, a) => l !== '' || a[k - 1] !== '').join('\n')
-    window.location.assign(`mailto:${COMPANY.email}?subject=${encodeURIComponent(v.subject)}&body=${encodeURIComponent(body)}`)
-    setStatus({ kind: 'ok', msg: 'Your email app should now open with your message. Nothing has been sent until you press send there.' })
+  const onSubmit = async (v: Form, e?: React.BaseSyntheticEvent) => {
+    if (!emailServiceConfigured) {
+      const body = [
+        `Full name: ${v['full-name']}`, `Company / organisation: ${v.organization}`, `Mobile: ${formatPhone(v['tel-phone'])}`, `Company email: ${v['email-company']}`,
+        describeBusiness(v), '', 'Message:', v['textarea-message'], '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
+      ].filter((l, k, a) => l !== '' || a[k - 1] !== '').join('\n')
+      openEmailDraft(v.subject, body)
+      setStatus({ kind: 'ok', msg: 'Your email app should now open with your message. Press Send there to send it to us.' })
+      return
+    }
+    setStatus({ kind: 'sending' })
+    try {
+      await sendSubmission({
+        subject: `Website enquiry: ${v.subject}`, name: v['full-name'], replyTo: v['email-company'], botcheck: isBot(e),
+        fields: {
+          'Full name': v['full-name'], 'Company / organisation': v.organization, Mobile: formatPhone(v['tel-phone']), 'Company email': v['email-company'],
+          'Business details': describeBusiness(v), Subject: v.subject, Message: v['textarea-message'], Consent: 'Given (Digital Personal Data Protection Act, 2023)',
+        },
+      })
+      reset()
+      setStatus({ kind: 'ok', msg: 'Thank you! Your message has been sent. We’ll get back to you within one business day.' })
+    } catch {
+      setStatus({ kind: 'error', msg: `We could not send your message. Please try again, or email ${COMPANY.email} instead.` })
+    }
   }
 
   const field = (name: keyof Form, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => (
@@ -130,7 +152,7 @@ export function Contact({ entry }: { entry: Entry }) {
             <div className="rounded-lg bg-surface p-6 sm:p-10">
               {formHeading && <h2 className="mb-8 font-display text-2xl font-semibold">{formHeading}</h2>}
               <div ref={live} tabIndex={-1} role="status" aria-live="polite" className="outline-none">
-                {status.kind === 'ok' && <div className="mb-8 flex gap-3 rounded-md border border-line bg-tint p-4 text-ink"><CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-action" /><p><strong className="block">Message sent.</strong>{status.msg}</p></div>}
+                {status.kind === 'ok' && <div className="mb-8 flex gap-3 rounded-md border border-line bg-tint p-4 text-ink"><CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-action" /><p>{status.msg}</p></div>}
                 {status.kind === 'error' && <div className="mb-8 flex gap-3 rounded-md border border-error bg-surface p-4 text-ink"><TriangleAlert aria-hidden className="mt-0.5 size-5 shrink-0 text-error" /><p><strong className="block">Not sent.</strong>{status.msg}</p></div>}
               </div>
               <form noValidate onSubmit={handleSubmit(onSubmit)} className="grid gap-6 sm:grid-cols-2" aria-label="Contact form">
@@ -147,6 +169,8 @@ export function Contact({ entry }: { entry: Entry }) {
                 </div>
                 <BusinessDetails register={register} errors={errors} prefix="c" />
                 <ConsentField register={register} errors={errors} name="consent" id="c-consent" />
+                {/* spam trap: hidden from people and assistive tech; bots that tick it are dropped by the form service */}
+                <input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" className="hidden" />
                 <div className="sm:col-span-2"><Button type="submit" disabled={status.kind === 'sending'}>{status.kind === 'sending' ? 'Sending…' : 'Send message'}</Button></div>
               </form>
             </div>

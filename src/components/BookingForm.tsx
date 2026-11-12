@@ -7,14 +7,14 @@ import { Button } from './ui'
 import { BusinessDetails, ConsentField, MobileField, businessFields, consentRequired, describeBusiness, mobileOptional, requireWholeAddress } from './forms'
 import { COMPANY, LOCALE } from '@/config/locale'
 import { bookableDates, businessHoursLabel, formatPhone, timeSlots } from '@/lib/format'
+import { emailServiceConfigured, isBot, openEmailDraft, sendSubmission } from '@/lib/formDelivery'
 
 /**
  * Booking form (fields and options come from the Q2M home page copy, localised for India).
  * Slots are requests, not confirmed bookings: dates and times are offered in IST within the business hours set in src/config/locale.ts.
- * Delivery: if VITE_BOOKING_ENDPOINT is set, details are POSTed there as JSON and success is shown only on an OK response.
- * Otherwise nothing is "sent" by this page: a pre-filled email draft opens in the visitor's mail app and the message says so.
+ * Delivery (src/lib/formDelivery.ts): sent through Web3Forms when VITE_WEB3FORMS_ACCESS_KEY is set at build time, and success is
+ * shown only on an OK response. Otherwise a pre-filled email draft opens in the visitor's mail app and the message says so.
  */
-const ENDPOINT = import.meta.env.VITE_BOOKING_ENDPOINT as string | undefined
 
 const schema = z.object({
   name: z.string().trim().min(2, 'Please enter your full name.'),
@@ -47,28 +47,39 @@ export default function BookingForm({ industries, placeholder, note }: { industr
   const date = watch('date')
   const times = useMemo(() => (date ? timeSlots(date) : []), [date])
 
-  const onSubmit = async (v: Values) => {
-    setStatus({ kind: 'sending' })
+  useEffect(() => {
+    if (status.kind !== 'ok' && status.kind !== 'error') return
+    live.current?.focus({ preventScroll: true })
+    live.current?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }, [status])
+
+  const onSubmit = async (v: Values, e?: React.BaseSyntheticEvent) => {
     const slot = `${dates.find((d) => d.value === v.date)?.label}, ${times.find((t) => t.value === v.time)?.label ?? v.time}`
-    const payload = { ...v, mobile: v.mobile ? formatPhone(v.mobile) : '', slot, timezone: LOCALE.timeZone, consentGiven: true }
-    if (ENDPOINT) {
-      try {
-        const r = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-        if (!r.ok) throw new Error(String(r.status))
-        setStatus({ kind: 'ok', msg: 'Thank you. We will confirm your time slot by email.' }); reset()
-      } catch {
-        setStatus({ kind: 'error', msg: `We could not send your request. Please email ${COMPANY.email} instead.` })
-      }
-      live.current?.focus()
+    const mobile = v.mobile ? formatPhone(v.mobile) : '-'
+    if (!emailServiceConfigured) {
+      const body = [
+        `Name: ${v.name}`, `Company: ${v.company}`, `Role: ${v.role || '-'}`, `Work email: ${v.email}`, `Mobile: ${mobile}`, `Industry: ${v.industry}`,
+        `Preferred slot: ${slot}`, describeBusiness(v), '', 'Process to discuss:', v.topic || '-', '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
+      ].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n')
+      openEmailDraft('30-minute AI session request', body)
+      setStatus({ kind: 'ok', msg: 'Your email app should now open with these details. Press Send there to send your request to us.' })
       return
     }
-    const body = [
-      `Name: ${v.name}`, `Company: ${v.company}`, `Role: ${v.role || '-'}`, `Work email: ${v.email}`, `Mobile: ${payload.mobile || '-'}`, `Industry: ${v.industry}`,
-      `Preferred slot: ${slot}`, describeBusiness(v), '', 'Process to discuss:', v.topic || '-', '', 'Consent: given (Digital Personal Data Protection Act, 2023)',
-    ].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n')
-    window.location.assign(`mailto:${COMPANY.email}?subject=${encodeURIComponent('30-minute AI session request')}&body=${encodeURIComponent(body)}`)
-    setStatus({ kind: 'ok', msg: 'Your email app should now open with these details. Nothing has been sent until you press send there.' })
-    live.current?.focus()
+    setStatus({ kind: 'sending' })
+    try {
+      await sendSubmission({
+        subject: `30-minute AI session request: ${v.company}`, name: v.name, replyTo: v.email, botcheck: isBot(e),
+        fields: {
+          Name: v.name, Company: v.company, Role: v.role || '-', 'Work email': v.email, Mobile: mobile, Industry: v.industry,
+          'Preferred slot': slot, 'Business details': describeBusiness(v), 'Process to discuss': v.topic || '-',
+          Consent: 'Given (Digital Personal Data Protection Act, 2023)',
+        },
+      })
+      reset(); if (dates[0]) setValue('date', dates[0].value)
+      setStatus({ kind: 'ok', msg: 'Thank you! Your request has been sent. We’ll confirm your time slot by email.' })
+    } catch {
+      setStatus({ kind: 'error', msg: `We could not send your request. Please try again, or email ${COMPANY.email} instead.` })
+    }
   }
 
   const input = (name: 'name' | 'company' | 'role' | 'email', label: string, opts: { type?: string; autoComplete?: string; optional?: boolean } = {}) => (
@@ -118,6 +129,8 @@ export default function BookingForm({ industries, placeholder, note }: { industr
       </div>
       <BusinessDetails register={register} errors={errors} prefix="b" />
       <ConsentField register={register} errors={errors} name="consent" id="b-consent" />
+      {/* spam trap: hidden from people and assistive tech; bots that tick it are dropped by the form service */}
+      <input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" className="hidden" />
       <p className="text-sm text-ink-muted sm:col-span-2">{note}</p>
       <div className="sm:col-span-2"><Button type="submit" disabled={status.kind === 'sending'} className="w-full">{status.kind === 'sending' ? 'Sending…' : 'Request a session'}</Button></div>
     </form>

@@ -24,7 +24,7 @@ The pre-change audit is in `docs/LOCALE_AUDIT.md` (snapshot, run by `scripts/aud
 3. **Registered office and CIN** for the Privacy Policy and footer legal line.
 4. **Grievance officer** name, designation and email (`COMPANY.grievanceOfficer`), required by the DPDP Act.
 5. **Legal review** of the Privacy Policy and the consent wording (`LEGAL.consentLabel`). Also: data retention period, list of service providers and whether any are outside India, analytics tools in use.
-6. **Booking delivery**: set `VITE_BOOKING_ENDPOINT`. Until then the form opens a pre-filled email draft. The contact form still posts to the existing Contact Form 7 (id 18), which has no GSTIN or address fields, so those go inside the message text; its hCaptcha key is bound to the old domain.
+6. **Form delivery**: set `VITE_WEB3FORMS_ACCESS_KEY` (Web3Forms). Until then the forms open a pre-filled email draft. The contact form still posts to the existing Contact Form 7 (id 18), which has no GSTIN or address fields, so those go inside the message text; its hCaptcha key is bound to the old domain.
 7. **Business hours and booking rules** are my assumption (Mon to Fri, 10:00 to 18:00 IST). Confirm in `BOOKING`.
 
 ## Not converted: needs a decision

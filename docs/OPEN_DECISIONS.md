@@ -8,7 +8,7 @@ Severity: High = do soon (legal or business), Medium = fix soon, Low = polish, D
 
 | # | Item | Where | What is needed | Severity |
 |---|---|---|---|---|
-| 1 | **Form delivery.** Contact and booking forms open a pre-filled email to info@q2msolutions.in (mailto). Choose option A, B or C in `docs/FORM_DELIVERY_OPTIONS.md`, and say whether a CRM should also receive submissions | Contact, home and BTS booking forms | Your choice of option | High |
+| 1 | **Form delivery.** Web3Forms chosen and built in. Waiting on the access key: create it with info@q2msolutions.in and set `VITE_WEB3FORMS_ACCESS_KEY` in the build environment (`docs/FORM_DELIVERY_OPTIONS.md`). Privacy policy should name Web3Forms as a processor | Contact, home and BTS booking forms | Access key, legal review | High |
 | 2 | **Legal review** of the draft Privacy Policy and the consent wording (DPDP Act). The page says "DRAFT: pending legal review" and is noindex until then | Privacy Policy, every form | Legal counsel review | High |
 | 3 | **Privacy details** still shown as "to be confirmed by Q2M": service providers, retention period, grievance officer, analytics tools (kept visible on purpose for launch) | Privacy Policy | The real details | High |
 | 4 | **Grievance officer** (DPDP Act): name, designation, email (`COMPANY.grievanceOfficer` in `src/config/locale.ts`) | Privacy Policy | The details | High |
