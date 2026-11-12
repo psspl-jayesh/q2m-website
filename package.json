@@ -9,8 +9,8 @@
     "preview": "vite preview",
     "content": "node scripts/fetch-content.mjs",
     "seo": "node scripts/generate-seo.mjs",
-    "images": "node scripts/sync-images.mjs && node scripts/optimize-images.mjs",
-    "sync": "node scripts/sync-content.mjs && node scripts/apply-content.mjs && node scripts/verify-content.mjs && node scripts/flags-content.mjs && node scripts/sync-images.mjs && node scripts/optimize-images.mjs && node scripts/generate-seo.mjs",
+    "images": "node scripts/sync-images.mjs && node scripts/derive-images.mjs && node scripts/optimize-images.mjs",
+    "sync": "node scripts/sync-content.mjs && node scripts/apply-content.mjs && node scripts/verify-content.mjs && node scripts/flags-content.mjs && node scripts/sync-images.mjs && node scripts/derive-images.mjs && node scripts/optimize-images.mjs && node scripts/generate-seo.mjs",
     "content:compare": "node scripts/compare-content.mjs",
     "brand:assets": "node scripts/make-og-image.mjs && node scripts/make-icons.mjs"
   },

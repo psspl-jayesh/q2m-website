@@ -2,7 +2,7 @@
   "_note": "Images for the four home sections that had none (See the work, What we build, Where we work, From first workshop to a system people use), matched by topic to the section item titles. Every file is an image the live site already uses elsewhere, unmodified. Items with no matching live image keep the brand dot panel. Alt text was written from the images: please review. Review table: docs/HOME_IMAGES.md",
   "work": {
     "Guided vehicle inspection on smart glasses": { "file": "/images/case-studies/building-a-single-pane-of-glass-for-a-1500-truck-fleet-banner.webp", "alt": "Engineers inspecting a heavy truck with augmented-reality overlays on screens around it" },
-    "A claims agent reading and routing documents": { "file": "/images/ai-agent-development-services/ai-agent-development-service-banner.webp", "alt": "An AI agent at the centre of a diagram connecting customer requests, email, tasks and reports" },
+    "A claims agent reading and routing documents": { "file": "/images/ai-agent-development-services/ai-agent-development-service-banner-photo.webp", "alt": "An AI agent at the centre of a diagram connecting customer requests, email, tasks and reports" },
     "Gaussian splat of a property, viewed in the browser": { "file": "/images/case-studies/rele-one-case-study-banner.webp", "alt": "A property marketplace calculator on a laptop in front of a model house and keys" },
     "Use-case mapping with client teams": { "file": "/images/shared/q2m-banner-2.jpg", "alt": "Colleagues working at laptops around a table" },
     "Clinical and lab records, extracted": { "file": "/images/shared/healthcare-img.webp", "alt": "Clinicians in a meeting reviewing records together" }
