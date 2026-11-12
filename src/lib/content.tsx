@@ -30,9 +30,10 @@ let cache: Promise<Content> | null = null
 export const loadContent = () => (cache ??= Promise.all([import('@/data/content.json'), import('@/data/image-manifest.json')]).then(([c, m]) => ({ ...(c.default as unknown as Omit<Content, 'manifest'>), manifest: m.default as unknown as Manifest })))
 
 const Ctx = createContext<Content | null>(null)
-export function ContentProvider({ children, fallback }: { children: ReactNode; fallback: ReactNode }) {
-  const [c, setC] = useState<Content | null>(null)
-  useEffect(() => { loadContent().then(setC) }, [])
+/** `initial`: content already loaded (server pre-render, or the browser hydrating a pre-rendered page), so no splash screen. */
+export function ContentProvider({ children, fallback, initial = null }: { children: ReactNode; fallback: ReactNode; initial?: Content | null }) {
+  const [c, setC] = useState<Content | null>(initial)
+  useEffect(() => { if (!c) loadContent().then(setC) }, []) // eslint-disable-line react-hooks/exhaustive-deps
   return c ? <Ctx.Provider value={c}>{children}</Ctx.Provider> : <>{fallback}</>
 }
 export const useContent = () => {

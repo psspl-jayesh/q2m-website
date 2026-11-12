@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -33,11 +33,15 @@ type Values = z.infer<typeof schema>
 type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'ok'; msg: string } | { kind: 'error'; msg: string }
 
 export default function BookingForm({ industries, placeholder, note }: { industries: string[]; placeholder: string; note: string }) {
-  const dates = useMemo(() => bookableDates(), [])
-  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm<Values>({
+  // Bookable dates depend on today, so they are worked out in the browser after load (pre-rendered HTML is built earlier)
+  const [now, setNow] = useState<Date | null>(null)
+  useEffect(() => { setNow(new Date()) }, [])
+  const dates = useMemo(() => (now ? bookableDates(now) : []), [now])
+  const { register, handleSubmit, reset, watch, setValue, formState: { errors } } = useForm<Values>({
     resolver: zodResolver(schema) as never,
-    defaultValues: { industry: industries[0], date: dates[0]?.value ?? '', time: '' },
+    defaultValues: { industry: industries[0], date: '', time: '' },
   })
+  useEffect(() => { if (dates[0]) setValue('date', dates[0].value) }, [dates, setValue])
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
   const live = useRef<HTMLDivElement>(null)
   const date = watch('date')
