@@ -41,9 +41,9 @@ function Countdown() {
       <p className="mono text-ink-muted">{page.countdown.label}</p>
       <dl className="mt-5 grid grid-cols-3 gap-3" aria-live="off">
         {parts.map((n, i) => (
-          <div key={page.countdown.units[i]} className="flex flex-col-reverse rounded-md bg-surface p-3 md:p-4">
-            <dt className="mono mt-2 text-ink-muted">{page.countdown.units[i]}</dt>
-            <dd className="font-display text-4xl font-bold leading-none tabular-nums md:text-5xl">{String(n).padStart(2, '0')}</dd>
+          <div key={page.countdown.units[i]} className="flex flex-col rounded-md bg-surface p-3 md:p-4">
+            <dt className="mono order-2 mt-2 text-ink-muted">{page.countdown.units[i]}</dt>
+            <dd className="order-1 font-display text-4xl font-bold leading-none tabular-nums md:text-5xl">{String(n).padStart(2, '0')}</dd>
           </div>
         ))}
       </dl>
@@ -90,11 +90,11 @@ export default function BtsLanding() {
       <section aria-labelledby="glance" className="pb-12 md:pb-24">
         <div className="container-page">
           <h2 id="glance" className="eyebrow mb-6">{page.glance.title}</h2>
-          <StaggerGroup as="dl" className={`grid grid-cols-2 gap-3 sm:gap-4 ${glance.length > 4 ? 'lg:grid-cols-5' : glance.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}>
+          <StaggerGroup as="ul" className={`grid grid-cols-2 gap-3 sm:gap-4 ${glance.length > 4 ? 'lg:grid-cols-5' : glance.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}>
             {glance.map((f, i) => { const Icon = GLANCE_ICON[f.k] ?? Ticket; return (
-              <StaggerItem key={f.k} className={`flex flex-col gap-5 rounded-lg border border-line bg-surface-raised p-4 sm:p-6 ${glance.length % 2 && i === glance.length - 1 ? 'col-span-2 lg:col-span-1' : ''}`}>
+              <StaggerItem as="li" key={f.k} className={`flex flex-col gap-5 rounded-lg border border-line bg-surface-raised p-4 sm:p-6 ${glance.length % 2 && i === glance.length - 1 ? 'col-span-2 lg:col-span-1' : ''}`}>
                 <span className="flex size-10 items-center justify-center rounded-md bg-tint text-action"><Icon aria-hidden className="size-5" /></span>
-                <div className="flex flex-col-reverse"><dd className="font-display text-base font-semibold leading-snug sm:text-lg">{f.v}</dd><dt className="mono mb-1 text-ink-muted">{f.k}</dt></div>
+                <dl><dt className="mono mb-1 text-ink-muted">{f.k}</dt><dd className="font-display text-base font-semibold leading-snug sm:text-lg">{f.v}</dd></dl>
               </StaggerItem>
             ) })}
           </StaggerGroup>
