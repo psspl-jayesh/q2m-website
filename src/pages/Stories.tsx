@@ -200,14 +200,14 @@ export function Article({ entry }: { entry: Entry }) {
                 if (b.t === 'li') { list.push(b.text!); return }
                 flush(i)
                 if (b.t === 'h2') {
-                  if (introImgs.length && !out.some((o) => (o as { key?: string }).key === 'intro-imgs')) out.push(<div key="intro-imgs">{introImgs.map((m) => <SiteImage key={m.file} image={m} className="h-auto w-full" ratio="auto" />)}</div>)
+                  if (introImgs.length && !out.some((o) => (o as { key?: string }).key === 'intro-imgs')) out.push(<div key="intro-imgs">{introImgs.map((m) => <SiteImage key={m.file} image={m} sizes="(min-width:1440px) 950px, (min-width:1024px) 67vw, 100vw" className="h-auto w-full" ratio="auto" />)}</div>)
                   out.push(<h2 key={i} id={slugify(b.text!)} className="scroll-anchor">{b.text}</h2>)
-                  ;(secImgs.get(keyOf(b.text!)) ?? []).forEach((m) => out.push(<SiteImage key={m.file + m.order} image={m} className="h-auto w-full" ratio="auto" />))
+                  ;(secImgs.get(keyOf(b.text!)) ?? []).forEach((m) => out.push(<SiteImage key={m.file + m.order} image={m} className="h-auto w-full" ratio="auto" sizes="(min-width:1440px) 950px, (min-width:1024px) 67vw, 100vw" />))
                 }
                 else if (b.t === 'h3' || b.t === 'h4' || b.t === 'h5' || b.t === 'h6') out.push(<h3 key={i}>{b.text}</h3>)
                 else if (b.t === 'btn') { const h = resolveHref(b.href); if (h) out.push(<p key={i}><Button to={h}>{b.text}</Button></p>) }
                 else if (b.t === 'p') out.push(<p key={i}>{b.text}</p>)
-                else if (b.t === 'img') out.push(<SiteImage key={i} image={{ file: b.src!, alt: altForFile(c, b.src!) }} className="h-auto w-full" ratio="auto" />)
+                else if (b.t === 'img') out.push(<SiteImage key={i} image={{ file: b.src!, alt: altForFile(c, b.src!) }} className="h-auto w-full" ratio="auto" sizes="(min-width:1440px) 950px, (min-width:1024px) 67vw, 100vw" />)
               })
               flush(9999)
               return out
