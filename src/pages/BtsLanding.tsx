@@ -3,17 +3,18 @@ import { ArrowUpRight, Bot, CalendarDays, Clock, Glasses, MapPin, Ticket } from 
 import page from '@/content/pages/bts-2026/page.json'
 import team from '@/content/sections/team-bento.json'
 import stats from '@/content/shared/stats.json'
-import certifications from '@/content/shared/certifications.json'
 import testimonials from '@/content/shared/testimonials.json'
 import { Accordion, Button, Reveal, SectionHead, Seo, SiteFrame, SiteImage, StaggerGroup, StaggerItem, TextLink, imgMeta, type SiteImg } from '@/components/ui'
 import BookingForm from '@/components/BookingForm'
 import DotArrow from '@/components/DotArrow'
 import { FinalCta } from '@/components/Cards'
-import { ClientLogoStrip, TrustPoints, Testimonials } from '@/components/Sitewide'
+import { ClientLogoStrip, Testimonials } from '@/components/Sitewide'
 import { COMPANY } from '@/config/locale'
+import { SHOW_TESTIMONIALS } from '@/config/flags'
 import { BTS, btsDateRange, btsNow, useBtsPhase } from '@/config/bts'
 import { findEntry, useContent } from '@/lib/content'
 import { pageImages } from '@/lib/images'
+import btsWording from '@/content/sections/bts-wording.json'
 import { trimSentences } from '@/lib/menuCopy'
 
 /**
@@ -22,13 +23,16 @@ import { trimSentences } from '@/lib/menuCopy'
  * from src/config/bts.ts. After the event closes, the countdown, session, booking form and venue hide and the hero thanks visitors.
  */
 const img = (file: string, alt: string): SiteImg => ({ file, alt, w: imgMeta(file)?.w ?? null, h: imgMeta(file)?.h ?? null })
-/** Trust points: Microsoft/Azure partner and ISO 27001. The Clutch text item is left out while its decision is open (OPEN_DECISIONS #19). */
-const TRUST = certifications.filter((x) => !/clutch/i.test(x.title))
+/** Neutral lines used while BTS.liveDemos is off (no booth with demos confirmed). */
+const N = btsWording.neutral
+const booth = BTS.liveDemos
 
 function useCountdown(target: string) {
+  // Counted in the browser only (the pre-rendered HTML is built earlier, so it shows "--" until the page has loaded)
   const calc = () => Math.max(0, new Date(target).getTime() - btsNow().getTime())
-  const [ms, setMs] = useState(calc)
-  useEffect(() => { const t = window.setInterval(() => setMs(calc()), 15_000); return () => window.clearInterval(t) }, [target]) // eslint-disable-line react-hooks/exhaustive-deps
+  const [ms, setMs] = useState<number | null>(null)
+  useEffect(() => { setMs(calc()); const t = window.setInterval(() => setMs(calc()), 15_000); return () => window.clearInterval(t) }, [target]) // eslint-disable-line react-hooks/exhaustive-deps
+  if (ms === null) return [null, null, null]
   const min = Math.floor(ms / 60_000)
   return [Math.floor(min / 1440), Math.floor((min % 1440) / 60), min % 60]
 }
@@ -43,7 +47,7 @@ function Countdown() {
         {parts.map((n, i) => (
           <div key={page.countdown.units[i]} className="flex flex-col rounded-md bg-surface p-3 md:p-4">
             <dt className="mono order-2 mt-2 text-ink-muted">{page.countdown.units[i]}</dt>
-            <dd className="order-1 font-display text-4xl font-bold leading-none tabular-nums md:text-5xl">{String(n).padStart(2, '0')}</dd>
+            <dd className="order-1 font-display text-4xl font-bold leading-none tabular-nums md:text-5xl">{n === null ? '--' : String(n).padStart(2, '0')}</dd>
           </div>
         ))}
       </dl>
@@ -66,11 +70,12 @@ export default function BtsLanding() {
   const bentoFacts = [fact('Venue'), BTS.liveDemos ? fact('Live demos') : dates].filter((f): f is { k: string; v: string } => !!f)
   const why = page.why.pages.map((p) => findEntry(c, p)).filter((e): e is NonNullable<typeof e> => !!e)
   const clientLogos = pageImages(c, '/').filter((i) => i.role === 'logo' && i.sectionKey === 'trusted certified')
-  const msBadges = pageImages(c, '/about/').filter((i) => i.role === 'logo' && /\/microsoft-/.test(i.file))
+  const faqItems = after ? page.faq.items.filter((f) => f.q !== btsWording.sessionFaqQuestion)
+    : booth ? page.faq.items : page.faq.items.map((f) => (f.q === btsWording.sessionFaqQuestion ? { ...f, a: [N.faqSessionAnswer.text] } : f))
   const demos = BTS.liveDemos ? page.demos : { ...page.demos, eyebrow: page.demos.noDemos.eyebrow, items: page.demos.items.map((d, i) => ({ ...d, tag: page.demos.noDemos.tags[i] ?? d.tag })) }
   return (
     <>
-      <Seo title={page.seo.title} description={page.seo.description} path={page.path} />
+      <Seo title={page.seo.title} description={booth ? page.seo.description : N.lead.text} path={page.path} />
 
       {/* Hero: countdown before the event; after it, a thank-you with a link to Contact */}
       <section className="pb-12 pt-8 md:pb-20 md:pt-16">
@@ -79,7 +84,7 @@ export default function BtsLanding() {
             <Reveal><p className="eyebrow mb-5">{after ? page.hero.title : page.hero.eyebrow}</p></Reveal>
             <Reveal delay={0.08} y={28}><h1 className="display-xl">{after ? page.after.title : page.hero.title}</h1></Reveal>
             <Reveal delay={0.14}><p className="mono mt-5 flex items-center gap-2 text-ink-muted"><MapPin aria-hidden className="size-4 text-action" />{page.hero.venue}</p></Reveal>
-            {!after && <Reveal delay={0.2}><p className="lede mt-6 max-w-xl">{page.hero.lead}</p></Reveal>}
+            {!after && <Reveal delay={0.2}><p className="lede mt-6 max-w-xl">{booth ? page.hero.lead : N.lead.text}</p></Reveal>}
             <Reveal delay={0.26}><div className="mt-8">{after ? <Button to={page.after.cta.href}>{page.after.cta.label}</Button> : <Button to={page.hero.primary.href}>{page.hero.primary.label}</Button>}</div></Reveal>
           </div>
           {phase === 'before' && <Reveal delay={0.15} className="lg:col-span-5"><Countdown /></Reveal>}
@@ -106,7 +111,7 @@ export default function BtsLanding() {
         <section className="pb-12 md:pb-24">
           <div className="container-page split split--lead">
             <div className="split-aside"><SectionHead title={page.pitch.title} /></div>
-            <Reveal delay={0.1} className="split-main"><p className="lede">{BTS.liveDemos ? page.pitch.text : page.pitch.textNoDemos}</p></Reveal>
+            <Reveal delay={0.1} className="split-main"><p className="lede">{booth ? page.pitch.text : N.prepare.text}</p></Reveal>
           </div>
         </section>
       )}
@@ -129,9 +134,6 @@ export default function BtsLanding() {
         </div>
       </section>
 
-      {/* Trust points */}
-      <TrustPoints title={page.trust.title} items={TRUST} badges={msBadges} />
-
       {/* Why meet Q2M: our AI service pages (live titles and descriptions) */}
       {why.length > 0 && (
         <section className="pb-12 md:pb-24">
@@ -145,7 +147,7 @@ export default function BtsLanding() {
                     <h3 className="mt-5 font-display text-xl font-semibold leading-snug">{e.title}</h3>
                     {e.description && <p className="mt-3 text-[0.9375rem] text-ink-muted">{trimSentences(e.description, 170)}</p>}
                   </div>
-                  <p><TextLink to={e.path} label={`Read more about ${e.title}`}>Read more</TextLink></p>
+                  <p><TextLink to={e.path}>{`Read more about ${page.why.links[page.why.pages.indexOf(e.path)] ?? e.title}`}</TextLink></p>
                 </StaggerItem>
               ))}
             </StaggerGroup>
@@ -172,7 +174,7 @@ export default function BtsLanding() {
               </div>
               <div>
                 <h2 className="display-md">{team.title}</h2>
-                <p className="mt-4 text-ink-muted">{team.intro}</p>
+                <p className="mt-4 text-ink-muted">{booth ? team.intro : N.teamIntro.text}</p>
               </div>
             </StaggerItem>
             {/* event facts (live demos only once confirmed; otherwise the dates) */}
@@ -202,7 +204,7 @@ export default function BtsLanding() {
 
       {/* Client logos and testimonials */}
       <ClientLogoStrip label={page.trust.logos} logos={clientLogos} />
-      <Testimonials eyebrow={page.trust.testimonials.eyebrow} title={page.trust.testimonials.title} items={testimonials} />
+      {SHOW_TESTIMONIALS && <Testimonials eyebrow={page.trust.testimonials.eyebrow} title={page.trust.testimonials.title} items={testimonials} />}
 
       {!after && (
         <>
@@ -210,11 +212,11 @@ export default function BtsLanding() {
           <section className="pb-12 md:pb-24">
             <div className="container-page">
               <div className="split split--lead">
-                <div className="split-aside"><SectionHead eyebrow={page.session.eyebrow} title={page.session.title} /></div>
+                <div className="split-aside"><SectionHead eyebrow={page.session.eyebrow} title={booth ? page.session.title : N.sessionTitle.text} /></div>
                 <Reveal delay={0.1} className="split-main"><p className="text-ink-muted">{page.session.intro}</p></Reveal>
               </div>
               <StaggerGroup className="mt-12 grid gap-4 md:grid-cols-3">
-                {page.session.steps.map((s) => (
+                {page.session.steps.map((s, i) => (!booth && i === 1 ? { ...s, text: N.sessionStep2.text } : s)).map((s) => (
                   <StaggerItem key={s.title} className="rounded-lg border border-line bg-surface-raised p-6 md:p-8">
                     <span className="mono text-action">{s.min}</span><h3 className="mt-4 font-display text-xl font-semibold">{s.title}</h3><p className="mt-3 text-ink-muted">{s.text}</p>
                   </StaggerItem>
@@ -261,8 +263,8 @@ export default function BtsLanding() {
       {/* FAQ */}
       <section id="faq" className="scroll-anchor pb-12 md:pb-24 lg:pb-32">
         <div className="container-page split">
-          <div className="split-aside"><SectionHead eyebrow={page.faq.eyebrow} title={page.faq.title} lede={after ? undefined : page.faq.intro} /></div>
-          <div className="split-main"><Accordion items={page.faq.items} /></div>
+          <div className="split-aside"><SectionHead eyebrow={page.faq.eyebrow} title={page.faq.title} lede={after ? undefined : booth ? page.faq.intro : N.faqIntro.text} /></div>
+          <div className="split-main"><Accordion items={faqItems} /></div>
         </div>
       </section>
 

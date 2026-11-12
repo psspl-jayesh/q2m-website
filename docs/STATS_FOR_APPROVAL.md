@@ -9,10 +9,10 @@ Distinct (label, value) pairs on the live site: 23. Stat blocks hidden on our pa
 | Value | Label | Source | On BTS landing |
 |---|---|---|---|
 | 150+ | Projects Delivered | live home hero; also used for every "projects completed/delivered" stat | no |
-| 150+ | Enterprise projects delivered | live home counter (data-to-value) | **yes** |
-| 40%+ | Average reduction in manual processing time | live home counter (data-to-value) | **yes** |
-| 6wk | Time-to-first-AI-value in production | live home counter (data-to-value) | **yes** |
-| 2 | Microsoft Solution Partner designations | live home counter (data-to-value) | **yes** |
+| 150+ | Enterprise projects delivered | live home counter (data-to-value) | **yes (approved)** |
+| 40%+ | Average reduction in manual processing time | live home counter (data-to-value) | **yes (approved)** |
+| 6wk | Time-to-first-AI-value in production | live home counter (data-to-value) | **yes (approved)** |
+| 2 | Microsoft Solution Partner designations | live home counter (data-to-value) | **yes (approved)** |
 | 70% | Faster document and data processing across client deployments | live home counter (data-to-value) | no |
 | 45% | Average ticket deflection rate for Copilot Studio deployments | live home counter (data-to-value) | no |
 | 6wk | Median time to first AI value in a production environment | live home counter (data-to-value) | no |
@@ -22,12 +22,14 @@ Distinct (label, value) pairs on the live site: 23. Stat blocks hidden on our pa
 
 The team section of `/bengaluru-tech-summit-2026/` shows these four (keys in `src/content/sections/team-bento.json`). Each is an Elementor counter on the live home page https://q2msolutions.com/ (checked in the live HTML on 11 Nov 2026). All four are live values; nothing was added.
 
-| Shown | Live value (data-to-value + suffix) | Live label | Live widget (home) | Our label |
-|---|---|---|---|---|
-| 150+ | 150 + "+" | Enterprise projects delivered across APAC | counter cf22f93 | Enterprise projects delivered |
-| 40%+ | 40 + "%+" | Average reduction in manual processing time | counter 260604a | Average reduction in manual processing time |
-| 6wk | 6 + "wk" | Time-to-first-AI-value in production | counter f8b3a73 | Time-to-first-AI-value in production |
-| 2 | 2 | Microsoft Solution Partner designations | counter bbb231d | Microsoft Solution Partner designations |
+**Approved by the owner for now (12 Nov 2026): 150+, 40%+, 6wk, 2**, with the neutral labels below (no "APAC" or "India"; the live 150+ label says "across APAC", ours does not).
+
+| Shown | Live value (data-to-value + suffix) | Live label | Live widget (home) | Our label | Status |
+|---|---|---|---|---|---|
+| 150+ | 150 + "+" | Enterprise projects delivered across APAC | counter cf22f93 | Enterprise projects delivered | Approved |
+| 40%+ | 40 + "%+" | Average reduction in manual processing time | counter 260604a | Average reduction in manual processing time | Approved |
+| 6wk | 6 + "wk" | Time-to-first-AI-value in production | counter f8b3a73 | Time-to-first-AI-value in production | Approved |
+| 2 | 2 | Microsoft Solution Partner designations | counter bbb231d | Microsoft Solution Partner designations | Approved |
 
 ## All distinct live stats
 

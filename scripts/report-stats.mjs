@@ -28,11 +28,11 @@ const md = ['# Live stat values: please approve one value per stat', '', 'Genera
   `Distinct (label, value) pairs on the live site: ${list.length}. Stat blocks hidden on our pages: ${log.statsDropped.length}.`, '',
   '## Currently shown (shared stats config, `src/content/shared/stats.json`)', '', '| Value | Label | Source | On BTS landing |', '|---|---|---|---|',
   `| ${shared.projectsDelivered.value}${shared.projectsDelivered.suffix} | ${shared.projectsDelivered.label} | live home hero; also used for every "projects completed/delivered" stat | no |`,
-  ...shared.counters.map((c) => `| ${c.prefix}${c.value}${c.suffix} | ${c.label} | live home counter (data-to-value) | ${bts.includes(c.key) ? '**yes**' : 'no'} |`), '',
+  ...shared.counters.map((c) => `| ${c.prefix}${c.value}${c.suffix} | ${c.label} | live home counter (data-to-value) | ${bts.includes(c.key) ? '**yes (approved)**' : 'no'} |`), '',
   '## BTS landing page stats: where each value comes from on the live site', '',
-  'The team section of `/bengaluru-tech-summit-2026/` shows these four (keys in `src/content/sections/team-bento.json`). Each is an Elementor counter on the live home page https://q2msolutions.com/ (checked in the live HTML on 11 Nov 2026). All four are live values; nothing was added.', '',
-  '| Shown | Live value (data-to-value + suffix) | Live label | Live widget (home) | Our label |', '|---|---|---|---|---|',
-  ...BTS_SOURCES.map((x) => { const c = shared.counters.find((k) => k.key === x.key); return `| ${c.prefix}${c.value}${c.suffix} | ${x.live} | ${x.liveLabel} | ${x.widget} | ${c.label} |` }), '',
+  'The team section of `/bengaluru-tech-summit-2026/` shows these four (keys in `src/content/sections/team-bento.json`). Each is an Elementor counter on the live home page https://q2msolutions.com/ (checked in the live HTML on 11 Nov 2026). All four are live values; nothing was added.', '', '**Approved by the owner for now (12 Nov 2026): 150+, 40%+, 6wk, 2**, with the neutral labels below (no "APAC" or "India"; the live 150+ label says "across APAC", ours does not).', '',
+  '| Shown | Live value (data-to-value + suffix) | Live label | Live widget (home) | Our label | Status |', '|---|---|---|---|---|---|',
+  ...BTS_SOURCES.map((x) => { const c = shared.counters.find((k) => k.key === x.key); return `| ${c.prefix}${c.value}${c.suffix} | ${x.live} | ${x.liveLabel} | ${x.widget} | ${c.label} | Approved |` }), '',
   '## All distinct live stats', '', '| Live value | Live label | Pages (count) | Status | Approved value (fill in) |', '|---|---|---|---|---|',
   ...list.map((r) => {
     const status = approved(r) || (shownKeys.has(r.label.toLowerCase().replace(/ across (apac|indian) clients| across apac/, '')) ? 'shown (home counter)' : 'HIDDEN')
