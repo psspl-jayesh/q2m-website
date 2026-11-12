@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import type { Manifest } from './images'
 import { SHOW_TESTIMONIALS } from '@/config/flags'
+import contentUrl from '@/data/content.json?url'
+import manifestUrl from '@/data/image-manifest.json?url'
 
 /** One piece of page content, copied from the live site (src/content/pages/*.json). */
 export type Block = {
@@ -27,7 +29,12 @@ export type Content = {
 }
 
 let cache: Promise<Content> | null = null
-export const loadContent = () => (cache ??= Promise.all([import('@/data/content.json'), import('@/data/image-manifest.json')]).then(([c, m]) => ({ ...(c.default as unknown as Omit<Content, 'manifest'>), manifest: m.default as unknown as Manifest })))
+/**
+ * Site content and image manifest, loaded as JSON files (fetch + JSON.parse is much faster to process than the same data as
+ * a JavaScript module). Vite emits them as hashed assets; the pre-render build imports the JSON directly instead.
+ */
+export const loadContent = () => (cache ??= Promise.all([fetch(contentUrl).then((r) => r.json()), fetch(manifestUrl).then((r) => r.json())])
+  .then(([c, m]) => ({ ...(c as Omit<Content, 'manifest'>), manifest: m as Manifest })))
 
 const Ctx = createContext<Content | null>(null)
 /** `initial`: content already loaded (server pre-render, or the browser hydrating a pre-rendered page), so no splash screen. */

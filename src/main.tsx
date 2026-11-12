@@ -35,7 +35,13 @@ if (!root.hasChildNodes()) {
   // boundary that has since passed (then the BTS items in the HTML are out of date, so render fresh in the browser).
   const sameRoute = html.dataset.prerendered === normPath(location.pathname)
   const sameBtsPhase = !html.dataset.btsPhase || html.dataset.btsPhase === btsPhase()
-  loadContent().then((c) => {
+  // The pre-rendered page is already complete and visible, so the content data (used to make it interactive) is fetched
+  // once the page has loaded, letting the hero image and fonts go first on slow connections (at most 2.5 s later).
+  const afterLoad = new Promise<void>((resolve) => {
+    if (document.readyState === 'complete') resolve()
+    else { window.addEventListener('load', () => resolve(), { once: true }); window.setTimeout(resolve, 2500) }
+  })
+  afterLoad.then(loadContent).then((c) => {
     if (sameRoute && sameBtsPhase) { setHydrating(true); hydrateRoot(root, app(c)) }
     else { setHydrating(false); root.replaceChildren(); createRoot(root).render(app(c)) }
   })
