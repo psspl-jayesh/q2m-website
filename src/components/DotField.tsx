@@ -1,13 +1,14 @@
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'motion/react'
+import { FIELD_SIZE, inArrow } from '@/config/dotFieldArrow'
 
 /**
  * The logo's dot arrow, drawn large (ported from the Q2M home page design in Q2M_Website_Home).
- * 13x13 grid. Dots inside the arrow are brand blue and grow in diagonally on load; dots near the pointer grow.
+ * 13x13 grid. The blue dots form the Q2M logo arrow mark (grid map: src/config/dotFieldArrow.ts); they grow in diagonally
+ * on load; dots near the pointer grow.
  * Static when the user prefers reduced motion.
  */
-const N = 13
-const inArrow = (r: number, c: number) => c >= r + 3 && r <= 8 && c >= 4
+const N = FIELD_SIZE
 const css = (name: string) => getComputedStyle(document.documentElement).getPropertyValue(name).trim()
 
 export default function DotField({ className = '' }: { className?: string }) {
