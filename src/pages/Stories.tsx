@@ -11,6 +11,9 @@ import { SITE_URL } from '@/lib/site'
 import siteImages from '@/data/site-images.json'
 import { descriptionFor, indiaDescription, indiaTitle } from '@/lib/seo'
 
+/** The case studies list has no description in the CMS content; this one names the three published case studies. */
+const CASE_STUDIES_DESCRIPTION = 'Q2M Solutions case studies: a single pane of glass for a 1,500-truck fleet, an AI-powered wellbeing app, and a national real-estate platform built with vibe coding.'
+
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 const SKIP = /connect with us|social|your success starts/i
 
@@ -22,7 +25,7 @@ export function CaseStudies({ entry }: { entry: Entry }) {
   const c = useContent()
   return (
     <>
-      <Seo title={indiaTitle(entry.metaTitle || 'Case Studies')} description={indiaDescription(descriptionFor(entry))} path={entry.path} />
+      <Seo title={indiaTitle(entry.metaTitle || 'Case Studies')} description={indiaDescription(descriptionFor(entry) || CASE_STUDIES_DESCRIPTION)} path={entry.path} />
       <section className="page-band pt-10 pb-14 md:pt-20"><div className="container-page">
         <Breadcrumbs trail={[{ label: 'Home', to: '/' }, { label: crumbOf(entry) }]} />
         <Reveal y={28}><h1 className="display-xl mt-10 max-w-4xl">{h1Of(entry)}</h1></Reveal>

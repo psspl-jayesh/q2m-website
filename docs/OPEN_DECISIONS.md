@@ -8,9 +8,9 @@ Severity: High = do soon (legal or business), Medium = fix soon, Low = polish, D
 
 | # | Item | Where | What is needed | Severity |
 |---|---|---|---|---|
-| 1 | **Form delivery.** Web3Forms chosen and built in. Waiting on the access key: create it with info@q2msolutions.in and set `VITE_WEB3FORMS_ACCESS_KEY` in the build environment (`docs/FORM_DELIVERY_OPTIONS.md`). Privacy policy should name Web3Forms as a processor | Contact, home and BTS booking forms | Access key, legal review | High |
+| 1 | **Form delivery.** Web3Forms is built in and the key is set in `.env.local` on the build PC, so builds made there send forms by email. If a build is ever made elsewhere, set `VITE_WEB3FORMS_ACCESS_KEY` there too. Send one real test from the live contact page after each deploy (automated tests are blocked by Web3Forms' bot protection) | Contact, home, smart glasses and BTS forms | Real test submission | High |
 | 2 | **Legal review** of the draft Privacy Policy and the consent wording (DPDP Act). The page says "DRAFT: pending legal review" and is noindex until then | Privacy Policy, every form | Legal counsel review | High |
-| 3 | **Privacy details** still shown as "to be confirmed by Q2M": service providers, retention period, grievance officer, analytics tools (kept visible on purpose for launch) | Privacy Policy | The real details | High |
+| 3 | **Privacy details** still shown as "to be confirmed by Q2M": hosting provider, retention period, grievance officer (kept visible on purpose for launch). Done 13 Nov: Web3Forms named as the form provider; analytics line states the site uses none (true for this build) | Privacy Policy | The real details | High |
 | 4 | **Grievance officer** (DPDP Act): name, designation, email (`COMPANY.grievanceOfficer` in `src/config/locale.ts`) | Privacy Policy | The details | High |
 | 5 | **CIN** (Corporate Identity Number): not shown while empty (`COMPANY.cin`) | Footer, Privacy, JSON-LD | The number | Medium |
 | 6 | **Rebuild after the event.** After 19 Nov 2026, 6:00 PM IST, rebuild and re-upload once so the static files no longer contain the Bengaluru Tech Summit booking items (the browser already hides them) | Home, BTS landing | Rebuild + upload | Medium |

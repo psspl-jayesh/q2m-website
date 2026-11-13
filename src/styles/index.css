@@ -160,6 +160,15 @@
   .btt-button { position: absolute; inset: 6px; display: grid; place-items: center; overflow: hidden; border-radius: 9999px; cursor: pointer;
     background: var(--q2m-blue); color: #fff; border: 1px solid rgb(255 255 255 / .28); transition: transform .2s ease; }
   .btt-button:hover, .btt-button:focus-visible { transform: translateY(-2px); }
+  /* BTS announcement popup (src/components/BtsPopup.tsx): backdrop fades, the panel rises and scales in; phones: slides up as a bottom sheet */
+  .btsp { animation: btsp-fade .25s ease both; }
+  .btsp-panel { animation: btsp-sheet .4s cubic-bezier(.22, 1, .36, 1) both; }
+  @media (min-width: 768px) { .btsp-panel { animation-name: btsp-pop; } }
+  [data-theme='dark'] .btsp { background: rgb(0 0 0 / .65); }
+  @keyframes btsp-fade { from { opacity: 0; } }
+  @keyframes btsp-sheet { from { transform: translateY(100%); } }
+  @keyframes btsp-pop { from { opacity: 0; transform: translateY(12px) scale(.96); } }
+  @media (prefers-reduced-motion: reduce) { .btsp, .btsp-panel { animation: none; } }
   .btt-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 8px; border-radius: 9999px; }
   .btt-arrow { width: 20px; height: 20px; }
   .btt-button:hover .btt-arrow, .btt-button:focus-visible .btt-arrow { animation: btt-nudge 1.1s ease-in-out infinite; }

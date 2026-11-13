@@ -63,6 +63,27 @@ export function useReveal(root: React.RefObject<HTMLElement | null>) {
   }, [root])
 }
 
+/** Number that counts up from 0 over 900 ms when it scrolls into view (shows the final value before that and without motion). */
+export function CountUp({ to }: { to: number }) {
+  const [n, setN] = useState(to)
+  const ref = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return
+    let raf = 0
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return
+      io.disconnect()
+      const s = performance.now()
+      const tick = (t: number) => { const p = Math.min(1, (t - s) / 900); setN(Math.round(to * p)); if (p < 1) raf = requestAnimationFrame(tick) }
+      raf = requestAnimationFrame(tick)
+    })
+    io.observe(el)
+    return () => { io.disconnect(); cancelAnimationFrame(raf) }
+  }, [to])
+  return <b ref={ref}>{n}</b>
+}
+
 /* ───────── discovery call form (design fields + the site's DPDP consent; delivery as the other forms) ───────── */
 type Msg = { kind: 'ok' | 'err'; text: string } | null
 export function DiscoveryForm({ companyLabel, messageLabel, placeholder, submit, workflows, subject }: {
