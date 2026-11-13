@@ -8,17 +8,15 @@ import DotArrow from '@/components/DotArrow'
 /**
  * Bengaluru Tech Summit 2026 announcement (text and timing: BTS.popup in src/config/bts.ts).
  * - Opens BTS.popup.delayMs after the page has loaded, on every page except the BTS landing page. Never in the pre-rendered HTML.
- * - Closes with the X, "Maybe later", Esc or a click outside. Closing or following the button snoozes it for BTS.popup.snoozeDays
- *   (localStorage; if storage is blocked it simply shows again next visit).
+ * - Opens on every page load (owner's request, 13 Nov 2026). Closes with the X, "Maybe later", Esc or a click outside; once
+ *   closed it stays closed while the visitor moves between pages, and opens again on the next refresh or visit. Nothing is stored.
  * - Switched off once the event has closed (BTS.end).
  * - A modal dialog: the page behind is made inert, focus moves into the dialog (its close button), stays inside it and returns afterwards.
  * - Fixed position over the page, so nothing shifts. Phones: a full-width bottom sheet. Reduced motion: no animation (index.css).
  */
-const KEY = 'q2m-bts-popup-closed'
-const snoozed = () => {
-  try { const t = Number(localStorage.getItem(KEY)); return t > 0 && Date.now() - t < BTS.popup.snoozeDays * 864e5 } catch { return false }
-}
-const snooze = () => { try { localStorage.setItem(KEY, String(Date.now())) } catch { /* storage blocked: it shows again next visit */ } }
+/** Closed during this page load. A module variable, so a refresh (new page load) resets it and the popup opens again. */
+let closedThisLoad = false
+const markClosed = () => { closedThisLoad = true }
 
 /** One fact card (larger screens). */
 const Fact = ({ icon: Icon, k, v, nowrap }: { icon: typeof CalendarDays; k: string; v: string; nowrap?: boolean }) => (
@@ -40,13 +38,13 @@ export default function BtsPopup() {
   const box = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (over || onLanding || snoozed()) return
+    if (over || onLanding || closedThisLoad) return
     const t = window.setTimeout(() => setOpen(true), BTS.popup.delayMs)
     return () => window.clearTimeout(t)
   }, [over, onLanding])
 
   const visible = open && !over && !onLanding
-  const close = useCallback(() => { snooze(); setOpen(false) }, [])
+  const close = useCallback(() => { markClosed(); setOpen(false) }, [])
 
   useEffect(() => {
     if (!visible) return
@@ -116,7 +114,7 @@ export default function BtsPopup() {
         </dl>
 
         <div className="mt-5 flex flex-col gap-2.5 md:flex-row md:items-center md:gap-3">
-          <Link to={BTS.path} onClick={() => { snooze(); setOpen(false) }}
+          <Link to={BTS.path} onClick={() => { markClosed(); setOpen(false) }}
             className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-action px-6 font-semibold text-on-action transition-colors hover:bg-q2m">
             {p.cta}<ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
