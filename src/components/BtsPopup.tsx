@@ -96,20 +96,20 @@ export default function BtsPopup() {
   const logos = (
     <div className="flex items-center gap-2">
       {/* the Q2M logo is about as tall as the event logo's tile */}
-      <img className="logo-color h-14 w-auto shrink-0 lg:h-10" src={siteImages.brand.logoColor.file} alt={siteImages.brand.logoColor.alt} width={73} height={44} />
-      <img className="logo-reverse h-14 w-auto shrink-0 lg:h-10" src={siteImages.brand.logoReverse.file} alt={siteImages.brand.logoReverse.alt} width={73} height={44} />
+      <img className="logo-color h-14 w-auto shrink-0 lg:h-11" src={siteImages.brand.logoColor.file} alt={siteImages.brand.logoColor.alt} width={73} height={44} />
+      <img className="logo-reverse h-14 w-auto shrink-0 lg:h-11" src={siteImages.brand.logoReverse.file} alt={siteImages.brand.logoReverse.alt} width={73} height={44} />
       <span aria-hidden className="h-10 w-px shrink-0 bg-[var(--bp-ink)] opacity-30" />
       <span className="inline-block shrink-0 rounded-md bg-[#0b1430] px-1 py-0.5">
-        <img src={p.logo.file} alt={p.logo.alt} width={p.logo.w} height={p.logo.h} loading="lazy" decoding="async" className="block h-12 w-auto lg:h-9" />
+        <img src={p.logo.file} alt={p.logo.alt} width={p.logo.w} height={p.logo.h} loading="lazy" decoding="async" className="block h-12 w-auto lg:h-10" />
       </span>
     </div>
   )
-  const pill = <p className="inline-block rounded-lg bg-[var(--bp-pill-bg)] px-3 py-1 text-[0.8125rem] font-semibold text-[var(--bp-pill-ink)]">{p.pill}</p>
+  const pill = <p className="inline-block rounded-lg bg-[var(--bp-pill-bg)] px-3.5 py-1.5 text-[0.9375rem] font-bold text-[var(--bp-pill-ink)]">{p.pill}</p>
   const items = (cls: string) => (
     <ul className={cls}>
       {p.items.map((it) => { const Icon = ICON[it.icon as keyof typeof ICON]; return (
-        <li key={it.text.join(' ')} className="flex items-center gap-2.5 text-[0.8125rem] font-bold leading-[1.25] text-[var(--bp-ink)]">
-          <Icon aria-hidden className="size-6 shrink-0 text-[var(--bp-icon)]" strokeWidth={1.6} />
+        <li key={it.text.join(' ')} className="flex items-center gap-3 text-[0.875rem] font-bold leading-[1.25] text-[var(--bp-ink)]">
+          <Icon aria-hidden className="size-7 shrink-0 text-[var(--bp-icon)]" strokeWidth={1.6} />
           <span>{it.text.map((line, k) => <span key={k} className="block">{line}</span>)}</span>
         </li>
       ) })}
@@ -131,9 +131,9 @@ export default function BtsPopup() {
   const text = (title: string) => (
     <>
       {logos}
-      <div className="mt-5">{pill}</div>
+      <div className="mt-4">{pill}</div>
       <h2 className={title}>{p.title}</h2>
-      <p className="mt-2 text-[0.875rem] font-medium leading-snug text-[var(--bp-muted)]">{desc}</p>
+      <p className="mt-2.5 text-[0.9375rem] font-medium leading-snug text-[var(--bp-muted)]">{desc}</p>
     </>
   )
 
@@ -149,9 +149,9 @@ export default function BtsPopup() {
         <div className="hidden lg:block">
           <div className="relative aspect-[1672/941]">
             <Photo src={p.photo.file} alt={p.photo.alt} sizes="1000px" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-y-0 left-0 w-[26%] overflow-hidden rounded-r-2xl bg-[var(--bp-glass)] px-5 pb-5 pt-6 shadow-[8px_0_24px_-12px_rgb(0_0_0/0.25)] backdrop-blur-[8px]">
-              {text('mt-2.5 font-display text-[1.5rem] font-bold leading-[1.1] tracking-[-0.01em] text-[var(--bp-ink)]')}
-              {items('mt-4 grid gap-y-2.5')}
+            <div className="absolute left-0 top-0 w-[26%] rounded-br-2xl bg-[var(--bp-glass)] px-4 pb-6 pt-5 shadow-[8px_0_24px_-12px_rgb(0_0_0/0.25)] backdrop-blur-[8px]">
+              {text('mt-3 font-display text-[1.75rem] font-bold leading-[1.08] tracking-[-0.015em] text-[var(--bp-ink)]')}
+              {items('mt-5 grid gap-y-3.5')}
             </div>
           </div>
           <div className="btsp-bar relative text-white">
