@@ -23,7 +23,7 @@ export default function HomeGlasses() {
   useReveal(root)
   const btsOver = useBtsPhase() === 'after'
   const keep = <T extends { bts?: boolean }>(xs: T[]) => (btsOver ? xs.filter((x) => !x.bts) : xs)
-  const marquee = keep(g.marquee)
+  const marquee = keep(g.marquee).map((m) => (!BTS.liveDemos && 'neutral' in m && m.neutral ? m.neutral : m.text))
   // Booth wording ("live demos at our desk") only when BTS.liveDemos is on; neutral wording otherwise
   const demos = BTS.liveDemos
   const faq = g.faq.items.map((f) => ({ q: f.q, a: btsOver && 'afterBts' in f && f.afterBts ? f.afterBts : !demos && 'neutral' in f && f.neutral ? f.neutral : f.a }))
@@ -36,7 +36,7 @@ export default function HomeGlasses() {
       <Seo title={g.seo.title} description={g.seo.description} path="/" image={ogImageFor(c, '/')} jsonLd={faqLd} />
 
       {/* Hero */}
-      <section className="hero" aria-labelledby="hg-title"><div className="w">
+      <section className="hero" aria-labelledby="hg-title"><div className="container-page">
         <div>
           <Pill>{g.hero.pill}</Pill>
           <h1 id="hg-title">{g.hero.titleBefore}<em>{g.hero.titleAccent}</em>{g.hero.titleAfter}</h1>
@@ -55,10 +55,10 @@ export default function HomeGlasses() {
       </div></section>
 
       {/* Platform marquee (decorative: the same names are in the sections below) */}
-      <div className="mq" aria-hidden="true"><div className="tr">{[...marquee, ...marquee].map((m, i) => <span key={i}>{m.text}</span>)}</div></div>
+      <div className="mq" aria-hidden="true"><div className="tr">{[...marquee, ...marquee].map((m, i) => <span key={i}>{m}</span>)}</div></div>
 
       {/* Platforms + numbers */}
-      <section className="sec" id="platforms"><div className="w two">
+      <section className="sec" id="platforms"><div className="container-page two">
         <div data-reveal>
           <Pill>{g.platforms.pill}</Pill><h2 className="mt16">{g.platforms.title}</h2>
           <p className="sub">{g.platforms.intro}</p>
@@ -78,13 +78,13 @@ export default function HomeGlasses() {
       </div></section>
 
       {/* Why Q2M */}
-      <section className="sec dk" id="why"><div className="w">
+      <section className="sec dk" id="why"><div className="container-page">
         <div className="hdr c" data-reveal><Pill dark>{g.why.pill}</Pill><h2>{g.why.title}</h2><p>{g.why.intro}</p></div>
         <div className="g4">{g.why.items.map((x) => <article className="dcard" data-reveal key={x.title}><Ico name={x.icon} /><h3>{x.title}</h3><p>{x.text}</p></article>)}</div>
       </div></section>
 
       {/* Services */}
-      <section className="sec sec-s" id="services"><div className="w">
+      <section className="sec sec-s" id="services"><div className="container-page">
         <div className="hdr" data-reveal><Pill>{g.services.pill}</Pill><h2>{g.services.title}</h2><p>{g.services.intro}</p></div>
         <div className="g3">{g.services.items.map((x) => (
           <article className="scard" data-reveal key={x.title}><Ico name={x.icon} soft /><h3>{x.title}</h3><p>{x.text}</p>
@@ -93,7 +93,7 @@ export default function HomeGlasses() {
       </div></section>
 
       {/* Choosing glasses */}
-      <section className="sec" id="devices"><div className="w">
+      <section className="sec" id="devices"><div className="container-page">
         <div className="hdr c" data-reveal><Pill>{g.devices.pill}</Pill><h2>{g.devices.title}</h2><p>{g.devices.intro}</p></div>
         <div className="plist">{g.devices.items.map((x) => (
           <div className="prow" data-reveal key={x.title}><Ico name="device" soft /><div><h3>{x.title}</h3><p>{x.text}</p><span className="on">{x.on}</span></div></div>
@@ -101,19 +101,19 @@ export default function HomeGlasses() {
       </div></section>
 
       {/* Industries */}
-      <section className="sec dk indsec" id="industries"><div className="w ind">
+      <section className="sec dk indsec" id="industries"><div className="container-page ind">
         <div data-reveal><Pill dark>{g.industries.pill}</Pill><h2 className="mt16">{g.industries.title}</h2><p className="sub">{g.industries.intro}</p><a className="btn btn-p" href="#contact">{g.industries.cta}</a></div>
         <div className="ig">{g.industries.items.map((x) => <div className="icard" data-reveal key={x.title}><Ico name={x.icon} /><div><h3>{x.title}</h3><p>{x.text}</p></div></div>)}</div>
       </div></section>
 
       {/* Technology */}
-      <section className="sec sec-s" id="stack"><div className="w">
+      <section className="sec sec-s" id="stack"><div className="container-page">
         <div className="hdr c" data-reveal><Pill>{g.stack.pill}</Pill><h2>{g.stack.title}</h2></div>
         <div className="stk">{g.stack.groups.map((s) => <div data-reveal key={s.title}><h3>{s.title}</h3><ul className="tags">{s.tags.map((t) => <li key={t}>{t}</li>)}</ul></div>)}</div>
       </div></section>
 
       {/* Process */}
-      <section className="sec" id="process"><div className="w">
+      <section className="sec" id="process"><div className="container-page">
         <div className="hdr" data-reveal><Pill>{g.process.pill}</Pill><h2>{g.process.title}</h2><p>{g.process.intro}</p></div>
         <ol className="proc">{g.process.steps.map((s, i) => (
           <li className="step" data-reveal key={s.title}>
@@ -124,7 +124,7 @@ export default function HomeGlasses() {
       </div></section>
 
       {/* Use cases */}
-      <section className="sec sec-s" id="work"><div className="w">
+      <section className="sec sec-s" id="work"><div className="container-page">
         <div className="hdr" data-reveal><Pill>{g.work.pill}</Pill><h2>{g.work.title}</h2><p>{g.work.intro}{!btsOver && (demos ? g.work.introBts : g.work.introBtsNeutral)}</p></div>
         <div className="bento">{tiles.map((t, i) => {
           const cls = `bt ${t.size}`.trim()
@@ -139,7 +139,7 @@ export default function HomeGlasses() {
       </div></section>
 
       {/* Contact */}
-      <section className="sec" id="contact"><div className="w"><div className="ct" data-reveal>
+      <section className="sec" id="contact"><div className="container-page"><div className="ct" data-reveal>
         <div>
           <Pill dark>{g.contact.pill}</Pill><h2 className="mt16">{g.contact.title}</h2><p style={{ marginTop: 14 }}>{g.contact.intro}</p>
           <ul><li>{`Based in ${ADDRESS.city}, ${ADDRESS.state}${g.contact.pointsAfterCity}`}</li>{g.contact.points.map((p) => <li key={p}>{p}</li>)}</ul>
@@ -148,7 +148,7 @@ export default function HomeGlasses() {
       </div></div></section>
 
       {/* FAQ */}
-      <section className="sec faq" id="faq"><div className="w">
+      <section className="sec faq" id="faq"><div className="container-page">
         <div className="hdr c" data-reveal><Pill>{g.faq.pill}</Pill><h2>{g.faq.title}</h2></div>
         <div className="fq">{faq.map((f) => <details data-reveal key={f.q}><summary>{f.q}<i aria-hidden="true">+</i></summary><p>{f.a}</p></details>)}</div>
       </div></section>

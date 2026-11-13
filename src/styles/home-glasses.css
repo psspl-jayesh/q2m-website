@@ -19,7 +19,7 @@
 
 .hg img { max-width: 100%; display: block; }
 .hg a { color: inherit; }
-.hg .w { max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+/* Sections use the site's shared .container-page (same width and side padding as the header), not a design-only container. */
 .hg h1, .hg h2, .hg h3 { font-family: var(--g-hd); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
 .hg h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; font-weight: 800; }
 .hg h3 { font-size: 21px; line-height: 1.25; font-weight: 800; }
@@ -40,7 +40,7 @@
 
 /* hero */
 .hg .hero { background: linear-gradient(180deg, var(--g-soft), var(--g-bg)); padding-block: 60px 70px; overflow: hidden; }
-.hg .hero .w { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.hg .hero .container-page { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
 .hg .hero h1 { font-size: clamp(38px, 5vw, 62px); line-height: 1.04; font-weight: 900; margin: 20px 0; }
 .hg .hero h1 em { font-style: normal; color: var(--g-blue); }
 [data-theme='dark'] .hg .hero h1 em { color: var(--g-blue-l); }
@@ -55,7 +55,7 @@
 .hg .badge { position: absolute; left: -46px; bottom: -34px; width: 132px; height: 132px; border-radius: 50%; background: var(--g-bg); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35); display: grid; place-items: center; }
 .hg .badge svg.ringt { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hg .badge .c { width: 58px; height: 58px; border-radius: 50%; background: var(--g-blue); color: #fff; padding: 14px; }
-.hg .chip-f { position: absolute; right: -14px; top: 28px; background: var(--g-bg); border: 1px solid var(--g-line); border-radius: 10px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; box-shadow: 0 12px 30px -16px rgba(0, 0, 0, 0.35); font: 600 14px/1.25 var(--g-bd); }
+.hg .chip-f { position: absolute; right: 14px; top: 28px; background: var(--g-bg); border: 1px solid var(--g-line); border-radius: 10px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; box-shadow: 0 12px 30px -16px rgba(0, 0, 0, 0.35); font: 600 14px/1.25 var(--g-bd); }
 .hg .chip-f small { display: block; font-weight: 500; color: var(--g-mut); font-size: 12px; }
 .hg .chip-f .ico { width: 38px; height: 38px; padding: 8px; }
 @media (prefers-reduced-motion: no-preference) {
@@ -65,7 +65,7 @@
 @keyframes hg-spin { to { transform: rotate(360deg); } }
 @keyframes hg-bob { 50% { transform: translateY(-8px); } }
 @media (max-width: 900px) {
-  .hg .hero .w { grid-template-columns: minmax(0, 1fr); }
+  .hg .hero .container-page { grid-template-columns: minmax(0, 1fr); }
   .hg .badge { left: 12px; bottom: -30px; width: 110px; height: 110px; }
   .hg .chip-f { right: 10px; }
 }

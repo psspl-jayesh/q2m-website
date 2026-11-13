@@ -23,7 +23,7 @@
   },
   "marquee": [
     { "text": "Meta" }, { "text": "XREAL" }, { "text": "Snap Spectacles" }, { "text": "MentraOS" }, { "text": "Android XR" },
-    { "text": "Samsung XR" }, { "text": "RayNeo" }, { "text": "Live at Bengaluru Tech Summit 2026", "bts": true }, { "text": "Built in India" }
+    { "text": "Samsung XR" }, { "text": "RayNeo" }, { "text": "Live at Bengaluru Tech Summit 2026", "neutral": "Meet us at Bengaluru Tech Summit 2026", "bts": true }, { "text": "Built in India" }
   ],
   "platforms": {
     "pill": "Platforms we build for",
