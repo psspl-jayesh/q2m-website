@@ -36,16 +36,17 @@ export const BTS = {
     text: 'Meet us to explore our AI, Smart Glasses and Intelligent Automation solutions.',
     /** Shown only when `liveDemos` is true. */
     textLiveDemos: 'Experience our AI, Smart Glasses and Intelligent Automation solutions in action.',
+    /** Each item shows on two lines, like the banner: [first line, second line]. */
     items: [
-      { icon: 'glasses', text: 'AI-Powered Smart Glasses & XR' },
-      { icon: 'chip', text: 'Agentic AI & Generative AI' },
-      { icon: 'video', text: 'Computer Vision & Video Intelligence' },
-      { icon: 'document', text: 'Document Intelligence & Automation' },
+      { icon: 'glasses', text: ['AI-Powered', 'Smart Glasses & XR'] },
+      { icon: 'chip', text: ['Agentic AI &', 'Generative AI'] },
+      { icon: 'video', text: ['Computer Vision &', 'Video Intelligence'] },
+      { icon: 'document', text: ['Document Intelligence', '& Automation'] },
     ],
-    /** Larger screens: the owner's banner with its text side painted white (the popup's own text goes there; the blue bar covers
-     *  the banner's bottom band), so the photo can fill the card uncropped. */
-    background: { file: '/images/bts-2026/popup-bg.jpg', alt: 'Technician wearing smart glasses checking a car door, with a damage analysis overlay' },
-    /** Phones and tablets: the photo part of the banner only (no banner text); no separate original exists. */
+    /** Official Bengaluru Tech Summit 2026 logo (bengalurutechsummit.com, BTS2026_Logo.webp), used unmodified. It is made for
+     *  dark backgrounds, so the popup shows it on a navy tile. */
+    logo: { file: '/images/bts/bts-2026-logo.webp', alt: 'Bengaluru Tech Summit 2026', w: 690, h: 236 },
+    /** The photo part of the owner's banner (no banner text); no separate original exists. Shown fully clear. */
     photo: { file: '/images/bts-2026/popup-photo.jpg', alt: 'Technician wearing smart glasses checking a car door, with a damage analysis overlay' },
     cta: 'Meet us at the summit',
     later: 'Maybe later',

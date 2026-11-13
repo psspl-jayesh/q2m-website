@@ -169,6 +169,12 @@
   @keyframes btsp-sheet { from { transform: translateY(100%); } }
   @keyframes btsp-pop { from { opacity: 0; transform: translateY(12px) scale(.96); } }
   @media (prefers-reduced-motion: reduce) { .btsp, .btsp-panel { animation: none; } }
+  /* BTS popup colours (banner look): navy text on a light column; dark theme: light text on a navy column */
+  .btsp-panel { --bp-ink: #1b2a6b; --bp-muted: #26356f; --bp-icon: #0062c4; --bp-pill-bg: #d4e8ff; --bp-pill-ink: #1b2a6b;
+    --bp-col: linear-gradient(180deg, #ffffff 0%, #eef4fb 100%); }
+  [data-theme='dark'] .btsp-panel { --bp-ink: #eef2ff; --bp-muted: #c9d4f2; --bp-icon: #7cb8ff; --bp-pill-bg: rgb(61 150 245 / .2); --bp-pill-ink: #d6e8ff;
+    --bp-col: linear-gradient(180deg, #0b1430 0%, #0e1a3d 100%); }
+  .btsp-bar { background: linear-gradient(90deg, #0a3a8f 0%, #0d55c4 55%, #1a6fe0 100%); }
   .btt-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 8px; border-radius: 9999px; }
   .btt-arrow { width: 20px; height: 20px; }
   .btt-button:hover .btt-arrow, .btt-button:focus-visible .btt-arrow { animation: btt-nudge 1.1s ease-in-out infinite; }
