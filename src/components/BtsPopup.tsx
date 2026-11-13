@@ -8,9 +8,10 @@ import siteImages from '@/data/site-images.json'
 
 /**
  * Bengaluru Tech Summit 2026 announcement (content: BTS.popup in src/config/bts.ts).
- * - Real HTML in the site's look, laid out like the owner's banner: logo and event lockup, heading, four solution areas beside
- *   the photo (which fades into the text side), and a blue bar with dates, venue and the button. Phones: the same content
- *   stacked as a bottom sheet (photo on top, items 2 × 2), scrollable if taller than the screen.
+ * - Real HTML in the site's look, laid out like the owner's banner. 1024px+: the photo fills the card at its 16:9 ratio (person,
+ *   car and Damage Analysis panel uncropped), the text sits over its left side on a solid-to-clear gradient, and a blue bar with a
+ *   curved top holds dates, venue and the button. Below 1024px: the photo in full on top, content below, the blue bar, scrollable
+ *   if taller than the screen. Each layout's image is lazy, so a screen downloads only the one it shows.
  * - Opens BTS.popup.delayMs after EVERY page load or refresh (owner's request): nothing is stored. Once closed it stays closed
  *   while the visitor moves between pages, until the next refresh or visit. Never on the BTS landing page, never in the
  *   pre-rendered HTML, switched off once the event has closed (BTS.end).
@@ -67,61 +68,99 @@ export default function BtsPopup() {
   if (!visible) return null
   const p = BTS.popup
   const date = btsDateRangeShort()
+  const desc = BTS.liveDemos ? p.textLiveDemos : p.text
+  const closeBtn = (
+    <button type="button" onClick={close} aria-label="Close" data-autofocus
+      className="absolute right-3 top-3 z-20 grid size-11 place-items-center rounded-full bg-white text-[#0b0c0c] shadow-lg ring-1 ring-black/10 transition-transform hover:scale-105 lg:right-4 lg:top-4">
+      <X aria-hidden className="size-5" />
+    </button>
+  )
+  const logos = (
+    <div className="flex items-center gap-3">
+      <img className="logo-color h-9 w-auto lg:h-10" src={siteImages.brand.logoColor.file} alt={siteImages.brand.logoColor.alt} width={66} height={40} />
+      <img className="logo-reverse h-9 w-auto lg:h-10" src={siteImages.brand.logoReverse.file} alt={siteImages.brand.logoReverse.alt} width={66} height={40} />
+      <span aria-hidden className="h-9 w-px bg-line" />
+      <div className="leading-tight">
+        <p className="font-display text-sm font-bold">{p.lockup}</p>
+        <p className="mt-0.5 text-xs text-ink-muted">{BTS.venue.short} · {date}</p>
+      </div>
+    </div>
+  )
+  const pill = (
+    <p className="inline-flex items-center gap-2 rounded-full bg-tint px-3 py-1.5 text-[0.75rem] font-bold uppercase tracking-[0.08em] text-action">
+      <CalendarDays aria-hidden className="size-3.5 shrink-0" />{p.pill}
+    </p>
+  )
+  const items = (cls: string) => (
+    <ul className={cls}>
+      {p.items.map((it) => { const Icon = ICON[it.icon as keyof typeof ICON]; return (
+        <li key={it.text} className="flex items-center gap-2.5 text-[0.8125rem] font-medium leading-snug lg:text-[0.875rem]">
+          <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-md bg-tint text-action lg:size-8"><Icon className="size-[1.125rem] lg:size-4" /></span>{it.text}
+        </li>
+      ) })}
+    </ul>
+  )
+  const facts = (
+    <dl className="flex flex-wrap items-center gap-x-6 gap-y-3 lg:flex-nowrap lg:gap-x-6">
+      <div className="flex items-center gap-3"><dt className="contents"><CalendarDays aria-hidden className="size-6 shrink-0 lg:size-7" strokeWidth={1.75} /><span className="sr-only">Dates</span></dt><dd className="font-display text-base font-semibold lg:text-lg">{date}</dd></div>
+      <span aria-hidden className="hidden h-8 w-px bg-white/40 lg:block" />
+      <div className="flex items-center gap-3"><dt className="contents"><MapPin aria-hidden className="size-6 shrink-0 lg:size-7" strokeWidth={1.75} /><span className="sr-only">Venue</span></dt><dd className="font-display text-base font-semibold lg:text-lg">{BTS.venue.short}</dd></div>
+    </dl>
+  )
+  const cta = (cls: string) => (
+    <Link to={BTS.path} onClick={close} className={`${BUTTON} ${cls}`}>
+      {p.cta}<ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+    </Link>
+  )
+
   return createPortal(
-    <div className="btsp fixed inset-0 z-[60] flex items-end justify-center bg-black/60 md:items-center md:p-6">
-      <div ref={box} role="dialog" aria-modal="true" aria-labelledby="btsp-title" aria-describedby="btsp-desc"
-        className="btsp-panel relative max-h-[100dvh] w-full overflow-y-auto overflow-x-hidden rounded-t-xl border border-line bg-surface text-ink shadow-2xl md:max-h-[calc(100dvh-3rem)] md:max-w-[1000px] md:rounded-xl">
-        <button type="button" onClick={close} aria-label="Close" data-autofocus
-          className="absolute right-3 top-3 z-10 grid size-11 place-items-center rounded-full border border-line bg-surface text-ink shadow-md transition-colors hover:bg-tint md:right-4 md:top-4">
-          <X aria-hidden className="size-5" />
-        </button>
+    <div className="btsp fixed inset-0 z-[60] flex items-end justify-center bg-black/60 lg:items-center lg:p-6">
+      <div ref={box} role="dialog" aria-modal="true" aria-label={`${p.title}: ${desc}`}
+        className="btsp-panel relative max-h-[calc(100dvh-3.5rem)] w-full overflow-y-auto overflow-x-hidden rounded-t-xl bg-surface text-ink shadow-2xl lg:max-h-none lg:max-w-[1000px] lg:overflow-hidden lg:rounded-xl">
+        {closeBtn}
 
-        <div className="md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          {/* photo: on top on phones; the right half on larger screens, fading into the text side like the banner */}
-          <div className="relative h-44 sm:h-56 md:order-2 md:h-auto">
-            <Img src={p.photo.file} alt={p.photo.alt} eager sizes="(min-width:768px) 540px, 100vw" position="46% 30%" className="absolute inset-0 h-full w-full object-cover" />
-            <div aria-hidden className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-surface to-transparent md:inset-y-0 md:left-0 md:right-auto md:h-auto md:w-16 md:bg-gradient-to-r" />
+        {/* 1024px+: the photo fills the card at its own 16:9 ratio (nothing cropped); text sits over its left side */}
+        <div className="relative hidden aspect-[1672/941] lg:block">
+          <Img src={p.background.file} alt={p.background.alt} sizes="1000px" className="absolute inset-0 h-full w-full object-cover" />
+          {/* solid behind the text, fading to clear by 55% (the light/dark surface colour, so contrast holds in both themes) */}
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(90deg,var(--surface)_0%,var(--surface)_41%,transparent_55%)]" />
+          <div className="absolute left-0 top-0 w-[43%] px-9 pt-7">
+            {logos}
+            <div className="mt-4">{pill}</div>
+            <h2 className="mt-2.5 font-display text-[1.875rem] font-bold leading-[1.1] tracking-[-0.01em]">{p.title}</h2>
+            <p className="mt-2 text-[0.875rem] leading-relaxed text-ink-muted">{desc}</p>
+            {items('mt-3 grid grid-cols-1 gap-y-1.5')}
           </div>
-
-          <div className="relative px-5 pb-6 pt-1 md:px-9 md:pb-9 md:pt-8">
-            {/* Q2M logo | event lockup (text, not the official event logo) */}
-            <div className="flex items-center gap-3 md:gap-4">
-              <img className="logo-color h-9 w-auto md:h-10" src={siteImages.brand.logoColor.file} alt={siteImages.brand.logoColor.alt} width={66} height={40} />
-              <img className="logo-reverse h-9 w-auto md:h-10" src={siteImages.brand.logoReverse.file} alt={siteImages.brand.logoReverse.alt} width={66} height={40} />
-              <span aria-hidden className="h-9 w-px bg-line" />
-              <div className="leading-tight">
-                <p className="font-display text-sm font-bold md:text-[0.9375rem]">{p.lockup}</p>
-                <p className="mt-0.5 text-xs text-ink-muted">{BTS.venue.short} · {date}</p>
-              </div>
+          {/* blue bar over the bottom of the photo, with a gentle curved top edge like the banner */}
+          <div className="absolute inset-x-0 bottom-0 h-[35%] text-white">
+            <svg aria-hidden viewBox="0 0 1000 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
+              <path d="M0 56 C 380 52, 700 36, 1000 2 L1000 100 L0 100 Z" fill="var(--q2m-action)" />
+              <path d="M0 56 C 380 52, 700 36, 1000 2" fill="none" stroke="#7cc4ff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+            </svg>
+            <div className="absolute inset-x-0 bottom-0 flex items-center gap-6 px-9 pb-6">
+              {facts}
+              {cta('ml-auto')}
             </div>
-
-            <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-tint px-3 py-1.5 text-[0.75rem] font-bold uppercase tracking-[0.08em] text-action md:mt-7">
-              <CalendarDays aria-hidden className="size-3.5 shrink-0" />{p.pill}
-            </p>
-            <h2 id="btsp-title" className="display-md mt-3">{p.title}</h2>
-            <p id="btsp-desc" className="mt-2 text-[0.9375rem] leading-relaxed text-ink-muted md:mt-3 md:text-base">{BTS.liveDemos ? p.textLiveDemos : p.text}</p>
-            <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-3 md:mt-6 md:grid-cols-1">
-              {p.items.map((it) => { const Icon = ICON[it.icon as keyof typeof ICON]; return (
-                <li key={it.text} className="flex items-center gap-2.5 text-[0.8125rem] font-medium leading-snug md:gap-3 md:text-[0.9375rem]">
-                  <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-md bg-tint text-action md:size-10"><Icon className="size-[1.125rem] md:size-5" /></span>{it.text}
-                </li>
-              ) })}
-            </ul>
           </div>
         </div>
 
-        {/* blue bar: the brand blue in both themes, so the white text keeps its contrast */}
-        <div className="bg-[var(--q2m-action)] px-5 pt-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] text-white md:px-9 md:py-5">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-7">
-            <dl className="flex flex-wrap items-center gap-x-6 gap-y-3 md:flex-nowrap md:gap-x-7">
-              <div className="flex items-center gap-3"><dt className="contents"><CalendarDays aria-hidden className="size-6 shrink-0 md:size-7" strokeWidth={1.75} /><span className="sr-only">Dates</span></dt><dd className="font-display text-base font-semibold md:text-lg">{date}</dd></div>
-              <span aria-hidden className="hidden h-8 w-px bg-white/40 md:block" />
-              <div className="flex items-center gap-3"><dt className="contents"><MapPin aria-hidden className="size-6 shrink-0 md:size-7" strokeWidth={1.75} /><span className="sr-only">Venue</span></dt><dd className="font-display text-base font-semibold md:text-lg">{BTS.venue.short}</dd></div>
-            </dl>
-            <Link to={BTS.path} onClick={close} className={`${BUTTON} w-full md:ml-auto md:w-auto`}>
-              {p.cta}<ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-            <button type="button" onClick={close} className="-mt-2 min-h-11 text-sm font-medium text-white/90 underline underline-offset-4 hover:text-white md:hidden">{p.later}</button>
+        {/* under 1024px: photo in full on top, the content below, then the blue bar with a full-width button. The sheet stops
+            3.5rem below the top, so there is always some dimmed page to tap to close it; it scrolls if taller. */}
+        <div className="lg:hidden">
+          <Img src={p.photo.file} alt={p.photo.alt} sizes="100vw" className="block h-auto w-full" />
+          <div className="px-5 pb-6 pt-5">
+            {logos}
+            <div className="mt-5">{pill}</div>
+            <h2 className="display-md mt-3">{p.title}</h2>
+            <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-muted">{desc}</p>
+            {items('mt-5 grid grid-cols-2 gap-x-3 gap-y-3')}
+          </div>
+          <div className="bg-[var(--q2m-action)] px-5 pt-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] text-white">
+            <div className="flex flex-col gap-4">
+              {facts}
+              {cta('w-full')}
+              <button type="button" onClick={close} className="-mt-2 min-h-11 text-sm font-medium text-white/90 underline underline-offset-4 hover:text-white">{p.later}</button>
+            </div>
           </div>
         </div>
       </div>
