@@ -25,7 +25,7 @@ export const BTS = {
   liveDemos: false,
   /**
    * Announcement popup on every page except the BTS landing page (src/components/BtsPopup.tsx): shown 2 s after load, once per
-   * visitor every 7 days, and switched off when the event closes (`end`). No demo claim while `liveDemos` is false.
+   * page load (closing it keeps it closed until the next refresh), and switched off when the event closes (`end`). No demo claim while `liveDemos` is false.
    */
   popup: {
     badge: "We're at Bengaluru Tech Summit 2026",
@@ -39,7 +39,6 @@ export const BTS = {
     cta: 'Book a meeting',
     later: 'Maybe later',
     delayMs: 2000,
-    snoozeDays: 7,
   },
 } as const
 
