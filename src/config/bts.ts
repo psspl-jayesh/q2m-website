@@ -24,22 +24,17 @@ export const BTS = {
    */
   liveDemos: false,
   /**
-   * Announcement popup on every page except the BTS landing page (src/components/BtsPopup.tsx): shown 2 s after load, once per
-   * visitor every `snoozeDays` days, and switched off when the event closes (`end`). Note: the banner image itself
-   * carries the owner's "solutions in action" line; the phone sheet uses neutral wording while `liveDemos` is false.
+   * Announcement popup on every page except the BTS landing page (src/components/BtsPopup.tsx): opens 2 s after every page load
+   * (owner's request; nothing is remembered), and switched off when the event closes (`end`). Layout follows the owner's banner
+   * (public/images/bts/bts-popup-desktop.png, kept as the reference) in the site's own fonts, colours and buttons.
    */
   popup: {
-    /** Larger screens show the owner's banner image (also on q2msolutions.com as Popup-Q2M-Bengaluru-Tech-Summit-2026.webp). */
-    image: '/images/bts/bts-popup-desktop.png',
-    /** Optional: add this file and run the image optimiser to show an image on phones instead of the HTML bottom sheet. */
-    mobileImage: '/images/bts/bts-popup-mobile.png',
-    imageAlt: 'Q2M Solutions at Bengaluru Tech Summit 2026, 17–19 November 2026, BIEC Bengaluru. AI-powered smart glasses, agentic AI, computer vision and document intelligence. Meet us at the summit.',
-    /* Phones: the HTML bottom sheet below uses this text. */
-    pill: "We're Participating in",
+    lockup: 'Bengaluru Tech Summit 2026',
+    pill: "We're participating in",
     title: 'Bengaluru Tech Summit 2026',
     /** Shown while `liveDemos` is false. */
-    text: 'Meet us to talk about our AI, Smart Glasses and Intelligent Automation solutions.',
-    /** The banner's line, shown only when `liveDemos` is true. */
+    text: 'Meet us to explore our AI, Smart Glasses and Intelligent Automation solutions.',
+    /** Shown only when `liveDemos` is true. */
     textLiveDemos: 'Experience our AI, Smart Glasses and Intelligent Automation solutions in action.',
     items: [
       { icon: 'glasses', text: 'AI-Powered Smart Glasses & XR' },
@@ -47,13 +42,11 @@ export const BTS = {
       { icon: 'video', text: 'Computer Vision & Video Intelligence' },
       { icon: 'document', text: 'Document Intelligence & Automation' },
     ],
-    /** Phones: the photo cut from the owner's banner (without the banner text). */
+    /** The photo part of the owner's banner (no banner text); no separate original exists. */
     photo: { file: '/images/bts-2026/popup-photo.jpg', alt: 'Technician wearing smart glasses checking a car door, with a damage analysis overlay' },
     cta: 'Meet us at the summit',
     later: 'Maybe later',
     delayMs: 2000,
-    /** After closing it or following the link, the popup stays hidden this many days (per browser). */
-    snoozeDays: 7,
   },
 } as const
 
