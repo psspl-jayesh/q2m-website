@@ -46,7 +46,10 @@ export const BTS = {
     /** Official Bengaluru Tech Summit 2026 logo (bengalurutechsummit.com, BTS2026_Logo.webp), used unmodified. It is made for
      *  dark backgrounds, so the popup shows it on a navy tile. */
     logo: { file: '/images/bts/bts-2026-logo.webp', alt: 'Bengaluru Tech Summit 2026', w: 690, h: 236 },
-    /** The photo part of the owner's banner (no banner text); no separate original exists. Shown fully clear. */
+    /** Larger screens: a 16:9 scene = the clean photo (uncropped, on the right) plus a soft blur of its own left edge, so the text
+     *  panel (left 25%) never covers the person (he starts at 27%). */
+    scene: { file: '/images/bts-2026/popup-scene.jpg', alt: 'Technician wearing smart glasses checking a car door with a tablet, with a damage analysis overlay' },
+    /** Phones: the photo part of the owner's banner (no banner text), shown in full. No separate original exists. */
     photo: { file: '/images/bts-2026/popup-photo.jpg', alt: 'Technician wearing smart glasses checking a car door, with a damage analysis overlay' },
     cta: 'Meet us at the summit',
     later: 'Maybe later',
