@@ -25,20 +25,35 @@ export const BTS = {
   liveDemos: false,
   /**
    * Announcement popup on every page except the BTS landing page (src/components/BtsPopup.tsx): shown 2 s after load, once per
-   * page load (closing it keeps it closed until the next refresh), and switched off when the event closes (`end`). No demo claim while `liveDemos` is false.
+   * visitor every `snoozeDays` days, and switched off when the event closes (`end`). Note: the banner image itself
+   * carries the owner's "solutions in action" line; the phone sheet uses neutral wording while `liveDemos` is false.
    */
   popup: {
-    badge: "We're at Bengaluru Tech Summit 2026",
-    badgeShort: "We're at BTS 2026",
-    titleLead: 'Meet Q2M at',
-    titleAccent: 'BTS 2026',
-    /** "30‑minute" uses a non-breaking hyphen so it never splits across lines. */
-    text: "Visit us at BIEC, Bengaluru and book a 30‑minute session with our team. Bring one process, and we'll map an AI agent or automation for it.",
-    /** Event theme, from the owner's popup design (12 Nov 2026). */
-    theme: 'AI & Beyond',
-    cta: 'Book a meeting',
+    /** Larger screens show the owner's banner image (also on q2msolutions.com as Popup-Q2M-Bengaluru-Tech-Summit-2026.webp). */
+    image: '/images/bts/bts-popup-desktop.png',
+    /** Optional: add this file and run the image optimiser to show an image on phones instead of the HTML bottom sheet. */
+    mobileImage: '/images/bts/bts-popup-mobile.png',
+    imageAlt: 'Q2M Solutions at Bengaluru Tech Summit 2026, 17–19 November 2026, BIEC Bengaluru. AI-powered smart glasses, agentic AI, computer vision and document intelligence. Meet us at the summit.',
+    /* Phones: the HTML bottom sheet below uses this text. */
+    pill: "We're Participating in",
+    title: 'Bengaluru Tech Summit 2026',
+    /** Shown while `liveDemos` is false. */
+    text: 'Meet us to talk about our AI, Smart Glasses and Intelligent Automation solutions.',
+    /** The banner's line, shown only when `liveDemos` is true. */
+    textLiveDemos: 'Experience our AI, Smart Glasses and Intelligent Automation solutions in action.',
+    items: [
+      { icon: 'glasses', text: 'AI-Powered Smart Glasses & XR' },
+      { icon: 'chip', text: 'Agentic AI & Generative AI' },
+      { icon: 'video', text: 'Computer Vision & Video Intelligence' },
+      { icon: 'document', text: 'Document Intelligence & Automation' },
+    ],
+    /** Phones: the photo cut from the owner's banner (without the banner text). */
+    photo: { file: '/images/bts-2026/popup-photo.jpg', alt: 'Technician wearing smart glasses checking a car door, with a damage analysis overlay' },
+    cta: 'Meet us at the summit',
     later: 'Maybe later',
     delayMs: 2000,
+    /** After closing it or following the link, the popup stays hidden this many days (per browser). */
+    snoozeDays: 7,
   },
 } as const
 
@@ -74,19 +89,7 @@ export function btsDateRangeShort(): string {
   return `${fmt(BTS.start, { day: 'numeric' })}–${fmt(BTS.end, { day: 'numeric', month: 'long', year: 'numeric' })}`
 }
 
-/** Daily opening hours from the start and end times, e.g. "9 AM – 6 PM" (Indian time). */
-export function btsHours(): string {
-  const t = (iso: string) => new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: true }).format(new Date(iso)).toUpperCase()
-  // no-break spaces keep "9 AM" and "6 PM" together when the line wraps
-  const keep = (x: string) => x.replace(/\s/g, ' ')
-  return `${keep(t(BTS.start))} – ${keep(t(BTS.end))}`
-}
 
-/** "17–19 Nov 2026": the date range with a short month name. */
-export function btsDateRangeAbbr(): string {
-  const fmt = (iso: string, o: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', ...o }).format(new Date(iso))
-  return `${fmt(BTS.start, { day: 'numeric' })}–${fmt(BTS.end, { day: 'numeric', month: 'short', year: 'numeric' })}`
-}
 
 /** React hook: the current BTS phase, re-checked every 30 seconds so pages switch at the right moment without a reload. */
 export function useBtsPhase(): BtsPhase {
