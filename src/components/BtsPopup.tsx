@@ -94,12 +94,13 @@ export default function BtsPopup() {
   )
   // Q2M logo | official event logo. The event logo is used unmodified; it is made for dark backgrounds, so it sits on a navy tile.
   const logos = (
-    <div className="flex items-center gap-2.5">
-      <img className="logo-color h-9 w-auto shrink-0 lg:h-7" src={siteImages.brand.logoColor.file} alt={siteImages.brand.logoColor.alt} width={46} height={28} />
-      <img className="logo-reverse h-9 w-auto shrink-0 lg:h-7" src={siteImages.brand.logoReverse.file} alt={siteImages.brand.logoReverse.alt} width={46} height={28} />
-      <span aria-hidden className="h-9 w-px shrink-0 bg-[var(--bp-ink)] opacity-30" />
-      <span className="inline-block shrink-0 rounded-md bg-[#0b1430] px-1.5 py-1">
-        <img src={p.logo.file} alt={p.logo.alt} width={p.logo.w} height={p.logo.h} loading="lazy" decoding="async" className="block h-12 w-auto lg:h-10" />
+    <div className="flex items-center gap-2">
+      {/* the Q2M logo is about as tall as the event logo's tile */}
+      <img className="logo-color h-14 w-auto shrink-0 lg:h-10" src={siteImages.brand.logoColor.file} alt={siteImages.brand.logoColor.alt} width={73} height={44} />
+      <img className="logo-reverse h-14 w-auto shrink-0 lg:h-10" src={siteImages.brand.logoReverse.file} alt={siteImages.brand.logoReverse.alt} width={73} height={44} />
+      <span aria-hidden className="h-10 w-px shrink-0 bg-[var(--bp-ink)] opacity-30" />
+      <span className="inline-block shrink-0 rounded-md bg-[#0b1430] px-1 py-0.5">
+        <img src={p.logo.file} alt={p.logo.alt} width={p.logo.w} height={p.logo.h} loading="lazy" decoding="async" className="block h-12 w-auto lg:h-9" />
       </span>
     </div>
   )
@@ -142,23 +143,18 @@ export default function BtsPopup() {
         className="btsp-panel relative max-h-[calc(100dvh-3.5rem)] w-full overflow-y-auto overflow-x-hidden rounded-t-xl [background:var(--bp-col)] text-ink shadow-2xl lg:max-h-[calc(100dvh-3rem)] lg:max-w-[1000px] lg:rounded-xl">
         {closeBtn}
 
-        {/* 1024px+: a narrow text column (25%) on its own light background (navy in the dark theme), and the photo fully clear in
-            the other 75%: no overlay on the person. The blue bar runs underneath; its wave rises only on the car side. */}
+        {/* 1024px+: the whole scene is the background of the top area, sized to its own 16:9 ratio so nothing is cropped (the clean
+            photo plus a blurred extension of its own edges on the left). The text column (left 25%) is a frosted panel over that
+            extension; the person starts at 27%, so he is never under it. The blue bar sits below the photo. */}
         <div className="hidden lg:block">
-          <div className="grid grid-cols-[25%_1fr]">
-            <div className="px-6 pb-8 pt-6">
+          <div className="relative aspect-[1351/760]">
+            <Photo src={p.scene.file} alt={p.scene.alt} sizes="1000px" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-y-0 left-0 w-[25%] overflow-hidden bg-[var(--bp-glass)] px-5 pb-6 pt-6 backdrop-blur-md">
               {text('mt-2.5 font-display text-[1.625rem] font-bold leading-[1.1] tracking-[-0.01em] text-[var(--bp-ink)]')}
               {items('mt-5 grid gap-y-3')}
             </div>
-            <div className="relative min-h-[489px]">
-              <Photo src={p.photo.file} alt={p.photo.alt} sizes="750px" position="30% 35%" className="absolute inset-0 h-full w-full object-cover" />
-            </div>
           </div>
           <div className="btsp-bar relative text-white">
-            <svg aria-hidden viewBox="0 0 1000 40" preserveAspectRatio="none" className="absolute inset-x-0 top-px h-10 w-full -translate-y-full">
-              <path d="M0 40 L720 40 C 820 40, 900 30, 1000 4 L1000 40 Z" fill="#1a6fe0" />
-              <path d="M720 40 C 820 40, 900 30, 1000 4" fill="none" stroke="#7cc4ff" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-            </svg>
             <div className="flex items-center gap-6 px-8 py-5">
               {facts}
               {cta('ml-auto')}
