@@ -36,21 +36,18 @@ export const BTS = {
     text: 'Meet us to explore our AI, Smart Glasses and Intelligent Automation solutions.',
     /** Shown only when `liveDemos` is true. */
     textLiveDemos: 'Experience our AI, Smart Glasses and Intelligent Automation solutions in action.',
-    /** Each item shows on two lines, like the banner: [first line, second line]. */
+    /** Each item: its lines, in order. */
     items: [
-      { icon: 'glasses', text: ['AI-Powered', 'Smart Glasses & XR'] },
-      { icon: 'chip', text: ['Agentic AI &', 'Generative AI'] },
+      { icon: 'glasses', text: ['Smart Glasses & XR'] },
+      { icon: 'chip', text: ['Agentic & Generative AI'] },
       { icon: 'video', text: ['Computer Vision &', 'Video Intelligence'] },
       { icon: 'document', text: ['Document Intelligence', '& Automation'] },
     ],
     /** Official Bengaluru Tech Summit 2026 logo (bengalurutechsummit.com, BTS2026_Logo.webp), used unmodified. It is made for
      *  dark backgrounds, so the popup shows it on a navy tile. */
     logo: { file: '/images/bts/bts-2026-logo.webp', alt: 'Bengaluru Tech Summit 2026', w: 690, h: 236 },
-    /** Larger screens: a 16:9 scene = the clean photo (uncropped, on the right) plus a soft blur of its own left edge, so the text
-     *  panel (left 25%) never covers the person (he starts at 27%). */
-    scene: { file: '/images/bts-2026/popup-scene.jpg', alt: 'Technician wearing smart glasses checking a car door with a tablet, with a damage analysis overlay' },
-    /** Phones: the photo part of the owner's banner (no banner text), shown in full. No separate original exists. */
-    photo: { file: '/images/bts-2026/popup-photo.jpg', alt: 'Technician wearing smart glasses checking a car door, with a damage analysis overlay' },
+    /** The owner's clean photo (no text), shown in full at its own 16:9 ratio; the text panel covers only the workshop on the left. */
+    photo: { file: '/images/bts/bts-popup-photo.png', alt: 'Technician wearing smart glasses checking a car door with a tablet, with a damage analysis overlay', w: 1672, h: 941 },
     cta: 'Meet us at the summit',
     later: 'Maybe later',
     delayMs: 2000,
