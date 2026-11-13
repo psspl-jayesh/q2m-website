@@ -17,6 +17,7 @@ import SocialIcon from './SocialIcon'
 import siteCopy from '@/data/site-copy.json'
 import siteImages from '@/data/site-images.json'
 import BackToTop from '@/components/BackToTop'
+import BtsPopup from '@/components/BtsPopup'
 import DotArrow from '@/components/DotArrow'
 import ui from '@/content/shared/ui.json'
 import btsPage from '@/content/pages/bts-2026/page.json'
@@ -335,6 +336,7 @@ export default function Layout() {
       <main id="main" tabIndex={-1}><Outlet /></main>
       <Footer />
       <BackToTop />
+      <BtsPopup />
     </>
   )
 }
