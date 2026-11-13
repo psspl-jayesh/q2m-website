@@ -23,12 +23,12 @@ const snooze = () => { try { localStorage.setItem(KEY, String(Date.now())) } cat
 /** One fact card (larger screens). */
 const Fact = ({ icon: Icon, k, v, nowrap }: { icon: typeof CalendarDays; k: string; v: string; nowrap?: boolean }) => (
   // dt uses display: contents so the icon and label sit in the card grid while the list keeps valid dt/dd structure
-  <div className="grid grid-cols-[2.5rem_1fr] items-center gap-x-3 rounded-lg border border-line bg-surface-raised p-4">
+  <div className="grid grid-cols-[2.25rem_1fr] items-center gap-x-2.5 rounded-lg border border-line bg-surface-raised px-3 py-2.5">
     <dt className="contents">
-      <span aria-hidden className="row-span-2 grid size-10 place-items-center rounded-md bg-tint text-action"><Icon className="size-5" /></span>
-      <span className="self-end text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-ink-muted">{k}</span>
+      <span aria-hidden className="row-span-2 grid size-9 place-items-center rounded-md bg-tint text-action"><Icon className="size-[1.125rem]" /></span>
+      <span className="self-end text-[0.625rem] font-bold uppercase tracking-[0.08em] text-ink-muted">{k}</span>
     </dt>
-    <dd className={`col-start-2 self-start font-medium leading-snug ${nowrap ? 'whitespace-nowrap' : ''}`}>{v}</dd>
+    <dd className={`col-start-2 self-start text-[0.9375rem] font-medium leading-snug ${nowrap ? 'whitespace-nowrap' : ''}`}>{v}</dd>
   </div>
 )
 
@@ -75,55 +75,55 @@ export default function BtsPopup() {
   return createPortal(
     <div className="btsp fixed inset-0 z-[60] flex items-end justify-center bg-black/45 md:items-center md:p-6">
       <div ref={box} role="dialog" aria-modal="true" aria-labelledby="btsp-title" aria-describedby="btsp-desc"
-        className="btsp-panel relative max-h-[100dvh] w-full overflow-y-auto rounded-t-[1.75rem] border border-line bg-surface px-5 pt-3 pb-[calc(1.25rem+env(safe-area-inset-bottom))] text-ink shadow-2xl md:max-w-[40rem] md:rounded-[1.75rem] md:p-10">
-        <div aria-hidden className="mx-auto mb-5 h-1.5 w-10 rounded-full bg-line md:hidden" />
+        className="btsp-panel relative max-h-[100dvh] w-full overflow-y-auto rounded-t-[1.5rem] border border-line bg-surface px-5 pt-2.5 pb-[calc(1rem+env(safe-area-inset-bottom))] text-ink shadow-2xl md:max-w-[34rem] md:rounded-[1.5rem] md:p-7">
+        <div aria-hidden className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-line md:hidden" />
         <button type="button" onClick={close} aria-label="Close" data-autofocus
-          className="absolute right-5 top-9 grid size-11 place-items-center rounded-full border border-line bg-surface text-ink transition-colors hover:bg-tint md:right-5 md:top-5">
-          <X aria-hidden className="size-5" />
+          className="absolute right-4 top-7 grid size-10 place-items-center rounded-full border border-line bg-surface text-ink transition-colors hover:bg-tint md:right-4 md:top-4">
+          <X aria-hidden className="size-[1.125rem]" />
         </button>
 
         {/* badge row: the dot arrow sits beside the badge on larger screens, beside the heading on phones */}
-        <div className="flex items-center gap-4 pr-14">
-          <DotArrow pitch={4.5} className="hidden h-auto w-10 shrink-0 md:block" />
-          <p className="inline-flex items-center gap-2 rounded-full bg-tint px-4 py-2 text-[0.75rem] font-bold uppercase tracking-[0.08em] text-action">
-            <CalendarDays aria-hidden className="size-4 shrink-0" />
+        <div className="flex items-center gap-3 pr-12">
+          <DotArrow pitch={4} className="hidden h-auto w-9 shrink-0 md:block" />
+          <p className="inline-flex items-center gap-2 rounded-full bg-tint px-3.5 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-action">
+            <CalendarDays aria-hidden className="size-3.5 shrink-0" />
             <span className="md:hidden">{p.badgeShort}</span><span className="hidden md:inline">{p.badge}</span>
           </p>
         </div>
 
-        <div className="mt-6 flex items-start gap-3 md:mt-5">
-          <DotArrow pitch={4} className="mt-2 h-auto w-9 shrink-0 md:hidden" />
-          <h2 id="btsp-title" className="font-display text-[1.75rem] font-bold leading-[1.2] tracking-tight md:text-[2.75rem]">
+        <div className="mt-4 flex items-start gap-3">
+          <DotArrow pitch={3.5} className="mt-1.5 h-auto w-8 shrink-0 md:hidden" />
+          <h2 id="btsp-title" className="font-display text-[1.5rem] font-bold leading-[1.2] tracking-tight md:text-[2.125rem]">
             {p.titleLead}<br className="md:hidden" /><span className="hidden md:inline"> </span>
             <span className="relative inline-block whitespace-nowrap text-action">
               {p.titleAccent}
-              <svg aria-hidden viewBox="0 0 200 12" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-2.5 w-full text-q2m"><path d="M3 9 C 55 2, 145 2, 197 7" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" /></svg>
+              <svg aria-hidden viewBox="0 0 200 12" preserveAspectRatio="none" className="absolute -bottom-1.5 left-0 h-2 w-full text-q2m"><path d="M3 9 C 55 2, 145 2, 197 7" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" /></svg>
             </span>
           </h2>
         </div>
-        <p id="btsp-desc" className="mt-5 text-ink-muted md:mt-4">{p.text}</p>
+        <p id="btsp-desc" className="mt-4 text-[0.9375rem] leading-relaxed text-ink-muted">{p.text}</p>
 
         {/* phones: one card with two rows */}
-        <dl className="mt-5 divide-y divide-line rounded-lg border border-line bg-surface-raised px-4 md:hidden">
-          <div className="flex items-center gap-3 py-3"><span aria-hidden className="grid size-10 shrink-0 place-items-center rounded-md bg-tint text-action"><CalendarDays className="size-5" /></span><dt className="sr-only">Dates and timings</dt><dd className="font-medium">{btsDateRangeShort()} · <span className="whitespace-nowrap">{btsHours()}</span></dd></div>
-          <div className="flex items-center gap-3 py-3"><span aria-hidden className="grid size-10 shrink-0 place-items-center rounded-md bg-tint text-action"><MapPin className="size-5" /></span><dt className="sr-only">Venue</dt><dd className="font-medium">{`BIEC, ${BTS.venue.address}`}</dd></div>
+        <dl className="mt-4 divide-y divide-line rounded-lg border border-line bg-surface-raised px-3.5 text-[0.9375rem] md:hidden">
+          <div className="flex items-center gap-3 py-2.5"><span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-md bg-tint text-action"><CalendarDays className="size-[1.125rem]" /></span><dt className="sr-only">Dates and timings</dt><dd className="font-medium">{btsDateRangeShort()} · <span className="whitespace-nowrap">{btsHours()}</span></dd></div>
+          <div className="flex items-center gap-3 py-2.5"><span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-md bg-tint text-action"><MapPin className="size-[1.125rem]" /></span><dt className="sr-only">Venue</dt><dd className="font-medium">{`BIEC, ${BTS.venue.address}`}</dd></div>
         </dl>
         {/* larger screens: three fact cards */}
-        <dl className="mt-6 hidden grid-cols-3 gap-3 md:grid">
+        <dl className="mt-5 hidden grid-cols-3 gap-2.5 md:grid">
           <Fact icon={CalendarDays} k="Dates" v={btsDateRangeAbbr()} />
           <Fact icon={MapPin} k="Venue" v={BTS.venue.short} />
           <Fact icon={Clock} k="Timings" v={btsHours()} nowrap />
         </dl>
 
-        <div className="mt-6 flex flex-col gap-3 md:mt-7 md:flex-row md:items-center">
+        <div className="mt-5 flex flex-col gap-2.5 md:flex-row md:items-center md:gap-3">
           <Link to={BTS.path} onClick={() => { snooze(); setOpen(false) }}
-            className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-action px-7 font-semibold text-on-action transition-colors hover:bg-q2m">
+            className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-action px-6 font-semibold text-on-action transition-colors hover:bg-q2m">
             {p.cta}<ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
-          <button type="button" onClick={close} className="inline-flex min-h-12 items-center justify-center rounded-full border border-line px-6 font-semibold transition-colors hover:bg-tint">
+          <button type="button" onClick={close} className="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 font-semibold transition-colors hover:bg-tint">
             {p.later}
           </button>
-          <p className="hidden text-sm text-ink-muted md:ml-auto md:block">Theme: {p.theme}</p>
+          <p className="hidden text-[0.8125rem] text-ink-muted md:ml-auto md:block">Theme: {p.theme}</p>
         </div>
       </div>
     </div>,
