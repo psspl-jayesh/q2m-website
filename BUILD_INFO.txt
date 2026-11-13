@@ -1,10 +1,10 @@
 Q2M Solutions website: production build
 
-Built:          12 Nov 2026, 08:39 IST
-Source commit:  dbb2818 (main)
-Release tag:    release-2026-11-12-2
+Built:          13 Nov 2026, 07:22 IST
+Source commit:  aa92525 (main)
+Release tag:    release-2026-11-13-2
 Node version:   v24.16.0
-Pages:          71 pre-rendered routes + 404.html
+Pages:          70 pre-rendered routes + 404.html
 
 Upload everything in this folder to the web root.
 

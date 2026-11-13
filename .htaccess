@@ -12,9 +12,9 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
-# Use ONE host name. The site uses https://q2msolutions.com (no www): www is redirected to it.
-RewriteCond %{HTTP_HOST} ^www\.q2msolutions\.com$ [NC]
-RewriteRule ^(.*)$ https://q2msolutions.com/$1 [R=301,L]
+# Use ONE host name. The site uses https://q2msolutions.in (no www): www is redirected to it.
+RewriteCond %{HTTP_HOST} ^www\.q2msolutions\.in$ [NC]
+RewriteRule ^(.*)$ https://q2msolutions.in/$1 [R=301,L]
 
 # Old URLs
 RewriteRule ^case-study/?$ /case-studies/ [R=301,L]
