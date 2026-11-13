@@ -171,7 +171,7 @@
   @media (prefers-reduced-motion: reduce) { .btsp, .btsp-panel { animation: none; } }
   /* BTS popup colours (banner look): navy text on a light, frosted column; dark theme: light text on navy */
   .btsp-panel { --bp-ink: #1b2a6b; --bp-muted: #26356f; --bp-icon: #0062c4; --bp-pill-bg: #d4e8ff; --bp-pill-ink: #1b2a6b;
-    --bp-col: linear-gradient(180deg, #ffffff 0%, #eef4fb 100%); --bp-glass: rgb(255 255 255 / .7); }
+    --bp-col: linear-gradient(180deg, #ffffff 0%, #eef4fb 100%); --bp-glass: rgb(255 255 255 / .78); }
   [data-theme='dark'] .btsp-panel { --bp-ink: #eef2ff; --bp-muted: #c9d4f2; --bp-icon: #7cb8ff; --bp-pill-bg: rgb(61 150 245 / .2); --bp-pill-ink: #d6e8ff;
     --bp-col: linear-gradient(180deg, #0b1430 0%, #0e1a3d 100%); --bp-glass: rgb(11 20 48 / .8); }
   .btsp-bar { background: linear-gradient(90deg, #0a3a8f 0%, #0d55c4 55%, #1a6fe0 100%); }

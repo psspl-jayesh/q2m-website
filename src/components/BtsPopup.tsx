@@ -8,10 +8,10 @@ import siteImages from '@/data/site-images.json'
 
 /**
  * Bengaluru Tech Summit 2026 announcement (content: BTS.popup in src/config/bts.ts).
- * - Real HTML in the site's look, after the owner's banner. 1024px+: a narrow text column (25%: Q2M logo | official BTS 2026
- *   logo, pill, heading, text, four solution areas) on its own background, the photo fully clear in the other 75% (no overlay on
- *   the person), and a blue bar below with dates, venue and the button. Below 1024px: the photo in full on top, content below,
- *   the blue bar, scrollable if taller than the screen. Images are lazy, so a screen downloads only what it shows.
+ * - Real HTML in the site's look. 1024px+: the owner's photo in full (16:9, uncropped) with a frosted text panel over the
+ *   workshop on its left (Q2M logo | official BTS 2026 logo, pill, heading, text, four solution areas), and a blue bar below with
+ *   dates, venue and the button. Below 1024px: the photo in full on top, content below, the blue bar, scrollable if taller than
+ *   the screen. The photo loads only when the popup opens.
  * - Opens BTS.popup.delayMs after EVERY page load or refresh (owner's request): nothing is stored. Once closed it stays closed
  *   while the visitor moves between pages, until the next refresh or visit. Never on the BTS landing page, never in the
  *   pre-rendered HTML, switched off once the event has closed (BTS.end).
@@ -110,7 +110,7 @@ export default function BtsPopup() {
       {p.items.map((it) => { const Icon = ICON[it.icon as keyof typeof ICON]; return (
         <li key={it.text.join(' ')} className="flex items-center gap-2.5 text-[0.8125rem] font-bold leading-[1.25] text-[var(--bp-ink)]">
           <Icon aria-hidden className="size-6 shrink-0 text-[var(--bp-icon)]" strokeWidth={1.6} />
-          <span>{it.text[0]}<br />{it.text[1]}</span>
+          <span>{it.text.map((line, k) => <span key={k} className="block">{line}</span>)}</span>
         </li>
       ) })}
     </ul>
@@ -143,15 +143,15 @@ export default function BtsPopup() {
         className="btsp-panel relative max-h-[calc(100dvh-3.5rem)] w-full overflow-y-auto overflow-x-hidden rounded-t-xl [background:var(--bp-col)] text-ink shadow-2xl lg:max-h-[calc(100dvh-3rem)] lg:max-w-[1000px] lg:rounded-xl">
         {closeBtn}
 
-        {/* 1024px+: the whole scene is the background of the top area, sized to its own 16:9 ratio so nothing is cropped (the clean
-            photo plus a blurred extension of its own edges on the left). The text column (left 25%) is a frosted panel over that
-            extension; the person starts at 27%, so he is never under it. The blue bar sits below the photo. */}
+        {/* 1024px+: the photo in full at its own 16:9 ratio (nothing cropped). The text sits on a frosted panel over the workshop on
+            the left (26% wide): it covers only the background, his back and legs, never his face, glasses, hands or the car.
+            The blue bar sits below the photo. */}
         <div className="hidden lg:block">
-          <div className="relative aspect-[1351/760]">
-            <Photo src={p.scene.file} alt={p.scene.alt} sizes="1000px" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-y-0 left-0 w-[25%] overflow-hidden bg-[var(--bp-glass)] px-5 pb-6 pt-6 backdrop-blur-md">
-              {text('mt-2.5 font-display text-[1.625rem] font-bold leading-[1.1] tracking-[-0.01em] text-[var(--bp-ink)]')}
-              {items('mt-5 grid gap-y-3')}
+          <div className="relative aspect-[1672/941]">
+            <Photo src={p.photo.file} alt={p.photo.alt} sizes="1000px" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-y-0 left-0 w-[26%] overflow-hidden rounded-r-2xl bg-[var(--bp-glass)] px-5 pb-5 pt-6 shadow-[8px_0_24px_-12px_rgb(0_0_0/0.25)] backdrop-blur-[8px]">
+              {text('mt-2.5 font-display text-[1.5rem] font-bold leading-[1.1] tracking-[-0.01em] text-[var(--bp-ink)]')}
+              {items('mt-4 grid gap-y-2.5')}
             </div>
           </div>
           <div className="btsp-bar relative text-white">
@@ -165,7 +165,7 @@ export default function BtsPopup() {
         {/* under 1024px: the photo in full on top, the content below, then the blue bar with a full-width button. The sheet stops
             3.5rem below the top, so there is always some dimmed page to tap to close it; it scrolls if taller. */}
         <div className="lg:hidden">
-          <Photo src={p.photo.file} alt={p.photo.alt} sizes="100vw" className="block h-auto w-full" />
+          <Photo src={p.photo.file} alt={p.photo.alt} sizes="100vw" className="block aspect-[1672/941] h-auto w-full" />
           <div className="px-5 pb-8 pt-5">
             {text('mt-2.5 font-display text-[1.75rem] font-bold leading-[1.1] tracking-[-0.01em] text-[var(--bp-ink)]')}
             {items('mt-5 grid grid-cols-2 gap-x-3 gap-y-4')}
