@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-ink">Consent</h2>
           <p>We ask for your consent, by an unticked checkbox, before we process the details you enter in a form. You can withdraw consent at any time by emailing {COMPANY.email}. Withdrawal does not affect processing already done, and we will stop processing and delete your data unless the law requires us to keep it.</p>
           <h2 className="text-ink">Who sees your data</h2>
-          <p>Our team, and the service providers that host this website and deliver email, under written terms. We do not sell personal data. Where a provider is outside India, the transfer will follow the DPDP Act and any restrictions notified under it. Provider list: to be confirmed by Q2M.</p>
+          <p>Our team, and the service providers that host this website and deliver email, under written terms. We do not sell personal data. Where a provider is outside India, the transfer will follow the DPDP Act and any restrictions notified under it. Form submissions reach us through Web3Forms (web3forms.com), which delivers them to us by email. Hosting provider: to be confirmed by Q2M.</p>
           <h2 className="text-ink">How long we keep it</h2>
           <p>Only as long as needed for the purpose above, or as the law requires. Retention period: to be confirmed by Q2M.</p>
           <h2 className="text-ink">Your rights</h2>
@@ -39,7 +39,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-ink">Grievance officer</h2>
           <p>{go ? `${go.name}, ${go.designation}, ${go.email}` : 'Name, designation and contact of the grievance officer: to be confirmed by Q2M.'} If you are not satisfied with our response you may complain to the Data Protection Board of India.</p>
           <h2 className="text-ink">Cookies and analytics</h2>
-          <p>This site may use analytics to understand how pages are used. Details of the tools in use: to be confirmed by Q2M.</p>
+          <p>This site does not use analytics or advertising cookies. It stores only your light or dark theme choice in your browser, so the page looks the way you chose on your next visit. If we add analytics, we will name the tools here first.</p>
           <h2 className="text-ink">Changes</h2>
           <p>We will update this page when our practices change and show the date of the latest version here once it is approved.</p>
         </div>
