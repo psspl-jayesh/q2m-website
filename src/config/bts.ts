@@ -42,7 +42,10 @@ export const BTS = {
       { icon: 'video', text: 'Computer Vision & Video Intelligence' },
       { icon: 'document', text: 'Document Intelligence & Automation' },
     ],
-    /** The photo part of the owner's banner (no banner text); no separate original exists. */
+    /** Larger screens: the owner's banner with its text side painted white (the popup's own text goes there; the blue bar covers
+     *  the banner's bottom band), so the photo can fill the card uncropped. */
+    background: { file: '/images/bts-2026/popup-bg.jpg', alt: 'Technician wearing smart glasses checking a car door, with a damage analysis overlay' },
+    /** Phones and tablets: the photo part of the banner only (no banner text); no separate original exists. */
     photo: { file: '/images/bts-2026/popup-photo.jpg', alt: 'Technician wearing smart glasses checking a car door, with a damage analysis overlay' },
     cta: 'Meet us at the summit',
     later: 'Maybe later',
